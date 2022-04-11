@@ -1,0 +1,121 @@
+<template>
+    <FWindow
+        ref="popover"
+        popover
+        :attach-position="attachPosition"
+        :preferred-attach-position="preferredAttachPosition"
+        :attach-margin="attachMargin"
+        :with-header="withHeader"
+        :stay-in-viewport="stayInViewport"
+        :prevent-focus="preventFocus"
+        animation-in="scale-center-enter-active"
+        animation-out="scale-center-leave-active"
+        v-bind="{ ...$attrs, ...$props }"
+        :class="cssClasses"
+    >
+        <template #controls>
+            <FButton
+                v-if="!noCloseButton"
+                tertiary
+                same-size
+                :size="buttonSize"
+                :title="translate('fwindow.closeWindow')"
+                @click="onCloseButtonClick"
+            >
+                <FSvgIcon size="1.2em"><icon-times /></FSvgIcon>
+            </FButton>
+        </template>
+
+        <!-- copy slots -->
+        <template v-for="(index, name) in $slots" v-slot:[name]="data">
+            <slot :name="name" v-bind="data"> </slot>
+        </template>
+    </FWindow>
+</template>
+
+<script>
+import FWindow from '../FWindow/FWindow.vue';
+import { copyProps, copyMethods } from '../../utils/vue-helpers.js';
+import FSvgIcon from '../FSvgIcon/FSvgIcon.vue';
+import IconTimes from '../icons/IconTimes.vue';
+import { translationsMixin } from '../../mixins/translations.js';
+import FButton from '../FButton/FButton.vue';
+
+/**
+ * FWindow wrapper with popover settings
+ */
+export default {
+    name: 'FPopover',
+
+    components: { FButton, IconTimes, FSvgIcon, FWindow },
+
+    mixins: [translationsMixin],
+
+    props: {
+        ...copyProps(FWindow, {
+            attachPosition: 'auto',
+            preferredAttachPosition: 'top',
+            withHeader: false,
+            stayInViewport: 'horizontal',
+            preventFocus: true,
+            attachMargin: function () {
+                return [4, 4, 4, 4];
+            },
+        }),
+
+        /**
+         * Size of the button
+         *
+         * @type {('big' | 'small')}
+         */
+        size: {
+            type: String,
+            default: '',
+            validator: function (_value) {
+                return ['', 'big', 'small'].indexOf(_value) !== -1;
+            },
+        },
+        noCloseButton: {
+            type: Boolean,
+            default: false,
+        },
+        fitHeightToViewport: {
+            type: Boolean,
+            default: false,
+        },
+    },
+
+    computed: {
+        cssClasses() {
+            return {
+                fpopover: true,
+                'fpopover-big': this.size === 'big',
+                'fpopover-small': this.size === 'small',
+                'fpopover-fitheight': this.fitHeightToViewport,
+            };
+        },
+
+        buttonSize() {
+            const { size } = this;
+
+            if (size === 'big') {
+                return '';
+            }
+
+            return 'small';
+        },
+    },
+
+    methods: {
+        ...copyMethods(FWindow, ['show', 'hide', 'toggle'], 'popover'),
+
+        onCloseButtonClick() {
+            this.hide();
+        },
+    },
+};
+</script>
+
+<style lang="scss">
+@use 'style';
+</style>

@@ -1,0 +1,29 @@
+// Vitest Snapshot v1
+
+exports[`FDarkThemeSwitch > should render correctly 1`] = `
+<span
+  class="fdarkthemeswitch"
+>
+  <label
+    class="ftogglebutton togglebtn togglebtn-v1"
+  >
+    <input
+      aria-invalid="false"
+      class="togglebtn_input"
+      id="foo"
+      type="checkbox"
+      value=""
+    />
+    <span
+      class="togglebtn_btn"
+    />
+    <span
+      class="togglebtn_label"
+    >
+      
+      
+      
+    </span>
+  </label>
+</span>
+`;

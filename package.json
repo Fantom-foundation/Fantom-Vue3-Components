@@ -1,0 +1,66 @@
+{
+    "name": "fantom-vue3-components",
+    "version": "0.1.0",
+    "description": "Library of various Vue 3 components with focus on accessibility",
+    "author": "Fantom Foundation",
+    "license": "MIT",
+    "repository": "git://github.com:Fantom-foundation/Fantom-Vue3-Components.git",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "main": "./src/index.js",
+    "module": "./src/index.js",
+    "scripts": {
+        "build": "vite build",
+        "test": "vitest run --environment jsdom",
+        "test:watch": "vitest --environment jsdom",
+        "test:report": "vitest run --environment jsdom --reporter json --outputFile test_results.json",
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+        "storybook": "start-storybook -p 6006 --no-manager-cache",
+        "build-storybook": "build-storybook",
+        "release": "standard-version",
+        "release:major": "standard-version --no-verify --release-as major",
+        "release:minor": "standard-version --no-verify --release-as minor",
+        "release:patch": "standard-version --no-verify --release-as patch",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "nanoid": "^3.3.2",
+        "vue": "^3.2.29"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.17.4",
+        "@commitlint/cli": "^16.2.3",
+        "@commitlint/config-conventional": "^16.2.1",
+        "@rushstack/eslint-patch": "^1.1.0",
+        "@storybook/addon-a11y": "^6.4.19",
+        "@storybook/addon-actions": "^6.4.19",
+        "@storybook/addon-essentials": "^6.4.19",
+        "@storybook/addon-knobs": "^6.4.0",
+        "@storybook/addon-links": "^6.4.19",
+        "@storybook/addon-storysource": "^6.4.19",
+        "@storybook/vue3": "^6.4.19",
+        "@vitejs/plugin-vue": "^2.1.0",
+        "@vue/eslint-config-prettier": "^7.0.0",
+        "@vue/test-utils": "^2.0.0-rc.18",
+        "babel-loader": "^8.2.3",
+        "eslint": "^8.5.0",
+        "eslint-plugin-vue": "^8.2.0",
+        "husky": "^7.0.4",
+        "jsdom": "^19.0.0",
+        "lint-staged": "^12.3.7",
+        "prettier": "^2.5.1",
+        "sass": "^1.49.7",
+        "standard-version": "^9.3.2",
+        "storybook-builder-vite": "^0.1.15",
+        "storybook-rtl-addon": "^0.3.3",
+        "vite": "^2.7.13",
+        "vitest": "^0.2.5",
+        "vue-loader": "^16.8.3"
+    },
+    "lint-staged": {
+        "*.{vue,js,jsx,cjs,mjs}": "eslint --cache --fix",
+        "*.{js,css,md}": "prettier --write"
+    }
+}

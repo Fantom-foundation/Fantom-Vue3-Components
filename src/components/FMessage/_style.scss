@@ -1,0 +1,61 @@
+@use 'custom-properties';
+
+.fmessage {
+    --f-transition-length: var(--fmessage-transition-length);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+
+    color: var(--fmessage-main-color);
+
+    &-success {
+        --fmessage-main-color: var(--fmessage-success-color);
+    }
+
+    &-info {
+        --fmessage-main-color: var(--fmessage-info-color);
+    }
+
+    &-warning {
+        --fmessage-main-color: var(--fmessage-warning-color);
+    }
+
+    &-error {
+        --fmessage-main-color: var(--fmessage-error-color);
+    }
+
+    &_body {
+        width: 100%;
+    }
+
+    &_icon {
+        --fsvgicon-size: var(--fmessage-icon-size);
+    }
+
+    &_closebtn {
+        --f-btn-color: var(--fmessage-main-color);
+        --f-btn-main-color: var(--fmessage-main-color);
+        --f-btn-main-color-hover: none;
+        --f-btn-background: none;
+
+        //margin-left: var(--f-spacer-2);
+    }
+
+    &-prefixslot,
+    &-withicon {
+        .fmessage_body {
+            padding-inline-start: var(--f-spacer-3, 8px);
+        }
+    }
+
+    &-suffixslot {
+        .fmessage_body {
+            padding-inline-end: var(--f-spacer-3, 8px);
+        }
+    }
+}

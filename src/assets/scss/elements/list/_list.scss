@@ -1,0 +1,5 @@
+@use "custom-properties";
+
+ul, ol, col {
+    padding-inline-start: var(--f-list-padding-inline-start);
+}

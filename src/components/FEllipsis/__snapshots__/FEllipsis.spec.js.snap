@@ -1,0 +1,28 @@
+// Vitest Snapshot v1
+
+exports[`FEllipsis > should render correctly 1`] = `
+<span
+  class="fellipsis overflow-middle fixed-char-pos-start"
+>
+  <span>
+    
+    
+  </span>
+  
+  <span
+    class="left-chars"
+  >
+    12345
+  </span>
+  <span
+    class="right-chars"
+  >
+    6789
+  </span>
+  
+  <span>
+    
+    
+  </span>
+</span>
+`;

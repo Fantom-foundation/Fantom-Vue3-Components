@@ -1,0 +1,116 @@
+@use 'custom-properties';
+
+.flistbox {
+    &_list {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: var(--flistbox-padding);
+        list-style-type: none;
+        margin: 0;
+
+        &:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        &_item {
+            color: var(--flistbox-item-color);
+            padding: var(--flistbox-item-padding);
+            background-color: var(--flistbox-item-background-color);
+            word-break: break-word;
+
+            &[aria-selected='true'] {
+                color: var(--flistbox-item-selected-color);
+                background-color: var(--flistbox-item-selected-background-color);
+            }
+
+            &[aria-disabled='true'] {
+                opacity: var(--flistbox-item-disabled-opacity);
+            }
+
+            &[hidden] {
+                display: none;
+            }
+
+            &_loading {
+                text-align: center;
+            }
+
+            &_notfound {
+                text-align: center;
+            }
+
+            &_removebutton {
+                opacity: 0.5;
+
+                .fsvgicon {
+                    --fsvgicon-width: 16px;
+                    --fsvgicon-height: 16px;
+                }
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            &-removable {
+                display: flex;
+                align-items: center;
+                gap: var(--f-spacer-3);
+                justify-content: space-between;
+            }
+        }
+
+        &:not([aria-disabled='true']) {
+            .flistbox_list_item {
+                &:not([aria-disabled='true']) {
+                    cursor: pointer;
+
+                    &:not([aria-selected='true']) {
+                        &:hover,
+                        &.flistbox_list_item-focus {
+                            color: var(--flistbox-item-hover-color);
+                            background-color: var(--flistbox-item-hover-background-color);
+                        }
+                    }
+
+                    &[aria-selected='true'] {
+                        &:hover,
+                        &.flistbox_list_item-focus {
+                            color: var(--flistbox-item-selected-hover-color);
+                            background-color: var(--flistbox-item-selected-hover-background-color);
+                            font-weight: var(--flistbox-item-selected-font-weight);
+                        }
+                    }
+                }
+            }
+        }
+
+        &[aria-disabled='true'] {
+            .flistbox_list_item {
+                opacity: var(--flistbox-item-disabled-opacity);
+            }
+        }
+    }
+
+    &_searchfield {
+        position: sticky;
+        top: 0;
+        box-sizing: border-box;
+        width: 100%;
+        margin-bottom: var(--f-spacer-2);
+        z-index: var(--f-zindex-sticky);
+
+        .finput,
+        .finput_inputcont {
+            width: 100%;
+        }
+    }
+
+    &-horizontal {
+        .flistbox_list {
+            flex-direction: row;
+            gap: var(--flistbox-item-gap);
+        }
+    }
+}

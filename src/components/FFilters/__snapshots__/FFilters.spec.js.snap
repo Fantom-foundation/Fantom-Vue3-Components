@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`FFilters > should render correctly 1`] = `
+<form
+  __submit-if-changed=""
+  class="fform ffilters fform-elemsautowidth"
+  method="post"
+  novalidate=""
+>
+  
+  
+</form>
+`;

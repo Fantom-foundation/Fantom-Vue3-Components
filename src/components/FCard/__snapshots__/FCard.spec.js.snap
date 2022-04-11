@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`FCard > should render correctly 1`] = `
+<div
+  class="fcard"
+>
+  
+  
+</div>
+`;

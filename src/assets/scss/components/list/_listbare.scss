@@ -1,0 +1,7 @@
+@use "../../settings/components" as componentsSettings;
+
+.#{componentsSettings.$listbare} {
+    list-style: none;
+    margin-inline-start: 0;
+    padding-inline-start: 0;
+}

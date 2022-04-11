@@ -1,0 +1,9 @@
+.fbutton {
+    --fbutton-spinner: '';
+    --fbutton-spinner-speed: 800ms;
+    --fbutton-spinner-color: var(--f-btn-color, #fff);
+    --fbutton-secondary-spinner-color: var(--f-btn-secondary-color, #1a6aff);
+    --fbutton-tertiary-spinner-color: var(--f-btn-tertiary-color, #1a6aff);
+    --fbutton-spinner-size: 1.2em;
+    --fbutton-default-spinner-border-width: 3px;
+}

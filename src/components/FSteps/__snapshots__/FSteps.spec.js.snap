@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`FSteps > should render correctly 1`] = `
+<div
+  class="fsteps"
+>
+  <div
+    class="fsteps_cont"
+  >
+    
+    
+  </div>
+</div>
+`;

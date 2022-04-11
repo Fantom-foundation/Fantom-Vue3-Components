@@ -1,0 +1,13 @@
+// Vitest Snapshot v1
+
+exports[`FStyledNumberRange > should render correctly 1`] = `
+<span
+  class="fstylednumberrange"
+>
+  
+  
+  10
+  
+  
+</span>
+`;

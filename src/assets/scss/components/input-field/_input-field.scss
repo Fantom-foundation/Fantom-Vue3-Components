@@ -1,0 +1,217 @@
+@use "custom-properties";
+@use "tools";
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+    display: none;
+}
+
+@include tools.inp {
+    display: inline-flex;
+    //vertical-align: middle;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+
+    font-family: var(--f-input-font-family);
+    font-size: var(--f-input-font-size);
+    font-weight: var(--f-input-font-weight);
+
+    height: var(--f-input-height);
+    padding: var(--f-input-padding);
+    line-height: var(--f-input-line-height);
+
+    color: var(--f-input-color);
+    background: var(--f-input-background);
+    border: var(--f-input-border);
+    border-radius: var(--f-input-border-radius);
+    box-shadow: var(--f-input-box-shadow);
+
+    transition: var(--f-input-transition);
+
+    &::-ms-clear {
+        display: none;
+    }
+
+    input::placeholder {
+        color: var(--f-input-placholder-color);
+        opacity: var(--f-input-placholder-opacity);
+    }
+
+    &-lg {
+        --f-input-font-size: var(--f-input-lg-font-size);
+        --f-input-font-weight: var(--f-input-lg-font-weight);
+        --f-input-height: var(--f-input-lg-height);
+        --f-input-padding: var(--f-input-lg-padding);
+        border-radius: var(--f-input-lg-border-radius);
+
+        --f-inp-cont-gap-h: var(--f-inp-cont-lg-gap-h);
+    }
+
+    &-sm {
+        --f-input-font-size: var(--f-input-sm-font-size);
+        --f-input-font-weight: var(--f-input-sm-font-weight);
+        --f-input-height: var(--f-input-sm-height);
+        --f-input-padding: var(--f-input-sm-padding);
+        border-radius: var(--f-input-sm-border-radius);
+
+        --f-inp-cont-gap-h: var(--f-inp-cont-sm-gap-h);
+    }
+
+    &-xs {
+        --f-input-font-size: var(--f-input-xs-font-size);
+        --f-input-font-weight: var(--f-input-xs-font-weight);
+        --f-input-height: var(--f-input-xs-height);
+        --f-input-padding: var(--f-input-xs-padding);
+        border-radius: var(--f-input-xs-border-radius);
+
+        --f-inp-cont-gap-h: var(--f-inp-cont-xs-gap-h);
+    }
+
+    &-nostyle {
+        font-family: inherit;
+        font-size: inherit;
+        background: none;
+        padding: 0;
+        border: none;
+
+        &:not(&-preservefocus):focus,
+        &-preservefocus:focus:not(:focus-visible) {
+            box-shadow: none;
+            outline: none;
+        }
+
+        &:invalid {
+            box-shadow: none;
+            outline: none;
+            border: none;
+        }
+    }
+
+    &-cont {
+        padding: 0;
+        //padding-inline-start: 0;
+        //padding-inline-end: 0;
+
+        .#{tools.$inp}-nostyle {
+            width: 100%;
+            margin: var(--f-input-padding);
+
+            &:not(:only-child) {
+                &:last-child {
+                    margin-inline-start: 0;
+                }
+                &:first-child {
+                    margin-inline-end: 0;
+                }
+                &:not(:first-child):not(:last-child) {
+                    margin-inline-start: 0;
+                    margin-inline-end: 0;
+                }
+            }
+        }
+
+        > *:not(.#{tools.$inp}-nostyle) {
+            &:last-child {
+                margin-inline-start: var(--f-inp-cont-gap-h);
+                margin-inline-end: var(--f-inp-cont-gap-h);
+            }
+            &:first-child {
+                margin-inline-start: var(--f-inp-cont-gap-h);
+                margin-inline-end: var(--f-inp-cont-gap-h);
+            }
+        }
+    }
+
+    &-withbutton {
+        --f-inp-cont-lg-gap-h: var(--f-spacer-2, 6px);
+
+        .#{tools.$inp} {
+            --f-inp-cont-lg-gap-h: var(--f-spacer-2, 6px);
+        }
+    }
+}
+
+@include tools.inp('hover') {
+    color: var(--f-input-hover-color);
+    background: var(--f-input-hover-background);
+    border: var(--f-input-hover-border);
+    box-shadow: var(--f-input-hover-box-shadow);
+}
+
+@include tools.inp('focus') {
+    color: var(--f-input-focus-color);
+    background: var(--f-input-focus-background);
+    border: var(--f-input-focus-border);
+    box-shadow: var(--f-input-focus-box-shadow);
+}
+
+@include tools.inp('focus-within') {
+    color: var(--f-input-focus-color);
+    background: var(--f-input-focus-background);
+    border: var(--f-input-focus-border);
+    box-shadow: var(--f-input-focus-box-shadow);
+}
+
+@include tools.inp('disabled') {
+    color: var(--f-input-disabled-color);
+    background: var(--f-input-disabled-background);
+    border: var(--f-input-disabled-border);
+    box-shadow: var(--f-input-disabled-box-shadow);
+    opacity: var(--f-input-disabled-opacity);
+}
+
+@include tools.inp('readonly') {
+    color: var(--f-input-readonly-color);
+    background: var(--f-input-readonly-background);
+    border: var(--f-input-readonly-border);
+    box-shadow: var(--f-input-readonly-box-shadow);
+
+    &:hover {
+        color: var(--f-input-readonly-hover-color);
+        background: var(--f-input-readonly-hover-background);
+        border: var(--f-input-readonly-hover-border);
+        box-shadow: var(--f-input-readonly-hover-box-shadow);
+    }
+
+    &:focus,
+    &:focus-within {
+        color: var(--f-input-readonly-focus-color);
+        background: var(--f-input-readonly-focus-background);
+        border: var(--f-input-readonly-focus-border);
+        box-shadow: var(--f-input-readonly-focus-box-shadow);
+    }
+}
+
+@include tools.inp('invalid') {
+    color: var(--f-input-invalid-color);
+    background: var(--f-input-invalid-background);
+    border: var(--f-input-invalid-border);
+    box-shadow: var(--f-input-invalid-box-shadow);
+
+    &:hover {
+        color: var(--f-input-invalid-hover-color);
+        background: var(--f-input-invalid-hover-background);
+        border: var(--f-input-invalid-hover-border);
+        box-shadow: var(--f-input-invalid-hover-box-shadow);
+    }
+
+    &:focus,
+    &:focus-within {
+        color: var(--f-input-invalid-focus-color);
+        background: var(--f-input-invalid-focus-background);
+        border: var(--f-input-invalid-focus-border);
+        box-shadow: var(--f-input-invalid-focus-box-shadow);
+    }
+
+    .#{tools.$btn} {
+        --f-btn-main-color: var(--f-input-invalid-color);
+        --f-btn-main-color-hover: var(--f-input-invalid-focus-color);
+    }
+}

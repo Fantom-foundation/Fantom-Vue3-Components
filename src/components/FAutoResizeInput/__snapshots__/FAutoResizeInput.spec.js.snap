@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`FAutoResizeInput > should render correctly 1`] = `
+<span
+  class="fautoresizeinput"
+>
+  
+  
+  <span
+    aria-hidden="true"
+    class="fautoresizeinput_hiddentwin"
+  />
+</span>
+`;
