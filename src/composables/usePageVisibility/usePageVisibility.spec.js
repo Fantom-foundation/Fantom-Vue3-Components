@@ -14,7 +14,9 @@ afterEach(() => {
 });
 
 test('usePageVisibility', () => {
-    const { isPageVisible } = withSetup(usePageVisibility).composableResult;
+    const { isPageVisible } = withSetup({
+        composable: () => usePageVisibility(),
+    }).composableResult;
 
     expect(isPageVisible.value).toBe(true);
 

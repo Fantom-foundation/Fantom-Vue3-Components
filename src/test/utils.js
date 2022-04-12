@@ -4,12 +4,14 @@
 
 import { createApp } from 'vue';
 
-export function withSetup(composable) {
-    let composableResult;
+export function withSetup({ composable = null } = {}) {
+    let composableResult = {};
 
     const app = createApp({
         setup() {
-            composableResult = composable();
+            if (typeof composable === 'function') {
+                composableResult = composable();
+            }
             // suppress missing template warning
             return () => {};
         },
