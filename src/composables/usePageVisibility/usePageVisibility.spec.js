@@ -14,13 +14,16 @@ afterEach(() => {
 });
 
 test('usePageVisibility', () => {
-    const { isPageVisible } = withSetup({
-        composable: () => usePageVisibility(),
-    }).composableResult;
+    const { composableResult, app } = withSetup({
+        composable: usePageVisibility,
+    });
+    const isPageVisible = composableResult.isPageVisible;
 
     expect(isPageVisible.value).toBe(true);
 
     setPageVisibility('hidden', eventListener);
 
     expect(isPageVisible.value).toBe(false);
+
+    app.unmount();
 });
