@@ -1,5 +1,5 @@
 import { test, beforeEach, afterEach, expect, vi } from 'vitest';
-import { usePageVisibility } from './page-visibility.js';
+import { usePageVisibility } from './usePageVisibility.js';
 import { withSetup } from '../../test/utils.js';
 import { setPageVisibility, spyPageVisibility } from '../../test/mocks/page-visibility.js';
 
@@ -14,11 +14,11 @@ afterEach(() => {
 });
 
 test('usePageVisibility', () => {
-    const { composableResult } = withSetup(usePageVisibility);
+    const { isPageVisible } = withSetup(usePageVisibility).composableResult;
 
-    expect(composableResult.isPageVisible.value).toBe(true);
+    expect(isPageVisible.value).toBe(true);
 
     setPageVisibility('hidden', eventListener);
 
-    expect(composableResult.isPageVisible.value).toBe(false);
+    expect(isPageVisible.value).toBe(false);
 });
