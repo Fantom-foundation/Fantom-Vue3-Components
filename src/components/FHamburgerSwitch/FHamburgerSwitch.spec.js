@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FHamburgerSwitch from '@/components/FHamburgerSwitch/FHamburgerSwitch.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -16,7 +17,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FHamburgerSwitch', () => {

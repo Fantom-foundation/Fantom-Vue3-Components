@@ -3,6 +3,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FDetails from '@/components/FDetails/FDetails.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -22,7 +23,7 @@ function getContentWrapElement(wrapper) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FDetails', () => {

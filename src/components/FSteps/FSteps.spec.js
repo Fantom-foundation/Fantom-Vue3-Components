@@ -1,6 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FSteps from '@/components/FSteps/FSteps.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -12,7 +13,7 @@ function createWrapper({ propsData = {}, slots = {} } = {}) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FSteps', () => {

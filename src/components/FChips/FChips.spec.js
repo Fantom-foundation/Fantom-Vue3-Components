@@ -2,7 +2,7 @@
 
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
-import { getVModelComponent } from '@/test/utils.js';
+import { destroyWrapper, getVModelComponent } from '@/test/utils.js';
 import FChips from '@/components/FChips/FChips.vue';
 
 const REMOVE_BUTTON_CLASS = '.flistbox_list_item_removebutton';
@@ -45,7 +45,7 @@ async function deleteChip(wrapper, chipNum) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FChips', () => {

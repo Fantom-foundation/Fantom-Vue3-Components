@@ -1,7 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FCircleProgress from '@/components/FCircleProgress/FCircleProgress.vue';
-import { disableErrorMessages } from '@/test/utils.js';
+import { destroyWrapper, disableErrorMessages } from '@/test/utils.js';
 import { getCustomProperty } from '@/utils/css.js';
 
 let wrapper = null;
@@ -14,7 +14,7 @@ function createWrapper({ propsData = { value: 10, min: 0, max: 100 }, slots = {}
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FCircleProgress', () => {

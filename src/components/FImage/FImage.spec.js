@@ -5,6 +5,7 @@ import { mount } from '@vue/test-utils';
 import FImage from '@/components/FImage/FImage.vue';
 import FPlaceholder from '@/components/FPlaceholder/FPlaceholder.vue';
 import { LOCALHOST_URL } from '@/test/constants.js';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -16,7 +17,7 @@ function createWrapper({ propsData = {}, slots = {} } = {}) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FImage', () => {

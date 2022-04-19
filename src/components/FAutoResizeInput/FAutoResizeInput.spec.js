@@ -1,6 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FAutoResizeInput from '@/components/FAutoResizeInput/FAutoResizeInput.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -13,7 +14,7 @@ function createWrapper({ propsData = {}, slots = { default: '<input type="text" 
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FAutoResizeInput', () => {

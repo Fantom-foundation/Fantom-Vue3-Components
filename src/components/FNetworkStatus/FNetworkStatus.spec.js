@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FNetworkStatus from '@/components/FNetworkStatus/FNetworkStatus.vue';
 import FWindow from '@/components/FWindow/FWindow.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -16,7 +17,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FNetworkStatus', () => {

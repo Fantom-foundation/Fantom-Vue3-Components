@@ -2,12 +2,9 @@ import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FNavigationNode from '@/components/FNavigationNode/FNavigationNode.vue';
 import { ref } from 'vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
-
-function destroyWrapper() {
-    wrapper = null;
-}
 
 function createWrapper({ propsData } = {}) {
     wrapper = mount(FNavigationNode, {
@@ -16,7 +13,7 @@ function createWrapper({ propsData } = {}) {
 }
 
 afterEach(() => {
-    destroyWrapper();
+    destroyWrapper(wrapper);
 });
 
 describe('FNavigationNode', () => {

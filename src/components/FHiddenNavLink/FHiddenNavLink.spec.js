@@ -35,6 +35,7 @@ function destroyPlayground() {
 
 function destroyWrapper(wrapper) {
     if (wrapper) {
+        // wrapper.unmount();
         wrapper = null;
         destroyPlayground();
     }

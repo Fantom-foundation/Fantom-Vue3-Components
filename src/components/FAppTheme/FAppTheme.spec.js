@@ -1,7 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FAppTheme from '@/components/FAppTheme/FAppTheme.vue';
-import { disableErrorMessages } from '@/test/utils.js';
+import { destroyWrapper, disableErrorMessages } from '@/test/utils.js';
 import { delay } from '@/utils/function/function.js';
 
 const THEMES = ['theme-default', 'theme-dark'];
@@ -16,7 +16,7 @@ function createWrapper({ propsData = { themes: THEMES }, slots = {} } = {}) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FAppTheme', () => {

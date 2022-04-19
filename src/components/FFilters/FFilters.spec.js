@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FFilters from '@/components/FFilters/FFilters.vue';
 import FForm from '@/components/FForm/FForm.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -14,7 +15,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FFilters', () => {

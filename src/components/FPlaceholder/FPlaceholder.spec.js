@@ -1,6 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FPlaceholder from '@/components/FPlaceholder/FPlaceholder.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 const REPLACEMENT_TEXT = 'Replacement text';
 const DEFAULT_SLOT_TEXT = '123456';
@@ -15,7 +16,7 @@ function createWrapper({ propsData = {}, slots = { default: DEFAULT_SLOT_TEXT } 
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FPlaceholder', () => {

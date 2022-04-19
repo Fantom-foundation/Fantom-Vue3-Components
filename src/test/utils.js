@@ -92,6 +92,8 @@ export function getVModelComponent(component, data = {}, prop = 'value') {
  * @param {Object} wrapper
  */
 export function destroyWrapper(wrapper) {
-    // eslint-disable-next-line no-unused-vars
-    wrapper = null;
+    if (wrapper) {
+        wrapper.unmount();
+        wrapper = null;
+    }
 }

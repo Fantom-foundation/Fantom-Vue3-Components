@@ -2,6 +2,7 @@ import { describe, it, expect, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import FIconset from '@/components/FIconset/FIconset.vue';
 import FSvgIcon from '@/components/FSvgIcon/FSvgIcon.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -13,7 +14,7 @@ function createWrapper({ propsData = { icon: 'fantom' }, attachTo } = {}) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FIconset', () => {

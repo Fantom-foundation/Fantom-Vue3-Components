@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils';
 import FNavigation from '@/components/FNavigation/FNavigation.vue';
 import { clone } from '@/utils';
 import { findNodeBy } from '@/utils/simple-tree.js';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -40,7 +41,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FNavigation', () => {

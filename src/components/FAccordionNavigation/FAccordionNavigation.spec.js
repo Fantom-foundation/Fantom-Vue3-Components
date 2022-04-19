@@ -4,6 +4,7 @@ import FAccordionNavigation from '@/components/FAccordionNavigation/FAccordionNa
 import { clone } from '@/utils';
 import FIconset from '@/components/FIconset/FIconset.vue';
 import { findNodeBy } from '@/utils/simple-tree.js';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -53,7 +54,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FAccordionNavigation', () => {

@@ -20,7 +20,7 @@ beforeEach(() => {
 afterEach(() => {
     destroyInterval();
 
-    vi.restoreAllMocks();
+    vi.useRealTimers();
     fn = null;
 });
 

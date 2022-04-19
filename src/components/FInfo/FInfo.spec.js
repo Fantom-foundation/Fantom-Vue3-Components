@@ -5,6 +5,7 @@ import FButton from '@/components/FButton/FButton.vue';
 import FPopover from '@/components/FPopover/FPopover.vue';
 import FWindow from '@/components/FWindow/FWindow.vue';
 import FSvgIcon from '@/components/FSvgIcon/FSvgIcon.vue';
+import { destroyWrapper } from '@/test/utils.js';
 
 let wrapper = null;
 
@@ -23,7 +24,7 @@ async function clickButton(wrapper) {
 }
 
 afterEach(() => {
-    wrapper = null;
+    destroyWrapper(wrapper);
 });
 
 describe('FInfo', () => {
