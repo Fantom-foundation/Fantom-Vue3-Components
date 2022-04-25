@@ -14,6 +14,7 @@ export default defineConfig({
     test: {
         // include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}']
         include: ['src/**/*.spec.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+        setupFiles: [fileURLToPath(new URL('./src/plugins/vue-test-plugins/install.js', import.meta.url))],
         // globals: true,
     },
     build: {

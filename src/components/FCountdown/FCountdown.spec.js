@@ -24,17 +24,13 @@ function createWrapper({ propsData = {}, slots = {} } = {}) {
     });
 }
 
-function getElemByTestId(wrapper, id) {
-    return wrapper.find(`[data-testid="${id}"]`);
-}
-
 /**
  * @param {Object} wrapper
  * @param {string} value
  * @return {number}
  */
 function getTimePart(wrapper, value) {
-    const el = getElemByTestId(wrapper, value);
+    const el = wrapper.findByTestId(value);
     let val = -1;
 
     if (el.exists()) {
@@ -147,17 +143,17 @@ describe('FCountdown', () => {
             },
         });
 
-        expect(getElemByTestId(wrapper, 'days_label').exists()).toBeFalsy();
-        expect(getElemByTestId(wrapper, 'hours_label').exists()).toBeFalsy();
-        expect(getElemByTestId(wrapper, 'minutes_label').exists()).toBeFalsy();
-        expect(getElemByTestId(wrapper, 'seconds_label').exists()).toBeFalsy();
+        expect(wrapper.findByTestId('days_label').exists()).toBeFalsy();
+        expect(wrapper.findByTestId('hours_label').exists()).toBeFalsy();
+        expect(wrapper.findByTestId('minutes_label').exists()).toBeFalsy();
+        expect(wrapper.findByTestId('seconds_label').exists()).toBeFalsy();
 
         await wrapper.setProps({ withLabels: true });
 
-        expect(getElemByTestId(wrapper, 'days_label').text()).toBe('Days');
-        expect(getElemByTestId(wrapper, 'hours_label').text()).toBe('Hours');
-        expect(getElemByTestId(wrapper, 'minutes_label').text()).toBe('Minutes');
-        expect(getElemByTestId(wrapper, 'seconds_label').text()).toBe('Seconds');
+        expect(wrapper.findByTestId('days_label').text()).toBe('Days');
+        expect(wrapper.findByTestId('hours_label').text()).toBe('Hours');
+        expect(wrapper.findByTestId('minutes_label').text()).toBe('Minutes');
+        expect(wrapper.findByTestId('seconds_label').text()).toBe('Seconds');
     });
 
     it('should display numbers with two digits when `useTwoDigitNumbers` prop is set', async () => {
@@ -168,10 +164,10 @@ describe('FCountdown', () => {
             },
         });
 
-        expect(getElemByTestId(wrapper, 'days').text()).toBe('01');
-        expect(getElemByTestId(wrapper, 'hours').text()).toBe('01');
-        expect(getElemByTestId(wrapper, 'minutes').text()).toBe('01');
-        expect(getElemByTestId(wrapper, 'seconds').text()).toBe('01');
+        expect(wrapper.findByTestId('days').text()).toBe('01');
+        expect(wrapper.findByTestId('hours').text()).toBe('01');
+        expect(wrapper.findByTestId('minutes').text()).toBe('01');
+        expect(wrapper.findByTestId('seconds').text()).toBe('01');
     });
 
     it('should update countdown after `updateSpeed` milliseconds', async () => {
