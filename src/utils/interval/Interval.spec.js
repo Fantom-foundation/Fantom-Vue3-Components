@@ -21,6 +21,7 @@ afterEach(() => {
     destroyInterval();
 
     vi.useRealTimers();
+    vi.restoreAllMocks();
     fn = null;
 });
 

@@ -34,7 +34,7 @@
             </template>
 
             <template v-if="showButton" #suffix="sProps">
-                <span @click="onButtonClick">
+                <span @click="onButtonClick" data-testcode="fcombobox-button">
                     <slot name="button" v-bind="{ ...sProps, ...slotProps, ...loading }">
                         <FButton
                             :size="buttonSize"
