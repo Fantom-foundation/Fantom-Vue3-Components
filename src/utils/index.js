@@ -19,6 +19,10 @@ export * from './string/string.js';
 export * from './number/number.js';
 export * from './mixins/DOMEvents.js';
 export * from './function/function.js';
+export * from './StoreUtils/StoreUtils.js';
+export * from './test/router/TestRouterUtils.js';
+export * from './test/pinia/TestPiniaUtils.js';
+export * from './test/vue-i18n/TestVueI18nUtils.js';
 
 import { nanoid } from 'nanoid';
 import { toKebabCase } from './string/string.js';
