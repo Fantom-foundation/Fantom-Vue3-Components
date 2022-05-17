@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.5.0...v0.5.1) (2022-05-17)
+
+
+### Features
+
+* reexport test utils ([315e574](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/315e574f7e946a6da704a568ec21bbb4336a4e39))
+
 ## [0.5.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.4.1...v0.5.0) (2022-05-17)
 
 
