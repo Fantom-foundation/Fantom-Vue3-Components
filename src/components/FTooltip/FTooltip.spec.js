@@ -203,7 +203,7 @@ describe('FTooltip', () => {
         });*/
     });
 
-    describe('focus/blur target element', () => {
+    describe.skip('focus/blur target element', () => {
         it('should show tooltip if target element has a focus', async () => {
             const btn1 = wrapperP.find('#btn1');
             const fWindow = wrapper.findComponent(FWindow);
