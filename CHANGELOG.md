@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.5.3...v0.6.0) (2022-05-20)
+
+
+### Features
+
+* create `removeAttributes` vue test helper ([4db0b1b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/4db0b1bac138264201f6c7bb0f80156cb29568ef))
+* create `setInnerHTML` vue test helper ([e9b8d16](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/e9b8d16dc4a525307c5b7a2fa217658709323049))
+* create IntersectionObserver mock ([ab6b8d9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/ab6b8d93307416d509d80bb083186f7704453e93))
+* create window.location mock ([7b141f6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/7b141f6a21e2c1a0e43524d404c8eadde1d0b2c8))
+
 ### [0.5.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.5.2...v0.5.3) (2022-05-17)
 
 
