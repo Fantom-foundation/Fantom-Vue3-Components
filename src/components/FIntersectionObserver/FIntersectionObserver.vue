@@ -43,7 +43,7 @@ export default {
     },
 
     mounted() {
-        this._intersectionObserver = new IntersectionObserver(
+        this._intersectionObserver = new window.IntersectionObserver(
             (_entry) => {
                 this.onIntersection(_entry);
             },
