@@ -33,7 +33,7 @@ describe('useInterval', () => {
     it('should return instance of Interval class', () => {
         const { composableResult, app } = withSetup({ composable: useInterval });
 
-        expect(composableResult.interval instanceof Interval);
+        expect(composableResult.interval instanceof Interval).toBe(true);
 
         app.unmount();
     });
