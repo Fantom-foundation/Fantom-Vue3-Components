@@ -1,8 +1,8 @@
 import { Notifications } from '../../plugins/notifications.js';
 
-export function useNotifications() {
-    const notifications = new Notifications();
+const notifications = new Notifications();
 
+export function useNotifications() {
     return {
         notifications,
     };
