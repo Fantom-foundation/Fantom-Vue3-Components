@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.7.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.6.0...v0.7.0) (2022-06-13)
+
+
+### Features
+
+* create `useNotifications` composable ([a44011e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a44011e9879d2d3ebaf746b5ca3864fe4682a73d))
+
 ## [0.6.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.5.3...v0.6.0) (2022-05-20)
 
 
