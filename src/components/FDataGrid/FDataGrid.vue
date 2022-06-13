@@ -82,6 +82,7 @@
                             :style="item.css"
                             :class="item.cssClass"
                             :aria-rowindex="getAriaRowIndex(index)"
+                            data-testcode="fdatagrid-row"
                         >
                             <td
                                 v-for="(col, index) in cColumns"
@@ -548,7 +549,7 @@ export default {
 
         ['filters.onSubmit'](value) {
             this.onFiltersChange(value);
-            console.log('filters.onSubmit change: ', value);
+            // console.log('filters.onSubmit change: ', value);
         },
     },
 
@@ -673,6 +674,7 @@ export default {
                 }
             } else {
                 items = clone(_items || []);
+                this.dLoading = false;
             }
 
             if (this.edModeRowEdit) {
@@ -1140,7 +1142,7 @@ export default {
                 ret.lastChangedElement = this.filters.lastChangedElement;
             }
 
-            console.log('getFilters', ret);
+            // console.log('getFilters', ret);
 
             return ret;
         },
