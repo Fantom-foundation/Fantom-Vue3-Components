@@ -5,6 +5,7 @@ import { openComboboxPlugin, selectComboboxItemPlugin } from './FCombobox/FCombo
 import { removeAttributesPlugin } from './removeAttributes/removeAttributes.js';
 import { setInnerHTMLPlugin } from './setInnerHTML/setInnerHTML.js';
 import { selectListboxItemPlugin } from './selectListboxItem/selectListboxItem.js';
+import { checkRadioOptionPlugin } from './checkRadioOption/checkRadioOption.js';
 
 const { VueWrapper } = config.plugins;
 
@@ -15,3 +16,4 @@ VueWrapper.install(selectComboboxItemPlugin);
 VueWrapper.install(removeAttributesPlugin);
 VueWrapper.install(setInnerHTMLPlugin);
 VueWrapper.install(selectListboxItemPlugin);
+VueWrapper.install(checkRadioOptionPlugin);
