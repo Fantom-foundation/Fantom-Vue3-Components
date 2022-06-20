@@ -4,6 +4,7 @@ import { findByTestCodePlugin } from './findByTestCode.js';
 import { openComboboxPlugin, selectComboboxItemPlugin } from './FCombobox/FCombobox.js';
 import { removeAttributesPlugin } from './removeAttributes/removeAttributes.js';
 import { setInnerHTMLPlugin } from './setInnerHTML/setInnerHTML.js';
+import { selectListboxItemPlugin } from './selectListboxItem/selectListboxItem.js';
 
 const { VueWrapper } = config.plugins;
 
@@ -13,3 +14,4 @@ VueWrapper.install(openComboboxPlugin);
 VueWrapper.install(selectComboboxItemPlugin);
 VueWrapper.install(removeAttributesPlugin);
 VueWrapper.install(setInnerHTMLPlugin);
+VueWrapper.install(selectListboxItemPlugin);
