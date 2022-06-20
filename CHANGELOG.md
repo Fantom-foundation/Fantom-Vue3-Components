@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.7.1...v0.8.0) (2022-06-20)
+
+
+### Features
+
+* create `exposeMethods` utility function ([03e2596](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/03e25965d4a732f0910635311a653d842e26e832))
+* create `selectListboxItem` vue test plugin ([c914515](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/c9145155bad1782e4123cc1905cf638a3d5234a3))
+* **FOption:** create `check-element` slot ([8fc4ad5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/8fc4ad543aed34e7716f3577ffb60be95ee962f5))
+
 ### [0.7.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.7.0...v0.7.1) (2022-06-13)
 
 
