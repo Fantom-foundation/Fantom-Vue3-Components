@@ -68,6 +68,18 @@ export const Disabled = () => ({
     `,
 });
 
+export const HideLabels = () => ({
+    components: { FOptionGroup },
+    template: `
+        <div>
+            <h3>Checkboxes</h3>
+            <FOptionGroup hide-labels no-label :checked="['20']" :data="{'10': 'Checkbox 1', '20': 'Checkbox 2'}" name="checkboxes4" />
+            <h3>Radio buttons</h3>
+            <FOptionGroup hide-labels no-label checked="20" type="radio" :data="{'10': 'Radio 1', '20': 'Radio 2'}" name="radios4" />
+        </div>
+    `,
+});
+
 export const Model = () => ({
     components: { FOptionGroup, FButton },
     template: `

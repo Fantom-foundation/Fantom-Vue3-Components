@@ -108,6 +108,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        hideLabels: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -168,6 +172,7 @@ export default {
 
     methods: {
         getFOptionsProps() {
+            const { hideLabels } = this;
             let items = [];
             const { data } = this;
 
@@ -192,6 +197,10 @@ export default {
             items.forEach((_item) => {
                 if (!_item.id) {
                     _item.id = getUniqueId();
+                }
+
+                if (hideLabels) {
+                    _item.hideLabel = true;
                 }
             });
 
