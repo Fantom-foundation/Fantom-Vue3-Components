@@ -6,11 +6,12 @@
             :checked="cChecked"
             :value="value"
             :aria-invalid="invalid"
+            :aria-label="hideLabel ? label : null"
             class="cr_input"
             @change="onChange"
         />
         <slot name="check-element"><span class="cr_check"></span></slot>
-        <span class="cr_label">
+        <span v-if="!hideLabel" class="cr_label">
             <slot v-bind="slotProps">{{ label }}</slot>
         </span>
     </label>
@@ -68,6 +69,10 @@ export default {
          * Specifies, what value will return when checkbox is unchecked.
          */
         falseValue: {
+            default: false,
+        },
+        hideLabel: {
+            type: Boolean,
             default: false,
         },
     },

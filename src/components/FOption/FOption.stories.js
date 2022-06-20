@@ -143,6 +143,20 @@ export const Disabled = () => ({
     `,
 });
 
+export const HideLabel = () => ({
+    components: { FOption },
+    template: `
+        <div>
+            <h3>Checkbox</h3>
+            <FOption hide-label type="checkbox" label="Checkbox" name="checkbox" />
+
+            <h3>Radio button</h3>
+            <FOption hide-label type="radio" label="Radio 1" name="radio1" />
+            <FOption hide-label type="radio" checked label="Radio 2" name="radio1" />
+        </div>
+    `,
+});
+
 export const Colors = () => ({
     components: { FOption },
     template: `
