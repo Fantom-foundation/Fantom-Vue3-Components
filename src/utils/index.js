@@ -19,6 +19,7 @@ export * from './string/string.js';
 export * from './number/number.js';
 export * from './mixins/DOMEvents.js';
 export * from './function/function.js';
+export * from './exposeMethods/exposeMethods.js';
 
 import { nanoid } from 'nanoid';
 import { toKebabCase } from './string/string.js';
