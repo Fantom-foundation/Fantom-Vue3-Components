@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.9.0...v0.9.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* **checkRadioOption:** trigger 'change' event as well ([df99540](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/df99540eb0589c51c88bdb54fb2b4056e72791a7))
+
 ## [0.9.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.8.0...v0.9.0) (2022-06-20)
 
 
