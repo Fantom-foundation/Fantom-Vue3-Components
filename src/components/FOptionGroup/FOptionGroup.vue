@@ -16,7 +16,11 @@
                 v-bind="{ ...$attrs, type, ...item }"
                 :invalid="validationState.invalid"
                 v-model="inputValue"
-            />
+            >
+                <template #check-element>
+                    <slot name="check-element"></slot>
+                </template>
+            </FOption>
         </span>
         <slot name="bottom" v-bind="slotProps">
             <div v-if="validationState.errors.length > 0">

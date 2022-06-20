@@ -273,8 +273,50 @@ export const Slots = () => ({
                 <template #top>Top slot</template>
                 <template #bottom>Bottom slot</template>
             </FOptionGroup>
+            <h3><code>check-element</code></h3>
+            <h4>Checkboxes</h4>
+            <FOptionGroup hide-labels no-label v-model:checked="checkboxes" :data="{'10': 'Checkbox 1', '20': 'Checkbox 2'}" name="checkboxes4">
+                <template #check-element><span class="cr_check">&#9733;</span></template>
+            </FOptionGroup>
+            Value: {{ checkboxes }}
+            <h4>Radio buttons</h4>
+            <FOptionGroup hide-labels no-label v-model:checked="radios" type="radio" :data="{'10': 'Radio 1', '20': 'Radio 2'}" name="radios4">
+                <template #check-element><span class="cr_check">&#9733;</span></template>
+            </FOptionGroup>
+            Value: {{ radios }}
         </div>
     `,
+    data() {
+        return {
+            checkboxes: ['20'],
+            radios: '20',
+        };
+    },
+});
+
+export const Model__ = () => ({
+    components: { FOptionGroup, FButton },
+    template: `
+        <div>
+            <h3>Checkboxes</h3>
+            <FOptionGroup v-model:checked="checkboxes" :data="{'10': 'Checkbox 1', '20': 'Checkbox 2', '30': 'Checkbox 3'}" name="checkboxes5" />
+            <FButton secondary size="small" @click.native="checkboxes = ['10', '20', '30']">Set value to ['10', '20', '30']</FButton>
+            <br />
+            Value: {{ checkboxes }}
+
+            <h3>Radio buttons</h3>
+            <FOptionGroup v-model:checked="radios" type="radio" :data="{'10': 'Radio 1', '20': 'Radio 2', '30': 'Radio 3'}" name="radios5" />
+            <FButton secondary size="small" @click.native="radios = '30'">Set value to '30'</FButton>
+            <br />
+            Value: {{ radios }}
+        </div>
+    `,
+    data() {
+        return {
+            checkboxes: ['20'],
+            radios: '20',
+        };
+    },
 });
 
 export const InfoText = () => ({
