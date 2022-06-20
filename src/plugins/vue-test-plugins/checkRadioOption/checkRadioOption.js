@@ -16,6 +16,7 @@ export function checkRadioOptionPlugin(wrapper) {
         }
 
         await inputs[optionIndex - 1].trigger('click');
+        await inputs[optionIndex - 1].trigger('change');
 
         return inputs[optionIndex - 1];
     }
@@ -33,6 +34,7 @@ export function checkRadioOptionPlugin(wrapper) {
 
         if (selectedOption) {
             await selectedOption.trigger('click');
+            await selectedOption.trigger('change');
         }
 
         return selectedOption;

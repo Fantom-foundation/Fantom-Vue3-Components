@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { destroyWrapper } from '@/test/utils.js';
 import { mount } from '@vue/test-utils';
-import { FOption } from '@/components/index.js';
+import { FOption, FOptionGroup } from '@/components/index.js';
 
 const Playground = {
     template: `
@@ -20,6 +20,15 @@ const PlaygroundFOption = {
         </div>
     `,
     components: { FOption },
+};
+
+const PlaygroundFOptionGroup = {
+    template: `
+        <div>
+            <FOptionGroup type="radio" :data="{'10': 'Radio 1', '20': 'Radio 2', '30': 'Radio 3'}" name="radios" />
+        </div>
+    `,
+    components: { FOptionGroup },
 };
 
 describe('checkRadioOption vue test plugin', () => {
@@ -67,6 +76,18 @@ describe('checkRadioOption vue test plugin', () => {
         const radio = wrapper.find('input[name="radio"]:checked');
 
         expect(radio.element.value).toBe('20');
+
+        destroyWrapper(wrapper);
+    });
+
+    it('should check FOptionGroup by option index', async () => {
+        const wrapper = mount(PlaygroundFOptionGroup);
+
+        await wrapper.checkRadioOption(3);
+
+        const radio = wrapper.find('input[name="radios"]:checked');
+
+        expect(radio.element.value).toBe('30');
 
         destroyWrapper(wrapper);
     });
