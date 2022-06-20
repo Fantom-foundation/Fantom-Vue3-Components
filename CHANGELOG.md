@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.8.0...v0.9.0) (2022-06-20)
+
+
+### Features
+
+* create `checkRadioOption` and `checkRadioOptionByValue` vue test helpers ([bc93e85](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/bc93e853a079ffaa836d2fe6a1bbf0c0ff5225ec))
+* **FOption:** add `hideLable` prop ([a5f9cec](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a5f9cec648b2d023de86f6f693e354d772d752a3))
+* **FOptionGroup:** add `hideLabels` prop ([a5b13ff](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a5b13ff55523ba674bff0ed890837ed4320ce05a))
+* **FOptionGroup:** create `check-element` slot ([c551a94](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/c551a9495618e48f91103e5099dc26242c4f345b))
+
 ## [0.8.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.7.1...v0.8.0) (2022-06-20)
 
 
