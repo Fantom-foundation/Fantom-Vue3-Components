@@ -221,10 +221,35 @@ export const Slots = () => ({
     components: { FOption },
     template: `
         <div>
+            <h3>Default</h3>
             <FOption type="checkbox" name="checkbox1"><i>Checkbox</i> &#9733;</FOption>
             <br /><br />
             <FOption type="radio" name="radio1"><i>Radio 1</i> &#9733;</FOption>
             <FOption type="radio" name="radio1"><i>Radio 2</i> &#9733;</FOption>
+
+            <h3><code>checkbox</code></h3>
+            <FOption v-model="checkboxValue" type="checkbox" name="checkbox2" aria-label="checkbox">
+                <template #check-element><span>&#9733;</span></template>
+            </FOption>
+            Value: {{ checkboxValue }}
+            <br />
+            <FOption v-model="radioValue" type="radio" name="radio_m" value="10" aria-label="radio 1">
+                <template #check-element><span class="cr_check">&#9733;</span></template>
+            </FOption>
+            <FOption v-model="radioValue" type="radio" name="radio_m" value="20" aria-label="radio 2">
+                <template #check-element><span class="cr_check">&#9733;</span></template>
+            </FOption>
+            <FOption v-model="radioValue" type="radio" name="radio_m" value="30" aria-label="radio 3">
+                <template #check-element><span class="cr_check">&#9733;</span></template>
+            </FOption>
+            <br />
+            Value: {{ radioValue }}
         </div>
     `,
+    data() {
+        return {
+            checkboxValue: true,
+            radioValue: '20',
+        };
+    },
 });

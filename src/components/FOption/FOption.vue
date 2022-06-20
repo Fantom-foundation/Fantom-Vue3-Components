@@ -9,7 +9,7 @@
             class="cr_input"
             @change="onChange"
         />
-        <span class="cr_check"></span>
+        <slot name="check-element"><span class="cr_check"></span></slot>
         <span class="cr_label">
             <slot v-bind="slotProps">{{ label }}</slot>
         </span>
