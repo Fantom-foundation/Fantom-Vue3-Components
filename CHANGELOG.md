@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.9.1...v0.9.2) (2022-06-21)
+
+
+### Features
+
+* **FFormInput:** add `checked` model to custom input ([dd8ed2e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/dd8ed2efa33030dc86e64c0ee2cca7f24cb5668d))
+
 ### [0.9.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.9.0...v0.9.1) (2022-06-20)
 
 
