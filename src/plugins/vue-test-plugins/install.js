@@ -6,6 +6,7 @@ import { removeAttributesPlugin } from './removeAttributes/removeAttributes.js';
 import { setInnerHTMLPlugin } from './setInnerHTML/setInnerHTML.js';
 import { selectListboxItemPlugin } from './selectListboxItem/selectListboxItem.js';
 import { checkRadioOptionPlugin } from './checkRadioOption/checkRadioOption.js';
+import { submitFormPlugin } from '@/plugins/vue-test-plugins/formSubmit/formSubmit.js';
 
 const { VueWrapper } = config.plugins;
 
@@ -17,3 +18,4 @@ VueWrapper.install(removeAttributesPlugin);
 VueWrapper.install(setInnerHTMLPlugin);
 VueWrapper.install(selectListboxItemPlugin);
 VueWrapper.install(checkRadioOptionPlugin);
+VueWrapper.install(submitFormPlugin);
