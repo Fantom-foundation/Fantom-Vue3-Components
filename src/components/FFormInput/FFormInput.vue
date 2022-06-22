@@ -67,6 +67,7 @@ import FComboBox from '../FComboBox/FComboBox.vue';
 import FDatetimeField from '../FDatetimeField/FDatetimeField.vue';
 
 const fInputTypes = ['text', 'textarea', 'number', 'email', 'date', 'datetime-local', 'time', 'search'];
+/*
 const types = [
     ...fInputTypes,
     'select',
@@ -82,6 +83,7 @@ const types = [
     'combobox',
     'datetime',
 ];
+*/
 
 /**
  * Wrapper for form inputs (based on form-input mixin) intended to be used in `FForm` component.
@@ -116,11 +118,11 @@ export default {
          * @type {('text' | 'textarea' | 'number' | 'email' | 'date' | 'time' | 'select' | 'dropdownlistbox' | 'checkbox' | 'checkboxgroup' | 'radio' | 'radiogroup' | 'listbox' | 'passwordfield' | 'slider' | 'toggle')}
          */
         type: {
-            type: String,
+            // type: String,
             default: 'text',
-            validator: function (_value) {
+            /*validator: function (_value) {
                 return types.indexOf(_value) !== -1 || !!_value;
-            },
+            },*/
         },
         name: {
             type: String,
