@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.11.0...v0.11.1) (2022-06-22)
+
+
+### Features
+
+* **FFormInput:** also accept a component as a type ([fd8a3cb](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/fd8a3cb21780425b9bc2235b1ec3b912dee0838a))
+
 ## [0.11.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.10.1...v0.11.0) (2022-06-22)
 
 
