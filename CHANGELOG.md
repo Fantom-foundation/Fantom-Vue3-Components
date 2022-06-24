@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.11.1...v0.11.2) (2022-06-24)
+
+
+### Features
+
+* **input mixin:** adjust `inputProps` ([f46039f](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/f46039f9a713126648998a1b26c43f85c58e9520))
+
 ### [0.11.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.11.0...v0.11.1) (2022-06-22)
 
 
