@@ -112,11 +112,6 @@ export default {
     inject: ['elements', 'elementStates', 'lastChangedElement', 'validations'],
 
     props: {
-        /**
-         * Type of input. Can also be a name of a global component.
-         *
-         * @type {('text' | 'textarea' | 'number' | 'email' | 'date' | 'time' | 'select' | 'dropdownlistbox' | 'checkbox' | 'checkboxgroup' | 'radio' | 'radiogroup' | 'listbox' | 'passwordfield' | 'slider' | 'toggle')}
-         */
         type: {
             // type: String,
             default: 'text',

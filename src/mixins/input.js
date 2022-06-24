@@ -63,7 +63,7 @@ export const inputMixin = {
 
     computed: {
         inputProps() {
-            return {
+            const props = {
                 ...inputCommonMixin.computed.inputCommonProps.call(this),
                 autocomplete: this.autocomplete,
                 placeholder: this.placeholder,
@@ -71,13 +71,24 @@ export const inputMixin = {
                 min: this.min,
                 max: this.max,
                 step: this.step,
-                multiple: this.multiple,
                 minlength: this.minlength,
                 maxlength: this.maxlength,
-                rows: this.rows,
-                cols: this.cols,
                 'data-focus': this.dataFocus || null,
             };
+
+            if (this.multiple) {
+                props.multiple = this.multiple;
+            }
+
+            if (this.rows) {
+                props.rows = this.rows;
+            }
+
+            if (this.cols) {
+                props.cols = this.cols;
+            }
+
+            return props;
         },
     },
 };
