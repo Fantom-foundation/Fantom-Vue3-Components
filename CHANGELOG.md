@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.12.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.11.2...v0.12.0) (2022-07-08)
+
+
+### Features
+
+* create vue test helpers related to FWindow ([0291d82](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0291d824665d2f994bac1fd1abd681a53febcd0f))
+* **FInput:** add tooltip ([818dce0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/818dce08337fc226687e1476af89d884d3970409))
+* **FSlider:** add chars counter ([6dd59c7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/6dd59c7895a5be6fa3b451ef1c8b5f0476bec6fe))
+
 ### [0.11.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.11.1...v0.11.2) (2022-06-24)
 
 
