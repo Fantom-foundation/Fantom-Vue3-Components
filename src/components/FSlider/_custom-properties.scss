@@ -23,4 +23,12 @@
 
     --fslider-disabled-opacity: 0.5;
     --fslider-invalid-color: var(--f-color-red-5, #ca1616);
+
+    --fslider-tooltip-width: 40px;
+    --fslider-tooltip-height: 24px;
+    --fslider-tooltip-position-top: var(--f-spacer-4);
+    --fslider-tooltip-border-radius: 3px;
+    --fslider-tooltip-arrow-size: 6px;
+    --fslider-tooltip-color: var(--fslider-track-color);
+    --fslider-tooltip-box-shadow: none;
 }
