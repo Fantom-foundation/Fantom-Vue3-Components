@@ -7,6 +7,7 @@ import { setInnerHTMLPlugin } from './setInnerHTML/setInnerHTML.js';
 import { selectListboxItemPlugin } from './selectListboxItem/selectListboxItem.js';
 import { checkRadioOptionPlugin } from './checkRadioOption/checkRadioOption.js';
 import { submitFormPlugin } from './formSubmit/formSubmit.js';
+import { hideWindowPlugin, showWindowPlugin } from './FWindow/FWindow.js';
 
 const { VueWrapper } = config.plugins;
 
@@ -19,3 +20,5 @@ VueWrapper.install(setInnerHTMLPlugin);
 VueWrapper.install(selectListboxItemPlugin);
 VueWrapper.install(checkRadioOptionPlugin);
 VueWrapper.install(submitFormPlugin);
+VueWrapper.install(showWindowPlugin);
+VueWrapper.install(hideWindowPlugin);
