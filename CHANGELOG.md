@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.12.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.12.0...v0.12.1) (2022-07-15)
+
+
+### Features
+
+* adjust FWindow vue test helper ([2482a66](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/2482a66d7da81cd927e8e42f09ad2522dc3467cd))
+
 ## [0.12.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.11.2...v0.12.0) (2022-07-08)
 
 
