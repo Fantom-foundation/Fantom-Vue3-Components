@@ -2,8 +2,9 @@
  * Vue test utils plugins related to FWindow component
  */
 
-export function showWindowPlugin(fWindow) {
+export function showWindowPlugin(wrapper) {
     async function showWindow() {
+        const fWindow = wrapper.findComponent({ name: 'FWindow' });
         const { vm } = fWindow;
 
         vm.show();
@@ -16,8 +17,9 @@ export function showWindowPlugin(fWindow) {
     };
 }
 
-export function hideWindowPlugin(fWindow) {
+export function hideWindowPlugin(wrapper) {
     async function hideWindow() {
+        const fWindow = wrapper.findComponent({ name: 'FWindow' });
         const { vm } = fWindow;
 
         vm.hide();
