@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.12.1...v0.13.0) (2022-07-18)
+
+
+### Features
+
+* add `jazzicon` ([3d28210](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3d28210318c1ee46595e2cebf072ddb426fccfc7))
+* **FAddress:** create component ([de2ab04](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/de2ab04908b8bb346974a22e8892492e06fcc2d8))
+
 ### [0.12.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.12.0...v0.12.1) (2022-07-15)
 
 
