@@ -4,7 +4,9 @@ exports[`FEllipsis > should render correctly 1`] = `
 <span
   class="fellipsis overflow-middle fixed-char-pos-start"
 >
-  <span>
+  <span
+    class="fellipsis_prefix"
+  >
     
     
   </span>
@@ -20,7 +22,9 @@ exports[`FEllipsis > should render correctly 1`] = `
     6789
   </span>
   
-  <span>
+  <span
+    class="fellipsis_suffix"
+  >
     
     
   </span>
