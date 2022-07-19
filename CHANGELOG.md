@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.13.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.13.0...v0.13.1) (2022-07-19)
+
+
+### Features
+
+* create `jazzicon` esm bundle ([f96e208](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/f96e20864d97d490d5bf41babce136eee0c7b554))
+
 ## [0.13.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.12.1...v0.13.0) (2022-07-18)
 
 
