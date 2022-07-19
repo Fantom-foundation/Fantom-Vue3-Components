@@ -1,6 +1,6 @@
 <template>
     <span class="fellipsis" :class="cssClass">
-        <span><slot name="prefix"></slot></span>
+        <span class="fellipsis_prefix"><slot name="prefix"></slot></span>
 
         <template v-if="overflow === 'middle'">
             <span class="left-chars">{{ leftChars }} </span>
@@ -10,7 +10,7 @@
             {{ cText }}
         </template>
 
-        <span><slot name="suffix"></slot></span>
+        <span class="fellipsis_suffix"><slot name="suffix"></slot></span>
     </span>
 </template>
 
