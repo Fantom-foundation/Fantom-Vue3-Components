@@ -54,7 +54,7 @@ onMounted(() => {
             </template>
         </template>
         <template #suffix>
-            <span class="faddress_suffix"><slot name="suffix"></slot></span>
+            <slot name="suffix"></slot>
         </template>
     </FEllipsis>
 </template>
@@ -66,10 +66,6 @@ onMounted(() => {
 
     &_image {
         margin-inline-end: var(--faddress-gap);
-    }
-
-    &_suffix {
-        margin-inline-start: var(--faddress-gap);
     }
 
     &_jazzicon {
@@ -93,6 +89,10 @@ onMounted(() => {
     &.fellipsis {
         align-items: center;
         //gap: var(--faddress-gap);
+    }
+
+    .fellipsis_suffix {
+        margin-inline-start: var(--faddress-gap);
     }
 }
 </style>
