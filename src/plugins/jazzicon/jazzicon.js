@@ -1,4 +1,4 @@
-import Jazzicon from 'jazzicon';
+import jazzicon from './jazzicon-bundle.js';
 
 /**
  * Keys are user addresses + diameters, values are jazzicons - svg
@@ -18,7 +18,7 @@ export function getJazzicon(address, diameter = 24) {
     }
 
     if (!(key in jazziconsCache)) {
-        jazziconsCache[key] = Jazzicon(diameter, parseInt(address.slice(2, 10), 16)).outerHTML;
+        jazziconsCache[key] = jazzicon(diameter, parseInt(address.slice(2, 10), 16)).outerHTML;
     }
 
     return jazziconsCache[key];

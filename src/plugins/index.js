@@ -1,2 +1,2 @@
 export * from './notifications.js';
-export * from './jazzicon.js';
+export * from './jazzicon/jazzicon.js';
