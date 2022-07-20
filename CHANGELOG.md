@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.14.0...v0.14.1) (2022-07-20)
+
+
+### Features
+
+* create `selectListboxItemByValue` vue test helper ([78e024e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/78e024ec811b1082695ebc3414fe6fb6da0fe7a1))
+
 ## [0.14.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.13.1...v0.14.0) (2022-07-19)
 
 ### [0.13.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.13.0...v0.13.1) (2022-07-19)
