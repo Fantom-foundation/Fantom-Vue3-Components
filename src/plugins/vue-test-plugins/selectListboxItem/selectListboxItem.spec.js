@@ -19,10 +19,20 @@ afterEach(() => {
 });
 
 describe('selectListboxItem vue test utils plugin', () => {
-    it('should select list item', async () => {
+    it('should select list item by index', async () => {
         wrapper = createWrapper();
 
         await wrapper.selectListboxItem(2);
+
+        const emitted = wrapper.emitted('update:value');
+
+        expect(emitted[0]).toEqual([list[1].value]);
+    });
+
+    it('should select list item by value', async () => {
+        wrapper = createWrapper();
+
+        await wrapper.selectListboxItemByValue('opt2');
 
         const emitted = wrapper.emitted('update:value');
 
