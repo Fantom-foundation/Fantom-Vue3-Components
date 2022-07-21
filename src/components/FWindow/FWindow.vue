@@ -22,6 +22,9 @@
         >
             <div ref="doc" role="document" class="fwindow_doc">
                 <header v-if="withHeader" class="fwindow_header">
+                    <div class="fwindow_header_leftcontrols">
+                        <slot name="left-controls"></slot>
+                    </div>
                     <div :id="_ids.title" class="fwindow_header_title">
                         <!-- @slot Default to `title` prop -->
                         <slot name="title">

@@ -465,6 +465,22 @@ export const CloseButtonIconSlot = () => ({
     `,
 });
 
+export const LeftControlsSlot = () => ({
+    components: { FWindow, FButton },
+    template: `
+        <div>
+            <FWindow modal ref="win" title="Left controls slot" class="fwindow-width-3">
+                <template #left-controls><FButton label="btn" /></template>
+                <div>Lorem ipsum dolor sit amet, consectetur 1234 adipisicing elit. Adipisci animi aut cupiditate ducimus et</div>
+            </FWindow>
+
+            <div>
+                <FButton @click.native="$refs.win.show()">Show</FButton>
+            </div>
+        </div>
+    `,
+});
+
 export const ClosingDisabled = () => ({
     components: { FWindow, FButton, FInput },
     template: `

@@ -78,6 +78,14 @@
                 display: inline-block;
             }
         }
+
+        &_leftcontrols {
+            white-space: nowrap;
+
+            > * {
+                display: inline-block;
+            }
+        }
     }
 
     &_body {
