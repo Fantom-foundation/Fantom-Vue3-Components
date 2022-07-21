@@ -373,13 +373,8 @@ export default {
         },
 
         data: {
-            handler(_value, _oldValue) {
-                if (isPromise(_value)) {
-                    this.setItems(_value, true);
-                } else if (JSON.stringify(_value) !== JSON.stringify(_oldValue)) {
-                    // this.items = this.getItems();
-                    this.setItems(_value);
-                }
+            handler(_value) {
+                this.setItems(_value, isPromise(_value));
 
                 if (this.inputValue) {
                     this.$nextTick(() => {
