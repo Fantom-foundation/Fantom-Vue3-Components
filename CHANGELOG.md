@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.14.1...v0.15.0) (2022-07-21)
+
+
+### Features
+
+* **FWindow:** add 'left-controls' slot ([82cc884](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/82cc8845e72038998943d70f70adce548ce49279))
+
+
+### Bug Fixes
+
+* **FListbox:** fix data updating ([979366c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/979366c9b56614afc5f788fb8389f5ca6b0a54d5))
+
 ### [0.14.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.14.0...v0.14.1) (2022-07-20)
 
 
