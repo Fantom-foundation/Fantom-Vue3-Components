@@ -1,5 +1,5 @@
 <template>
-    <div class="fforminput" :class="`fforminput_${type}`">
+    <div class="fforminput" :class="classType">
         <FInput
             v-if="_fInputTypes.includes(type)"
             ref="input"
@@ -139,6 +139,12 @@ export default {
             const { input } = this.$refs;
 
             return input ? typeof input.validate === 'function' : false;
+        },
+
+        classType() {
+            const { type } = this;
+
+            return typeof type === 'string' ? `fforminput_${type}` : '';
         },
     },
 
