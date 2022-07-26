@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.15.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.15.0...v0.15.1) (2022-07-26)
+
+
+### Features
+
+* **FOptionGroup:** add item prop to check-element template ([f856d32](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/f856d32f2ef5d25752e3511af0a4d60295509076))
+
+
+### Bug Fixes
+
+* **FFormInput:** add proper class by type ([eaac8d2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/eaac8d2452a82c6ad81980d797ad237369145775))
+
 ## [0.15.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.14.1...v0.15.0) (2022-07-21)
 
 
