@@ -2,13 +2,25 @@
 @use 'custom-properties';
 
 .fbutton {
+    &-withicon {
+        .fsvgicon {
+            --fsvgicon-size: var(--fbutton-icon-size);
+        }
+
+        .fbutton_label {
+            display: flex;
+            align-items: center;
+            gap: var(--fbutton-icon-gap);
+        }
+    }
+
     &-loading {
         &::before {
             animation: var(--fbutton-spinner-speed) linear infinite fbutton-spinner;
             content: '';
-            width: var(--fbutton-spinner-size);
-            height: var(--fbutton-spinner-size);
-            margin-right: 0.2em;
+            width: var(--fbutton-icon-size);
+            height: var(--fbutton-icon-size);
+            margin-right: var(--fbutton-icon-gap);
             background: var(--fbutton-spinner-color);
             -webkit-mask-image: var(--fbutton-spinner);
             mask-image: var(--fbutton-spinner);
@@ -37,14 +49,22 @@
         &:not(:disabled):hover {
             --fbutton-spinner-color: var(--f-btn-hover-color);
         }
+
+        &.fbutton-withicon {
+            .fsvgicon {
+                display: none;
+            }
+        }
     }
 
     &.btn {
-        &-secondary.fbutton-loading:not(:hover), &-secondary.fbutton-loading:disabled {
+        &-secondary.fbutton-loading:not(:hover),
+        &-secondary.fbutton-loading:disabled {
             --fbutton-spinner-color: var(--fbutton-secondary-spinner-color);
         }
 
-        &-tertiary.fbutton-loading:not(:hover), &-tertiary.fbutton-loading:disabled {
+        &-tertiary.fbutton-loading:not(:hover),
+        &-tertiary.fbutton-loading:disabled {
             --fbutton-spinner-color: var(--fbutton-tertiary-spinner-color);
         }
     }
@@ -58,4 +78,3 @@
         transform: rotate(360deg);
     }
 }
-
