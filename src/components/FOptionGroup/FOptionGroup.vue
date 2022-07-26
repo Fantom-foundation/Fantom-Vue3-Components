@@ -1,5 +1,5 @@
 <template>
-    <span class="foptiongroup" :class="classes">
+    <span class="foptiongroup" :class="[classes, $attrs.class]">
         <slot name="top" v-bind="slotProps">
             <FLabel v-if="label" :id="labeledById" :label="label" :required="required" class="foptiongroup_label" />
         </slot>
@@ -18,7 +18,7 @@
                 v-model="inputValue"
             >
                 <template #check-element>
-                    <slot name="check-element"></slot>
+                    <slot name="check-element" v-bind="{ item }"></slot>
                 </template>
             </FOption>
         </span>
