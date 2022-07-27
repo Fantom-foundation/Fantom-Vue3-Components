@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.15.3...v0.16.0) (2022-07-27)
+
+
+### Bug Fixes
+
+* **FPopover:** fix `isWindowVisible` method ([d1b7751](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d1b7751e2e0d60fa4bdd5945244c85a06c5b85ea))
+* **FPopover:** remove `isWindowVisible` method from copied methods ([c7b2ce6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/c7b2ce6e4a7cb7b5d1f9d4bd5f1710f39af09c36))
+
 ### [0.15.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.15.2...v0.15.3) (2022-07-27)
 
 ### Features
