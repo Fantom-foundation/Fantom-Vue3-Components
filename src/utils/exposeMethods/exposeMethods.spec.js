@@ -15,7 +15,9 @@ describe('exposeMethods', () => {
 
     it("should call given component's methods", () => {
         const method1 = vi.fn(() => {});
-        const method2 = vi.fn(() => {});
+        const method2 = vi.fn(() => {
+            return 'foo';
+        });
         const method3 = vi.fn(() => {});
         const component = ref({
             method1,
@@ -30,5 +32,6 @@ describe('exposeMethods', () => {
         expect(method1).toHaveBeenCalled();
         expect(method2).toHaveBeenCalledWith('foo');
         expect(method3).not.toHaveBeenCalled();
+        expect(value.method2()).toBe('foo');
     });
 });

@@ -16,7 +16,7 @@ export function exposeMethods(component, methods = []) {
             const fn = comp ? comp[method] : null;
 
             if (typeof fn === 'function') {
-                fn(...args);
+                return fn(...args);
             }
         };
     });
