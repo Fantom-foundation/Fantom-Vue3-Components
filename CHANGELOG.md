@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.16.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.16.0...v0.16.1) (2022-07-27)
+
+
+### Bug Fixes
+
+* **exposeMethods:** return returned value from method ([57029ed](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/57029ed7ac462f01b14845a0d7cd6cb8627fd955))
+
 ## [0.16.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.15.3...v0.16.0) (2022-07-27)
 
 
