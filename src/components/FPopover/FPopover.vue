@@ -107,7 +107,7 @@ export default {
     },
 
     methods: {
-        ...copyMethods(FWindow, ['show', 'hide', 'toggle'], 'popover'),
+        ...copyMethods(FWindow, ['show', 'hide', 'toggle', 'isWindowVisible'], 'popover'),
 
         onCloseButtonClick() {
             this.hide();

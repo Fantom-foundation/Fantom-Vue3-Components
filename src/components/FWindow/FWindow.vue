@@ -882,6 +882,10 @@ export default {
             return alignment;
         },
 
+        isWindowVisible() {
+            return this.isVisible;
+        },
+
         /**
          * @return {boolean}
          */
