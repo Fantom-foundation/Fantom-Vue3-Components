@@ -39,4 +39,10 @@ function onButtonClick(action) {
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.factionbuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
