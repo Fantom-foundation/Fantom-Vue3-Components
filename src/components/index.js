@@ -58,3 +58,4 @@ export { default as FToggleButton } from './FToggleButton/FToggleButton.vue';
 export { default as FTooltip } from './FTooltip/FTooltip.vue';
 export { default as FWindow } from './FWindow/FWindow.vue';
 export { default as FAddress } from './FAddress/FAddress.vue';
+export { default as FActionButtons } from './FActionButtons/FActionButtons.vue';
