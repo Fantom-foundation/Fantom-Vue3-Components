@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.16.1...v0.17.0) (2022-07-29)
+
+
+### Features
+
+* **FActionButtons:** create component ([3d0f9c1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3d0f9c15d77e271847bc49405949b9674894fe91))
+
 ### [0.16.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.16.0...v0.16.1) (2022-07-27)
 
 
