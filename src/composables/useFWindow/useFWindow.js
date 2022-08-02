@@ -1,6 +1,6 @@
 import { ref } from 'vue';
-import { exposeMethods } from '@/utils/index.js';
-import { useMethods } from '@/composables/index.js';
+import { exposeMethods } from '../../utils/index.js';
+import { useMethods } from '../index.js';
 
 /**
  * @param {string} id Id for exposing and using methods
