@@ -12,7 +12,9 @@ const methodsStore = {};
  */
 export function useMethods(id = '', registrar = false, usedOutsideOfComponent = false) {
     function registerMethods(methods) {
-        methodsStore[id] = methods;
+        if (!(id in methodsStore)) {
+            methodsStore[id] = methods;
+        }
     }
 
     if (registrar && !usedOutsideOfComponent) {
