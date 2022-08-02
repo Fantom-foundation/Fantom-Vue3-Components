@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.18.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.17.1...v0.18.0) (2022-08-02)
+
+
+### Features
+
+* create `useFWindow` and `useFPopover` composables ([7627a74](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/7627a74c969920150f35ca287f69b90dc8f86497))
+
+
+### Bug Fixes
+
+* **useMethods:** register methods only once ([d927436](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d927436f8030311a873d5bfa9de89e1a965fb8ef))
+
 ### [0.17.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.17.0...v0.17.1) (2022-07-29)
 
 ## [0.17.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.16.1...v0.17.0) (2022-07-29)
