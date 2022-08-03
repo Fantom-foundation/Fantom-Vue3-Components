@@ -6,6 +6,7 @@ module.exports = {
         '@storybook/addon-a11y',
         'storybook-rtl-addon',
         '@storybook/addon-essentials',
+        'storybook-addon-themes',
     ],
     framework: '@storybook/vue3',
     core: {

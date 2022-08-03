@@ -18,6 +18,10 @@ export const parameters = {
             date: /Date$/,
         },
     },
+    themes: {
+        default: '',
+        list: [{ name: 'dark', class: 'theme-dark', color: '#222431' }],
+    },
 };
 
 addDecorator(withDirection);

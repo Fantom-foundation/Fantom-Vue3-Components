@@ -57,6 +57,7 @@
         "prettier": "^2.5.1",
         "sass": "^1.49.7",
         "standard-version": "^9.3.2",
+        "storybook-addon-themes": "^6.1.0",
         "storybook-builder-vite": "^0.1.15",
         "storybook-rtl-addon": "^0.3.3",
         "vite": "^2.7.13",
