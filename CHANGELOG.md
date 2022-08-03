@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.18.2...v0.19.0) (2022-08-03)
+
+
+### Features
+
+* create dark theme ([0715288](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/07152885e59a8a0bf38ba704c310053a04f73ac0))
+
 ### [0.18.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.18.1...v0.18.2) (2022-08-02)
 
 
