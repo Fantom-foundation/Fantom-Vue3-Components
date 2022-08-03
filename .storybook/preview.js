@@ -21,6 +21,7 @@ export const parameters = {
     themes: {
         default: '',
         list: [{ name: 'dark', class: 'theme-dark', color: '#222431' }],
+        target: 'root',
     },
 };
 
