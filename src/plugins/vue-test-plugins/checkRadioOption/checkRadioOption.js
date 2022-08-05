@@ -1,6 +1,4 @@
 /**
- * Set innerHTML on the elements given by selector
- *
  * @param {Object} wrapper
  * @return {{setInnerHTML: setInnerHTML}}
  */

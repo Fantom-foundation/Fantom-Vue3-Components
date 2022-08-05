@@ -8,6 +8,7 @@ import { selectListboxItemPlugin } from './selectListboxItem/selectListboxItem.j
 import { checkRadioOptionPlugin } from './checkRadioOption/checkRadioOption.js';
 import { submitFormPlugin } from './formSubmit/formSubmit.js';
 import { hideWindowPlugin, showWindowPlugin } from './FWindow/FWindow.js';
+import { toggleCheckboxPlugin } from './toggleCheckbox/toggleCheckbox.js';
 
 const { VueWrapper } = config.plugins;
 
@@ -22,3 +23,4 @@ VueWrapper.install(checkRadioOptionPlugin);
 VueWrapper.install(submitFormPlugin);
 VueWrapper.install(showWindowPlugin);
 VueWrapper.install(hideWindowPlugin);
+VueWrapper.install(toggleCheckboxPlugin);
