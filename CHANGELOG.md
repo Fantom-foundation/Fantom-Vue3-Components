@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.19.0...v0.19.1) (2022-08-05)
+
+
+### Features
+
+* create `toggleCheckbox` vue test helper ([76351ca](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/76351cafdfbd6083b3fd4b517fe1e5a845924b5f))
+* **FAddress:** add `prefix` slot ([c0f0b55](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/c0f0b55ef292fd14f7e5383547f1d25e1b42feac))
+
 ## [0.19.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.18.2...v0.19.0) (2022-08-03)
 
 
