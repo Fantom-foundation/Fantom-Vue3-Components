@@ -35,6 +35,7 @@ onMounted(() => {
 <template>
     <FEllipsis ref="el" :text="address" overflow="middle" class="faddress">
         <template #prefix>
+            <slot name="prefix"></slot>
             <FImage
                 v-if="image"
                 :src="image"
