@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.19.1...v0.19.2) (2022-08-08)
+
+
+### Features
+
+* create functions for language mocking ([947e696](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/947e696dd012eac7167b209e01444b84189ba859))
+
 ### [0.19.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.19.0...v0.19.1) (2022-08-05)
 
 
