@@ -5,3 +5,4 @@ export * from './useNotifications/useNotifications.js';
 export * from './useMethods/useMethods.js';
 export * from './useFWindow/useFWindow.js';
 export * from './useFPopover/useFPopover.js';
+export * from './useLanguage/useLanguage.js';
