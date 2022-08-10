@@ -20,11 +20,12 @@ const LANGUAGES = [
 const i18n = new I18nMock();
 const translations = new TranslationsMock();
 
-function createLanguage({ languages = LANGUAGES, languageRef = ref('en') } = {}) {
+function createLanguage({ languages = LANGUAGES, languageRef = ref('en'), rtlDirectionRef = null } = {}) {
     language = new Language();
     language.setup({
         languages,
         languageRef,
+        rtlDirectionRef,
         i18n,
         translations,
     });
@@ -87,6 +88,22 @@ describe('Language', () => {
         language.setLanguage('es');
 
         expect(language.language).toBe('en');
+    });
+
+    it('should set rtl direction', () => {
+        language.setTextDirection('rtl');
+
+        expect(document.documentElement.dir).toBe('rtl');
+    });
+
+    it('should set rtl direction ref if text direction is set to rtl', () => {
+        const rtlDirectionRef = ref(false);
+        destroyLanguage();
+        createLanguage({ rtlDirectionRef });
+
+        language.setTextDirection('rtl');
+
+        expect(rtlDirectionRef.value).toBe(true);
     });
 
     it('should set rtl direction if selected language has `rtl` atrribute', () => {

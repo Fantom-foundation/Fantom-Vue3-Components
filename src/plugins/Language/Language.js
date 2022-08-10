@@ -5,6 +5,7 @@ export class Language {
     #languages = [];
     #defaultLanguage = '';
     #language = ref('en');
+    #rtlDirection = ref(false);
     // i18n plugin
     #i18n = null;
     // fantom vue3 components translations
@@ -13,11 +14,19 @@ export class Language {
     /**
      * @param {array} languages
      * @param {Ref} [languageRef]
+     * @param {Ref} [rtlDirectionRef]
      * @param {VueI18n} [i18n]
      * @param {Translations} [translations]
      * @param {string} [defaultLanguage]
      */
-    setup({ languages = [], languageRef = null, i18n = null, translations = null, defaultLanguage = 'en' }) {
+    setup({
+        languages = [],
+        languageRef = null,
+        rtlDirectionRef = null,
+        i18n = null,
+        translations = null,
+        defaultLanguage = 'en',
+    }) {
         this.#languages = languages;
         this.#defaultLanguage = defaultLanguage;
         this.#i18n = i18n;
@@ -25,6 +34,10 @@ export class Language {
 
         if (languageRef) {
             this.#language = languageRef;
+        }
+
+        if (rtlDirectionRef) {
+            this.#rtlDirection = rtlDirectionRef;
         }
     }
 
@@ -53,6 +66,19 @@ export class Language {
     }
 
     /**
+     * @param {'rtl'|'ltr'} direction
+     */
+    setTextDirection(direction = 'ltr') {
+        if (direction === 'rtl') {
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.dir = '';
+        }
+
+        this.#rtlDirection.value = direction === 'rtl';
+    }
+
+    /**
      * @return {*[]}
      */
     get languages() {
@@ -70,11 +96,7 @@ export class Language {
         const lang = this.#findLanguageByCode(langCode);
 
         if (lang) {
-            if (lang.rtl) {
-                document.documentElement.dir = 'rtl';
-            } else {
-                document.documentElement.dir = '';
-            }
+            this.setTextDirection(lang.rtl ? 'rtl' : 'ltr');
         }
     }
 
