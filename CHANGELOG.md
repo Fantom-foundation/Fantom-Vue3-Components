@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.3...v0.20.4) (2022-08-10)
+
+
+### Bug Fixes
+
+* **Language:** don't set default direction in setDirAttribute ([23a9726](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/23a972698038b151c0526efa9e7af481990171e5))
+
 ### [0.20.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.2...v0.20.3) (2022-08-10)
 
 
