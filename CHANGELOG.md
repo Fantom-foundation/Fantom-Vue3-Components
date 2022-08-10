@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.1...v0.20.2) (2022-08-10)
+
+
+### Features
+
+* **Language:** add rtl direction getter ([39ae1d3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/39ae1d31ffe5c47433b30ad853aba48fde5ebd59))
+
 ### [0.20.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.0...v0.20.1) (2022-08-10)
 
 
