@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.20.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.2...v0.20.3) (2022-08-10)
+
+
+### Features
+
+* **Language:** set rtl direction according to ref ([98fcad3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/98fcad382be060973ec3ff0700256e5bdf2ce261))
+
 ### [0.20.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.1...v0.20.2) (2022-08-10)
 
 
