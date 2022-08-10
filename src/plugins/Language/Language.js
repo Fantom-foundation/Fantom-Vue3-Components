@@ -66,16 +66,18 @@ export class Language {
     }
 
     /**
-     * @param {'rtl'|'ltr'} direction
+     * @param {'rtl'|'ltr'} [direction]
      */
-    setTextDirection(direction = 'ltr') {
-        if (direction === 'rtl') {
+    setTextDirection(direction = '') {
+        const dir = direction || this.#rtlDirection.value ? 'rtl' : 'ltr';
+
+        if (dir === 'rtl') {
             document.documentElement.dir = 'rtl';
         } else {
             document.documentElement.dir = '';
         }
 
-        this.#rtlDirection.value = direction === 'rtl';
+        this.#rtlDirection.value = dir === 'rtl';
     }
 
     /**

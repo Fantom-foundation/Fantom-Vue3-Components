@@ -100,6 +100,15 @@ describe('Language', () => {
         expect(document.documentElement.dir).toBe('rtl');
     });
 
+    it('should set rtl direction from the ref if no direction is given', () => {
+        const rtlDirectionRef = ref(true);
+        destroyLanguage();
+        createLanguage({ rtlDirectionRef });
+        language.setTextDirection();
+
+        expect(document.documentElement.dir).toBe('rtl');
+    });
+
     it('should set rtl direction ref if text direction is set to rtl', () => {
         const rtlDirectionRef = ref(false);
         destroyLanguage();
