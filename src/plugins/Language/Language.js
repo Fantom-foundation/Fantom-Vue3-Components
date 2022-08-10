@@ -92,6 +92,13 @@ export class Language {
         return this.#language.value;
     }
 
+    /**
+     * @return {UnwrapRef<boolean>}
+     */
+    get rtlDirection() {
+        return this.#rtlDirection.value;
+    }
+
     #setDirAttribute(langCode = '') {
         const lang = this.#findLanguageByCode(langCode);
 

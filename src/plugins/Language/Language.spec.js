@@ -52,6 +52,10 @@ describe('Language', () => {
         expect(language.language).toBe('en');
     });
 
+    it('should get info whether text direction is rtl or not', () => {
+        expect(language.rtlDirection).toBe(false);
+    });
+
     it('should set language from the browser if no language code or value from the app store is given', () => {
         destroyLanguage();
         createLanguage({ languageRef: ref('') });
