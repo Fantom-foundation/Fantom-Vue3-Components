@@ -69,7 +69,7 @@ export class Language {
      * @param {'rtl'|'ltr'} [direction]
      */
     setTextDirection(direction = '') {
-        const dir = direction || this.#rtlDirection.value ? 'rtl' : 'ltr';
+        const dir = direction || (this.#rtlDirection.value ? 'rtl' : 'ltr');
 
         if (dir === 'rtl') {
             document.documentElement.dir = 'rtl';
@@ -105,7 +105,7 @@ export class Language {
         const lang = this.#findLanguageByCode(langCode);
 
         if (lang) {
-            this.setTextDirection(lang.rtl ? 'rtl' : 'ltr');
+            this.setTextDirection(lang.rtl ? 'rtl' : '');
         }
     }
 
