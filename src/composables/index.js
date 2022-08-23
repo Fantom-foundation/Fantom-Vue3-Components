@@ -6,3 +6,4 @@ export * from './useMethods/useMethods.js';
 export * from './useFWindow/useFWindow.js';
 export * from './useFPopover/useFPopover.js';
 export * from './useLanguage/useLanguage.js';
+export * from './useFormatters/useFormatters.js';
