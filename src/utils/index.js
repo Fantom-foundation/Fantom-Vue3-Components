@@ -4,7 +4,7 @@ export * from './array-sorting.js';
 export * from './Breakpoints.js';
 export * from './client-info.js';
 export * from './css.js';
-export * from './date.js';
+export * from './date/date.js';
 export * from './DOM.js';
 export * from './dom2.js';
 export * from './dom-events.js';
