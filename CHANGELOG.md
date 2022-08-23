@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.21.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.4...v0.21.0) (2022-08-23)
+
+
+### Features
+
+* create date utils ([58a7398](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/58a73988bb7530aa03e1cf07b6f21b83f30122b1))
+* **Formatters:** create class ([40ae280](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/40ae280c35b62cf58c32e67de5b9e00b931eb644))
+* get rid of `Language` and `useLanguage` ([660056d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/660056d8a22a86027a346f30ba817f3dfd34bbe4))
+* **Locale:** create class ([80b5c0b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/80b5c0b50cbf2876ebbdecafc9ba64f8b26eb85d))
+* **useFormatters:** create composable ([73ece2f](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/73ece2f9d4ada88847733da609995686cf25940c))
+* **useLocale:** create composable ([5dba6e0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5dba6e07189b7f845fc9a3d46c87abc2fcb164db))
+
 ### [0.20.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.20.3...v0.20.4) (2022-08-10)
 
 
