@@ -160,4 +160,45 @@ describe('Formatters', () => {
             }).toThrowError();
         });
     });
+
+    describe('adding custom formats to prototype', () => {
+        it('should add custom formats to prototype if `addCustomFormatsToPrototype` option is true', () => {
+            destroyFormatters();
+            formatters = new Formatters();
+            formatters.setup({
+                addCustomFormatsToPrototype: true,
+                numberFormats: {
+                    EUR: {
+                        style: 'currency',
+                        currency: 'EUR',
+                        maximumFractionDigits: 2,
+                    },
+                },
+                relativeTimeFormats: {
+                    relativeTimeShort: {
+                        style: 'short',
+                    },
+                },
+            });
+
+            expect(formatters.EUR(123456.789)).toBe('€123,456.79');
+            expect(formatters.relativeTimeShort(-1, 'second')).toBe('1 sec. ago');
+        });
+
+        it('should throw an error if custom format name collides with one existing in prototype', () => {
+            destroyFormatters();
+            formatters = new Formatters();
+
+            expect(() => {
+                formatters.setup({
+                    addCustomFormatsToPrototype: true,
+                    numberFormats: {
+                        number: {
+                            maximumFractionDigits: 2,
+                        },
+                    },
+                });
+            }).toThrowError();
+        });
+    });
 });

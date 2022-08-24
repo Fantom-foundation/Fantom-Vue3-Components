@@ -23,12 +23,16 @@ export class Formatters {
      * @param {Object} relativeTimeFormats
      * @param {Object} numberFormats
      */
-    setup({ dateTimeFormats = {}, relativeTimeFormats = {}, numberFormats = {} }) {
+    setup({ dateTimeFormats = {}, relativeTimeFormats = {}, numberFormats = {}, addCustomFormatsToPrototype = false }) {
         const formats = this.#formats;
 
         formats.dateTime = { ...formats.dateTime, ...dateTimeFormats };
         formats.relativeTime = { ...formats.relativeTime, ...relativeTimeFormats };
         formats.number = { ...formats.number, ...numberFormats };
+
+        if (addCustomFormatsToPrototype) {
+            this.#addCustomFormatsToPrototype();
+        }
     }
 
     /**
@@ -184,7 +188,7 @@ export class Formatters {
      * @return {DateTimeFormat}
      */
     #getCachedFormatter({ localeTag = '', format = {}, formatKey = '', type = '' }) {
-        const cacheKey = this.#getCacheKey({ localeTag, formatKey, type });
+        const cacheKey = this.#getCacheKey({ localeTag, formatKey, type, format });
         let formatter = this.#formattersCache[cacheKey];
 
         if (!formatter) {
@@ -211,13 +215,33 @@ export class Formatters {
         return formatter;
     }
 
+    #addCustomFormatsToPrototype() {
+        const formats = this.#formats;
+
+        Object.keys(formats).forEach((key) => {
+            const format = formats[key];
+
+            Object.keys(format).forEach((name) => {
+                if (name !== 'default') {
+                    if (!(name in Formatters.prototype)) {
+                        Formatters.prototype[name] = function (...args) {
+                            return this[key](...args, name);
+                        };
+                    } else {
+                        throw new Error(`A formater named '${name}' already exists`);
+                    }
+                }
+            });
+        });
+    }
+
     /**
      * @param {string} localeTag
      * @param {string} formatKey
      * @param {string} type
      * @return {string}
      */
-    #getCacheKey({ localeTag = '', formatKey = '', type = '' }) {
-        return `${type}_${localeTag}_${formatKey}`;
+    #getCacheKey({ localeTag = '', formatKey = '', type = '', format = {} }) {
+        return `${type}_${localeTag}_${formatKey}_${JSON.stringify(format)}`;
     }
 }
