@@ -11,6 +11,9 @@ export class Formatters {
         relativeTime: {
             default: {},
         },
+        number: {
+            default: {},
+        },
     };
     #localeTag = 'en';
     #formattersCache = {};
@@ -18,12 +21,14 @@ export class Formatters {
     /**
      * @param {Object} dateTimeFormats
      * @param {Object} relativeTimeFormats
+     * @param {Object} numberFormats
      */
-    setup({ dateTimeFormats = {}, relativeTimeFormats = {} }) {
+    setup({ dateTimeFormats = {}, relativeTimeFormats = {}, numberFormats = {} }) {
         const formats = this.#formats;
 
         formats.dateTime = { ...formats.dateTime, ...dateTimeFormats };
         formats.relativeTime = { ...formats.relativeTime, ...relativeTimeFormats };
+        formats.number = { ...formats.number, ...numberFormats };
     }
 
     /**
@@ -61,7 +66,7 @@ export class Formatters {
         let diff = getDatesDiff(date, Date.now());
         let unit = 'seconds';
         let equals = true;
-        const tresholds = {
+        const thresholds = {
             minute: 60, // seconds
             hour: 60, // minutes
             day: 24, // hours
@@ -69,31 +74,31 @@ export class Formatters {
             year: 365, // days
         };
 
-        if (Math.abs(diff) >= tresholds.year * DAY) {
-            equals = Math.abs(diff) % (tresholds.year * DAY) === 0;
+        if (Math.abs(diff) >= thresholds.year * DAY) {
+            equals = Math.abs(diff) % (thresholds.year * DAY) === 0;
 
             unit = 'year';
-            diff /= tresholds.year * DAY;
-        } else if (Math.abs(diff) >= tresholds.month * DAY) {
-            equals = Math.abs(diff) % (tresholds.month * DAY) === 0;
+            diff /= thresholds.year * DAY;
+        } else if (Math.abs(diff) >= thresholds.month * DAY) {
+            equals = Math.abs(diff) % (thresholds.month * DAY) === 0;
 
             unit = 'month';
-            diff /= tresholds.month * DAY;
-        } else if (Math.abs(diff) >= tresholds.day * HOUR) {
-            equals = Math.abs(diff) % (tresholds.day * HOUR) === 0;
+            diff /= thresholds.month * DAY;
+        } else if (Math.abs(diff) >= thresholds.day * HOUR) {
+            equals = Math.abs(diff) % (thresholds.day * HOUR) === 0;
 
             unit = 'day';
-            diff /= tresholds.day * HOUR;
-        } else if (Math.abs(diff) >= tresholds.hour * MINUTE) {
-            equals = Math.abs(diff) % (tresholds.hour * MINUTE) === 0;
+            diff /= thresholds.day * HOUR;
+        } else if (Math.abs(diff) >= thresholds.hour * MINUTE) {
+            equals = Math.abs(diff) % (thresholds.hour * MINUTE) === 0;
 
             unit = 'hour';
-            diff /= tresholds.hour * MINUTE;
-        } else if (Math.abs(diff) >= tresholds.minute * SECOND) {
-            equals = Math.abs(diff) % (tresholds.minute * SECOND) === 0;
+            diff /= thresholds.hour * MINUTE;
+        } else if (Math.abs(diff) >= thresholds.minute * SECOND) {
+            equals = Math.abs(diff) % (thresholds.minute * SECOND) === 0;
 
             unit = 'minute';
-            diff /= tresholds.minute * SECOND;
+            diff /= thresholds.minute * SECOND;
         } else {
             diff /= SECOND;
         }
@@ -103,6 +108,15 @@ export class Formatters {
         }
 
         return this.relativeTime(Math.floor(diff), unit, relativeTimeFormatKey);
+    }
+
+    /**
+     * @param {number} value
+     * @param {string} [numberFormatKey] Key from #formats.number object
+     * @return {string}
+     */
+    number(value, numberFormatKey = 'default') {
+        return this.#getNumberFomatter(numberFormatKey).format(value);
     }
 
     /**
@@ -144,6 +158,25 @@ export class Formatters {
     }
 
     /**
+     * @param {string} numberFormatKey Key from #formats.number object
+     * @return {Intl.DateTimeFormat}
+     */
+    #getNumberFomatter(numberFormatKey = '') {
+        const numberFormat = this.#formats?.number[numberFormatKey];
+
+        if (!numberFormat) {
+            throw new Error(`Can't find number format '${numberFormatKey}'`);
+        }
+
+        return this.#getCachedFormatter({
+            localeTag: this.#localeTag,
+            format: numberFormat,
+            formatKey: numberFormatKey,
+            type: 'number',
+        });
+    }
+
+    /**
      * @param {string} localeTag
      * @param {Object} format
      * @param {string} formatKey
@@ -155,13 +188,24 @@ export class Formatters {
         let formatter = this.#formattersCache[cacheKey];
 
         if (!formatter) {
-            if (type === 'dateTime') {
-                formatter = new Intl.DateTimeFormat(localeTag, format);
-            } else if (type === 'relativeTime') {
-                formatter = new Intl.RelativeTimeFormat(localeTag, format);
-            }
-
+            formatter = this.#getFormatter({ localeTag, format, type });
             this.#formattersCache[cacheKey] = formatter;
+        }
+
+        return formatter;
+    }
+
+    #getFormatter({ localeTag = '', format = {}, type = '' }) {
+        let formatter = null;
+
+        if (type === 'dateTime') {
+            formatter = new Intl.DateTimeFormat(localeTag, format);
+        } else if (type === 'relativeTime') {
+            formatter = new Intl.RelativeTimeFormat(localeTag, format);
+        } else if (type === 'number') {
+            formatter = new Intl.NumberFormat(localeTag, format);
+        } else {
+            throw new Error(`Bad formatter type '${type}'`);
         }
 
         return formatter;

@@ -20,6 +20,12 @@ function createFormatters() {
                 style: 'short',
             },
         },
+        numberFormats: {
+            myNumber: {
+                maximumFractionDigits: 2,
+                signDisplay: 'exceptZero',
+            },
+        },
     });
 }
 
@@ -49,7 +55,7 @@ describe('Formatters', () => {
             );
         });
 
-        it('should format date/time according to given datetime format key and given locale', () => {
+        it('should format date/time according to given datetime format key and selected locale', () => {
             formatters.setLocale('cs');
 
             expect(formatters.dateTime(new Date(Date.UTC(2022, 7, 22, 3, 50)), 'shortDatetime')).toBe(
@@ -73,7 +79,7 @@ describe('Formatters', () => {
             expect(formatters.relativeTime(-1, 'second', 'short')).toBe('1 sec. ago');
         });
 
-        it('should format relative time according to given relative time format key and given locale', () => {
+        it('should format relative time according to given relative time format key and selected locale', () => {
             formatters.setLocale('cs');
 
             expect(formatters.relativeTime(-1, 'second')).toBe('před 1 sekundou');
@@ -124,12 +130,34 @@ describe('Formatters', () => {
             expect(formatters.fromNow(new Date(Date.UTC(2022, 7, 23, 0, 59, 0)), 'short')).toBe('1 min. ago');
         });
 
-        it('should format relative time from now with given relative time format key and given locale', () => {
+        it('should format relative time from now with given relative time format key and selected locale', () => {
             vi.setSystemTime(new Date(Date.UTC(2022, 7, 23, 1)));
 
             formatters.setLocale('cs');
 
             expect(formatters.fromNow(new Date(Date.UTC(2022, 7, 23, 0, 59, 0)))).toBe('před 1 minutou');
+        });
+    });
+
+    describe('number()', () => {
+        it('should use default number format if no number format key is given', () => {
+            expect(formatters.number(123456.789)).toBe('123,456.789');
+        });
+
+        it('should format number according to given number format key', () => {
+            expect(formatters.number(123456.789, 'myNumber')).toBe('+123,456.79');
+        });
+
+        it('should format number according to given number format key and selected locale', () => {
+            formatters.setLocale('cs');
+
+            expect(formatters.number(123456.789)).toBe('123 456,789');
+        });
+
+        it('should throw an error if given number format is not found', () => {
+            expect(() => {
+                formatters.number(123456.789, 'fooFormat');
+            }).toThrowError();
         });
     });
 });
