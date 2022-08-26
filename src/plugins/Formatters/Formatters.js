@@ -122,10 +122,11 @@ export class Formatters {
     /**
      * @param {number} value
      * @param {string} [numberFormatKey] Key from #formats.number object
+     * @param {number} [maximumFractionDigits]
      * @return {string}
      */
-    number(value, numberFormatKey = 'default') {
-        return this.#getNumberFomatter(numberFormatKey).format(value);
+    number(value, maximumFractionDigits = 20, numberFormatKey = 'default') {
+        return this.#getNumberFomatter(numberFormatKey, maximumFractionDigits).format(value);
     }
 
     /**
@@ -178,25 +179,34 @@ export class Formatters {
 
     /**
      * @param {string} numberFormatKey Key from #formats.number object
+     * @param {number} [maximumFractionDigits]
      * @return {Intl.NumberFormat}
      */
-    #getNumberFomatter(numberFormatKey = '') {
+    #getNumberFomatter(numberFormatKey = '', maximumFractionDigits = 20) {
         const numberFormat = this.#formats?.number[numberFormatKey];
+        const format = {
+            maximumFractionDigits,
+            ...numberFormat,
+        };
 
         if (!numberFormat) {
             throw new Error(`Can't find number format '${numberFormatKey}'`);
         }
 
+        if (!('minimumFractionDigits' in format)) {
+            format.minimumFractionDigits = 0;
+        }
+
         return this.#getCachedFormatter({
             localeTag: this.#localeTag,
-            format: numberFormat,
+            format,
             formatKey: numberFormatKey,
             type: 'number',
         });
     }
 
     /**
-     * @param {string} currencyFormatKey Key from #formats.number object
+     * @param {string} currencyFormatKey Key from #formats.currency object
      * @param {string} currency
      * @return {Intl.NumberFormat}
      */
@@ -270,6 +280,10 @@ export class Formatters {
                 if (name !== 'default') {
                     if (!(name in Formatters.prototype)) {
                         Formatters.prototype[name] = function (...args) {
+                            if ((key === 'number' || key === 'currency') && args.length < 2) {
+                                return this[key](...args, undefined, name);
+                            }
+
                             return this[key](...args, name);
                         };
                     } else {

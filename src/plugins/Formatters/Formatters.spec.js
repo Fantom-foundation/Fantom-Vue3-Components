@@ -149,8 +149,12 @@ describe('Formatters', () => {
             expect(formatters.number(123456.789)).toBe('123,456.789');
         });
 
+        it('should round number to the given maximum fraction digits', () => {
+            expect(formatters.number(123456.789, 1)).toBe('123,456.8');
+        });
+
         it('should format number according to given number format key', () => {
-            expect(formatters.number(123456.789, 'myNumber')).toBe('+123,456.79');
+            expect(formatters.number(123456.789, null, 'myNumber')).toBe('+123,456.79');
         });
 
         it('should format number according to given number format key and selected locale', () => {
@@ -161,7 +165,7 @@ describe('Formatters', () => {
 
         it('should throw an error if given number format is not found', () => {
             expect(() => {
-                formatters.number(123456.789, 'fooFormat');
+                formatters.number(123456.789, null, 'fooFormat');
             }).toThrowError();
         });
     });
@@ -198,7 +202,6 @@ describe('Formatters', () => {
                     EUR: {
                         style: 'currency',
                         currency: 'EUR',
-                        maximumFractionDigits: 2,
                     },
                 },
                 relativeTimeFormats: {
@@ -208,7 +211,8 @@ describe('Formatters', () => {
                 },
             });
 
-            expect(formatters.EUR(123456.789)).toBe('€123,456.79');
+            expect(formatters.EUR(123456.789)).toBe('€123,456.789');
+            expect(formatters.EUR(123456.789, 1)).toBe('€123,456.8');
             expect(formatters.relativeTimeShort(-1, 'second')).toBe('1 sec. ago');
         });
 
