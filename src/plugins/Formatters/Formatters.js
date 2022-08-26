@@ -14,6 +14,9 @@ export class Formatters {
         number: {
             default: {},
         },
+        currency: {
+            default: {},
+        },
     };
     #localeTag = 'en';
     #formattersCache = {};
@@ -23,12 +26,19 @@ export class Formatters {
      * @param {Object} relativeTimeFormats
      * @param {Object} numberFormats
      */
-    setup({ dateTimeFormats = {}, relativeTimeFormats = {}, numberFormats = {}, addCustomFormatsToPrototype = false }) {
+    setup({
+        dateTimeFormats = {},
+        relativeTimeFormats = {},
+        numberFormats = {},
+        currencyFormats = {},
+        addCustomFormatsToPrototype = false,
+    }) {
         const formats = this.#formats;
 
         formats.dateTime = { ...formats.dateTime, ...dateTimeFormats };
         formats.relativeTime = { ...formats.relativeTime, ...relativeTimeFormats };
         formats.number = { ...formats.number, ...numberFormats };
+        formats.currency = { ...formats.currency, ...currencyFormats };
 
         if (addCustomFormatsToPrototype) {
             this.#addCustomFormatsToPrototype();
@@ -80,27 +90,22 @@ export class Formatters {
 
         if (Math.abs(diff) >= thresholds.year * DAY) {
             equals = Math.abs(diff) % (thresholds.year * DAY) === 0;
-
             unit = 'year';
             diff /= thresholds.year * DAY;
         } else if (Math.abs(diff) >= thresholds.month * DAY) {
             equals = Math.abs(diff) % (thresholds.month * DAY) === 0;
-
             unit = 'month';
             diff /= thresholds.month * DAY;
         } else if (Math.abs(diff) >= thresholds.day * HOUR) {
             equals = Math.abs(diff) % (thresholds.day * HOUR) === 0;
-
             unit = 'day';
             diff /= thresholds.day * HOUR;
         } else if (Math.abs(diff) >= thresholds.hour * MINUTE) {
             equals = Math.abs(diff) % (thresholds.hour * MINUTE) === 0;
-
             unit = 'hour';
             diff /= thresholds.hour * MINUTE;
         } else if (Math.abs(diff) >= thresholds.minute * SECOND) {
             equals = Math.abs(diff) % (thresholds.minute * SECOND) === 0;
-
             unit = 'minute';
             diff /= thresholds.minute * SECOND;
         } else {
@@ -124,8 +129,18 @@ export class Formatters {
     }
 
     /**
+     * @param {number} value
+     * @param {string} [currency]
+     * @param {string} [currencyFormatKey] Key from #formats.currency object
+     * @return {string}
+     */
+    currency(value, currency = 'USD', currencyFormatKey = 'default') {
+        return this.#getCurrencyFomatter(currencyFormatKey, currency).format(value);
+    }
+
+    /**
      * @param {string} dateTimeFormatKey Key from #formats.dateTime object
-     * @return {DateTimeFormat}
+     * @return {Intl.DateTimeFormat}
      */
     #getDateTimeFormatter(dateTimeFormatKey = '') {
         const datetimeFormat = this.#formats?.dateTime[dateTimeFormatKey];
@@ -144,7 +159,7 @@ export class Formatters {
 
     /**
      * @param {string} relativeTimeFormatKey Key from #formats.dateTime object
-     * @return {DateTimeFormat}
+     * @return {Intl.RelativeTimeFormat}
      */
     #getRelativeTimeFormatter(relativeTimeFormatKey = '') {
         const relativeTimeFormat = this.#formats?.relativeTime[relativeTimeFormatKey];
@@ -163,7 +178,7 @@ export class Formatters {
 
     /**
      * @param {string} numberFormatKey Key from #formats.number object
-     * @return {Intl.DateTimeFormat}
+     * @return {Intl.NumberFormat}
      */
     #getNumberFomatter(numberFormatKey = '') {
         const numberFormat = this.#formats?.number[numberFormatKey];
@@ -181,11 +196,35 @@ export class Formatters {
     }
 
     /**
+     * @param {string} currencyFormatKey Key from #formats.number object
+     * @param {string} currency
+     * @return {Intl.NumberFormat}
+     */
+    #getCurrencyFomatter(currencyFormatKey = '', currency = '') {
+        const currencyFormat = this.#formats?.currency[currencyFormatKey];
+
+        if (!currencyFormat) {
+            throw new Error(`Can't find currency format '${currencyFormatKey}'`);
+        }
+
+        return this.#getCachedFormatter({
+            localeTag: this.#localeTag,
+            format: {
+                style: 'currency',
+                currency,
+                ...currencyFormat,
+            },
+            formatKey: currencyFormatKey,
+            type: 'number',
+        });
+    }
+
+    /**
      * @param {string} localeTag
      * @param {Object} format
      * @param {string} formatKey
      * @param {string} type
-     * @return {DateTimeFormat}
+     * @return {Intl.DateTimeFormat|Intl.RelativeTimeFormat|Intl.NumberFormat}
      */
     #getCachedFormatter({ localeTag = '', format = {}, formatKey = '', type = '' }) {
         const cacheKey = this.#getCacheKey({ localeTag, formatKey, type, format });
@@ -199,6 +238,12 @@ export class Formatters {
         return formatter;
     }
 
+    /**
+     * @param {string} localeTag
+     * @param {Object} format
+     * @param {string} type
+     * @return {Intl.DateTimeFormat|Intl.RelativeTimeFormat|Intl.NumberFormat}
+     */
     #getFormatter({ localeTag = '', format = {}, type = '' }) {
         let formatter = null;
 

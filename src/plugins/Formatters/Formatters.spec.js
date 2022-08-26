@@ -26,6 +26,11 @@ function createFormatters() {
                 signDisplay: 'exceptZero',
             },
         },
+        currencyFormats: {
+            myCurrency: {
+                signDisplay: 'exceptZero',
+            },
+        },
     });
 }
 
@@ -157,6 +162,28 @@ describe('Formatters', () => {
         it('should throw an error if given number format is not found', () => {
             expect(() => {
                 formatters.number(123456.789, 'fooFormat');
+            }).toThrowError();
+        });
+    });
+
+    describe('currency()', () => {
+        it('should use default currency format if no currency format key is given', () => {
+            expect(formatters.currency(123456.789)).toBe('$123,456.79');
+        });
+
+        it('should format currency according to given currency format key', () => {
+            expect(formatters.currency(123456.789, 'EUR', 'myCurrency')).toBe('+€123,456.79');
+        });
+
+        it('should format currency according to given currency format key and selected locale', () => {
+            formatters.setLocale('cs');
+
+            expect(formatters.currency(123456.789, 'EUR')).toBe('123 456,79 €');
+        });
+
+        it('should throw an error if given currency format is not found', () => {
+            expect(() => {
+                formatters.currency(123456.789, 'EUR', 'fooFormat');
             }).toThrowError();
         });
     });
