@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.21.3...v0.21.4) (2022-08-26)
+
+
+### Features
+
+* **Formatters:** add maximum fraction digits argument to the number formatter ([342364a](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/342364adb9d5a0396b1aca1760c3a454776e97a0))
+
 ### [0.21.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.21.2...v0.21.3) (2022-08-26)
 
 
