@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.22.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.21.4...v0.22.0) (2022-08-29)
+
+
+### Features
+
+* **FToken:** create component ([bd95d78](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/bd95d78cc97b3171896014e9dddf60afacb5991a))
+
 ### [0.21.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.21.3...v0.21.4) (2022-08-26)
 
 
