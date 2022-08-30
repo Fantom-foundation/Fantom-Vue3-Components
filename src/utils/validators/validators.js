@@ -22,6 +22,27 @@ export function requiredValidator(value, errorMessage = translations.translate('
 
 /**
  * @param {string} mimeType
+ * @param {string} accept Mime type to be accepted
+ * @return {boolean}
+ */
+function validateFileType(mimeType, accept) {
+    const mimeTypeSplitted = mimeType.split('/');
+    const acceptSplitted = accept.split('/');
+    let isValid = true;
+
+    if (accept.startsWith('.')) {
+        isValid = mimeTypeSplitted[1] && mimeTypeSplitted[1].indexOf(accept.slice(1)) > -1;
+    } else if (acceptSplitted[1] === '*') {
+        isValid = mimeTypeSplitted[0] === acceptSplitted[0];
+    } else if (mimeType !== accept) {
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+/**
+ * @param {string} mimeType
  * @param {string} accept Mime type(s) to be accepted
  * @param {string} [errorMessage]
  * @return {string} Error message -> non-empty string, if validation fails
@@ -32,26 +53,11 @@ export function fileTypeValidator(mimeType, accept, errorMessage = 'Bad file typ
         .toLowerCase()
         .split(',')
         .map((type) => type.trim());
-    let acceptS = '';
-    let typeSplitted = [];
-    let acceptSplitted = [];
     let isValid = true;
 
     if (type && acceptTypes.length > 0) {
         for (let i = 0, len = acceptTypes.length; i < len; i++) {
-            acceptS = acceptTypes[i];
-
-            isValid = true;
-            typeSplitted = type.split('/');
-            acceptSplitted = acceptS.split('/');
-
-            if (acceptS.startsWith('.')) {
-                isValid = typeSplitted[1] && typeSplitted[1].indexOf(acceptS.slice(1)) > -1;
-            } else if (acceptSplitted[1] === '*') {
-                isValid = typeSplitted[0] === acceptSplitted[0];
-            } else if (type !== acceptS) {
-                isValid = false;
-            }
+            isValid = validateFileType(type, acceptTypes[i]);
 
             if (isValid) {
                 break;
