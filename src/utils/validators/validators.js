@@ -46,13 +46,9 @@ export function fileTypeValidator(mimeType, accept, errorMessage = 'Bad file typ
             acceptSplitted = acceptS.split('/');
 
             if (acceptS.startsWith('.')) {
-                if (typeSplitted.length !== 2 || typeSplitted[1].indexOf(acceptS.slice(1)) === -1) {
-                    isValid = false;
-                }
+                isValid = typeSplitted[1] && typeSplitted[1].indexOf(acceptS.slice(1)) > -1;
             } else if (acceptSplitted[1] === '*') {
-                if (typeSplitted[0] !== acceptSplitted[0]) {
-                    isValid = false;
-                }
+                isValid = typeSplitted[0] === acceptSplitted[0];
             } else if (type !== acceptS) {
                 isValid = false;
             }
