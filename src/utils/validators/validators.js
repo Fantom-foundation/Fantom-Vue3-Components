@@ -1,5 +1,5 @@
-import { translations } from '../mixins/translations.js';
-import { isArray } from '../utils/index.js';
+import { translations } from '../../mixins/translations.js';
+import { isArray } from '../index.js';
 
 export function requiredValidator(value, errMessage = translations.translate('requiredField')) {
     if (typeof value === 'string') {

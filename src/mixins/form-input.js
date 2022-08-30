@@ -1,5 +1,5 @@
 import { getUniqueId, isArray } from '../utils/index.js';
-import { requiredValidator } from '../components/validators.js';
+import { requiredValidator } from '../utils/validators/validators.js';
 import FAriaAlert from '../components/FAriaAlert/FAriaAlert.vue';
 
 /**
