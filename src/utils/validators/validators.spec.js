@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { requiredValidator } from '@/utils/validators/validators.js';
+import { fileTypeValidator, requiredValidator } from '@/utils/validators/validators.js';
 
 const ERROR_MESSAGE = 'error message';
 
@@ -17,6 +17,31 @@ describe('validators', () => {
 
         it('should handle null as a value correctly', () => {
             expect(requiredValidator(null, ERROR_MESSAGE)).toBe(ERROR_MESSAGE);
+        });
+    });
+
+    describe('fileTypeValidator()', () => {
+        it('should handle accept MIME type string, with no extensions, correctly', () => {
+            expect(fileTypeValidator('text/html', 'text/html', ERROR_MESSAGE)).toBe('');
+            expect(fileTypeValidator('text/html', 'application/pdf', ERROR_MESSAGE)).toBe(ERROR_MESSAGE);
+        });
+
+        it('should handle accept types with case-insensitive filename extension, starting with a period, correctly', () => {
+            expect(fileTypeValidator('image/png', '.png', ERROR_MESSAGE)).toBe('');
+            expect(fileTypeValidator('image/png', '.JPG', ERROR_MESSAGE)).toBe(ERROR_MESSAGE);
+        });
+
+        it('should handle accept types with asterix correctly', () => {
+            expect(fileTypeValidator('image/jpeg', 'image/*', ERROR_MESSAGE)).toBe('');
+            expect(fileTypeValidator('text/html', 'image/*', ERROR_MESSAGE)).toBe(ERROR_MESSAGE);
+        });
+
+        it('should handle more than one type, separated by a comma, correctly', () => {
+            expect(fileTypeValidator('image/jpeg', 'image/*,.pdf,text/html', ERROR_MESSAGE)).toBe('');
+            expect(fileTypeValidator('application/pdf', 'image/*,.pdf,text/html', ERROR_MESSAGE)).toBe('');
+            expect(fileTypeValidator('text/html', 'image/*,.pdf,text/html', ERROR_MESSAGE)).toBe('');
+
+            expect(fileTypeValidator('video/x-msvideo', 'image/*,.pdf,text/html', ERROR_MESSAGE)).toBe(ERROR_MESSAGE);
         });
     });
 });
