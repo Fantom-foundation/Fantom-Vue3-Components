@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.23.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.22.0...v0.23.0) (2022-08-31)
+
+
+### Features
+
+* **FUploadArea:** create component ([55c3760](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/55c3760a7860acab9a1010dab4f03000e3ae7674))
+* **validators:** create `fileTypeValidator` ([702991c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/702991c1118c9c9fde6a2455557e1f03c5b29bd0))
+* **validators:** create `maxFileSizeValidator` ([8b399c6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/8b399c681bf39437878608f66033fa75824d3db2))
+
 ## [0.22.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.21.4...v0.22.0) (2022-08-29)
 
 
