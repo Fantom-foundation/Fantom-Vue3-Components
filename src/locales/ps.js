@@ -2,6 +2,11 @@ export const psTranslations = {
     // general translations
     requiredField: 'اړین ډګر',
 
+    validators: {
+        badFileType: 'د خراب فایل ډول',
+        fileSizeLimitExceed: 'د دوتنې اندازه له حد څخه تیریږي',
+    },
+
     // component translations
     fwindow: {
         closeWindow: 'کړکۍ بنده کړئ',

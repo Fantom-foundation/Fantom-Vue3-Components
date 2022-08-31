@@ -2,6 +2,11 @@ export const enTranslations = {
     // general translations
     requiredField: 'Required',
 
+    validators: {
+        badFileType: 'Bad file type',
+        fileSizeLimitExceed: 'File size limit exceed',
+    },
+
     // component translations
     fwindow: {
         closeWindow: 'Close window',

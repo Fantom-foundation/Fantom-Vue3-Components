@@ -2,6 +2,11 @@ export const faTranslations = {
     // general translations
     requiredField: 'رشته مورد نیاز',
 
+    validators: {
+        badFileType: 'نوع فایل بد',
+        fileSizeLimitExceed: 'از حد مجاز اندازه فایل فراتر رفته است',
+    },
+
     // component translations
     fwindow: {
         closeWindow: 'پنجره بسته',
