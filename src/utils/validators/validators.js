@@ -47,7 +47,7 @@ function validateFileType(mimeType, accept) {
  * @param {string} [errorMessage]
  * @return {string} Error message -> non-empty string, if validation fails
  */
-export function fileTypeValidator(mimeType, accept, errorMessage = 'Bad file type') {
+export function fileTypeValidator(mimeType, accept, errorMessage = translations.translate('validators.badFileType')) {
     const type = mimeType.trim().toLowerCase();
     const acceptTypes = accept
         .toLowerCase()
@@ -60,6 +60,25 @@ export function fileTypeValidator(mimeType, accept, errorMessage = 'Bad file typ
             isValid = validateFileType(type, acceptTypes[i]);
 
             if (isValid) {
+                break;
+            }
+        }
+    }
+
+    return isValid ? '' : errorMessage;
+}
+
+export function maxFileSizeValidator(
+    maxSize = 0,
+    files = [],
+    errorMessage = translations.translate('validators.fileSizeLimitExceed')
+) {
+    let isValid = true;
+
+    if (maxSize > 0 && files.length > 0) {
+        for (let i = 0, len = files.length; i < len; i++) {
+            if (files[i].size > maxSize) {
+                isValid = false;
                 break;
             }
         }

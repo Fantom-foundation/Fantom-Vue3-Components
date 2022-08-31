@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { fileTypeValidator, requiredValidator } from '@/utils/validators/validators.js';
+import { fileTypeValidator, maxFileSizeValidator, requiredValidator } from '@/utils/validators/validators.js';
 
 const ERROR_MESSAGE = 'error message';
 
@@ -42,6 +42,19 @@ describe('validators', () => {
             expect(fileTypeValidator('text/html', 'image/*,.pdf,text/html', ERROR_MESSAGE)).toBe('');
 
             expect(fileTypeValidator('video/x-msvideo', 'image/*,.pdf,text/html', ERROR_MESSAGE)).toBe(ERROR_MESSAGE);
+        });
+    });
+
+    describe('maxFileSizeValidator()', () => {
+        it('should return empty string (no error message) if arguments are not valid', () => {
+            expect(maxFileSizeValidator()).toBe('');
+        });
+
+        it('should check if size of a file does not exceed given size limit', () => {
+            expect(maxFileSizeValidator(1000000, [{ size: 1000 }, { size: 1000000 }], ERROR_MESSAGE)).toBe('');
+            expect(maxFileSizeValidator(1000000, [{ size: 1000 }, { size: 1000001 }], ERROR_MESSAGE)).toBe(
+                ERROR_MESSAGE
+            );
         });
     });
 });
