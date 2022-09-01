@@ -120,5 +120,22 @@ describe('FUploadArea', () => {
         expect(wrapper.emitted('invalid')[0]).toEqual([['Bad files Foo, Foo2']]);
     });
 
+    it('should add `invalid` attr to the input if component is in invalid state', async () => {
+        wrapper = createWrapper({
+            props: {
+                invalid: true,
+                accept: 'image/*',
+            },
+        });
+        const fileInput = wrapper.find('input[type="file"]');
+
+        expect(fileInput.attributes('aria-invalid')).toBe('true');
+
+        await wrapper.setProps({ invalid: false });
+        await fileInput.trigger('change', { files: [{ type: 'text/html' }] });
+
+        expect(fileInput.attributes('aria-invalid')).toBe('true');
+    });
+
     // it.todo('should be able to clear picked files by clicking on `remove` button', () => {});
 });

@@ -27,6 +27,18 @@ export const Multiple = () => ({
     `,
 });
 
+export const Invalid = () => ({
+    components: { FUploadArea },
+    //language=HTML
+    template: `
+        <div>
+            <FUploadArea invalid name="upl">
+                Invalid files
+            </FUploadArea>
+        </div>
+    `,
+});
+
 export const OnChange = () => ({
     components: { FUploadArea },
     //language=HTML

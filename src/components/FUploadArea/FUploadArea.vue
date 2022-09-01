@@ -1,6 +1,6 @@
 <script setup>
 import { getUniqueId } from '../../utils/index.js';
-import { ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { fileTypeValidator, maxFileSizeValidator } from '../../utils/validators/validators.js';
 
 const props = defineProps({
@@ -30,12 +30,22 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    invalid: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const emit = defineEmits(['change', 'invalid']);
 
 const fileNames = ref([]);
 const dragOver = ref(false);
+const isInvalid = ref(props.invalid);
+
+const classes = computed(() => ({
+    'fuploadarea-dragover': dragOver.value,
+    'fuploadarea-invalid': isInvalid.value,
+}));
 
 /**
  * @param {FileList} files
@@ -131,23 +141,33 @@ function onChange(event) {
     }
 
     fileNames.value = [];
+    isInvalid.value = false;
 
     if (errorMessages.length === 0) {
         fileNames.value = getFileNames(files);
         emit('change', { files, event });
     } else {
+        isInvalid.value = true;
         emit('invalid', errorMessages);
     }
 }
+
+watch(
+    () => props.invalid,
+    (value) => {
+        isInvalid.value = value;
+    }
+);
 </script>
 
 <template>
-    <div class="fuploadarea" :class="{ 'fuploadarea-dragover': dragOver }">
+    <div class="fuploadarea" :class="classes">
         <input
             type="file"
             :name="name"
             :accept="accept"
             :multiple="multiple"
+            :aria-invalid="isInvalid"
             @change.stop.prevent="onChange"
             @dragenter="onDragEnter"
             @dragleave="onDragLeave"
@@ -177,6 +197,9 @@ function onChange(event) {
 .fuploadarea {
     --fuploadarea-border: 2px dashed var(--f-inputs-border-color);
     --fuploadarea-defaulttext-color: var(--f-color-grey-5, #666);
+    --fuploadarea-invalid-color: var(--f-color-red-5, #ca1616);
+    --fuploadarea-invalid-border-color: var(--fuploadarea-invalid-color);
+    --fuploadarea-invalid-background-color: var(--f-color-red-2, #fdeded);
 
     position: relative;
     width: 100%;
@@ -187,7 +210,7 @@ function onChange(event) {
     align-items: center;
     justify-content: center;
 
-    &:hover {
+    &:not(.fuploadarea-invalid):hover {
         border-color: var(--f-color-grey-4);
     }
 
@@ -217,6 +240,20 @@ function onChange(event) {
 
     &_defaulttext {
         color: var(--fuploadarea-defaulttext-color);
+    }
+
+    &-invalid {
+        border-color: var(--fuploadarea-invalid-border-color);
+
+        &:focus-within,
+        &.fuploadarea-dragover {
+            border-color: var(--fuploadarea-invalid-border-color);
+            background-color: var(--fuploadarea-invalid-background-color);
+        }
+
+        .fuploadarea_defaulttext {
+            color: var(--fuploadarea-invalid-color);
+        }
     }
 }
 </style>
