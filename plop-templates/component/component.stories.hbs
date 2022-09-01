@@ -1,0 +1,15 @@
+import {{ name }} from './{{ name }}.vue';
+
+export default {
+    title: '{{ name }}',
+    component: {{ name }},
+};
+
+export const Default = () => ({
+    components: { {{ name }} },
+    template: `
+        <div>
+            <{{ name }} />
+        </div>
+    `,
+});

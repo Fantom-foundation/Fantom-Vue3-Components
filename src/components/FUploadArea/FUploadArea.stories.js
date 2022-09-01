@@ -7,7 +7,6 @@ export default {
 
 export const Default = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea name="upl" />
@@ -17,7 +16,6 @@ export const Default = () => ({
 
 export const Multiple = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea multiple name="upl">
@@ -29,7 +27,6 @@ export const Multiple = () => ({
 
 export const Invalid = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea invalid name="upl">
@@ -41,7 +38,6 @@ export const Invalid = () => ({
 
 export const OnChange = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea @change="event = $event" multiple name="upl">
@@ -61,7 +57,6 @@ export const OnChange = () => ({
 
 export const Accept = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea accept="image/*,.pdf,application/json" @invalid="errors = $event" @change="errors = []" multiple name="upl">
@@ -80,7 +75,6 @@ export const Accept = () => ({
 
 export const MaxFileSize = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea :max-file-size="200000" @invalid="errors = $event" @change="errors = []" multiple name="upl">
@@ -99,7 +93,6 @@ export const MaxFileSize = () => ({
 
 export const FilesValidator = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea
@@ -142,7 +135,6 @@ export const FilesValidator = () => ({
 
 export const FilesSlot = () => ({
     components: { FUploadArea },
-    //language=HTML
     template: `
         <div>
             <FUploadArea accept="image/*" name="upl" @change="onChange" style="max-width: 480px">

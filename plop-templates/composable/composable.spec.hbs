@@ -1,0 +1,24 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { withSetup } from '@/test/utils.js';
+import { {{ name }} } from './{{ name }}.js';
+
+let composableResult = null;
+let app = null;
+
+beforeEach(() => {
+    const result = withSetup({ composable: () => {{ name }}() });
+    composableResult = result.composableResult;
+    app = result.app;
+});
+
+afterEach(() => {
+    app.unmount();
+    composableResult = null;
+    app = null;
+});
+
+describe('{{ name }}', () => {
+    it('should return', () => {
+        //composableResult.
+    });
+});

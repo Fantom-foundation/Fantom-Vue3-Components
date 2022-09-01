@@ -24,7 +24,8 @@
         "release:major": "standard-version --no-verify --release-as major",
         "release:minor": "standard-version --no-verify --release-as minor",
         "release:patch": "standard-version --no-verify --release-as patch",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "template": "plop"
     },
     "dependencies": {
         "@vueuse/core": "^8.5.0",
@@ -54,6 +55,7 @@
         "husky": "^7.0.4",
         "jsdom": "^19.0.0",
         "lint-staged": "^12.3.7",
+        "plop": "^3.1.1",
         "prettier": "^2.5.1",
         "sass": "^1.49.7",
         "standard-version": "^9.3.2",
