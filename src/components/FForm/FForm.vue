@@ -269,7 +269,22 @@ export default {
         },
 
         getElements() {
-            return cloneObject(this.elements.elements);
+            const fileLists = {};
+
+            Object.keys(this.elements.elements).forEach((key) => {
+                const value = this.elements.elements[key];
+                if (value instanceof FileList) {
+                    fileLists[key] = value;
+                }
+            });
+
+            const elements = cloneObject(this.elements.elements);
+
+            Object.keys(fileLists).forEach((key) => {
+                elements[key] = fileLists[key];
+            });
+
+            return elements;
         },
 
         getLastChangedElement() {

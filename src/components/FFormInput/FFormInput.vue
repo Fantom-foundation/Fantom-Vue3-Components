@@ -152,11 +152,13 @@ export default {
         inputValue(_value, _oldValue) {
             this._firstChange = false;
 
-            this._oldInputValue = clone(_oldValue);
-            // this.$emit('input', _value);
-            this.$emit('update:modelValue', _value);
-            if (this.name && this.elements.elements) {
-                this.elements.elements[this.name] = _value;
+            if (_value !== undefined) {
+                this._oldInputValue = clone(_oldValue);
+                // this.$emit('input', _value);
+                this.$emit('update:modelValue', _value);
+                if (this.name && this.elements.elements) {
+                    this.elements.elements[this.name] = _value;
+                }
             }
         },
 

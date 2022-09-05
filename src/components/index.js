@@ -61,3 +61,4 @@ export { default as FAddress } from './FAddress/FAddress.vue';
 export { default as FActionButtons } from './FActionButtons/FActionButtons.vue';
 export { default as FToken } from './FToken/FToken.vue';
 export { default as FUploadArea } from './FUploadArea/FUploadArea.vue';
+export { default as FUploadAreaFormInput } from './FUploadAreaFormInput/FUploadAreaFormInput.vue';
