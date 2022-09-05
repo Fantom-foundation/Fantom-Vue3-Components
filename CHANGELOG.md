@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.24.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.23.0...v0.24.0) (2022-09-05)
+
+
+### Features
+
+* **FUploadArea:** add `invalid` state ([3f9cc34](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3f9cc3444b71dc537e44d13c8cf04eb5ec1dcb61))
+* **FUploadAreaFormInput:** create component ([1fdb362](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/1fdb362989a8087d16e2b72fbef6caf3eb1699f1))
+
 ## [0.23.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.22.0...v0.23.0) (2022-08-31)
 
 
