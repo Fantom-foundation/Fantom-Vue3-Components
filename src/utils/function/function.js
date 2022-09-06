@@ -17,12 +17,16 @@ export function isFunction(func) {
  * @return {Promise<unknown>}
  */
 export function delay(n) {
-    if (!isPositiveInt(n)) {
+    if (n !== undefined && !isPositiveInt(n)) {
         throw new TypeError('Passed argument is not a positive integer');
     }
 
     return new Promise((resolve) => {
-        setTimeout(resolve, n);
+        if (n === undefined) {
+            requestAnimationFrame(resolve);
+        } else {
+            setTimeout(resolve, n);
+        }
     });
 }
 

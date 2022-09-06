@@ -35,10 +35,6 @@ describe('Function utilities', () => {
             const errMessage = 'Passed argument is not a positive integer';
 
             expect(() => {
-                delay();
-            }).to.throw(errMessage);
-
-            expect(() => {
                 delay('50');
             }).to.throw(errMessage);
 
