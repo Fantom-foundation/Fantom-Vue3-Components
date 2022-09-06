@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.24.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.24.0...v0.24.1) (2022-09-06)
+
+
+### Features
+
+* **function utils:** adjust `delay` function ([4e97dde](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/4e97ddec599d096818d4b3895b345fb05b9114c6))
+
 ## [0.24.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.23.0...v0.24.0) (2022-09-05)
 
 
