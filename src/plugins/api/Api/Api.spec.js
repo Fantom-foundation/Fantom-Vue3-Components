@@ -1,0 +1,116 @@
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { Api } from './Api.js';
+import { WebApi } from '../WebApi/WebApi.js';
+
+class MyApi extends WebApi {
+    query(q) {
+        return q;
+    }
+    mutation(m) {
+        return m;
+    }
+    registerOnErrorFunction() {}
+    queryMock(q) {
+        return q;
+    }
+}
+
+let api = null;
+let myApi = null;
+
+function myQuery() {
+    return myApi.query('my query');
+}
+
+function myQueryMock() {
+    return myApi.queryMock('query mock');
+}
+
+function myMutation(m) {
+    return myApi.mutation(m);
+}
+
+beforeEach(() => {
+    myApi = new MyApi();
+    api = new Api();
+    // api.registerApi(myApi, 'myapi');
+});
+
+afterEach(() => {
+    myApi = null;
+    api = null;
+});
+
+describe('Api', () => {
+    /*it('should register an api', () => {
+        expect(api.myapi instanceof MyApi).toBe(true);
+    });
+
+    it('should throw an error if given api does not implement WebApiInterface', () => {
+        class MyApi2 {}
+
+        expect(() => {
+            const myApi2 = new MyApi2();
+            const api2 = new Api();
+            api2.registerApi(myApi2, 'myapi2');
+        }).toThrowError();
+    });*/
+
+    describe('query registration', () => {
+        it('should register query function', () => {
+            api.registerQuery(myQuery);
+
+            expect(api.query.myQuery()).toBe('my query');
+        });
+
+        it('should register query function and use given function name', () => {
+            api.registerQuery(myQuery, 'myNewQuery');
+
+            expect(api.query.myNewQuery()).toBe('my query');
+        });
+
+        it('should throw an error if query to be registered is already registered', () => {
+            api.registerQuery(myQuery);
+
+            expect(() => {
+                api.registerQuery(myQuery);
+            }).toThrowError();
+        });
+    });
+
+    describe('mutation registration', () => {
+        it('should register mutation function', () => {
+            api.registerMutation(myMutation);
+
+            expect(api.mutation.myMutation('my mutation')).toBe('my mutation');
+        });
+
+        it('should register mutation function and use given function name', () => {
+            api.registerMutation(myMutation, 'myNewMutaion');
+
+            expect(api.mutation.myNewMutaion('my mutation')).toBe('my mutation');
+        });
+
+        it('should throw an error if mutation to be registered is already registered', () => {
+            api.registerMutation(myMutation);
+
+            expect(() => {
+                api.registerMutation(myMutation);
+            }).toThrowError();
+        });
+    });
+
+    describe('query mock registration', () => {
+        it('should register query function ', () => {
+            api.registerQueryMock(myQueryMock);
+
+            expect(api.query.myQueryMock()).toBe('query mock');
+        });
+
+        it('should register query function and use given function name', () => {
+            api.registerQueryMock(myQueryMock, 'myQuery');
+
+            expect(api.query.myQuery()).toBe('query mock');
+        });
+    });
+});

@@ -13,7 +13,7 @@ export function isFunction(func) {
 }
 
 /**
- * @param {int} n Positive integer
+ * @param {int} [n] Positive integer
  * @return {Promise<unknown>}
  */
 export function delay(n) {
