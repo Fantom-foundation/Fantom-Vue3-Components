@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.25.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.24.1...v0.25.0) (2022-09-08)
+
+
+### Features
+
+* add `implementsInterface` util function ([b939eb1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/b939eb172ee8c750664d338ef8d74cb18b5c2a9b))
+* create api plugin ([0a29f2b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0a29f2b217184e90b36a8e2b71ded16fc30aef46))
+
 ### [0.24.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.24.0...v0.24.1) (2022-09-06)
 
 
