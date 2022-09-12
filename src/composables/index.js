@@ -7,3 +7,4 @@ export * from './useFWindow/useFWindow.js';
 export * from './useFPopover/useFPopover.js';
 export * from './useFormatters/useFormatters.js';
 export * from './useLocale/useLocale.js';
+export * from './useGridPagination/useGridPagination.js';
