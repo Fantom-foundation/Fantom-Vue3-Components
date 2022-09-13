@@ -1,6 +1,7 @@
 <script setup>
 import { FUploadArea, FErrorMessages, FInfoText } from '../index.js';
 import { formInputProps, useFormInput } from '../../composables/useFormInput/useFormInput.js';
+import { ref, watch } from 'vue';
 
 const emit = defineEmits(['validation-state', 'update:value']);
 
@@ -19,6 +20,7 @@ const {
     changeValidationState,
     validate,
 } = useFormInput(props, emit);
+const isInvalid = ref(false);
 
 inputValue.value = [];
 
@@ -41,6 +43,10 @@ function onInvalid(errorMessages) {
     setValidationStt(errorMessages, true);
 }
 
+watch(validationState, (state) => {
+    isInvalid.value = state.errors.length > 0;
+});
+
 defineExpose({ validate });
 </script>
 
@@ -48,6 +54,7 @@ defineExpose({ validate });
     <FUploadArea
         v-bind="$attrs"
         :files-validator="validator"
+        :invalid="isInvalid"
         @change="onChange"
         @invalid="onInvalid"
         class="fuploadareaforminput"
