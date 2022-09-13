@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.25.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.25.2...v0.25.3) (2022-09-13)
+
+
+### Features
+
+* **DocumentMeta:** create plugin class ([d52557a](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d52557a8fe5a4496bd9d94375e55794f63094436))
+* **useDocumentMeta:** create composable ([2d6fa4e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/2d6fa4e673717daccc2aa63b156dbf2a440a3394))
+
+
+### Bug Fixes
+
+* **FUploadAreaFormInput:** fix style when input is invalid ([390713a](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/390713a2e1444fc4bdca0f35bdfd76ff2643b6c2))
+
 ### [0.25.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.25.1...v0.25.2) (2022-09-12)
 
 ### [0.25.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.25.0...v0.25.1) (2022-09-12)
