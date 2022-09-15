@@ -13,13 +13,13 @@ export * from './GridKeyboardNavigation.js';
 export * from './log.js';
 export * from './MouseoverController.js';
 export * from './simple-tree.js';
-export * from './tree.js';
 export * from './vue-helpers.js';
 export * from './string/string.js';
 export * from './number/number.js';
 export * from './mixins/DOMEvents.js';
 export * from './function/function.js';
 export * from './exposeMethods/exposeMethods.js';
+export * from './Tree/Tree.js';
 
 import { nanoid } from 'nanoid';
 import { toKebabCase } from './string/string.js';
