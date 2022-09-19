@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.26.0...v0.26.1) (2022-09-19)
+
+
+### Features
+
+* create `checkObjectProperties` utility function ([60a7ae6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/60a7ae69fdb4a488efc9b628e8e4bb45589521d4))
+
 ## [0.26.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.25.3...v0.26.0) (2022-09-15)
 
 
