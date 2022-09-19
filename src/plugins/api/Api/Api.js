@@ -2,7 +2,9 @@
  * Interface for api calls
  */
 export class Api {
+    /** @type {ApiQueries} */
     query = {};
+    /** @type {ApiMutations} */
     mutation = {};
 
     /**
