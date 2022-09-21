@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.26.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.26.1...v0.26.2) (2022-09-21)
+
+
+### Features
+
+* **api plugin:** add store for data fakes ([3176f41](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3176f4152d5dcbbddf6518a26e157cda4bb500f6))
+
 ### [0.26.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.26.0...v0.26.1) (2022-09-19)
 
 
