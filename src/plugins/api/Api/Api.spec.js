@@ -2,6 +2,9 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { Api } from './Api.js';
 import { WebApi } from '../WebApi/WebApi.js';
 
+let api = null;
+let myApi = null;
+
 class MyApi extends WebApi {
     query(q) {
         return q;
@@ -10,20 +13,17 @@ class MyApi extends WebApi {
         return m;
     }
     registerOnErrorFunction() {}
-    queryMock(q) {
-        return q;
+    queryMock(fn) {
+        return fn();
     }
 }
-
-let api = null;
-let myApi = null;
 
 function myQuery() {
     return myApi.query('my query');
 }
 
 function myQueryMock() {
-    return myApi.queryMock('query mock');
+    return myApi.queryMock(api._getFunctionMock(() => 'query mock', 'myQueryMock'));
 }
 
 function myMutation(m) {
@@ -111,6 +111,25 @@ describe('Api', () => {
             api.registerQueryMock(myQueryMock, 'myQuery');
 
             expect(api.query.myQuery()).toBe('query mock');
+        });
+    });
+
+    describe('fake data registration/usage', () => {
+        it('should be able to store a function that generates fake data and is used while mocking', () => {
+            api.registerQueryMock(myQueryMock);
+
+            api.fakeData('myQueryMock', () => 'fake data');
+
+            expect(api.query.myQueryMock()).toBe('fake data');
+        });
+
+        it('should restore fake data', () => {
+            api.registerQueryMock(myQueryMock);
+
+            api.fakeData('myQueryMock', () => 'fake data');
+            api.restoreDataFake('myQueryMock');
+
+            expect(api.query.myQueryMock()).toBe('query mock');
         });
     });
 });

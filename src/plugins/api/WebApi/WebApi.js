@@ -1,4 +1,6 @@
-// import { computed } from 'vue';
+import { useApi } from '../Api/useApi/useApi.js';
+
+const api = useApi().api;
 
 /**
  * Parent for web apis
@@ -22,6 +24,10 @@ export class WebApi {
         if (typeof onError === 'function') {
             this.#onError = onError;
         }
+    }
+
+    _getFunctionMock(funcMock, funcMockName) {
+        return api._getFunctionMock(funcMock, funcMockName);
     }
 
     /**

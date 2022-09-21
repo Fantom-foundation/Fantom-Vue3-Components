@@ -2,6 +2,7 @@
  * Interface for api calls
  */
 export class Api {
+    #dataFakes = {};
     /** @type {ApiQueries} */
     query = {};
     /** @type {ApiMutations} */
@@ -29,6 +30,31 @@ export class Api {
      */
     registerMutation(func, funcName) {
         this.#registerFunction({ func, funcName, type: 'mutation' });
+    }
+
+    /**
+     * Store function that returns data that will be used as a replacement of data used in api mocks
+     *
+     * @param {string} funcMockName Name of mock function
+     * @param {function} dataFunc
+     */
+    fakeData(funcMockName, dataFunc) {
+        this.#dataFakes[funcMockName] = dataFunc;
+    }
+
+    /**
+     * @param {string} funcMockName
+     */
+    restoreDataFake(funcMockName) {
+        delete this.#dataFakes[funcMockName];
+    }
+
+    restoreAllDataFakes() {
+        this.#dataFakes = {};
+    }
+
+    _getFunctionMock(funcMock, funcMockName) {
+        return funcMockName in this.#dataFakes ? this.#dataFakes[funcMockName] : funcMock;
     }
 
     #registerFunction({ func, funcName = '', type = 'query' }) {

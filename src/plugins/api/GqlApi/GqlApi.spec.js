@@ -4,8 +4,10 @@ import { WebApiInterface } from '../WebApi/WebApiInterface.js';
 import { MUTATION_RETURN_KEYS, QUERY_RETURN_KEYS } from '../WebApi/WebApi.spec.js';
 import { GqlApi } from './GqlApi.js';
 import { delay } from '@/utils/index.js';
+import { useApi } from '@/plugins/index.js';
 
-let api = null;
+const api = useApi().api;
+let gqlApi = null;
 
 function useQuery() {
     return { data: null, onResult() {} };
@@ -16,24 +18,24 @@ function useMutation() {
 }
 
 beforeEach(() => {
-    api = new GqlApi();
-    api.setup({ useQuery, useMutation });
+    gqlApi = new GqlApi();
+    gqlApi.setup({ useQuery, useMutation });
 });
 
 afterEach(() => {
-    api = null;
+    gqlApi = null;
 });
 
 describe('GqlApi', () => {
     it('should implement WebApi interface', () => {
         expect(() => {
-            implementsInterface(api, WebApiInterface);
+            implementsInterface(gqlApi, WebApiInterface);
         }).not.toThrowError();
     });
 
     describe('query()', () => {
         it('should return expected keys', () => {
-            const result = api.query({
+            const result = gqlApi.query({
                 query: `
                     query foo {
                         foo
@@ -47,7 +49,7 @@ describe('GqlApi', () => {
 
     describe('mutation()', () => {
         it('should return expected keys', () => {
-            const result = api.mutation({
+            const result = gqlApi.mutation({
                 mutation: `
                     mutation foo {
                         foo
@@ -61,7 +63,7 @@ describe('GqlApi', () => {
 
     describe('queryMock()', () => {
         it('should return expected object', () => {
-            const result = api.queryMock({
+            const result = gqlApi.queryMock({
                 mockFunction: ({ myFoo = 'foo' } = {}) => {
                     return { myFoo };
                 },
@@ -85,7 +87,7 @@ describe('GqlApi', () => {
         it('should call right functions after a tick', async () => {
             const spyOnResult = vi.fn(() => {});
 
-            const result = api.queryMock({
+            const result = gqlApi.queryMock({
                 mockFunction: ({ myFoo = 'foo' } = {}) => {
                     return { myFoo };
                 },
@@ -114,7 +116,7 @@ describe('GqlApi', () => {
         it('should call refetch function properly', async () => {
             const spyOnResult = vi.fn(() => {});
 
-            const result = api.queryMock({
+            const result = gqlApi.queryMock({
                 mockFunction: ({ myFoo = 'foo' } = {}) => {
                     return { myFoo };
                 },
@@ -149,7 +151,7 @@ describe('GqlApi', () => {
             const spyOnError = vi.fn(() => {});
             const errors = [{ message: 'error 1' }];
 
-            const result = api.queryMock({
+            const result = gqlApi.queryMock({
                 mockFunction: ({ myFoo = 'foo' } = {}) => {
                     return { myFoo };
                 },
@@ -169,6 +171,26 @@ describe('GqlApi', () => {
                 },
                 loading: { value: false },
             });
+        });
+
+        it('should use fake data function instead of mock function if fake data function is given', async () => {
+            function fooMock() {
+                return gqlApi.queryMock({
+                    mockFunction: ({ myFoo = 'foo' } = {}) => {
+                        return { myFoo };
+                    },
+                    fnName: 'fooMock',
+                });
+            }
+            api.registerQueryMock(fooMock, 'fooMock');
+
+            api.fakeData('fooMock', () => ({ myFoo: 'data fake' }));
+            const result = api.query.fooMock();
+            await delay();
+
+            expect(result.data.value).toBe('data fake');
+
+            api.restoreDataFake('fooMock');
         });
     });
 });

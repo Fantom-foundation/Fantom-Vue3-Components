@@ -91,9 +91,16 @@ export class GqlApi extends WebApi {
         };
     }
 
-    queryMock({ mockFunction = null, defaultData = null, silentErrors = false, pickFn = null, errors = [] }) {
+    queryMock({
+        mockFunction = null,
+        defaultData = null,
+        silentErrors = false,
+        pickFn = null,
+        errors = [],
+        fnName = '',
+    }) {
         const { result, loading, error, refetch, fetchMore, onResult, onError } = GqlApi.#useQueryMock({
-            mockFunction,
+            mockFunction: this._getFunctionMock(mockFunction, fnName),
             errors,
         });
 
