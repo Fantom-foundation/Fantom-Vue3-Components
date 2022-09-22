@@ -124,3 +124,16 @@ export const NoSymbol = () => ({
         </div>
     `,
 });
+
+export const Slots = () => ({
+    components: { FToken },
+    //language=HTML
+    template: `
+        <div>
+            <FToken :token="{ symbol: 'FTM', logo: 'avatar.png' }" :value="123456.789">
+                <template #value="{ value }"><b>{{ value }}</b></template>
+                <template #symbol="{ symbol }">{{ symbol.toLowerCase() }}</template>
+            </FToken>
+        </div>
+    `,
+});

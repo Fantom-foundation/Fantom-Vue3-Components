@@ -82,8 +82,12 @@ const cTitle = computed(() => (props.value ? `${props.value} ${cSymbol.value}` :
                 :content-loaded="!usePlaceholder || cValue !== ''"
                 data-testid="placeholder"
             >
-                <span v-if="cValue" class="ftoken_value">{{ cValue }}</span>
-                <span v-if="cSymbol" class="ftoken_symbol">{{ cSymbol }}</span>
+                <span v-if="cValue" class="ftoken_value">
+                    <slot name="value" :value="cValue">{{ cValue }}</slot>
+                </span>
+                <span v-if="cSymbol" class="ftoken_symbol">
+                    <slot name="symbol" :symbol="cSymbol">{{ cSymbol }}</slot>
+                </span>
             </FPlaceholder>
         </span>
     </span>
