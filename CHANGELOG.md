@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.27.0...v0.27.1) (2022-09-29)
+
+
+### Features
+
+* **FDataGrid:** add `dataKey` prop ([446fdfb](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/446fdfbff3554c07bbbfe93ba856c9c6c08ac69b))
+* **GqlApi:** add `enabled` option ([0099deb](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0099deb719b9bffe12bc14dedf0942424ab94c13))
+
 ## [0.27.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.26.2...v0.27.0) (2022-09-22)
 
 
