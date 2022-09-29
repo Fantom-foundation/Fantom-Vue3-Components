@@ -74,6 +74,7 @@ describe('GqlApi', () => {
                 data: { value: 'default' },
                 result: { value: null },
                 loading: { value: true },
+                enabled: { value: true },
                 error: { value: null },
             });
             expect(result.dataPromise instanceof Promise).toBe(true);

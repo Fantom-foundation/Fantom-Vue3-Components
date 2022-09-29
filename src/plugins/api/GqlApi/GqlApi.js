@@ -35,14 +35,17 @@ export class GqlApi extends WebApi {
         silentErrors = false,
         fetchPolicy = 'network-only',
         clientId = 'default',
+        disabled = false,
         options = {},
     }) {
+        const enabled = ref(!disabled);
         const { result, loading, error, refetch, fetchMore, onResult, onError } = this.#useQuery(
             query,
             variables || null,
             {
                 fetchPolicy,
                 clientId,
+                enabled,
                 ...options,
             }
         );
@@ -56,6 +59,7 @@ export class GqlApi extends WebApi {
             dataPromise: this._dataPromise(onResult, onError, defaultData, pickFn),
             result,
             loading,
+            enabled,
             error,
             refetch,
             fetchMore,
@@ -97,11 +101,14 @@ export class GqlApi extends WebApi {
         silentErrors = false,
         pickFn = null,
         errors = [],
+        disabled = false,
         fnName = '',
     }) {
+        const enabled = ref(!disabled);
         const { result, loading, error, refetch, fetchMore, onResult, onError } = GqlApi.#useQueryMock({
             mockFunction: this._getFunctionMock(mockFunction, fnName),
             errors,
+            enabled,
         });
 
         const data = computed(() => this._useResult(result, defaultData, pickFn));
@@ -113,6 +120,7 @@ export class GqlApi extends WebApi {
             dataPromise: this._dataPromise(onResult, onError, defaultData, pickFn),
             result,
             loading,
+            enabled,
             error,
             refetch,
             fetchMore,
@@ -121,7 +129,7 @@ export class GqlApi extends WebApi {
         };
     }
 
-    static #useQueryMock({ mockFunction, delay = 0, errors = [] }) {
+    static #useQueryMock({ mockFunction, delay = 0, errors = [], enabled = ref(true) }) {
         const result = ref(null);
         const loading = ref(true);
         const error = ref(null);
@@ -158,7 +166,7 @@ export class GqlApi extends WebApi {
                 if (typeof onErrorFunction === 'function') {
                     onErrorFunction({ errors });
                 }
-            } else {
+            } else if (enabled.value) {
                 result.value = mockFunction(...args);
 
                 if (typeof onResultFunction === 'function') {
@@ -174,6 +182,7 @@ export class GqlApi extends WebApi {
         return {
             result,
             loading,
+            enabled,
             error,
             refetch,
             fetchMore,

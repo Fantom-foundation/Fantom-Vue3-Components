@@ -8,6 +8,7 @@ export const QUERY_RETURN_KEYS = [
     'loading',
     'error',
     'refetch',
+    'enabled',
     'fetchMore',
     'onResult',
     'onError',
