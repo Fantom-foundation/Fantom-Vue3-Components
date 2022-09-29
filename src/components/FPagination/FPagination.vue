@@ -297,6 +297,11 @@ export default {
     },
 
     methods: {
+        reset() {
+            this.dCurrPage = 1;
+            this.prevPage = -1;
+        },
+
         /**
          * @param {int|'first'|'last'|'prev'|'next'} _pageNum
          * @return {boolean} `true` if page was changed

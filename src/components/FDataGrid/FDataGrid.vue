@@ -305,6 +305,13 @@ export default {
             type: Function,
             default: null,
         },
+        /**
+         * If dataKey is changed, treat items as new set of data
+         */
+        dataKey: {
+            type: [String, Number],
+            default: '',
+        },
         /** Id of `<table>` element */
         tableId: {
             type: String,
@@ -425,6 +432,7 @@ export default {
             dItems: [],
             dTableId: this.tableId,
             dLoading: this.loading,
+            newItems: true,
             /** @type {FPaginationState} */
             paginationState: {},
             visibleColumnsNum: 0,
@@ -550,6 +558,10 @@ export default {
         ['filters.onSubmit'](value) {
             this.onFiltersChange(value);
             // console.log('filters.onSubmit change: ', value);
+        },
+
+        dataKey() {
+            this.resetPagination();
         },
     },
 
@@ -697,7 +709,7 @@ export default {
             } else if (items) {
                 const pState = this.getPaginationState();
 
-                if (this.infiniteScroll && 'currPage' in pState && !this._reload) {
+                if (this.infiniteScroll && 'currPage' in pState && !this._reload && !this.newItems) {
                     if (pState.currPage < pState.prevPage) {
                         this.dItems = items.concat(this.dItems);
                     } else {
@@ -705,6 +717,7 @@ export default {
                     }
                 } else {
                     this.dItems = items;
+                    this.newItems = false;
                 }
 
                 this._reload = false;
@@ -1418,6 +1431,24 @@ export default {
 
         clearItems() {
             this.dItems = [];
+        },
+
+        resetPagination() {
+            const { $refs } = this;
+            const comp = this.infiniteScroll && $refs.tbody ? $refs.tbody : $refs.pagination;
+
+            this.newItems = true;
+
+            if (comp) {
+                comp.reset();
+
+                const pagination = this.getPaginationRef();
+                if (pagination) {
+                    pagination.goToPage(1);
+                }
+
+                this.clearItems();
+            }
         },
 
         /**

@@ -258,6 +258,8 @@ export default {
             this.lastTopPage = this.currPage;
             this.lastBottomPage = this.currPage;
             this.dTotalItems = this.totalItems;
+
+            this.$refs.pagination.reset();
         },
 
         /**

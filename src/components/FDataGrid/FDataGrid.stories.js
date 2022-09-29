@@ -1761,6 +1761,90 @@ export const InfiniteScroll = () => ({
     },
 });
 
+export const DataKey = () => ({
+    components: { FDataGrid, FFilters, FFormInput },
+    template: `
+        <div>
+            <FDataGrid
+                :data-key="dataKey"
+                infinite-scroll
+                strategy="remote"
+                @change="onChange"
+                :columns="columns"
+                :items="items"
+                :total-items="totalItems"
+                :per-page="perPage"
+                infinite-scroll-root-margin="200px 0px"
+                sticky-head
+            >
+                <template #header>
+                    <button @click="onChangeDataKey">Change data key</button>
+                </template>
+            </FDataGrid>
+        </div>
+    `,
+    data() {
+        return {
+            dataKey: 1,
+            items: [],
+            perPage: 25,
+            totalItems: 0,
+            // searchColumns: ['first_name', 'last_name', 'email', 'ip_address'],
+        };
+    },
+    computed: {
+        columns() {
+            const cols = clone(columns);
+
+            cols[1].sortable = true;
+            cols[2].sortable = true;
+            cols[3].sortable = true;
+
+            return cols;
+        },
+    },
+    created() {
+        this.items = this.fetchItems();
+    },
+    methods: {
+        onChangeDataKey() {
+            this.dataKey += 1;
+            // this.items = this.fetchItems();
+        },
+
+        async fetchItems(event) {
+            const data = await this.fetchPagedRows(event);
+
+            this.totalItems = data.totalItems;
+
+            return data.rows;
+        },
+
+        onChange(event) {
+            console.log('change', event);
+            this.items = this.fetchItems(event);
+        },
+
+        /**
+         * Faking a request to a server...
+         */
+        fetchPagedRows({ currPage = 1, perPage = this.perPage, timeout = 1000 } = {}) {
+            return new Promise((resolve) =>
+                setTimeout(() => {
+                    let data = clone(rows);
+
+                    console.log(currPage);
+
+                    resolve({
+                        totalItems: data.length,
+                        rows: data.slice((currPage - 1) * perPage, currPage * perPage),
+                    });
+                }, timeout)
+            );
+        },
+    },
+});
+
 export const EditModeRow = () => ({
     components: { FDataGrid, FInput, FComboBox, FOption },
     template: `
