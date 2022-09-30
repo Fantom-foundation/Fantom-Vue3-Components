@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.27.1...v0.27.2) (2022-09-30)
+
+
+### Features
+
+* **FDataGrid:** disable FInfiniteScroll if there are no data ([44bc7ea](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/44bc7ea70aaaf905b4598b634c7dc420529493dd))
+
 ### [0.27.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.27.0...v0.27.1) (2022-09-29)
 
 
