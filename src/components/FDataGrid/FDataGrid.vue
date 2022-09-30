@@ -60,7 +60,7 @@
                     tag="tbody"
                     intersection-observer-tag="tr"
                     :loading="cLoading"
-                    :disabled="!infiniteScroll"
+                    :disabled="!infiniteScroll || dItems.length === 0"
                     :total-items="totalItems"
                     :per-page="perPage"
                     :curr-page="currPage"
