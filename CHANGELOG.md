@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.28.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.27.2...v0.28.0) (2022-10-03)
+
+
+### Features
+
+* **FViewSwitcher:** add support for view transitions ([8d54840](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/8d54840ed08d11c75fbc9e5aa5378a57e9a1beb8))
+* **FViewTransition:** create component ([1d093a8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/1d093a865fe4c1987b61c6fd58044bc7155d44dd))
+* **Tree:** create `getFullNode` method ([5caf565](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5caf565caf94da8fc0f9837cf4bee9483adb59b4))
+
 ### [0.27.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.27.1...v0.27.2) (2022-09-30)
 
 
