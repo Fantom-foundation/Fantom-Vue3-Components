@@ -28,6 +28,15 @@ export class Tree {
 
     /**
      * @param {*} value
+     * @param {string} key
+     * @return {{ node: TreeNode, parents: [], level: number, index: number}}
+     */
+    getFullNode(value, key) {
+        return this.#findNodeBy(value, key);
+    }
+
+    /**
+     * @param {*} value
      * @param {*} parentValue
      * @param {string} key
      * @return {TreeNode|null}
@@ -70,6 +79,11 @@ export class Tree {
         return node.parents.length > 0 ? node.parents[node.parents.length - 1] : null;
     }
 
+    /**
+     * @param {*} value
+     * @param {string} key
+     * @return {{ node: TreeNode, parents: [], level: number, index: number}}
+     */
     #findNodeBy(value, key = 'id') {
         return findNodeBy(this._tree, value, key);
     }

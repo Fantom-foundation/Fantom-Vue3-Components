@@ -48,6 +48,22 @@ describe('Tree', () => {
         expect(tree.getNode('foo2', 'key')).toEqual(TREE()[0]._c[0]);
     });
 
+    it('should get tree node with full info by given key', () => {
+        expect(tree.getFullNode('foo2', 'key')).toEqual({
+            node: TREE()[0]._c[0],
+            parents: [TREE()[0]],
+            level: 1,
+            index: 0,
+        });
+
+        expect(tree.getFullNode('Component2', 'id')).toEqual({
+            node: TREE()[1],
+            parents: [],
+            level: 0,
+            index: 1,
+        });
+    });
+
     it('should get a parent node by value', () => {
         expect(tree.getParentByValue('Component111', 'Component1')).toEqual(TREE()[0]);
     });
