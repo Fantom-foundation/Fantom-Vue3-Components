@@ -93,3 +93,49 @@ export const GoBack = () => ({
         },
     },
 });
+
+export const Transitions = () => ({
+    components: { FViewSwitcher, FButton, Component1, Component2 },
+    template: `
+        <div class="fviewtransition-absolutechildren">
+            <FButton label="Go back" @click="goBack()" />
+            <FButton label="Component 2" @click="switchTo('Component2')" />
+            <br />
+            <FViewSwitcher
+                ref="switcher"
+                enable-transitions
+                forward-transition="slide-left"
+                backward-transition="slide-right"
+                :id="id"
+                :components="{Component1, Component2}"
+                :app-structure="[
+                    {
+                        id: 'Component1',
+                        type: 'component',
+                        _c: [
+                            {
+                                id: 'Component2',
+                                type: 'component',
+                            },
+                        ],
+                    },
+                ]"
+            />
+        </div>
+    `,
+    data() {
+        return {
+            id: 'id123',
+            Component1: markRaw(Component1),
+            Component2: markRaw(Component2),
+        };
+    },
+    methods: {
+        goBack() {
+            this.$refs.switcher.goBack();
+        },
+        switchTo(componentName) {
+            this.$refs.switcher.switchTo(componentName);
+        },
+    },
+});
