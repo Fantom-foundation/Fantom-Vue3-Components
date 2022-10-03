@@ -63,4 +63,5 @@ export { default as FToken } from './FToken/FToken.vue';
 export { default as FUploadArea } from './FUploadArea/FUploadArea.vue';
 export { default as FUploadAreaFormInput } from './FUploadAreaFormInput/FUploadAreaFormInput.vue';
 export { default as FViewSwitcher } from './FViewSwitcher/FViewSwitcher.vue';
+export { default as FViewTransition } from './FViewTransition/FViewTransition.vue';
 export { default as FStyledNumber } from './FStyledNumber/FStyledNumber.vue';
