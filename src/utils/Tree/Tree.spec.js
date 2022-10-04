@@ -7,26 +7,31 @@ function TREE() {
     return [
         {
             id: 'Component1',
-            isComponent: true,
             key: 'foo1',
             _c: [
                 {
                     id: 'Component11',
-                    isComponent: true,
                     key: 'foo2',
                     _c: [
                         {
                             id: 'Component111',
-                            isComponent: true,
                             key: 'foo3',
                         },
                     ],
+                },
+                {
+                    id: 'Component12',
+                },
+                {
+                    id: 'Component13',
                 },
             ],
         },
         {
             id: 'Component2',
-            isComponent: true,
+        },
+        {
+            id: 'Component3',
         },
     ];
 }
@@ -86,5 +91,55 @@ describe('Tree', () => {
 
     it('should get direct parent of the node', () => {
         expect(tree.getParent('Component111')).toEqual(TREE()[0]._c[0]);
+    });
+
+    describe('getSiblings()', () => {
+        it('should return expected outcome if node is not found', () => {
+            expect(tree.getSiblings('foo')).toEqual({
+                previousSibling: null,
+                node: null,
+                nextSibling: null,
+            });
+        });
+
+        it('should return expected outcome if the node has no next sibling', () => {
+            const data = TREE();
+
+            expect(tree.getSiblings('Component3')).toEqual({
+                previousSibling: data[1],
+                node: data[2],
+                nextSibling: null,
+            });
+        });
+
+        it('should return expected outcome if the node has no previous sibling', () => {
+            const data = TREE();
+
+            expect(tree.getSiblings('Component1')).toEqual({
+                previousSibling: null,
+                node: data[0],
+                nextSibling: data[1],
+            });
+        });
+
+        it('should return expected outcome if the node has both siblings', () => {
+            const data = TREE();
+
+            expect(tree.getSiblings('Component2')).toEqual({
+                previousSibling: data[0],
+                node: data[1],
+                nextSibling: data[2],
+            });
+        });
+
+        it('should return expected outcome if the node has both siblings and is not on the root level', () => {
+            const data = TREE();
+
+            expect(tree.getSiblings('Component12')).toEqual({
+                previousSibling: data[0]._c[0],
+                node: data[0]._c[1],
+                nextSibling: data[0]._c[2],
+            });
+        });
     });
 });

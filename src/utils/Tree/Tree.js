@@ -19,7 +19,7 @@ export class Tree {
 
     /**
      * @param {*} value
-     * @param {string} key
+     * @param {string} [key]
      * @return {TreeNode|null}
      */
     getNode(value, key) {
@@ -28,8 +28,8 @@ export class Tree {
 
     /**
      * @param {*} value
-     * @param {string} key
-     * @return {{ node: TreeNode, parents: [], level: number, index: number}}
+     * @param {string} [key]
+     * @return {TreeFullNode}
      */
     getFullNode(value, key) {
         return this.#findNodeBy(value, key);
@@ -61,7 +61,7 @@ export class Tree {
 
     /**
      * @param {*} value
-     * @param {string} key
+     * @param {string} [key]
      * @return {Array}
      */
     getParents(value, key) {
@@ -70,7 +70,7 @@ export class Tree {
 
     /**
      * @param {*} value
-     * @param {string} key
+     * @param {string} [key]
      * @return {TreeNode|null}
      */
     getParent(value, key) {
@@ -81,8 +81,39 @@ export class Tree {
 
     /**
      * @param {*} value
+     * @param {string} [key]
+     * @return {{node: TreeNode|null, previousSibling: TreeNode|null, nextSibling: TreeNode|null}}
+     */
+    getSiblings(value, key) {
+        const node = this.#findNodeBy(value, key);
+        const result = {
+            previousSibling: null,
+            node: null,
+            nextSibling: null,
+        };
+        let nodes = null;
+
+        if (node.node) {
+            nodes = node.parents[node.parents.length - 1]?._c || this._tree;
+
+            result.node = node.node;
+
+            if (node.index > 0) {
+                result.previousSibling = nodes[node.index - 1];
+            }
+
+            if (node.index < nodes.length - 1) {
+                result.nextSibling = nodes[node.index + 1];
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * @param {*} value
      * @param {string} key
-     * @return {{ node: TreeNode, parents: [], level: number, index: number}}
+     * @return {TreeFullNode}
      */
     #findNodeBy(value, key = 'id') {
         return findNodeBy(this._tree, value, key);
@@ -92,4 +123,12 @@ export class Tree {
 /**
  * @typedef {Object} TreeNode
  * @property {Array} [_c] Array of child nodes
+ */
+
+/**
+ * @typedef {Object} TreeFullNode
+ * @property {TreeNode|null} node
+ * @property {TreeNode[]} parents
+ * @property {number} level
+ * @property {number} index
  */
