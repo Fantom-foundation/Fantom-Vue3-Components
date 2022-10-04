@@ -21,6 +21,10 @@ const Component3 = {
     template: `<div data-testid="component3"></div>`,
 };
 
+const RouterView = {
+    template: `<div data-testid="router-view"></div>`,
+};
+
 function APP_STRUCTURE() {
     return [
         {
@@ -41,7 +45,14 @@ function APP_STRUCTURE() {
 }
 
 function createWrapper(options = {}) {
-    return mount(FViewSwitcher, options);
+    return mount(FViewSwitcher, {
+        ...options,
+        global: {
+            stubs: {
+                RouterView,
+            },
+        },
+    });
 }
 
 afterEach(() => {
@@ -146,6 +157,28 @@ describe('FViewSwitcher', () => {
             await nextTick();
             expect(wrapper.findComponent(Component1).exists()).toBe(true);
         });
+
+        it('should be able to switch to previous sibling component if appStructure is given', async () => {
+            wrapper = createWrapper({
+                props: {
+                    defaultComponent: 'Component2',
+                    appStructure: APP_STRUCTURE(),
+                    components: {
+                        Component1: markRaw(Component1),
+                        Component2: markRaw(Component2),
+                    },
+                    id: ID,
+                },
+            });
+
+            const { goBack } = useMethods(ID).getMethods();
+            if (goBack) {
+                goBack('Component2', true);
+            }
+
+            await nextTick();
+            expect(wrapper.findComponent(Component1).exists()).toBe(true);
+        });
     });
 
     describe('switcher with transitions', () => {
@@ -211,5 +244,17 @@ describe('FViewSwitcher', () => {
         });
     });
 
-    describe.todo('switching routes');
+    describe('switching routes', () => {
+        it('should render RouterView', () => {
+            wrapper = createWrapper({
+                props: {
+                    type: 'routes',
+                    appStructure: APP_STRUCTURE(),
+                    id: ID,
+                },
+            });
+
+            expect(wrapper.findComponent(RouterView).exists()).toBe(true);
+        });
+    });
 });

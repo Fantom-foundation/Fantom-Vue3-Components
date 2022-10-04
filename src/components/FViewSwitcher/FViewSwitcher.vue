@@ -1,5 +1,5 @@
 <script setup>
-import { shallowRef, ref, onMounted } from 'vue';
+import { shallowRef, ref, onMounted, watch } from 'vue';
 import { useMethods } from '../../composables/index.js';
 import { Tree } from '../../utils/index.js';
 import { FViewTransition } from '../index.js';
@@ -45,36 +45,56 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    /** Vue router */
+    router: {
+        type: Object,
+        default: null,
+    },
 });
 
 const component = shallowRef(null);
 const viewTransition = ref(null);
 const appStructure = new Tree(props.appStructure);
-let prevComponentName = '';
+let prevAppStructureNodeId = '';
 
 switchTo(getDefaultComponentName());
 
-function switchTo(componentName) {
-    runTransition(prevComponentName, componentName);
+function switchTo(appStructureNodeId) {
+    if (props.type === 'components') {
+        runTransition(prevAppStructureNodeId, appStructureNodeId);
 
-    component.value = getComponent(componentName);
-    prevComponentName = componentName;
+        component.value = getComponent(appStructureNodeId);
+        prevAppStructureNodeId = appStructureNodeId;
 
-    return component.value;
-}
-
-function goBack(componentName) {
-    const parentComponent = appStructure.getParent(componentName);
-
-    if (parentComponent) {
-        switchTo(parentComponent.id);
+        return component.value;
+    } else if (props.router && appStructureNodeId) {
+        // eslint-disable-next-line vue/no-mutating-props
+        props.router.push({ name: appStructureNodeId });
     }
 }
 
-function runTransition(comp1Name, comp2Name) {
+function goBack(appStructureNodeId, useSiblings) {
+    let node = null;
+
+    if (useSiblings) {
+        const siblings = appStructure.getSiblings(appStructureNodeId);
+
+        if (siblings.previousSibling) {
+            node = siblings.previousSibling;
+        }
+    } else {
+        node = appStructure.getParent(appStructureNodeId);
+    }
+
+    if (node) {
+        switchTo(node.id);
+    }
+}
+
+function runTransition(prevAppStructureNodeId, appStructureNodeId) {
     if (props.enableTransitions && props.appStructure.length > 0 && viewTransition.value) {
-        const node1 = appStructure.getFullNode(comp1Name);
-        const node2 = appStructure.getFullNode(comp2Name);
+        const node1 = appStructure.getFullNode(prevAppStructureNodeId);
+        const node2 = appStructure.getFullNode(appStructureNodeId);
         let forward = false;
 
         if (node1.node && node2.node) {
@@ -107,8 +127,17 @@ function getDefaultComponentName() {
     return props.defaultComponent || Object.keys(props.components)[0] || '';
 }
 
+if (props.enableTransitions && props.router && props.type === 'routes' && props.appStructure.length > 0) {
+    watch(
+        () => props.router.currentRoute.value.name,
+        (routeName, prevRouteName) => {
+            runTransition(prevRouteName, routeName);
+        }
+    );
+}
+
 onMounted(() => {
-    prevComponentName = getDefaultComponentName();
+    prevAppStructureNodeId = getDefaultComponentName();
 });
 
 defineExpose({
@@ -131,19 +160,34 @@ export default {
 
 <template>
     <div class="fviewswitcher">
-        <FViewTransition
-            v-if="enableTransitions"
-            ref="viewTransition"
-            :forward-transition="forwardTransition"
-            :backward-transition="backwardTransition"
-        >
+        <template v-if="enableTransitions">
             <template v-if="type === 'components'">
-                <component :is="component" v-bind="$attrs"></component>
+                <FViewTransition
+                    ref="viewTransition"
+                    :forward-transition="forwardTransition"
+                    :backward-transition="backwardTransition"
+                >
+                    <Component :is="component" v-bind="$attrs" />
+                </FViewTransition>
             </template>
-        </FViewTransition>
+            <template v-else>
+                <RouterView v-slot="{ Component }">
+                    <FViewTransition
+                        ref="viewTransition"
+                        :forward-transition="forwardTransition"
+                        :backward-transition="backwardTransition"
+                    >
+                        <Component :is="Component" />
+                    </FViewTransition>
+                </RouterView>
+            </template>
+        </template>
         <template v-else>
             <template v-if="type === 'components'">
-                <component :is="component" v-bind="$attrs"></component>
+                <Component :is="component" v-bind="$attrs" />
+            </template>
+            <template v-else>
+                <RouterView />
             </template>
         </template>
     </div>
