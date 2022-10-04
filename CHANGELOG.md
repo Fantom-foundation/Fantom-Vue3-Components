@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.0...v0.28.1) (2022-10-04)
+
+
+### Features
+
+* **FViewSwitcher:** add support for RouterView ([64eed48](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/64eed48450133b3f442e10e19a3430eccb779ace))
+* **Tree:** add `getSiblings` method ([ec1bcdd](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/ec1bcdd4e95c3c049172b30153e156546c5b98a9))
+
 ## [0.28.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.27.2...v0.28.0) (2022-10-03)
 
 
