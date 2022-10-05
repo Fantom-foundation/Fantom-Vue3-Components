@@ -1,7 +1,7 @@
 <script setup>
 import { shallowRef, ref, onMounted, watch } from 'vue';
 import { useMethods } from '../../composables/index.js';
-import { Tree } from '../../utils/index.js';
+import { getUniqueId, Tree } from '../../utils/index.js';
 import { FViewTransition } from '../index.js';
 
 const props = defineProps({
@@ -54,6 +54,7 @@ const props = defineProps({
 
 const component = shallowRef(null);
 const viewTransition = ref(null);
+const key = ref(getUniqueId());
 const appStructure = new Tree(props.appStructure);
 let prevAppStructureNodeId = '';
 
@@ -89,6 +90,10 @@ function goBack(appStructureNodeId, useSiblings) {
     if (node) {
         switchTo(node.id);
     }
+}
+
+function reload() {
+    key.value = getUniqueId();
 }
 
 function runTransition(prevAppStructureNodeId, appStructureNodeId) {
@@ -143,12 +148,14 @@ onMounted(() => {
 defineExpose({
     switchTo,
     goBack,
+    reload,
 });
 
 const { registerMethods } = useMethods(props.id, true);
 registerMethods({
     switchTo,
     goBack,
+    reload,
 });
 </script>
 
@@ -167,11 +174,11 @@ export default {
                     :forward-transition="forwardTransition"
                     :backward-transition="backwardTransition"
                 >
-                    <Component :is="component" v-bind="$attrs" />
+                    <Component :is="component" :key="key" v-bind="$attrs" />
                 </FViewTransition>
             </template>
             <template v-else>
-                <RouterView v-slot="{ Component }">
+                <RouterView :key="key" v-slot="{ Component }">
                     <FViewTransition
                         ref="viewTransition"
                         :forward-transition="forwardTransition"
@@ -184,10 +191,10 @@ export default {
         </template>
         <template v-else>
             <template v-if="type === 'components'">
-                <Component :is="component" v-bind="$attrs" />
+                <Component :is="component" :key="key" v-bind="$attrs" />
             </template>
             <template v-else>
-                <RouterView />
+                <RouterView :key="key" />
             </template>
         </template>
     </div>

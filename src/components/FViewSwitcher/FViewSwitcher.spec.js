@@ -10,7 +10,12 @@ const ID = 'testid123';
 let wrapper = null;
 
 const Component1 = {
-    template: `<div data-testid="component1"></div>`,
+    template: `<div data-testid="component1">{{ content }}</div>`,
+    data() {
+        return {
+            content: 'foo',
+        };
+    },
 };
 
 const Component2 = {
@@ -22,7 +27,12 @@ const Component3 = {
 };
 
 const RouterView = {
-    template: `<div data-testid="router-view"></div>`,
+    template: `<div data-testid="router-view">{{ content }}</div>`,
+    data() {
+        return {
+            content: 'foo',
+        };
+    },
 };
 
 function APP_STRUCTURE() {
@@ -179,6 +189,30 @@ describe('FViewSwitcher', () => {
             await nextTick();
             expect(wrapper.findComponent(Component1).exists()).toBe(true);
         });
+
+        it('should reload component', async () => {
+            wrapper = createWrapper({
+                props: {
+                    components: {
+                        Component1: markRaw(Component1),
+                    },
+                    id: ID,
+                },
+            });
+
+            wrapper.findComponent(Component1).vm.content = 'new';
+            await nextTick();
+
+            expect(wrapper.text()).toContain('new');
+
+            const { reload } = useMethods(ID).getMethods();
+            if (reload) {
+                reload();
+            }
+            await nextTick();
+
+            expect(wrapper.text()).toContain('foo');
+        });
     });
 
     describe('switcher with transitions', () => {
@@ -242,6 +276,33 @@ describe('FViewSwitcher', () => {
 
             expect(transitions.attributes('data-test-transition-name')).toBe('slide-left');
         });
+
+        it('should reload component', async () => {
+            wrapper = createWrapper({
+                props: {
+                    enableTransitions: true,
+                    forwardTransition: 'slide-left',
+                    backwardTransition: 'slide-right',
+                    components: {
+                        Component1: markRaw(Component1),
+                    },
+                    id: ID,
+                },
+            });
+
+            wrapper.findComponent(Component1).vm.content = 'new';
+            await nextTick();
+
+            expect(wrapper.text()).toContain('new');
+
+            const { reload } = useMethods(ID).getMethods();
+            if (reload) {
+                reload();
+            }
+            await nextTick();
+
+            expect(wrapper.text()).toContain('foo');
+        });
     });
 
     describe('switching routes', () => {
@@ -255,6 +316,25 @@ describe('FViewSwitcher', () => {
             });
 
             expect(wrapper.findComponent(RouterView).exists()).toBe(true);
+        });
+
+        it('should reload view', async () => {
+            wrapper = createWrapper({
+                props: {
+                    type: 'routes',
+                    appStructure: APP_STRUCTURE(),
+                    id: ID,
+                },
+            });
+
+            wrapper.findComponent(RouterView).vm.content = 'new';
+            const { reload } = useMethods(ID).getMethods();
+            if (reload) {
+                reload();
+            }
+            await nextTick();
+
+            expect(wrapper.text()).toContain('foo');
         });
     });
 });
