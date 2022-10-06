@@ -1,5 +1,5 @@
 <template>
-    <span :id="id" class="finput" :class="classes" @click="onClick">
+    <span :id="id" class="finput" :class="[clas, classes]" @click="onClick">
         <slot name="top" v-bind="slotProps">
             <FLabel v-if="!noLabel" native :id="labeledById" :required="required">
                 <slot name="label">{{ label }}</slot>
@@ -142,6 +142,11 @@ export default {
         },
         /** Size of input, 'large' | 'small' */
         fieldSize: {
+            type: String,
+            default: '',
+        },
+        /** Css class to be added to the root element */
+        clas: {
             type: String,
             default: '',
         },
