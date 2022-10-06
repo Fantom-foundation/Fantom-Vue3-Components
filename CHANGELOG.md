@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.2...v0.28.3) (2022-10-06)
+
+
+### Features
+
+* **FInput:** add support for adding css class to the root element ([3b523b4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3b523b46caf39d7409cfa1a544687829d4893731))
+
 ### [0.28.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.1...v0.28.2) (2022-10-05)
 
 
