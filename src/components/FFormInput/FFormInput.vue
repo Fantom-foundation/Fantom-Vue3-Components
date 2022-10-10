@@ -1,5 +1,5 @@
 <template>
-    <div class="fforminput" :class="classType">
+    <div class="fforminput" :class="[clas, classType]">
         <FInput
             v-if="_fInputTypes.includes(type)"
             ref="input"
@@ -124,6 +124,11 @@ export default {
             default: '',
         },
         modelValue: {},
+        /** Css class to be added to the root element */
+        clas: {
+            type: String,
+            default: '',
+        },
     },
 
     data() {
