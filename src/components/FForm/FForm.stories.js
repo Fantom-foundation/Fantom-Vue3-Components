@@ -124,6 +124,122 @@ export const Default = () => ({
     },
 });
 
+export const Disabled = () => ({
+    components: { FForm, FFormInput, FButton },
+    template: `
+        <FForm :disabled="disabled" class="grid" @submit="onSubmit" v-slot="fprops">
+            <fieldset class="col-6">
+                <legend>Default form</legend>
+                <div>
+                    <div class="mab-5">
+                        <FFormInput disabled placeholder="disabled" type="text" label="text" name="text" />
+                        <FFormInput type="email" label="email" name="email" />
+                        <FFormInput type="number" label="number" name="number" />
+                        <FFormInput type="date" label="date" name="date" />
+                        <FFormInput type="time" label="time" name="time" />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="textarea" label="textarea" name="textarea" />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="passwordfield" label="passwordfield" name="passwordfield" />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="datetime" label="datetime" name="datetime" />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="combobox" select-mode label="combobox" name="combobox" :data="[
+                            { label: '---', value: '' },
+                            { label: 'Option 1', value: '10' },
+                            { label: 'Option 2', value: '20' },
+                            { label: 'Option 3', value: '30' },
+                        ]" />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="slider" label="slider" name="slider" use-lower-fill-bar step="10" />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput
+                            type="select"
+                            label="select"
+                            name="select"
+                            :data="[
+                                { label: '---', value: '' },
+                                { label: 'Option 1', value: '10' },
+                                { label: 'Option 2', value: '20' },
+                                { label: 'Option 3', value: '30' },
+                            ]"
+                        />
+                        <FFormInput
+                            type="dropdownlistbox"
+                            label="dropdownlistbox"
+                            name="dropdownlistbox"
+                            :data="[
+                                { label: '---', value: '' },
+                                { label: 'Option 1', value: '10' },
+                                { label: 'Option 2', value: '20' },
+                                { label: 'Option 3', value: '30' },
+                            ]"
+                        />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="checkbox" label="checkbox" name="checkbox" />
+                        <br />
+                        <FFormInput
+                            type="checkboxgroup"
+                            label="checkboxgroup"
+                            name="checkboxgroup"
+                            :data="{ '10': 'Checkbox 1', '20': 'Checkbox 2' }"
+                        />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput type="radio" label="radio" value="10" name="radio" />
+                        <FFormInput type="radio" label="Radio 2" value="20" name="radio" />
+                        <br />
+                        <FFormInput
+                            type="radiogroup"
+                            label="radiogroup"
+                            name="radiogroup"
+                            :data="{ '10': 'Radio 1', '20': 'Radio 2', '30': 'Radio 3' }"
+                        />
+                    </div>
+                    <div class="mab-5">
+                        <FFormInput
+                            type="listbox"
+                            name="listbox"
+                            label="Listbox"
+                            :data="[
+                                { label: 'item 1', value: '10' },
+                                { label: 'item 2', id: 'myid3', value: '20' },
+                                { label: 'item 3 Lorem ipsum', value: '30' },
+                            ]"
+                        />
+                    </div>
+                    <div>
+                        <FButton type="submit" label="Submit" :disabled="fprops.disabled" />
+                        <FButton label="Disable" @click="disabled = true" />
+                        <FButton label="Enable" @click="disabled = false" />
+                    </div>
+                </div>
+            </fieldset>
+            <pre class="col-6">
+{{ data }}
+            </pre>
+        </FForm>
+    `,
+    data() {
+        return {
+            data: {},
+            disabled: true,
+        };
+    },
+    methods: {
+        onSubmit(_data) {
+            this.data = { ..._data, event: undefined, form: undefined };
+        },
+    },
+});
+
 export const Values = () => ({
     components: { FForm, FFormInput, FButton },
     template: `

@@ -56,6 +56,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** All form inputs will be disabled */
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     provide() {
@@ -73,6 +78,7 @@ export default {
             // elements: this.formValues || { ...this.values },
             elements: {
                 elements: this.formValues || { ...this.values },
+                disable: false,
                 reset: false,
             },
             elementStates: {},
@@ -97,6 +103,7 @@ export default {
                 elementStates: this.elementStates,
                 pendingValidation: this.pendingValidation,
                 errorMessages: this.errorMessages,
+                disabled: this.disabled,
             };
         },
     },
@@ -121,6 +128,14 @@ export default {
                 }
             },
             deep: true,
+        },
+
+        disabled(_value) {
+            if (_value) {
+                this.disableElements();
+            } else {
+                this.enableElements();
+            }
         },
 
         formValues(_value, _oldValue) {
@@ -151,6 +166,10 @@ export default {
     },
 
     mounted() {
+        if (this.disabled) {
+            this.disableElements();
+        }
+
         this.$nextTick(() => {
             this.refreshInitValues();
         });
@@ -223,6 +242,14 @@ export default {
             }
 
             return false;
+        },
+
+        disableElements() {
+            this.elements.disable = true;
+        },
+
+        enableElements() {
+            this.elements.disable = false;
         },
 
         /**

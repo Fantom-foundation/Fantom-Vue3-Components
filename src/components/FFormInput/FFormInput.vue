@@ -4,6 +4,7 @@
             v-if="_fInputTypes.includes(type)"
             ref="input"
             :is-textarea="type === 'textarea'"
+            :disabled="dDisabled"
             v-bind="{ ...$attrs, ...inputProps }"
             :type="type"
             :name="name"
@@ -15,7 +16,14 @@
             </template>
         </FInput>
         <template v-else-if="type === 'checkbox' || type === 'radio'">
-            <FOption ref="input" :type="type" v-bind="{ ...$attrs, ...inputProps }" :name="name" v-model="inputValue">
+            <FOption
+                ref="input"
+                :type="type"
+                :disabled="dDisabled"
+                v-bind="{ ...$attrs, ...inputProps }"
+                :name="name"
+                v-model="inputValue"
+            >
                 <template v-for="(index, name) in $slots" v-slot:[name]="data">
                     <slot :name="name" v-bind="data"></slot>
                 </template>
@@ -25,6 +33,7 @@
             v-else-if="type === 'checkboxgroup' || type === 'radiogroup'"
             ref="input"
             :type="type === 'checkboxgroup' ? 'checkbox' : 'radio'"
+            :disabled="dDisabled"
             v-bind="{ ...$attrs, ...inputProps }"
             :name="name"
             v-model:checked="inputValue"
@@ -39,6 +48,7 @@
             v-else
             :is="getComponentName(type)"
             ref="input"
+            :disabled="dDisabled"
             v-bind="{ ...$attrs, ...inputProps }"
             :name="name"
             v-model:value="inputValue"
@@ -129,13 +139,17 @@ export default {
             type: String,
             default: '',
         },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
         return {
             inputValue: this.modelValue || this.getInitialValue(),
-
             inputProps: {},
+            dDisabled: this.disabled,
         };
     },
 
@@ -211,6 +225,12 @@ export default {
                 this.validations.validationPromises.push(this.validate());
             }
         },
+
+        ['elements.disable'](disable) {
+            if (!this._disabled) {
+                this.dDisabled = disable;
+            }
+        },
     },
 
     created() {
@@ -220,6 +240,7 @@ export default {
         this._oldInputValue = '';
         /** Signals first change of the component */
         this._firstChange = true;
+        this._disabled = this.disabled;
 
         if (this.name) {
             this._setElementValue();
