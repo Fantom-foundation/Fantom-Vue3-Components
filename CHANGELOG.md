@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.7...v0.28.8) (2022-10-15)
+
+
+### Bug Fixes
+
+* **FInput:** fix re-updating input value when a formmatter is given ([7c7967d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/7c7967d2abe3215ea5d9eec33e9a07b842b4de74))
+
 ### [0.28.7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.6...v0.28.7) (2022-10-15)
 
 
