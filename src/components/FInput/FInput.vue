@@ -248,8 +248,8 @@ export default {
         value(_val) {
             const oldVal = this.inputValue;
 
-            this.$refs.input.value = _val;
             this.inputValue = this.formatIn(_val);
+            this.$refs.input.value = this.inputValue;
 
             if (this.validateOnInput && oldVal !== _val) {
                 this.validate();
