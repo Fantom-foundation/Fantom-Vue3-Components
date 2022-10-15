@@ -19,7 +19,6 @@
                             :class="{ 'inp-nostyle-preservefocus': preserveFocus }"
                             v-bind="inputProps"
                             :id="labeledById"
-                            :value="inputValue"
                             :aria-invalid="validationState.invalid || invalid"
                             :aria-describedby="ariaDescribedByIds"
                             :aria-controls="controlsId || null"
@@ -43,7 +42,6 @@
                         :class="{ 'inp-nostyle-preservefocus': preserveFocus }"
                         v-bind="inputProps"
                         :id="labeledById"
-                        :value="inputValue"
                         :aria-invalid="validationState.invalid || invalid"
                         :aria-describedby="ariaDescribedByIds"
                         :aria-controls="controlsId || null"
@@ -66,7 +64,6 @@
                     :class="{ 'inp-nostyle-preservefocus': preserveFocus }"
                     v-bind="inputProps"
                     :id="labeledById"
-                    :value="inputValue"
                     :aria-invalid="validationState.invalid || invalid"
                     :aria-describedby="ariaDescribedByIds"
                     :aria-controls="controlsId || null"
@@ -251,6 +248,7 @@ export default {
         value(_val) {
             const oldVal = this.inputValue;
 
+            this.$refs.input.value = _val;
             this.inputValue = this.formatIn(_val);
 
             if (this.validateOnInput && oldVal !== _val) {
@@ -268,6 +266,7 @@ export default {
     },
 
     mounted() {
+        this.$refs.input.value = this.inputValue;
         this.setGhostHtml(this.inputValue);
     },
 

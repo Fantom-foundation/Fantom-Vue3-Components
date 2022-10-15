@@ -346,6 +346,7 @@ export const Values = () => ({
         return {
             values: {
                 text: 'text',
+                number: 0,
                 textarea: 'text',
                 passwordfield: 'pwdpwd',
                 datetime: '2021-10-31T14:10',
