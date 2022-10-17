@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.8...v0.28.9) (2022-10-17)
+
+
+### Features
+
+* **FInput:** create `setInputValue` method ([851f743](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/851f74315b004cc51b039c029765dca7033d0074))
+
 ### [0.28.8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.7...v0.28.8) (2022-10-15)
 
 
