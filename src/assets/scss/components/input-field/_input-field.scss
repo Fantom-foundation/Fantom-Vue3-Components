@@ -1,5 +1,6 @@
 @use "custom-properties";
 @use "tools";
+@use "../../tools" as rtools;
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
@@ -10,6 +11,10 @@ input::-webkit-search-cancel-button,
 input::-webkit-search-results-button,
 input::-webkit-search-results-decoration {
     display: none;
+}
+
+.noinputarrows {
+    @include rtools.no-input-arrows;
 }
 
 @include tools.inp {
