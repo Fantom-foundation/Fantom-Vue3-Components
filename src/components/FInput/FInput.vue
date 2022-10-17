@@ -248,8 +248,7 @@ export default {
         value(_val) {
             const oldVal = this.inputValue;
 
-            this.inputValue = this.formatIn(_val);
-            this.$refs.input.value = this.inputValue;
+            this.setInputValue(_val);
 
             if (this.validateOnInput && oldVal !== _val) {
                 this.validate();
@@ -271,6 +270,11 @@ export default {
     },
 
     methods: {
+        setInputValue(value, noFormatter = false) {
+            this.inputValue = noFormatter ? value : this.formatIn(value);
+            this.$refs.input.value = this.inputValue;
+        },
+
         focus() {
             const { input } = this.$refs;
 
