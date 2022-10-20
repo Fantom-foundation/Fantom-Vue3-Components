@@ -40,7 +40,7 @@
                             >
                                 <slot name="close-button-content">
                                     <FSvgIcon size="20px">
-                                        <icon-times />
+                                        <IconTimes />
                                     </FSvgIcon>
                                 </slot>
                             </button>
@@ -58,7 +58,7 @@
 
                 <div v-if="withArrow" ref="arrow" class="fwindow_arrow" :data-arrow-dir="arrowDir" :style="arrowStyle">
                     <slot name="arrow-icon">
-                        <FSvgIcon rotate="-90deg"><icon-popover-arrow /></FSvgIcon>
+                        <FSvgIcon rotate="-90deg"><IconPopoverArrow /></FSvgIcon>
                     </slot>
                 </div>
 

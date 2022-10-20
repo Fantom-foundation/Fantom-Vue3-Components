@@ -101,7 +101,7 @@
                                                 :tabindex="!editing ? '-1' : null"
                                                 :aria-label="translate('fdatagrid.removeRow')"
                                             >
-                                                <FSvgIcon size="16px"><icon-trash /></FSvgIcon>
+                                                <FSvgIcon size="16px"><IconTrash /></FSvgIcon>
                                             </FButton>
                                         </slot>
                                     </div>

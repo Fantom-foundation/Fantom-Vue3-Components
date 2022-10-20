@@ -5,7 +5,7 @@
             <FButton :tertiary="tertiary" :round="round" v-bind="$attrs" :id="dButtonId" :title="cButtonTitle">
                 <!-- @slot Default to info icon -->
                 <slot name="button-content">
-                    <FSvgIcon :size="iconSize"><icon-info-circle /></FSvgIcon>
+                    <FSvgIcon :size="iconSize"><IconInfoCircle /></FSvgIcon>
                 </slot>
             </FButton>
         </slot>

@@ -12,7 +12,7 @@
                     <!-- @slot Default to `icon-angle-left` icon -->
                     <slot name="icon">
                         <FSvgIcon size="16px" rotate="180deg" class="fsvgicon-rtl-mirror">
-                            <icon-angle-left />
+                            <IconAngleLeft />
                         </FSvgIcon>
                     </slot>
                 </span>

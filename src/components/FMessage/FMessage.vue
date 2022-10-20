@@ -11,13 +11,13 @@
             <slot name="prefix">
                 <template v-if="withIcon">
                     <FSvgIcon v-if="type === 'success'" class="fmessage_icon">
-                        <icon-check-circle />
+                        <IconCheckCircle />
                     </FSvgIcon>
                     <FSvgIcon v-else-if="type === 'error' || type === 'warning'" class="fmessage_icon">
-                        <icon-exclamation-circle />
+                        <IconExclamationCircle />
                     </FSvgIcon>
                     <FSvgIcon v-else-if="type === 'info'" class="fmessage_icon">
-                        <icon-info-circle />
+                        <IconInfoCircle />
                     </FSvgIcon>
                 </template>
             </slot>
@@ -32,7 +32,7 @@
                         class="fmessage_closebtn"
                         :title="translate('fmessage.hideMessage')"
                     >
-                        <FSvgIcon size="12px"><icon-times /></FSvgIcon>
+                        <FSvgIcon size="12px"><IconTimes /></FSvgIcon>
                     </FButton>
                 </slot>
             </template>

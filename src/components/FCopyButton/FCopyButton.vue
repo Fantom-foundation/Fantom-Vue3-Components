@@ -8,7 +8,7 @@
         @window-hide="$emit('window-hide', $event)"
     >
         <template #button-content>
-            <FSvgIcon :size="iconSize"><icon-copy /></FSvgIcon>
+            <FSvgIcon :size="iconSize"><IconCopy /></FSvgIcon>
         </template>
         <!-- copy slots -->
         <template v-for="(index, name) in $slots" v-slot:[name]="data">

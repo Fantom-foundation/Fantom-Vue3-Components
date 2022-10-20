@@ -19,7 +19,7 @@
 
             <template #prefix>
                 <slot name="magnifier">
-                    <FSvgIcon width="2.3em" height="1em" class="fsearchfield_searchicon"><icon-search /></FSvgIcon>
+                    <FSvgIcon width="2.3em" height="1em" class="fsearchfield_searchicon"><IconSearch /></FSvgIcon>
                 </slot>
             </template>
 
@@ -35,7 +35,7 @@
                             :style="{ visibility: dValue ? 'visible' : 'hidden' }"
                         >
                             <slot name="icon" v-bind="{ ...sProps, ...slotProps }">
-                                <FSvgIcon size="1.2em"><icon-times /></FSvgIcon>
+                                <FSvgIcon size="1.2em"><IconTimes /></FSvgIcon>
                             </slot>
                         </FButton>
                     </slot>

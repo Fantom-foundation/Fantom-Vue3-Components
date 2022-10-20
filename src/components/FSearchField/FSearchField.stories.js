@@ -85,12 +85,12 @@ export const Slots = () => ({
             </FSearchField>
             <FSearchField label="Slot 'icon'" name="pwd1">
                 <template #icon>
-                    <FSvgIcon size="1.2em" rotate="180deg"><icon-angle-left /></FSvgIcon>
+                    <FSvgIcon size="1.2em" rotate="180deg"><IconAngleLeft /></FSvgIcon>
                 </template>
             </FSearchField>
             <FSearchField label="Slot 'magnifier'" name="pwd1">
                 <template #magnifier>
-                    <FSvgIcon size="1.2em" rotate="180deg"><icon-angle-left /></FSvgIcon>
+                    <FSvgIcon size="1.2em" rotate="180deg"><IconAngleLeft /></FSvgIcon>
                 </template>
             </FSearchField>
         </div>

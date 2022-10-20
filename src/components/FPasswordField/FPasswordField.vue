@@ -19,8 +19,8 @@
                     <slot name="button" v-bind="{ ...sProps, ...slotProps }">
                         <FButton :size="buttonSize" :disabled="disabled" tertiary round :title="btnTitle">
                             <slot name="icon" v-bind="{ ...sProps, ...slotProps }">
-                                <FSvgIcon v-if="dType === 'password'" size="1.2em"><icon-eye /></FSvgIcon>
-                                <FSvgIcon v-else-if="dType === 'text'" size="1.2em"><icon-eye-slash /></FSvgIcon>
+                                <FSvgIcon v-if="dType === 'password'" size="1.2em"><IconEye /></FSvgIcon>
+                                <FSvgIcon v-else-if="dType === 'text'" size="1.2em"><IconEyeSlash /></FSvgIcon>
                             </slot>
                         </FButton>
                     </slot>

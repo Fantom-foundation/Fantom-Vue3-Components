@@ -29,25 +29,25 @@ export const Default = () => ({
             <FButton tertiary size="small" label="Small" />
             <FButton tertiary size="mini" label="Mini" />
             <h3>With an icon</h3>
-            <FButton class="fbutton-withicon" aria-label="with-icon" size="large"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" aria-label="with-icon"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" aria-label="with-icon" size="small"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" aria-label="with-icon" size="mini"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
             <br />
-            <FButton class="fbutton-withicon" secondary aria-label="with-icon" size="large"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" secondary aria-label="with-icon"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" secondary aria-label="with-icon" size="small"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" secondary aria-label="with-icon" size="mini"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" secondary aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" secondary aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" secondary aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" secondary aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
             <br />
-            <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="large"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" tertiary aria-label="with-icon"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="small"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="mini"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" tertiary aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
             <br />
             <h3>Round</h3>
-            <FButton round aria-label="round"><FSvgIcon><icon-times /></FSvgIcon></FButton>
-            <FButton round secondary aria-label="round"><FSvgIcon><icon-times /></FSvgIcon></FButton>
-            <FButton round tertiary aria-label="round"><FSvgIcon><icon-times /></FSvgIcon></FButton>
+            <FButton round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
         </div>
     `,
 });
@@ -72,9 +72,9 @@ export const Disabled = () => ({
             <FButton disabled tertiary size="small" label="Small" />
             <FButton disabled tertiary size="mini" label="Mini" />
             <h3>Round</h3>
-            <FButton disabled round aria-label="round"><FSvgIcon><icon-times /></FSvgIcon></FButton>
-            <FButton disabled round secondary aria-label="round"><FSvgIcon><icon-times /></FSvgIcon></FButton>
-            <FButton disabled round tertiary aria-label="round"><FSvgIcon><icon-times /></FSvgIcon></FButton>
+            <FButton disabled round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton disabled round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton disabled round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
         </div>
     `,
 });
@@ -99,10 +99,10 @@ export const Loading = () => ({
             <FButton loading tertiary size="small" label="Small" />
             <FButton loading tertiary size="mini" label="Mini" />
             <h3>With icon</h3>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="large"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="small"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="mini"><FSvgIcon><icon-times /></FSvgIcon> With icon</FButton>
+            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
         </div>
     `,
 });
@@ -295,9 +295,9 @@ export const Slot = () => ({
     components: { FButton, FSvgIcon, IconTimes },
     template: `
         <div>
-            <FButton><FSvgIcon size="16px"><icon-times /></FSvgIcon> <i>Primary</i></FButton>
-            <FButton secondary><FSvgIcon size="16px"><icon-times /></FSvgIcon> <i>Secondary</i></FButton>
-            <FButton tertiary><FSvgIcon size="16px"><icon-times /></FSvgIcon> <i>Tertiary</i></FButton>
+            <FButton><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Primary</i></FButton>
+            <FButton secondary><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Secondary</i></FButton>
+            <FButton tertiary><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Tertiary</i></FButton>
         </div>
     `,
 });

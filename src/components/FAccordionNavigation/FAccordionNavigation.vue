@@ -21,7 +21,7 @@
                     rotate="180deg"
                     class="fnavigationnode_item_parenticon fsvgicon-rtl-mirror"
                 >
-                    <icon-angle-left />
+                    <IconAngleLeft />
                 </FSvgIcon>
             </a>
             <RouterLink
@@ -44,7 +44,7 @@
                     rotate="180deg"
                     class="fnavigationnode_item_parenticon fsvgicon-rtl-mirror"
                 >
-                    <icon-angle-left />
+                    <IconAngleLeft />
                 </FSvgIcon>
             </RouterLink>
             <button
@@ -65,7 +65,7 @@
                     rotate="180deg"
                     class="fnavigationnode_item_parenticon fsvgicon-rtl-mirror"
                 >
-                    <icon-angle-left />
+                    <IconAngleLeft />
                 </FSvgIcon>
             </button>
         </template>

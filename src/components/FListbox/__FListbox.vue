@@ -77,7 +77,7 @@
                                     aria-hidden="true"
                                     :title="translate('flistbox.removeItem')"
                                 >
-                                    <FSvgIcon><icon-times /></FSvgIcon>
+                                    <FSvgIcon><IconTimes /></FSvgIcon>
                                 </span>
                             </slot>
                         </template>
@@ -111,7 +111,7 @@
                                     aria-hidden="true"
                                     :title="translate('flistbox.removeItem')"
                                 >
-                                    <FSvgIcon><icon-times /></FSvgIcon>
+                                    <FSvgIcon><IconTimes /></FSvgIcon>
                                 </span>
                             </slot>
                         </template>

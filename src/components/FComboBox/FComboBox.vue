@@ -46,7 +46,7 @@
                         >
                             <slot name="icon" v-bind="{ ...sProps, ...slotProps, ...loading }">
                                 <FSvgIcon v-if="!loading" size="1em">
-                                    <icon-chevron-down />
+                                    <IconChevronDown />
                                 </FSvgIcon>
                                 <span v-else><FDotsLoader size="var(--f-spacer-1, 3px)" /></span>
                             </slot>

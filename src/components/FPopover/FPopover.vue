@@ -22,7 +22,7 @@
                 :title="translate('fwindow.closeWindow')"
                 @click="onCloseButtonClick"
             >
-                <FSvgIcon size="1.2em"><icon-times /></FSvgIcon>
+                <FSvgIcon size="1.2em"><IconTimes /></FSvgIcon>
             </FButton>
         </template>
 
