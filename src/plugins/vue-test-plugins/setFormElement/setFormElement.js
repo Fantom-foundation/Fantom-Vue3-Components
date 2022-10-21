@@ -7,7 +7,7 @@ export function setFormElementPlugin(wrapper) {
      * @param {string} name
      */
     async function setFormElement(name = '', value) {
-        const formElement = wrapper.find(`[name=${name}]`);
+        const formElement = wrapper.find(`input[name=${name}]`);
 
         if (formElement.exists()) {
             await formElement.setValue(value);
