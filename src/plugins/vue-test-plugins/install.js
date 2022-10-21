@@ -9,6 +9,8 @@ import { checkRadioOptionPlugin } from './checkRadioOption/checkRadioOption.js';
 import { submitFormPlugin } from './formSubmit/formSubmit.js';
 import { hideWindowPlugin, showWindowPlugin } from './FWindow/FWindow.js';
 import { toggleCheckboxPlugin } from './toggleCheckbox/toggleCheckbox.js';
+import { setFormElementPlugin } from './setFormElement/setFormElement.js';
+import { setFormElementsPlugin } from './setFormElements/setFormElements.js';
 
 const { VueWrapper } = config.plugins;
 
@@ -24,3 +26,5 @@ VueWrapper.install(submitFormPlugin);
 VueWrapper.install(showWindowPlugin);
 VueWrapper.install(hideWindowPlugin);
 VueWrapper.install(toggleCheckboxPlugin);
+VueWrapper.install(setFormElementPlugin);
+VueWrapper.install(setFormElementsPlugin);
