@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.12](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.11...v0.28.12) (2022-10-21)
+
+
+### Features
+
+* create `setFormElement` vue test helper ([498413e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/498413e71baf8eecd9a4aaabd4eaa39547a9a4b7))
+* create `setFormElements` vue test helper ([7ae3f6e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/7ae3f6e7a214173782e01d722f326dafe1271b31))
+
 ### [0.28.11](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.10...v0.28.11) (2022-10-20)
 
 ### [0.28.10](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.9...v0.28.10) (2022-10-17)
