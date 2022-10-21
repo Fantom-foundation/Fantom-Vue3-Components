@@ -8,7 +8,7 @@ export function submitFormPlugin(wrapper) {
      */
     async function submitForm(name = '') {
         const selector = name
-            ? `button[type="submit"][name="${name}"], input[type="submitd"][name="${name}"]`
+            ? `button[type="submit"][name="${name}"], input[type="submit"][name="${name}"]`
             : 'button[type="submit"], input[type="submit"]';
         const submitElement = wrapper.find(selector);
 
