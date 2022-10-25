@@ -322,10 +322,12 @@ export const formInputMixin = {
                 // const { activeElement } = document;
 
                 // if (activeElement && this.id && activeElement.closest(`#${this.id}`) === null) {
-                await FAriaAlert.clear();
-                for (let i = 0, len = errors.length; i < len; i++) {
-                    await FAriaAlert.append(errors[i]);
-                }
+                this.$nextTick(async () => {
+                    await FAriaAlert.clear();
+                    for (let i = 0, len = errors.length; i < len; i++) {
+                        await FAriaAlert.append(errors[i]);
+                    }
+                });
                 // }
             }
 
