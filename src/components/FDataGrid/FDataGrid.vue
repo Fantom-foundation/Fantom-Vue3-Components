@@ -1066,19 +1066,21 @@ export default {
 
                 this.emitChangeEvent('sorting');
 
-                if (strategy === 'local') {
-                    if (_column.sortFunc) {
-                        if (isPromise(this.items)) {
-                            /** @type {Array} */
-                            const items = await this.items;
-                            items.sort(_column.sortFunc(_column.itemProp || _column.name, _column.sortDir));
-                            this.setItems(items);
-                        } else {
-                            // eslint-disable-next-line vue/no-mutating-props
-                            this.items.sort(_column.sortFunc(_column.itemProp || _column.name, _column.sortDir));
-                        }
+                let items = null;
+                // if (strategy === 'local') {
+                if (_column.sortFunc) {
+                    if (isPromise(this.items)) {
+                        /** @type {Array} */
+                        items = await this.items;
+                        items.sort(_column.sortFunc(_column.itemProp || _column.name, _column.sortDir));
+                        this.setItems(items);
+                    } else {
+                        items = strategy === 'local' ? this.items : this.dItems;
+                        // eslint-disable-next-line vue/no-mutating-props
+                        items.sort(_column.sortFunc(_column.itemProp || _column.name, _column.sortDir));
                     }
                 }
+                // }
             }
         },
 
