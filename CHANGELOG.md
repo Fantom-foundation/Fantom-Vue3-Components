@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.16](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.15...v0.28.16) (2022-10-31)
+
+
+### Features
+
+* **FActionButtons:** add support for disabling buttons ([de86ddd](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/de86ddd6594b3633aeff6fac68801718745388d8))
+
 ### [0.28.15](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.14...v0.28.15) (2022-10-31)
 
 
