@@ -12,6 +12,10 @@ const props = defineProps({
         },
         required: true,
     },
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const emit = defineEmits(['button-action']);
@@ -23,7 +27,9 @@ const cButtons = computed(() =>
 );
 
 function onButtonClick(action) {
-    emit('button-action', action);
+    if (!props.disabled) {
+        emit('button-action', action);
+    }
 }
 </script>
 
@@ -35,6 +41,7 @@ function onButtonClick(action) {
             v-bind="{ ...button, _id: null, action: null }"
             @click="onButtonClick(button.action)"
             :data-testid="`action_button_${button.action}`"
+            :disabled="disabled"
         />
     </div>
 </template>

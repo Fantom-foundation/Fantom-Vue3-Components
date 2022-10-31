@@ -48,4 +48,17 @@ describe('FActionButtons', () => {
 
         expect(wrapper.emitted('button-action')[0]).toEqual(['action1']);
     });
+
+    it('should disable all buttons if `disabled` prop is `true`', async () => {
+        wrapper = createWrapper({
+            props: {
+                disabled: true,
+                buttons: BUTTONS,
+            },
+        });
+        const buttons = wrapper.findAll('button');
+
+        expect(buttons[0].element.disabled).toBe(true);
+        expect(buttons[1].element.disabled).toBe(true);
+    });
 });
