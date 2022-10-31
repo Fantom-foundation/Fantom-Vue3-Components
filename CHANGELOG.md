@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.15](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.14...v0.28.15) (2022-10-31)
+
+
+### Features
+
+* **FDataGrid:** allow local sorting if strategy is set to `remote` ([33db2b2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/33db2b2bb88255f25542a66ec339a987dbcf5bc7))
+
 ### [0.28.14](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.13...v0.28.14) (2022-10-25)
 
 
