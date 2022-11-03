@@ -76,6 +76,7 @@ export default {
 
     data() {
         return {
+            submitting: null,
             // elements: this.formValues || { ...this.values },
             elements: {
                 elements: this.formValues || { ...this.values },
@@ -349,6 +350,13 @@ export default {
                 return;
             }
 
+            /** @type {function} */
+            let resolveSubmitting = null;
+
+            this.submitting = new Promise((resolve) => {
+                resolveSubmitting = resolve;
+            });
+
             try {
                 const valid = await this.checkValidity();
 
@@ -365,7 +373,10 @@ export default {
                 } else {
                     _event.preventDefault();
                 }
+
+                resolveSubmitting();
             } catch (_error) {
+                resolveSubmitting();
                 _event.preventDefault();
                 throw _error;
             }
