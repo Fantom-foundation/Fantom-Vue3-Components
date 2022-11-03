@@ -7,6 +7,7 @@
 <script>
 import { cloneObject, objectEquals } from '../../utils/index.js';
 import FAriaAlert from '../FAriaAlert/FAriaAlert.vue';
+import { nextTick } from 'vue';
 
 /**
  * The component is intended to work only with the `FFormInput` components.
@@ -260,10 +261,7 @@ export default {
         async checkValidity() {
             this.validations.check = true;
 
-            this.$nextTick(() => {
-                this.validations.check = false;
-                this.validations.validationPromises = [];
-            });
+            await nextTick();
 
             try {
                 // await for all promises to settle
@@ -275,11 +273,18 @@ export default {
 
                 // await this.ariaReportErrors(this.errorMessages);
 
+                this.validations.check = false;
+                this.validations.validationPromises = [];
+
                 return this.errorMessages.length === 0;
             } catch (_error) {
                 this.pendingValidation = false;
                 this.errorMessages.push(_error);
                 console.error(_error);
+
+                this.validations.check = false;
+                this.validations.validationPromises = [];
+
                 return false;
             }
         },

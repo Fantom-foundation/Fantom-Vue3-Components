@@ -650,19 +650,19 @@ export const Validation = () => ({
                                 { label: 'Option 3', value: '30' },
                             ]"
                         />
-                        <FFormInput
+<!--                        <FFormInput
                             required
                             validate-on-change
                             type="dropdownlistbox"
                             label="dropdownlistbox"
                             name="dropdownlistbox"
                             :data="[
-                                { label: '---', value: '' },
+                                { label: '-&#45;&#45;', value: '' },
                                 { label: 'Option 1', value: '10' },
                                 { label: 'Option 2', value: '20' },
                                 { label: 'Option 3', value: '30' },
                             ]"
-                        />
+                        />-->
                     </div>
                     <div class="mab-5">
                         <FFormInput
@@ -753,6 +753,65 @@ lastChangedElement
         },
 
         onSubmit(_data) {
+            this.data = { ..._data, event: undefined, form: undefined };
+        },
+    },
+});
+
+export const AsyncValidation = () => ({
+    components: { FForm, FFormInput, FButton, FAriaAlert },
+    template: `
+        <FForm v-model:form-values="values" class="grid" @submit="onSubmit" v-slot="fprops">
+            <fieldset class="col-6">
+                <legend>Initial values</legend>
+                <div>
+                    <div class="mab-5">
+                        <FFormInput
+                            :validator="asyncValidator"
+                            type="text"
+                            label="async validator"
+                            name="text2"
+                        />
+                    </div>
+                    <div>
+                        <FButton type="submit" label="Submit" :disabled="fprops.pendingValidation" />
+                    </div>
+                </div>
+            </fieldset>
+            <pre class="col-6">
+                {{ values }}
+pendingValidation
+{{ fprops.pendingValidation }}
+
+errorMessages
+{{ fprops.errorMessages }}
+
+elementStates
+{{ fprops.elementStates }}
+
+lastChangedElement
+{{ fprops.lastChangedElement }}
+            </pre>
+            <FAriaAlert />
+        </FForm>
+    `,
+    data() {
+        return {
+            values: {},
+            data: {},
+        };
+    },
+    methods: {
+        asyncValidator(_value) {
+            return new Promise((_resolve) =>
+                setTimeout(() => {
+                    _resolve(!_value.trim() ? 'Required' : '');
+                }, 1500)
+            );
+        },
+
+        onSubmit(_data) {
+            console.log('onSubmit', _data);
             this.data = { ..._data, event: undefined, form: undefined };
         },
     },
