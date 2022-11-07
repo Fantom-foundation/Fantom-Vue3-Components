@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.19](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.18...v0.28.19) (2022-11-07)
+
+
+### Features
+
+* **FWindow:** add `overlayClass` prop ([fd3ee0c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/fd3ee0c0b2f40dc6958ad936bfd78788ae9ce9d6))
+
 ### [0.28.18](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.17...v0.28.18) (2022-11-03)
 
 
