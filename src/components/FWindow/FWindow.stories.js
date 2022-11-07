@@ -506,3 +506,23 @@ export const ClosingDisabled = () => ({
         </div>
     `,
 });
+
+export const OverlayClass = () => ({
+    components: { FWindow, FButton },
+    template: `
+        <div>
+            <FWindow
+                overlay-class="myoverlay"
+                modal
+                ref="win"
+                style="max-width: 360px;"
+            >
+                Lorem ipsum dolor sit amet, consectetur 1234 adipisicing elit. Adipisci animi aut cupiditate ducimus et
+            </FWindow>
+
+            <div>
+                <FButton @click.native="$refs.win.show()">Custom overlay class</FButton>
+            </div>
+        </div>
+    `,
+});

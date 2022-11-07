@@ -66,7 +66,7 @@
                     v-if="dWithOverlay && isVisible"
                     ref="overlay"
                     :z-index="dZIndex - 1"
-                    class="fwindow_overlay"
+                    :class="['fwindow_overlay', overlayClass]"
                     :hide-on-click="hideOnEscapeKey && !closingDisabled"
                     @overlay-hide="onOverlayHide"
                 />
@@ -161,15 +161,20 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Use arrow with popover */
+        withArrow: {
+            type: Boolean,
+            default: false,
+        },
         /** `FOverlay` shows. */
         withOverlay: {
             type: Boolean,
             default: true,
         },
-        /** Use arrow with popover */
-        withArrow: {
-            type: Boolean,
-            default: false,
+        /** Css class for the overlay */
+        overlayClass: {
+            type: String,
+            default: '',
         },
         /** 'fixed' | 'absolute' */
         position: {
