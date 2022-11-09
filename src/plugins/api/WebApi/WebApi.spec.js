@@ -14,7 +14,7 @@ export const QUERY_RETURN_KEYS = [
     'onError',
 ];
 
-export const MUTATION_RETURN_KEYS = ['mutate', 'loading', 'error', 'called', 'onDone', 'onError'];
+export const MUTATION_RETURN_KEYS = ['mutate', 'getPromise', 'loading', 'error', 'called', 'onDone', 'onError'];
 
 let api = null;
 

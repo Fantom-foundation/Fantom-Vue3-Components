@@ -71,6 +71,8 @@ export class GqlApi extends WebApi {
     mutation({
         mutation,
         variables = null,
+        defaultData = null,
+        pickFn = null,
         options = {},
         silentErrors = false,
         fetchPolicy = 'network-only',
@@ -87,6 +89,7 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
+            getPromise: () => this._dataPromise(onDone, onError, defaultData, pickFn),
             loading,
             error,
             called,
