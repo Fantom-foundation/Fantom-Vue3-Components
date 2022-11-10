@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.21](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.20...v0.28.21) (2022-11-10)
+
+
+### Features
+
+* **GqlApi:** add mutation mocking ([d67f8b5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d67f8b572d23c936a2cdd8932fbe6cc998eb4a09))
+
 ### [0.28.20](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.19...v0.28.20) (2022-11-09)
 
 
