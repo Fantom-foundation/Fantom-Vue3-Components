@@ -33,6 +33,14 @@ export class Api {
     }
 
     /**
+     * @param {function} func
+     * @param {string} funcName
+     */
+    registerMutationMock(func, funcName) {
+        this.#registerFunctionMock({ func, funcName, type: 'mutation' });
+    }
+
+    /**
      * Store function that returns data that will be used as a replacement of data used in api mocks
      *
      * @param {string} funcMockName Name of mock function

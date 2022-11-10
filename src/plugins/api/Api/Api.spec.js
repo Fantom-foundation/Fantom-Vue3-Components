@@ -16,6 +16,9 @@ class MyApi extends WebApi {
     queryMock(fn) {
         return fn();
     }
+    mutationMock(fn) {
+        return fn();
+    }
 }
 
 function myQuery() {
@@ -28,6 +31,10 @@ function myQueryMock() {
 
 function myMutation(m) {
     return myApi.mutation(m);
+}
+
+function myMutationMock() {
+    return myApi.mutationMock(api._getFunctionMock(() => 'mutation mock', 'myMutationMock'));
 }
 
 beforeEach(() => {
@@ -114,7 +121,21 @@ describe('Api', () => {
         });
     });
 
-    describe('fake data registration/usage', () => {
+    describe('mutation mock registration', () => {
+        it('should register query function ', () => {
+            api.registerMutationMock(myMutationMock);
+
+            expect(api.mutation.myMutationMock()).toBe('mutation mock');
+        });
+
+        it('should register mutation function and use given function name', () => {
+            api.registerMutationMock(myMutationMock, 'myMutation');
+
+            expect(api.mutation.myMutation()).toBe('mutation mock');
+        });
+    });
+
+    describe('query - fake data registration/usage', () => {
         it('should be able to store a function that generates fake data and is used while mocking', () => {
             api.registerQueryMock(myQueryMock);
 
@@ -130,6 +151,25 @@ describe('Api', () => {
             api.restoreDataFake('myQueryMock');
 
             expect(api.query.myQueryMock()).toBe('query mock');
+        });
+    });
+
+    describe('mutation - fake data registration/usage', () => {
+        it('should be able to store a function that generates fake data and is used while mocking', () => {
+            api.registerMutationMock(myMutationMock);
+
+            api.fakeData('myMutationMock', () => 'fake data');
+
+            expect(api.mutation.myMutationMock()).toBe('fake data');
+        });
+
+        it('should restore fake data', () => {
+            api.registerMutationMock(myMutationMock);
+
+            api.fakeData('myMutationMock', () => 'fake data');
+            api.restoreDataFake('myMutationMock');
+
+            expect(api.mutation.myMutationMock()).toBe('mutation mock');
         });
     });
 });

@@ -132,6 +132,34 @@ export class GqlApi extends WebApi {
         };
     }
 
+    mutationMock({
+        mockFunction = null,
+        defaultData = null,
+        silentErrors = false,
+        pickFn = null,
+        errors = [],
+        fnName = '',
+    }) {
+        const _called = ref(false);
+        const { mutate, loading, error, called, onDone, onError } = GqlApi.#useMutaionMock({
+            mockFunction: this._getFunctionMock(mockFunction, fnName),
+            errors,
+            _called,
+        });
+
+        this._onError(onError, silentErrors);
+
+        return {
+            mutate,
+            getPromise: () => this._dataPromise(onDone, onError, defaultData, pickFn),
+            loading,
+            error,
+            called,
+            onDone,
+            onError,
+        };
+    }
+
     static #useQueryMock({ mockFunction, delay = 0, errors = [], enabled = ref(true) }) {
         const result = ref(null);
         const loading = ref(true);
@@ -190,6 +218,63 @@ export class GqlApi extends WebApi {
             refetch,
             fetchMore,
             onResult,
+            onError,
+        };
+    }
+
+    static #useMutaionMock({ mockFunction, delay = 0, errors = [], _called = ref(false) }) {
+        let result;
+        const called = ref(_called.value);
+        const loading = ref(true);
+        const error = ref(null);
+        let onDoneFunction = null;
+        let onErrorFunction = null;
+
+        function onDone(fn) {
+            onDoneFunction = fn;
+        }
+
+        function onError(fn) {
+            onErrorFunction = fn;
+        }
+
+        function mutate(...args) {
+            loading.value = true;
+            called.value = true;
+
+            defer(() => {
+                onDefer(...args);
+            }, delay);
+        }
+
+        function onDefer(...args) {
+            loading.value = false;
+
+            if (errors.length > 0) {
+                error.value = { errors };
+
+                if (typeof onErrorFunction === 'function') {
+                    onErrorFunction({ errors });
+                }
+            } else {
+                result = mockFunction(...args);
+
+                if (typeof onDoneFunction === 'function') {
+                    onDoneFunction({
+                        data: result,
+                    });
+                }
+            }
+        }
+
+        // defer(onDefer, delay);
+
+        return {
+            mutate,
+            loading,
+            called,
+            error,
+            onDone,
             onError,
         };
     }

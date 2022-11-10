@@ -194,4 +194,108 @@ describe('GqlApi', () => {
             api.restoreDataFake('fooMock');
         });
     });
+
+    describe('mutationMock()', () => {
+        it('should return expected object', () => {
+            const result = gqlApi.mutationMock({
+                mockFunction: ({ myFoo = 'foo' } = {}) => {
+                    return { myFoo };
+                },
+                defaultData: 'default',
+            });
+
+            expect(result.called.value).toBe(false);
+            expect(result.loading.value).toBe(true);
+            expect(result.error.value).toBeNull();
+            expect(typeof result.getPromise).toBe('function');
+            expect(typeof result.mutate).toBe('function');
+            expect(typeof result.onDone).toBe('function');
+            expect(typeof result.onError).toBe('function');
+            expect(Object.keys(result).sort()).toEqual(MUTATION_RETURN_KEYS.sort());
+        });
+
+        it('should call mutate function properly', async () => {
+            const spyOnDone = vi.fn(() => {});
+
+            const result = gqlApi.mutationMock({
+                mockFunction: ({ myFoo = 'foo' } = {}) => {
+                    return { myFoo };
+                },
+                defaultData: 'default',
+            });
+            result.onDone(spyOnDone);
+
+            expect(result.called.value).toBe(false);
+
+            result.mutate({ myFoo: 'foo2' });
+
+            expect(result.loading.value).toBe(true);
+
+            await delay();
+
+            expect(spyOnDone).toBeCalledWith({
+                data: {
+                    myFoo: 'foo2',
+                },
+            });
+            expect(result.loading.value).toBe(false);
+            expect(result.called.value).toBe(true);
+        });
+
+        it('should call error function properly', async () => {
+            const spyOnError = vi.fn(() => {});
+            const errors = [{ message: 'error 1' }];
+
+            const result = gqlApi.mutationMock({
+                mockFunction: ({ myFoo = 'foo' } = {}) => {
+                    return { myFoo };
+                },
+                defaultData: 'default',
+                errors,
+            });
+            result.onError(spyOnError);
+            result.mutate({});
+
+            await delay();
+
+            expect(spyOnError).toBeCalledWith({
+                errors,
+            });
+            expect(result).toMatchObject({
+                error: {
+                    value: { errors },
+                },
+                loading: { value: false },
+            });
+        });
+
+        it('should use fake data function instead of mock function if fake data function is given', async () => {
+            function fooMock() {
+                return gqlApi.mutationMock({
+                    mockFunction: ({ myFoo = 'foo' } = {}) => {
+                        return { myFoo };
+                    },
+                    fnName: 'fooMock',
+                });
+            }
+            api.registerMutationMock(fooMock, 'fooMock');
+            let result;
+
+            api.fakeData('fooMock', () => ({ myFoo: 'data fake' }));
+            const { mutate, onDone } = api.mutation.fooMock();
+            onDone((res) => {
+                result = res;
+            });
+            mutate({});
+            await delay();
+
+            expect(result).toEqual({
+                data: {
+                    myFoo: 'data fake',
+                },
+            });
+
+            api.restoreDataFake('fooMock');
+        });
+    });
 });
