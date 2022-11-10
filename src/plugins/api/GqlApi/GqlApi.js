@@ -108,7 +108,7 @@ export class GqlApi extends WebApi {
         fnName = '',
     }) {
         const enabled = ref(!disabled);
-        const { result, loading, error, refetch, fetchMore, onResult, onError } = GqlApi.#useQueryMock({
+        const { result, loading, error, refetch, fetchMore, onResult, onError } = this.#useQueryMock({
             mockFunction: this._getFunctionMock(mockFunction, fnName),
             errors,
             enabled,
@@ -141,9 +141,11 @@ export class GqlApi extends WebApi {
         fnName = '',
     }) {
         const _called = ref(false);
-        const { mutate, loading, error, called, onDone, onError } = GqlApi.#useMutaionMock({
+        const { mutate, loading, error, called, onDone, onError } = this.#useMutaionMock({
             mockFunction: this._getFunctionMock(mockFunction, fnName),
             errors,
+            pickFn,
+            defaultData,
             _called,
         });
 
@@ -160,7 +162,7 @@ export class GqlApi extends WebApi {
         };
     }
 
-    static #useQueryMock({ mockFunction, delay = 0, errors = [], enabled = ref(true) }) {
+    #useQueryMock({ mockFunction, delay = 0, errors = [], enabled = ref(true) }) {
         const result = ref(null);
         const loading = ref(true);
         const error = ref(null);
@@ -222,13 +224,31 @@ export class GqlApi extends WebApi {
         };
     }
 
-    static #useMutaionMock({ mockFunction, delay = 0, errors = [], _called = ref(false) }) {
+    #useMutaionMock({ mockFunction, delay = 0, errors = [], pickFn, defaultData, _called = ref(false) }) {
         let result;
         const called = ref(_called.value);
         const loading = ref(true);
         const error = ref(null);
         let onDoneFunction = null;
         let onErrorFunction = null;
+
+        const onDefer = (...args) => {
+            loading.value = false;
+
+            if (errors.length > 0) {
+                error.value = { errors };
+
+                if (typeof onErrorFunction === 'function') {
+                    onErrorFunction({ errors });
+                }
+            } else {
+                result = mockFunction(...args);
+
+                if (typeof onDoneFunction === 'function') {
+                    onDoneFunction(this._useResult({ value: result?.data || result }, defaultData, pickFn));
+                }
+            }
+        };
 
         function onDone(fn) {
             onDoneFunction = fn;
@@ -245,26 +265,6 @@ export class GqlApi extends WebApi {
             defer(() => {
                 onDefer(...args);
             }, delay);
-        }
-
-        function onDefer(...args) {
-            loading.value = false;
-
-            if (errors.length > 0) {
-                error.value = { errors };
-
-                if (typeof onErrorFunction === 'function') {
-                    onErrorFunction({ errors });
-                }
-            } else {
-                result = mockFunction(...args);
-
-                if (typeof onDoneFunction === 'function') {
-                    onDoneFunction({
-                        data: result,
-                    });
-                }
-            }
         }
 
         // defer(onDefer, delay);

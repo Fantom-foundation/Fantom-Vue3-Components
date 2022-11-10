@@ -233,11 +233,7 @@ describe('GqlApi', () => {
 
             await delay();
 
-            expect(spyOnDone).toBeCalledWith({
-                data: {
-                    myFoo: 'foo2',
-                },
-            });
+            expect(spyOnDone).toBeCalledWith('foo2');
             expect(result.loading.value).toBe(false);
             expect(result.called.value).toBe(true);
         });
@@ -289,11 +285,7 @@ describe('GqlApi', () => {
             mutate({});
             await delay();
 
-            expect(result).toEqual({
-                data: {
-                    myFoo: 'data fake',
-                },
-            });
+            expect(result).toBe('data fake');
 
             api.restoreDataFake('fooMock');
         });
