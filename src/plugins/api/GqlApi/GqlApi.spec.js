@@ -238,6 +238,18 @@ describe('GqlApi', () => {
             expect(result.called.value).toBe(true);
         });
 
+        it('getPromise() should work properly', async () => {
+            const result = gqlApi.mutationMock({
+                mockFunction: () => ({ result: 'foo' }),
+                pickFn: (data) => data?.result,
+            });
+
+            const promise = result.getPromise();
+            result.mutate();
+
+            expect(await promise).toBe('foo');
+        });
+
         it('should call error function properly', async () => {
             const spyOnError = vi.fn(() => {});
             const errors = [{ message: 'error 1' }];

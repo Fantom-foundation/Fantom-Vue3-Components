@@ -70,7 +70,7 @@ describe('WebApi', () => {
 
     describe('_dataPromise()', () => {
         it('should return a promise that rejects if given `onResult` argument is not a function', async () => {
-            await expect(api._dataPromise()).rejects.toBeInstanceOf(Error);
+            await expect(api._dataPromise({})).rejects.toBeInstanceOf(Error);
         });
 
         it('should return a promise that rejects if given `onError` function is called', async () => {
@@ -79,17 +79,17 @@ describe('WebApi', () => {
                 fn(new Error('Some error'));
             };
 
-            await expect(api._dataPromise(onResult, onError)).rejects.toBeInstanceOf(Error);
+            await expect(api._dataPromise({ onResult, onError })).rejects.toBeInstanceOf(Error);
         });
 
-        it("should return a promise that resolves when function passed to `onResult` function i'os called", async () => {
+        it('should return a promise that resolves when function passed to `onResult` function is called', async () => {
             const onResult = (fn) => {
                 fn({
                     result: 'on result',
                 });
             };
 
-            await expect(api._dataPromise(onResult)).resolves.toBe('on result');
+            await expect(api._dataPromise({ onResult })).resolves.toBe('on result');
         });
 
         it('should use `_useResult` method on data result', async () => {
@@ -97,7 +97,17 @@ describe('WebApi', () => {
                 fn({});
             };
 
-            await expect(api._dataPromise(onResult, () => {}, 'default data')).resolves.toBe('default data');
+            await expect(api._dataPromise({ onResult, onError: () => {}, defaultData: 'default data' })).resolves.toBe(
+                'default data'
+            );
+        });
+
+        it('should not use `_useResult` method on data result when `useResult` is false', async () => {
+            const onResult = (fn) => {
+                fn('result');
+            };
+
+            await expect(api._dataPromise({ onResult, onError: () => {}, useResult: false })).resolves.toBe('result');
         });
     });
 

@@ -56,7 +56,7 @@ export class GqlApi extends WebApi {
 
         return {
             data,
-            dataPromise: this._dataPromise(onResult, onError, defaultData, pickFn),
+            dataPromise: this._dataPromise({ onResult, onError, defaultData, pickFn }),
             result,
             loading,
             enabled,
@@ -89,7 +89,7 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
-            getPromise: () => this._dataPromise(onDone, onError, defaultData, pickFn),
+            getPromise: () => this._dataPromise({ onResult: onDone, onError, defaultData, pickFn }),
             loading,
             error,
             called,
@@ -120,7 +120,7 @@ export class GqlApi extends WebApi {
 
         return {
             data,
-            dataPromise: this._dataPromise(onResult, onError, defaultData, pickFn),
+            dataPromise: this._dataPromise({ onResult, onError, defaultData, pickFn }),
             result,
             loading,
             enabled,
@@ -153,7 +153,7 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
-            getPromise: () => this._dataPromise(onDone, onError, defaultData, pickFn),
+            getPromise: () => this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, useResult: false }),
             loading,
             error,
             called,

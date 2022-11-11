@@ -35,16 +35,21 @@ export class WebApi {
      * @param {function} [onError]
      * @param {*} [defaultData]
      * @param {function} [pickFn]
+     * @param {boolean} [useResult]
      * @return {Promise<unknown>}
      * @private
      */
-    _dataPromise(onResult, onError, defaultData = null, pickFn = null) {
+    _dataPromise({ onResult, onError, defaultData = null, pickFn = null, useResult = true }) {
         return new Promise((resolve, reject) => {
             if (typeof onResult !== 'function') {
                 reject(new Error('onResult is not a function'));
             } else {
                 onResult((data) => {
-                    resolve(this._useResult({ value: data?.data || data }, defaultData, pickFn));
+                    resolve(
+                        useResult
+                            ? this._useResult({ value: data?.data || data }, defaultData, pickFn)
+                            : data?.data || data || defaultData
+                    );
                 });
 
                 if (typeof onError === 'function') {
@@ -64,7 +69,7 @@ export class WebApi {
      * @private
      */
     _useResult(result, defaultData = null, pickFn = null) {
-        let data = null;
+        let data;
 
         if (typeof pickFn === 'function') {
             data = pickFn(result.value);
