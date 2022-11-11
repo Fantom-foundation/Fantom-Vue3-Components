@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.23](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.22...v0.28.23) (2022-11-11)
+
+
+### Features
+
+* **WebApi:** add option not to use `_useResult` in `_dataPromise` ([6b7f3c1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/6b7f3c1dc0f5b739de1e549236ee81dccec98e96))
+
 ### [0.28.22](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.21...v0.28.22) (2022-11-10)
 
 
