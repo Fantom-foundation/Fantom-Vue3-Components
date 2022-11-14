@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.24](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.23...v0.28.24) (2022-11-14)
+
+
+### Features
+
+* **useComponentUpdate:** create composable ([99c805b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/99c805b520e38d9e5b35191fb28e82a9e990b9c3))
+
 ### [0.28.23](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.22...v0.28.23) (2022-11-11)
 
 
