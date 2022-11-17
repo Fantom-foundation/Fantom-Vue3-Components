@@ -52,6 +52,7 @@ describe('useFWindow', () => {
 
         expect(wrapper.vm.window.show).toBeDefined();
         expect(wrapper.vm.window.hide).toBeDefined();
+        expect(wrapper.vm.window.toggle).toBeDefined();
         expect(wrapper.vm.window.isWindowVisible).toBeDefined();
     });
 

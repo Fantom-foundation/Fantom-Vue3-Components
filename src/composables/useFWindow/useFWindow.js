@@ -21,7 +21,7 @@ function registerFWindowMethodsAndRefs(id = '', windowRef = null) {
     }
 
     function exposeFWindowMethods() {
-        return exposeMethods(windowRef, ['show', 'hide', 'isWindowVisible']);
+        return exposeMethods(windowRef, ['show', 'hide', 'toggle', 'isWindowVisible']);
     }
 
     ret.exposeFWindowMethods = exposeFWindowMethods;
