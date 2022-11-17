@@ -52,6 +52,7 @@ describe('useFPopover', () => {
 
         expect(wrapper.vm.popover.show).toBeDefined();
         expect(wrapper.vm.popover.hide).toBeDefined();
+        expect(wrapper.vm.popover.toggle).toBeDefined();
         expect(wrapper.vm.popover.isWindowVisible).toBeDefined();
     });
 

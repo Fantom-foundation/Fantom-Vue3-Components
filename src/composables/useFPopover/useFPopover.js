@@ -30,7 +30,7 @@ function registerFPopoverMethodsAndRefs(id = '', popoverRef = null) {
     }
 
     function exposeFPopoverMethods() {
-        return exposeMethods(popoverRef, ['show', 'hide', 'isWindowVisible']);
+        return exposeMethods(popoverRef, ['show', 'hide', 'toggle', 'isWindowVisible']);
     }
 
     ret.exposeFPopoverMethods = exposeFPopoverMethods;
