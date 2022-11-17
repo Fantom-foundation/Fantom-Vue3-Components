@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.25](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.24...v0.28.25) (2022-11-17)
+
+
+### Features
+
+* **useFPopover:** expose `toggle` method ([51a2dfe](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/51a2dfe46499b37d5a8601375c69fa28db4a546e))
+* **useFWindow:** expose `toggle` method ([db30cf8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/db30cf8e85a743dccf4b70021542b1df039ce255))
+
 ### [0.28.24](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.23...v0.28.24) (2022-11-14)
 
 
