@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.26](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.25...v0.28.26) (2022-11-18)
+
+
+### Bug Fixes
+
+* **FWindow:** check if there are elements when focusing ([6f8833c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/6f8833c3fae5b27206f4c098b0058b8b5af9133e))
+
 ### [0.28.25](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.24...v0.28.25) (2022-11-17)
 
 
