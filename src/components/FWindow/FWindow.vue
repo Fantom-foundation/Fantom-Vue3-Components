@@ -564,12 +564,14 @@ export default {
                 inputElem = focusElem.querySelector('[name]');
                 if (inputElem) {
                     inputElem.focus();
-                } else {
+                } else if (focusElem) {
                     focusElem.focus();
                 }
             } else {
                 this.$nextTick(() => {
-                    this.$refs.window.focus();
+                    if (this.$refs.window) {
+                        this.$refs.window.focus();
+                    }
                 });
             }
         },
