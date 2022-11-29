@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.27](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.26...v0.28.27) (2022-11-29)
+
+
+### Bug Fixes
+
+* **FListbox:** add `lazySelection` option ([5eb01a3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5eb01a369560423f7e27030b050f4c97cb564986))
+
 ### [0.28.26](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.25...v0.28.26) (2022-11-18)
 
 
