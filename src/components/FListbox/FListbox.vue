@@ -307,6 +307,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Don't emit 'update' and 'component-change' events when the same item is selected (not for multiselect mode)  */
+        lazySelection: {
+            type: Boolean,
+            default: false,
+        },
         /** Specifies component for search field */
         inputComponent: {
             type: String,
@@ -811,6 +816,10 @@ export default {
             }
 
             if (!multiselect) {
+                if (this.lazySelection && this.valuesAreEqual(this.inputValue, _item.value)) {
+                    return;
+                }
+
                 this.inputValue = _item.value || '';
             } else {
                 this.inputValue = this.selectedItems.map((item) => item.value);

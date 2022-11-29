@@ -677,6 +677,29 @@ export const NonSelectable = () => ({
     },
 });
 
+export const LazySelection = () => ({
+    components: { FListbox, FButton },
+    template: `
+        <div>
+            <span id="fllbl5" class="not-visible">Listbox example</span>
+            <FListbox lazy-selection :focus-item-on-focus="true" :data="data" labeled-by="fllbl5" @component-change="onListboxItemSelected" />
+            <br />
+            Selected: {{ counter }}
+        </div>
+    `,
+    data() {
+        return {
+            data: [...data],
+            counter: 0,
+        };
+    },
+    methods: {
+        onListboxItemSelected() {
+            this.counter++;
+        },
+    },
+});
+
 export const Slots = () => ({
     components: { FListbox },
     template: `
