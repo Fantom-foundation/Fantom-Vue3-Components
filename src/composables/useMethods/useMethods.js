@@ -17,14 +17,19 @@ export function useMethods(id = '', registrar = false, usedOutsideOfComponent = 
         }
     }
 
+    function unregisterMethods(id) {
+        delete methodsStore[id];
+    }
+
     if (registrar && !usedOutsideOfComponent) {
         onUnmounted(() => {
-            delete methodsStore[id];
+            unregisterMethods(id);
         });
     }
 
     return {
         registerMethods,
+        unregisterMethods,
         getMethods() {
             return methodsStore[id] || {};
         },

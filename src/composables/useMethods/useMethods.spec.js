@@ -31,7 +31,7 @@ describe('useMethods', () => {
         expect(testMethodRet).toEqual(testMethod);
     });
 
-    it('should return function `register` that registers methods of a component by its id', () => {
+    it('should return function `registerMethods` that registers methods of a component by its id', () => {
         const testMethodSpy = vi.fn(() => {});
         composableResult.registerMethods({
             testMethod: testMethodSpy,
@@ -41,6 +41,19 @@ describe('useMethods', () => {
         testMethod();
 
         expect(testMethodSpy).toHaveBeenCalled();
+    });
+
+    it('should return function `unregisterMethods` that unregisters methods of a component by its id', () => {
+        const testMethodSpy = vi.fn(() => {});
+        composableResult.registerMethods({
+            testMethod: testMethodSpy,
+        });
+
+        composableResult.unregisterMethods(ID);
+
+        const { testMethod } = useMethods(ID, false, true).getMethods();
+
+        expect(testMethod).toBeUndefined();
     });
 
     it('should delete registered methods on `onUnmounted` hook', () => {
