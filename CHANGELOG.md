@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.29.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.27...v0.29.0) (2023-01-09)
+
+
+### Features
+
+* **useMethods:** add `unregisterMethods` function ([fc2382d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/fc2382de72a125f55cdd786a4c4c154500f7c297))
+* **useVueComponent:** create function ([c260dc9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/c260dc94497e89a20d71902ef681d34154dcee29))
+
 ### [0.28.27](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.26...v0.28.27) (2022-11-29)
 
 
