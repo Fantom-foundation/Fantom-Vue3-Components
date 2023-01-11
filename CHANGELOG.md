@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.30.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.29.0...v0.30.0) (2023-01-11)
+
+
+### Features
+
+* **AsyncComponents:** create class ([b4aab86](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/b4aab86dd55a4c5a04f2fa9466c287af56b71224))
+* **Locale:** make `setLocale` method async ([2de220e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/2de220eaa884f205714bf05b29860b7de3ca912b))
+
 ## [0.29.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.28.27...v0.29.0) (2023-01-09)
 
 
