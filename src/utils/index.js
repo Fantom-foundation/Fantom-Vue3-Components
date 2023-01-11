@@ -21,6 +21,7 @@ export * from './function/function.js';
 export * from './exposeMethods/exposeMethods.js';
 export * from './Tree/Tree.js';
 export * from './object/object.js';
+export * from './AsyncComponents/AsyncComponents.js';
 
 import { nanoid } from 'nanoid';
 import { toKebabCase } from './string/string.js';

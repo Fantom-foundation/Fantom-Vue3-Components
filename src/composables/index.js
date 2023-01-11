@@ -9,3 +9,4 @@ export * from './useFormatters/useFormatters.js';
 export * from './useLocale/useLocale.js';
 export * from './useGridPagination/useGridPagination.js';
 export * from './useDocumentMeta/useDocumentMeta.js';
+export * from './useVueComponent/useVueComponent.js';
