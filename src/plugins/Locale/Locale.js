@@ -50,7 +50,7 @@ export class Locale {
      * @param {string} tag
      * @param {boolean} [reloadPage]
      */
-    setLocale(tag = '', reloadPage = false) {
+    async setLocale(tag = '', reloadPage = false) {
         let localeTag = tag || this.#tag.value || getLanguageCode();
 
         if (!this.#findLocaleByTag(localeTag)) {
@@ -62,7 +62,7 @@ export class Locale {
         }
 
         if (this.#i18n) {
-            this.#i18n.setLanguage(localeTag, reloadPage);
+            await this.#i18n.setLanguage(localeTag, reloadPage);
         }
 
         if (this.#formatters) {

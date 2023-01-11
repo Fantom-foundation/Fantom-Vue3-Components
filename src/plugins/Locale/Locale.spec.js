@@ -4,7 +4,7 @@ import { Locale } from './Locale.js';
 import { spyNavigatorLanguages } from '@/test/mocks/language.js';
 
 class I18nMock {
-    setLanguage() {}
+    async setLanguage() {}
 }
 
 class TranslationsMock {
@@ -66,31 +66,31 @@ describe('Locale', () => {
         expect(locale.rtlDirection).toBe(false);
     });
 
-    it('should set language from the browser if no language code or value from the app store is given', () => {
+    it('should set language from the browser if no language code or value from the app store is given', async () => {
         destroyLocale();
         createLocale({ languageRef: ref('') });
         spyNavigatorLanguages(['cs-CZ', 'cs']);
 
-        locale.setLocale();
+        await locale.setLocale();
 
         expect(locale.tag).toBe('cs');
     });
 
-    it('should set locale by given tag', () => {
-        locale.setLocale('cs');
+    it('should set locale by given tag', async () => {
+        await locale.setLocale('cs');
 
         expect(locale.tag).toBe('cs');
     });
 
-    it('should set language of i18n plugin as well', () => {
+    it('should set language of i18n plugin as well', async () => {
         const spySetLanguage = vi.spyOn(i18n, 'setLanguage');
 
-        locale.setLocale('cs');
+        await locale.setLocale('cs');
 
         expect(spySetLanguage).toBeCalledWith('cs', false);
     });
 
-    it('should set locale of fantom vue3 components as well', () => {
+    it('should set locale of fantom vue3 components as well', async () => {
         const spySetLocale = vi.spyOn(translations, 'setLocale');
 
         locale.setLocale('cs');
@@ -98,16 +98,16 @@ describe('Locale', () => {
         expect(spySetLocale).toBeCalledWith('cs');
     });
 
-    it('should set locale of Formatters as well', () => {
+    it('should set locale of Formatters as well', async () => {
         const spySetLocale = vi.spyOn(formatters, 'setLocale');
 
-        locale.setLocale('cs');
+        await locale.setLocale('cs');
 
         expect(spySetLocale).toBeCalledWith('cs');
     });
 
-    it('should set default locale as currently selected locale if given locale is not found in locale list', () => {
-        locale.setLocale('es');
+    it('should set default locale as currently selected locale if given locale is not found in locale list', async () => {
+        await locale.setLocale('es');
 
         expect(locale.tag).toBe('en');
     });
@@ -137,8 +137,8 @@ describe('Locale', () => {
         expect(rtlDirectionRef.value).toBe(true);
     });
 
-    it('should set rtl direction if selected locale has `rtl` atrribute', () => {
-        locale.setLocale('fa');
+    it('should set rtl direction if selected locale has `rtl` atrribute', async () => {
+        await locale.setLocale('fa');
 
         expect(document.documentElement.dir).toBe('rtl');
     });
