@@ -19,18 +19,23 @@ export class Formatters {
         },
     };
     #localeTag = 'en';
+    #defaultCurrency = 'USD';
     #formattersCache = {};
 
     /**
      * @param {Object} dateTimeFormats
      * @param {Object} relativeTimeFormats
      * @param {Object} numberFormats
+     * @param {Object} currencyFormats
+     * @param {string} defaultCurrency
+     * @param {boolean} addCustomFormatsToPrototype
      */
     setup({
         dateTimeFormats = {},
         relativeTimeFormats = {},
         numberFormats = {},
         currencyFormats = {},
+        defaultCurrency = 'USD',
         addCustomFormatsToPrototype = false,
     }) {
         const formats = this.#formats;
@@ -39,6 +44,8 @@ export class Formatters {
         formats.relativeTime = { ...formats.relativeTime, ...relativeTimeFormats };
         formats.number = { ...formats.number, ...numberFormats };
         formats.currency = { ...formats.currency, ...currencyFormats };
+
+        this.setDefaulCurrency(defaultCurrency);
 
         if (addCustomFormatsToPrototype) {
             this.#addCustomFormatsToPrototype();
@@ -50,6 +57,13 @@ export class Formatters {
      */
     setLocale(tag = '') {
         this.#localeTag = tag;
+    }
+
+    /**
+     * @param {string} currency
+     */
+    setDefaulCurrency(currency) {
+        this.#defaultCurrency = currency;
     }
 
     /**
@@ -135,7 +149,7 @@ export class Formatters {
      * @param {string} [currencyFormatKey] Key from #formats.currency object
      * @return {string}
      */
-    currency(value, currency = 'USD', currencyFormatKey = 'default') {
+    currency(value, currency = this.#defaultCurrency, currencyFormatKey = 'default') {
         return this.#getCurrencyFomatter(currencyFormatKey, currency).format(value);
     }
 
@@ -298,6 +312,7 @@ export class Formatters {
      * @param {string} localeTag
      * @param {string} formatKey
      * @param {string} type
+     * @param {Object} format
      * @return {string}
      */
     #getCacheKey({ localeTag = '', formatKey = '', type = '', format = {} }) {

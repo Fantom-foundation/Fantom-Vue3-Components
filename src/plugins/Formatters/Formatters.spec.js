@@ -190,6 +190,12 @@ describe('Formatters', () => {
                 formatters.currency(123456.789, 'EUR', 'fooFormat');
             }).toThrowError();
         });
+
+        it('should be able to set default currency', () => {
+            formatters.setDefaulCurrency('EUR');
+
+            expect(formatters.currency(123456.789)).toBe('€123,456.79');
+        });
     });
 
     describe('adding custom formats to prototype', () => {
