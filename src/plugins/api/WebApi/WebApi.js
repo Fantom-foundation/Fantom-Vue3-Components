@@ -1,4 +1,5 @@
 import { useApi } from '../Api/useApi/useApi.js';
+import { clone } from '../../../utils/index.js';
 
 const api = useApi().api;
 
@@ -35,11 +36,12 @@ export class WebApi {
      * @param {function} [onError]
      * @param {*} [defaultData]
      * @param {function} [pickFn]
+     * @param {boolean} [copyData]
      * @param {boolean} [useResult]
      * @return {Promise<unknown>}
      * @private
      */
-    _dataPromise({ onResult, onError, defaultData = null, pickFn = null, useResult = true }) {
+    _dataPromise({ onResult, onError, defaultData = null, pickFn = null, copyData = false, useResult = true }) {
         return new Promise((resolve, reject) => {
             if (typeof onResult !== 'function') {
                 reject(new Error('onResult is not a function'));
@@ -47,7 +49,7 @@ export class WebApi {
                 onResult((data) => {
                     resolve(
                         useResult
-                            ? this._useResult({ value: data?.data || data }, defaultData, pickFn)
+                            ? this._useResult({ value: data?.data || data }, defaultData, pickFn, copyData)
                             : data?.data || data || defaultData
                     );
                 });
@@ -65,16 +67,18 @@ export class WebApi {
      * @param {Object} result
      * @param {*} [defaultData]
      * @param {function} [pickFn]
+     * @param {boolean} [copyData]
      * @return {*|null}
      * @private
      */
-    _useResult(result, defaultData = null, pickFn = null) {
+    _useResult(result, defaultData = null, pickFn = null, copyData = false) {
         let data;
+        let value = copyData ? clone(result.value) : result.value;
 
         if (typeof pickFn === 'function') {
-            data = pickFn(result.value);
+            data = pickFn(value);
         } else {
-            data = this._getValueOfFirstKey(result.value);
+            data = this._getValueOfFirstKey(value);
         }
 
         return data ?? defaultData;

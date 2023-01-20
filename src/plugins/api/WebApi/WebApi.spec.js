@@ -66,6 +66,14 @@ describe('WebApi', () => {
 
             expect(api._useResult(result, null, pickFn)).toBe('foo2');
         });
+
+        it('should copy data to be able to modify them', () => {
+            const data = ['foo'];
+            const result = { value: { foo: data } };
+
+            const retResult = api._useResult(result, null, null, true);
+            expect(retResult !== data).toBe(true);
+        });
     });
 
     describe('_dataPromise()', () => {

@@ -32,6 +32,7 @@ export class GqlApi extends WebApi {
         variables = null,
         defaultData = null,
         pickFn = null,
+        copyData = false,
         silentErrors = false,
         fetchPolicy = 'network-only',
         clientId = 'default',
@@ -50,13 +51,13 @@ export class GqlApi extends WebApi {
             }
         );
 
-        const data = computed(() => this._useResult(result, defaultData, pickFn));
+        const data = computed(() => this._useResult(result, defaultData, pickFn, copyData));
 
         this._onError(onError, silentErrors);
 
         return {
             data,
-            dataPromise: this._dataPromise({ onResult, onError, defaultData, pickFn }),
+            dataPromise: this._dataPromise({ onResult, onError, defaultData, pickFn, copyData }),
             result,
             loading,
             enabled,
@@ -73,6 +74,7 @@ export class GqlApi extends WebApi {
         variables = null,
         defaultData = null,
         pickFn = null,
+        copyData = false,
         options = {},
         silentErrors = false,
         fetchPolicy = 'network-only',
@@ -89,7 +91,7 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
-            getPromise: () => this._dataPromise({ onResult: onDone, onError, defaultData, pickFn }),
+            getPromise: () => this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, copyData }),
             loading,
             error,
             called,
@@ -103,6 +105,7 @@ export class GqlApi extends WebApi {
         defaultData = null,
         silentErrors = false,
         pickFn = null,
+        copyData = false,
         errors = [],
         disabled = false,
         fnName = '',
@@ -114,13 +117,13 @@ export class GqlApi extends WebApi {
             enabled,
         });
 
-        const data = computed(() => this._useResult(result, defaultData, pickFn));
+        const data = computed(() => this._useResult(result, defaultData, pickFn, copyData));
 
         this._onError(onError, silentErrors);
 
         return {
             data,
-            dataPromise: this._dataPromise({ onResult, onError, defaultData, pickFn }),
+            dataPromise: this._dataPromise({ onResult, onError, defaultData, pickFn, copyData }),
             result,
             loading,
             enabled,
@@ -137,6 +140,7 @@ export class GqlApi extends WebApi {
         defaultData = null,
         silentErrors = false,
         pickFn = null,
+        copyData = false,
         errors = [],
         fnName = '',
     }) {
@@ -145,6 +149,7 @@ export class GqlApi extends WebApi {
             mockFunction: this._getFunctionMock(mockFunction, fnName),
             errors,
             pickFn,
+            copyData,
             defaultData,
             _called,
         });
@@ -153,7 +158,8 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
-            getPromise: () => this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, useResult: false }),
+            getPromise: () =>
+                this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, copyData, useResult: false }),
             loading,
             error,
             called,
@@ -224,7 +230,7 @@ export class GqlApi extends WebApi {
         };
     }
 
-    #useMutaionMock({ mockFunction, delay = 0, errors = [], pickFn, defaultData, _called = ref(false) }) {
+    #useMutaionMock({ mockFunction, delay = 0, errors = [], pickFn, copyData, defaultData, _called = ref(false) }) {
         let result;
         const called = ref(_called.value);
         const loading = ref(true);
@@ -245,7 +251,7 @@ export class GqlApi extends WebApi {
                 result = mockFunction(...args);
 
                 if (typeof onDoneFunction === 'function') {
-                    onDoneFunction(this._useResult({ value: result?.data || result }, defaultData, pickFn));
+                    onDoneFunction(this._useResult({ value: result?.data || result }, defaultData, pickFn, copyData));
                 }
             }
         };
