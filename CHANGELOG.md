@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.31.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.0...v0.31.1) (2023-01-20)
+
+
+### Features
+
+* **Formatters:** add option to set default currency ([1abf0f2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/1abf0f2d16db93458871f9bb79dd520553eed113))
+
 ## [0.31.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.30.1...v0.31.0) (2023-01-20)
 
 
