@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.31.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.30.1...v0.31.0) (2023-01-20)
+
+
+### Features
+
+* **WebApi:** add option to copy result data ([b3a24cb](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/b3a24cbe3223c6b5036a070f10e2acdf22eccae9))
+
 ### [0.30.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.30.0...v0.30.1) (2023-01-11)
 
 ## [0.30.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.29.0...v0.30.0) (2023-01-11)
