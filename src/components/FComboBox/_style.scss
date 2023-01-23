@@ -25,7 +25,7 @@
             --fwindow-popover-font-size: var(--f-font-size-5, 16px);
             --fwindow-popover-padding: 0;
             --fwindow-popover-body-padding: 0;
-            --fwindow-popover-color: #333;
+            --fwindow-popover-color: var(--f-doc-color);
             --fwindow-popover-background: #fff;
             --f-transition-length: 120ms;
         }
