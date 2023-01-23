@@ -66,6 +66,7 @@
             :animation-out="animationOut"
             :hide-on-document-scroll="hideOnDocumentScroll"
             :fit-height-to-viewport="fitHeightToViewport"
+            :code="code"
             __hide-on-document-mousedown
             width-as-attach
             class="fcombobox_fwindow"
@@ -216,6 +217,11 @@ export default {
         },
         /** Button's title */
         buttonTitle: {
+            type: String,
+            default: '',
+        },
+        /** `data-code` attribute for `FPopover` */
+        code: {
             type: String,
             default: '',
         },

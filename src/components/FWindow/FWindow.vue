@@ -16,6 +16,7 @@
             :aria-modal="modal"
             :aria-labelledby="_ids.title"
             :aria-describedby="_ids.body"
+            :data-code="code || null"
             tabindex="-1"
             @keyup="onKeyup"
             @keydown="onKeydown"
@@ -141,6 +142,11 @@ export default {
             type: String,
             default: 'dialog',
         },
+        /** `data-code` attribute */
+        code: {
+            type: String,
+            default: '',
+        },
         /** Is window a modal? */
         modal: {
             type: Boolean,
@@ -222,6 +228,11 @@ export default {
             validator: function (_value) {
                 return _value.length === 4;
             },
+        },
+        /** When `hideOnDocumentMousedown` is set, don't hide the window by clicking on the elements with this code  */
+        descendantsCode: {
+            type: String,
+            default: '',
         },
         /** Set the minimum width of the window as the element to which the window is attached */
         widthAsAttach: {
@@ -903,6 +914,10 @@ export default {
             return false;
         },
 
+        containsDescendant(_event) {
+            return _event.target.closest(`[data-code="${this.descendantsCode}"]`) !== null;
+        },
+
         onWindowResize() {
             if (this.isVisible) {
                 if (this.hideOnDocumentResize) {
@@ -921,7 +936,8 @@ export default {
                 this.isVisible &&
                 this.hideOnDocumentMousedown &&
                 !_event.target.closest(`#${this.id}`) &&
-                !this.isChildWindowOpened()
+                !this.isChildWindowOpened() &&
+                !this.containsDescendant(_event)
             ) {
                 this.hide();
             }
