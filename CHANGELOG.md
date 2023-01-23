@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.31.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.1...v0.31.2) (2023-01-23)
+
+
+### Features
+
+* **FWindow:** add `descendantsCode` and `code` props ([be3017f](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/be3017fc06273b2971fc0d4590aa5e161eeb119e))
+
 ### [0.31.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.0...v0.31.1) (2023-01-20)
 
 
