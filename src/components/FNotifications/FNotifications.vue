@@ -188,6 +188,14 @@ export default {
                 notification.hideAfter = this.hideAfter[notification.type];
             }
 
+            if (arguments.length > 1) {
+                notification.args = [];
+
+                for (let i = 1, len = arguments.length; i < len; i++) {
+                    notification.args.push(arguments[i]);
+                }
+            }
+
             if (strategy === 'newest-first') {
                 notifications.unshift(notification);
             } else if (strategy === 'single') {

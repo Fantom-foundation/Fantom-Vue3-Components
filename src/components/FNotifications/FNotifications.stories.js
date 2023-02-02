@@ -5,8 +5,11 @@ import { app } from '@storybook/vue3';
 import FNotifications from './FNotifications.vue';
 import FButton from '../FButton/FButton.vue';
 import { Notifications } from '../../plugins/notifications.js';
+import { ref } from 'vue';
 
 app.use(Notifications);
+
+const argRef = ref({ foo: 'foo' });
 
 export default {
     title: 'FNotifications',
@@ -242,6 +245,42 @@ export const WithIcon = () => ({
                 },
                 _group
             );
+        },
+    },
+});
+
+export const AdditionalArgs = () => ({
+    components: { FNotifications, FButton },
+    template: `
+        <div>
+        <h3>In page</h3>
+        <p>
+            <FButton secondary size="small" @click.native="onButtonClick('info')">info</FButton>
+            <FButton secondary size="small" @click.native="changeRef('foo2')">change to 'foo2'</FButton>
+            <FButton secondary size="small" @click.native="changeRef('foo3')">change to 'foo3'</FButton>
+        </p>
+        <FNotifications ref="notifications" style="max-width: 400px; padding: 0;">
+            <template #notification="notification">
+                <b>argument: {{ notification.args[0].value.foo }}</b> <br />
+                {{ notification.text }}
+            </template>
+        </FNotifications>
+        </div>
+    `,
+    methods: {
+        onButtonClick(_type) {
+            this.$refs.notifications.add(
+                {
+                    type: _type,
+                    text: notificationText(_type),
+                    withIcon: _type === 'error',
+                    hideAfter: 1000000,
+                },
+                argRef
+            );
+        },
+        changeRef(text) {
+            argRef.value = { foo: text };
         },
     },
 });
