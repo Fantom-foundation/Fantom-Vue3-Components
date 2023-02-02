@@ -33,6 +33,7 @@ import { callAndWait } from '../../utils/vue-helpers.js';
 const notificationsState = ref({
     addNotification: {},
     hideNotification: {},
+    updateNotification: {},
 });
 
 /**
@@ -151,6 +152,10 @@ export default {
         cHideNotification() {
             return notificationsState.value.hideNotification;
         },
+
+        cUpdateNotification() {
+            return notificationsState.value.updateNotification;
+        },
     },
 
     watch: {
@@ -160,6 +165,10 @@ export default {
 
         cHideNotification(data) {
             this.hideNotification(data);
+        },
+
+        cUpdateNotification(data) {
+            this.updateNotification(data);
         },
     },
 
@@ -207,6 +216,35 @@ export default {
             return id;
         },
 
+        /**
+         * @param  {Object}_notification
+         * @param {string} _messageId
+         * @return {boolean}
+         */
+        update(_notification, _messageId) {
+            const index = this.getNotificationIdxById(_messageId);
+            let updated = false;
+
+            if (index > -1) {
+                const args = [];
+
+                if (arguments.length > 2) {
+                    for (let i = 2, len = arguments.length; i < len; i++) {
+                        args.push(arguments[i]);
+                    }
+                }
+
+                this.notifications[index] = {
+                    ..._notification,
+                    args: args.length > 0 ? args : this.notifications[index].args,
+                };
+
+                updated = true;
+            }
+
+            return updated;
+        },
+
         addNotification(_data) {
             if (_data.group === this.group) {
                 _data._msgId = this.add(_data.notification);
@@ -225,6 +263,12 @@ export default {
             }
         },
 
+        updateNotification(_data) {
+            if (_data.group === this.group && _data.msgId && _data.notification) {
+                this.update(_data.notification, _data.msgId);
+            }
+        },
+
         getNotificationIdxById(_id) {
             return this.notifications.findIndex((_notification) => _id === _notification.id);
         },
@@ -238,6 +282,10 @@ export default {
         },
     },
 
+    /**
+     * @param {Object} notification
+     * @return {Promise<*>}
+     */
     addNotification(notification) {
         return callAndWait(() => {
             notificationsState.value.addNotification = notification;
@@ -247,10 +295,23 @@ export default {
     /**
      * @param {string} msgId Message id
      * @param {string} [group] Notification group
+     * @return {Promise<*>}
      */
     hideNotification(msgId = '', group = '') {
         return callAndWait(() => {
             notificationsState.value.hideNotification = { msgId, group };
+        });
+    },
+
+    /**
+     * @param {Object} notification
+     * @param {string} msgId Message id
+     * @param {string} [group] Notification group
+     * @return {Promise<*>}
+     */
+    updateNotification(notification, msgId = '', group = '') {
+        return callAndWait(() => {
+            notificationsState.value.updateNotification = { notification, msgId, group };
         });
     },
 };

@@ -182,6 +182,46 @@ export const Hide = () => ({
     },
 });
 
+export const Update = () => ({
+    components: { FNotifications, FButton },
+    template: `
+        <div>
+        <h3>In page</h3>
+        <p>
+            <FButton secondary size="small" @click.native="onButtonClick('info')">info</FButton>
+            <FButton secondary size="small" @click.native="update()">update</FButton>
+        </p>
+        <FNotifications
+            :group="group"
+            animation-in="scale-center-enter-active"
+            animation-out="scale-center-leave-active"
+            style="max-width: 400px; padding: 0;"
+        />
+        </div>
+    `,
+    data() {
+        return {
+            group: 'updatenotifications',
+            msgId: '',
+        };
+    },
+    methods: {
+        async onButtonClick(_type) {
+            this.msgId = await this.$notifications.add(
+                {
+                    type: _type,
+                    text: notificationText(_type),
+                    hideAfter: 1000000,
+                },
+                this.group
+            );
+        },
+        update() {
+            this.$notifications.update({ text: 'updated', type: 'info' }, this.msgId, this.group);
+        },
+    },
+});
+
 export const Slot = () => ({
     components: { FNotifications, FButton },
     template: `
@@ -255,9 +295,10 @@ export const AdditionalArgs = () => ({
         <div>
         <h3>In page</h3>
         <p>
-            <FButton secondary size="small" @click.native="onButtonClick('info')">info</FButton>
-            <FButton secondary size="small" @click.native="changeRef('foo2')">change to 'foo2'</FButton>
-            <FButton secondary size="small" @click.native="changeRef('foo3')">change to 'foo3'</FButton>
+            <FButton secondary size="small" @click="onButtonClick('info')">info</FButton>
+            <FButton secondary size="small" @click="changeRef('foo2')">change to 'foo2'</FButton>
+            <FButton secondary size="small" @click="changeRef('foo3')">change to 'foo3'</FButton>
+            <FButton secondary size="small" @click="update()">update</FButton>
         </p>
         <FNotifications ref="notifications" style="max-width: 400px; padding: 0;">
             <template #notification="notification">
@@ -267,9 +308,14 @@ export const AdditionalArgs = () => ({
         </FNotifications>
         </div>
     `,
+    data() {
+        return {
+            msgId: '',
+        };
+    },
     methods: {
-        onButtonClick(_type) {
-            this.$refs.notifications.add(
+        async onButtonClick(_type) {
+            this.msgId = await this.$refs.notifications.add(
                 {
                     type: _type,
                     text: notificationText(_type),
@@ -281,6 +327,9 @@ export const AdditionalArgs = () => ({
         },
         changeRef(text) {
             argRef.value = { foo: text };
+        },
+        update() {
+            this.$refs.notifications.update({ text: 'updated', type: 'error' }, this.msgId);
         },
     },
 });

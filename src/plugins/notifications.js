@@ -13,6 +13,7 @@ export class Notifications {
      *
      * @param {object} _notification
      * @param {string} [_group] Notification group
+     * @return {Promise<string>}
      */
     async add(_notification, _group = '') {
         const data = {
@@ -28,10 +29,23 @@ export class Notifications {
     /**
      * @param {string} msgId Message id
      * @param {string} [group] Notification group
+     * @return {Promise<void>}
      */
     async hide(msgId = '', group = '') {
         if (msgId) {
             await FNotifications.hideNotification(msgId, group);
+        }
+    }
+
+    /**
+     * @param {Object} notification
+     * @param {string} msgId Message id
+     * @param {string} [group] Notification group
+     * @return {Promise<void>}
+     */
+    async update(notification, msgId = '', group = '') {
+        if (msgId) {
+            await FNotifications.updateNotification(notification, msgId, group);
         }
     }
 }
