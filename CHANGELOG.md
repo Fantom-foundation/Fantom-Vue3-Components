@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.31.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.3...v0.31.4) (2023-02-02)
+
+
+### Features
+
+* **FNotifications:** add additional arguments of `add` method to notification ([0287a87](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0287a873ca1fc784624fb21420330992e758c492))
+
 ### [0.31.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.2...v0.31.3) (2023-02-02)
 
 ### [0.31.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.1...v0.31.2) (2023-01-23)
