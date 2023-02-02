@@ -1,6 +1,6 @@
-@use "../../elements/links/tools" as linkTools;
-@use "../../components/button/tools" as btnTools;
-@use "../../settings/components" as componentsSettings;
+@use '../../elements/links/tools' as linkTools;
+@use '../../components/button/tools' as btnTools;
+@use '../../settings/components' as componentsSettings;
 
 :root.theme-dark {
     --theme-dark-color-9: #222431;
@@ -41,11 +41,11 @@
         --f-input-hover-border: var(--f-inputs-border) var(--theme-dark-color-5);
         //--f-input-focus-border: var(--f-inputs-border) var(--f-color-primary-5-l);
         --f-input-focus-box-shadow: var(--f-inputs-focus-box-shadow)
-        hsla(var(--f-color-primary-h), var(--f-color-primary-s), 64%, 0.35);
+            hsla(var(--f-color-primary-h), var(--f-color-primary-s), 64%, 0.35);
         --f-input-invalid-color: var(--theme-dark-invalid-color);
         --f-input-invalid-border: var(--f-inputs-border) var(--theme-dark-invalid-color);
         --f-input-invalid-focus-box-shadow: var(--f-inputs-focus-box-shadow)
-        hsla(var(--f-color-red-h), var(--f-color-red-s), 63%, 0.35);
+            hsla(var(--f-color-red-h), var(--f-color-red-s), 63%, 0.35);
         --f-input-readonly-background: var(--f-inputs-background);
         --f-input-background: var(--theme-dark-color-6);
     }
@@ -164,7 +164,11 @@
 
     .fnotifications {
         .fmessage {
-            --fmessage-info-color: var(--f-color-grey-9);
+            --fmessage-success-color: var(--f-color-green-4);
+            --fmessage-warning-color: var(--f-color-orange-6);
+            --fmessage-error-color: var(--f-color-red-4);
+
+            background-color: var(--theme-dark-color-7);
         }
     }
 
