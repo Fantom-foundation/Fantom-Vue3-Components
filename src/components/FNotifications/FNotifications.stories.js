@@ -135,7 +135,7 @@ export const Hide = () => ({
 
             <h3><code>hide-on-close-button</code></h3>
             <p>
-                <FButton secondary size="small" @click.native="onButtonClick('topright')">show notification</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topright', 100000)">show notification</FButton>
             </p>
 
             <h3><code>hide-after</code></h3>

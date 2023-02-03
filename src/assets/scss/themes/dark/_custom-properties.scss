@@ -55,7 +55,7 @@
     }
 
     @include btnTools.button() {
-        --f-btn-hover-background: var(--f-color-primary-5-orig);
+        //--f-btn-hover-background: var(--f-color-primary-5-orig);
 
         &-secondary:not(.btn-red):not(.btn-green):not(.btn-orange):not(.btn-grey):not(.btn-light) {
             --f-btn-secondary-color: var(--f-doc-color);
@@ -169,6 +169,12 @@
             --fmessage-error-color: var(--f-color-red-4);
 
             background-color: var(--theme-dark-color-7);
+
+            &-info {
+                .fmessage_closebtn {
+                    --f-btn-hover-color: #333;
+                }
+            }
         }
     }
 
