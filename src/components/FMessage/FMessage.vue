@@ -29,6 +29,7 @@
                         @click="hide()"
                         size="small"
                         round
+                        tertiary
                         class="fmessage_closebtn"
                         :title="translate('fmessage.hideMessage')"
                     >
