@@ -3,5 +3,6 @@ export const fLinkPropDefaults = {
     href: '',
     hrefs: {},
     type: '',
+    target: '',
     useEllipsis: false,
 };

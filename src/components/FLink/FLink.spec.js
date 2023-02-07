@@ -92,4 +92,15 @@ describe('FLink', () => {
         expect(link.text()).toContain('0x123456789');
         expect(link.findComponent({ name: 'FEllipsis' }).exists()).toBe(true);
     });
+
+    it('should properly set `target` attribute', () => {
+        wrapper = createWrapper({
+            props: {
+                target: '_blank',
+            },
+        });
+
+        const link = wrapper.find('a');
+        expect(link.attributes().target).toBe('_blank');
+    });
 });
