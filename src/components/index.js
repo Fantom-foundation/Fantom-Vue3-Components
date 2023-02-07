@@ -65,3 +65,4 @@ export { default as FUploadAreaFormInput } from './FUploadAreaFormInput/FUploadA
 export { default as FViewSwitcher } from './FViewSwitcher/FViewSwitcher.vue';
 export { default as FViewTransition } from './FViewTransition/FViewTransition.vue';
 export { default as FStyledNumber } from './FStyledNumber/FStyledNumber.vue';
+export { default as FLink } from './FLink/FLink.vue';
