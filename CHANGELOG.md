@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.0...v0.32.1) (2023-02-07)
+
+
+### Features
+
+* **FLink:** add `target` prop ([2dadb0d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/2dadb0dfe18f81aebf1242c501d94ccc2bcde8fc))
+
 ## [0.32.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.31.7...v0.32.0) (2023-02-07)
 
 
