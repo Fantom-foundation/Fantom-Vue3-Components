@@ -4,5 +4,7 @@ export const fLinkPropDefaults = {
     hrefs: {},
     type: '',
     target: '',
+    title: '',
+    clas: '',
     useEllipsis: false,
 };

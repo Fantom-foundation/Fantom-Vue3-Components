@@ -33,6 +33,14 @@ const props = defineProps({
         type: String,
         default: defaults.target,
     },
+    title: {
+        type: String,
+        default: defaults.title,
+    },
+    clas: {
+        type: String,
+        default: defaults.clas,
+    },
     useEllipsis: {
         type: Boolean,
         default: defaults.useEllipsis,
@@ -58,7 +66,14 @@ const cHref = computed(() => {
 </script>
 
 <template>
-    <a :href="cHref" class="flink" :data-type="type || null" :target="target || null">
+    <a
+        :href="cHref"
+        class="flink"
+        :data-type="type || null"
+        :target="target || null"
+        :title="title || null"
+        :class="clas || null"
+    >
         <slot v-bind="{ ...$props, ...$attrs }">
             <FEllipsis v-if="useEllipsis" :text="text" overflow="middle" />
             <template v-else>{{ text }}</template>

@@ -103,4 +103,26 @@ describe('FLink', () => {
         const link = wrapper.find('a');
         expect(link.attributes().target).toBe('_blank');
     });
+
+    it('should properly set `title` attribute', () => {
+        wrapper = createWrapper({
+            props: {
+                title: 'foo',
+            },
+        });
+
+        const link = wrapper.find('a');
+        expect(link.attributes().title).toBe('foo');
+    });
+
+    it('should properly set `class` attribute', () => {
+        wrapper = createWrapper({
+            props: {
+                clas: 'foo',
+            },
+        });
+
+        const link = wrapper.find('a');
+        expect(link.attributes().class).toContain('foo');
+    });
 });
