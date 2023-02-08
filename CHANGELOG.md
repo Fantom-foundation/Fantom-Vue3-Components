@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.1...v0.32.2) (2023-02-08)
+
+
+### Features
+
+* **FLink:** add `title` and `clas` props ([bb4829f](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/bb4829f6ac6f7af5bf93e90e99dd446142baf66b))
+
 ### [0.32.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.0...v0.32.1) (2023-02-07)
 
 
