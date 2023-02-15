@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.2...v0.32.3) (2023-02-15)
+
+
+### Features
+
+* **FNotifications:** adjust position for correct display in rtl mode ([38e20d8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/38e20d82ed0da2811f457cd21e4f90d4028b94e4))
+
 ### [0.32.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.1...v0.32.2) (2023-02-08)
 
 
