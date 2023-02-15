@@ -61,16 +61,26 @@ export default {
         /**
          * Predefined notification positions
          *
-         * @type {('' | 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right')}
+         * @type {('' | 'top-start'| 'top-left' | 'top-center' | 'top-end' | 'top-right' | 'bottom-start' | 'bottom-left' | 'bottom-center' | 'bottom-end' | 'bottom-right')}
          */
         position: {
             type: String,
             default: '',
             validator: function (_value) {
                 return (
-                    ['', 'top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'].indexOf(
-                        _value
-                    ) !== -1
+                    [
+                        '',
+                        'top-start',
+                        'top-left',
+                        'top-center',
+                        'top-end',
+                        'top-right',
+                        'bottom-start',
+                        'bottom-left',
+                        'bottom-center',
+                        'bottom-end',
+                        'bottom-right',
+                    ].indexOf(_value) !== -1
                 );
             },
         },

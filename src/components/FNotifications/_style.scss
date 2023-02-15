@@ -1,4 +1,4 @@
-@use "custom-properties";
+@use 'custom-properties';
 
 .fnotifications {
     margin: var(--f-spacer-3, 12px) 0;
@@ -90,7 +90,9 @@
         }
     }
 
-    &-topleft, &-topcenter {
+    &-topstart,
+    &-topleft,
+    &-topcenter {
         top: 0;
         left: 0;
     }
@@ -100,12 +102,15 @@
         left: 50%;
     }
 
+    &-topend,
     &-topright {
         top: 0;
         right: 0;
     }
 
-    &-bottomleft, &-bottomcenter {
+    &-bottomstart,
+    &-bottomleft,
+    &-bottomcenter {
         bottom: 0;
         left: 0;
     }
@@ -115,8 +120,37 @@
         left: 50%;
     }
 
+    &-bottomend,
     &-bottomright {
         bottom: 0;
         right: 0;
+    }
+}
+
+html[dir=rtl], body[dir=rtl] {
+    .fnotifications {
+        &-topstart,
+        &-topleft,
+        &-topcenter,
+        &-bottomstart,
+        &-bottomleft,
+        &-bottomcenter {
+            left: unset;
+            right: 0;
+        }
+
+        &-topcenter,
+        &-bottomcenter {
+            transform: translateX(50%);
+            right: 50%;
+        }
+
+        &-topend,
+        &-topright,
+        &-bottomend,
+        &-bottomright {
+            right: unset;
+            left: 0;
+        }
     }
 }

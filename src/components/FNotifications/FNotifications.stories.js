@@ -63,19 +63,19 @@ export const PositionAndGroup = () => ({
         <div>
             <p>
                 <br /><br /><br /><br /><br />
-                <FButton secondary size="small" @click.native="onButtonClick('topleft')">top-left</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topstart')">top-start</FButton>
                 <FButton secondary size="small" @click.native="onButtonClick('topcenter')">top-center</FButton>
-                <FButton secondary size="small" @click.native="onButtonClick('topright')">top-right</FButton>
-                <FButton secondary size="small" @click.native="onButtonClick('bottomleft')">bottom-left</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topend')">top-end</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('bottomstart')">bottom-start</FButton>
                 <FButton secondary size="small" @click.native="onButtonClick('bottomcenter')">bottom-center</FButton>
-                <FButton secondary size="small" @click.native="onButtonClick('bottomright')">bottom-right</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('bottomend')">bottom-end</FButton>
             </p>
-            <FNotifications position="top-left" group="topleft" />
+            <FNotifications position="top-start" group="topstart" />
             <FNotifications position="top-center" group="topcenter" />
-            <FNotifications position="top-right" group="topright" />
-            <FNotifications position="bottom-left" group="bottomleft" />
+            <FNotifications position="top-end" group="topend" />
+            <FNotifications position="bottom-start" group="bottomstart" />
             <FNotifications position="bottom-center" group="bottomcenter" />
-            <FNotifications position="bottom-right" group="bottomright" />
+            <FNotifications position="bottom-end" group="bottomend" />
         </div>
     `,
     methods: {
@@ -99,13 +99,13 @@ export const Strategy = () => ({
     template: `
         <div>
             <p>
-                <FButton secondary size="small" @click.native="onButtonClick('bottomleft')">No strategy</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('bottomstart')">No strategy</FButton>
                 <FButton secondary size="small" @click.native="onButtonClick('bottomcenter')"><code>'newest-first'</code></FButton>
-                <FButton secondary size="small" @click.native="onButtonClick('topright')"><code>'single'</code></FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topend')"><code>'single'</code></FButton>
             </p>
-            <FNotifications position="bottom-left" group="bottomleft" />
+            <FNotifications position="bottom-start" group="bottomstart" />
             <FNotifications strategy="newest-first" position="bottom-center" group="bottomcenter" />
-            <FNotifications strategy="single" position="top-right" group="topright" />
+            <FNotifications strategy="single" position="top-end" group="topend" />
         </div>
     `,
     methods: {
@@ -135,23 +135,23 @@ export const Hide = () => ({
 
             <h3><code>hide-on-close-button</code></h3>
             <p>
-                <FButton secondary size="small" @click.native="onButtonClick('topright', 100000)">show notification</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topend', 100000)">show notification</FButton>
             </p>
 
             <h3><code>hide-after</code></h3>
             <p>
-                <FButton secondary size="small" @click.native="onButtonClick('topleft')">show notification</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topstart')">show notification</FButton>
             </p>
 
             <h3>manual hide</h3>
             <p>
-                <FButton secondary size="small" @click.native="onButtonClick('topleft', 100000)">show notification</FButton>
-                <FButton secondary size="small" @click.native="onButtonHideClick('topleft')">hide notification</FButton>
+                <FButton secondary size="small" @click.native="onButtonClick('topstart', 100000)">show notification</FButton>
+                <FButton secondary size="small" @click.native="onButtonHideClick('topstart')">hide notification</FButton>
             </p>
 
             <FNotifications hide-on-click position="top-center" group="topcetner" />
-            <FNotifications hide-on-close-button position="top-right" group="topright" />
-            <FNotifications :hide-after="{success: 1000, error: 1000, warning: 1000, info: 1000}" position="top-left" group="topleft" />
+            <FNotifications hide-on-close-button position="top-end" group="topend" />
+            <FNotifications :hide-after="{success: 1000, error: 1000, warning: 1000, info: 1000}" position="top-start" group="topstart" />
         </div>
     `,
     data() {
@@ -340,12 +340,12 @@ export const Variations = () => ({
         <div>
             <div class="grid">
                 <div class="col-4">
-                    <h3>top-left</h3>
+                    <h3>top-start</h3>
                     <p>
-                        <FButton secondary size="small" @click.native="onButtonClick('success', 'topleft')">success</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('error', 'topleft')">error</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'topleft')">warning</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('info', 'topleft')">info</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('success', 'topstart')">success</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('error', 'topstart')">error</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'topstart')">warning</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('info', 'topstart')">info</FButton>
                     </p>
                 </div>
 
@@ -360,22 +360,22 @@ export const Variations = () => ({
                 </div>
 
                 <div class="col-4">
-                    <h3>top-right</h3>
+                    <h3>top-end</h3>
                     <p>
-                        <FButton secondary size="small" @click.native="onButtonClick('success', 'topright')">success</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('error', 'topright')">error</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'topright')">warning</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('info', 'topright')">info</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('success', 'topend')">success</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('error', 'topend')">error</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'topend')">warning</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('info', 'topend')">info</FButton>
                     </p>
                 </div>
 
                 <div class="col-4">
-                    <h3>bottom-left</h3>
+                    <h3>bottom-start</h3>
                     <p>
-                        <FButton secondary size="small" @click.native="onButtonClick('success', 'bottomleft')">success</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('error', 'bottomleft')">error</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'bottomleft')">warning</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('info', 'bottomleft')">info</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('success', 'bottomstart')">success</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('error', 'bottomstart')">error</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'bottomstart')">warning</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('info', 'bottomstart')">info</FButton>
                     </p>
                 </div>
 
@@ -390,20 +390,20 @@ export const Variations = () => ({
                 </div>
 
                 <div class="col-4">
-                    <h3>bottom-right</h3>
+                    <h3>bottom-end</h3>
                     <p>
-                        <FButton secondary size="small" @click.native="onButtonClick('success', 'bottomright')">success</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('error', 'bottomright')">error</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'bottomright')">warning</FButton>
-                        <FButton secondary size="small" @click.native="onButtonClick('info', 'bottomright')">info</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('success', 'bottomend')">success</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('error', 'bottomend')">error</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('warning', 'bottomend')">warning</FButton>
+                        <FButton secondary size="small" @click.native="onButtonClick('info', 'bottomend')">info</FButton>
                     </p>
                 </div>
             </div>
 
             <FNotifications
-                group="topleft"
+                group="topstart"
                 with-icon
-                position="top-left"
+                position="top-start"
                 hide-on-click
                 animation-in="slide-right-enter-active"
                 animation-out="slide-left-leave-active"
@@ -418,13 +418,13 @@ export const Variations = () => ({
                 position="top-center"
             />
             <FNotifications
-                group="topright"
-                position="top-right"
+                group="topend"
+                position="top-end"
                 hide-on-close-button
                 animation-in="slide-left-enter-active"
                 animation-out="slide-right-leave-active"
             />
-            <FNotifications group="bottomleft" position="bottom-left" />
+            <FNotifications group="bottomstart" position="bottom-start" />
             <FNotifications
                 group="bottomcenter"
                 position="bottom-center"
@@ -441,7 +441,7 @@ export const Variations = () => ({
                     </template>
                 </template>
             </FNotifications>
-            <FNotifications group="bottomright" position="bottom-right" />
+            <FNotifications group="bottomend" position="bottom-end" />
         </div>
     `,
     methods: {
