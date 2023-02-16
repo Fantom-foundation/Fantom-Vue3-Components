@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.3...v0.32.4) (2023-02-16)
+
+
+### Features
+
+* **GqlApi:** add support for passing args to mock and fake functions ([45bb20a](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/45bb20a0c4f5445afb3161471976cce12ae4a569))
+
 ### [0.32.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.2...v0.32.3) (2023-02-15)
 
 
