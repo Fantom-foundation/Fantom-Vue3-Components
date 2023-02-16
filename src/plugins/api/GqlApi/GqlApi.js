@@ -109,10 +109,12 @@ export class GqlApi extends WebApi {
         errors = [],
         disabled = false,
         fnName = '',
+        args = [],
     }) {
         const enabled = ref(!disabled);
         const { result, loading, error, refetch, fetchMore, onResult, onError } = this.#useQueryMock({
             mockFunction: this._getFunctionMock(mockFunction, fnName),
+            mockFunctionWithOrigArgs: () => this._getFunctionMock(mockFunction, fnName)(...args),
             errors,
             enabled,
         });
@@ -143,10 +145,12 @@ export class GqlApi extends WebApi {
         copyData = false,
         errors = [],
         fnName = '',
+        args = [],
     }) {
         const _called = ref(false);
         const { mutate, loading, error, called, onDone, onError } = this.#useMutaionMock({
             mockFunction: this._getFunctionMock(mockFunction, fnName),
+            mockFunctionWithOrigArgs: () => this._getFunctionMock(mockFunction, fnName)(...args),
             errors,
             pickFn,
             copyData,
@@ -168,7 +172,7 @@ export class GqlApi extends WebApi {
         };
     }
 
-    #useQueryMock({ mockFunction, delay = 0, errors = [], enabled = ref(true) }) {
+    #useQueryMock({ mockFunction, mockFunctionWithOrigArgs, delay = 0, errors = [], enabled = ref(true) }) {
         const result = ref(null);
         const loading = ref(true);
         const error = ref(null);
@@ -187,7 +191,7 @@ export class GqlApi extends WebApi {
             loading.value = true;
 
             defer(() => {
-                onDefer(...args);
+                onDefer(false, ...args);
             }, delay);
         }
 
@@ -196,7 +200,7 @@ export class GqlApi extends WebApi {
             refetch(...args);
         }
 
-        function onDefer(...args) {
+        function onDefer(origArgs, ...args) {
             loading.value = false;
 
             if (errors.length > 0) {
@@ -206,7 +210,11 @@ export class GqlApi extends WebApi {
                     onErrorFunction({ errors });
                 }
             } else if (enabled.value) {
-                result.value = mockFunction(...args);
+                if (origArgs) {
+                    result.value = mockFunctionWithOrigArgs();
+                } else {
+                    result.value = mockFunction(...args);
+                }
 
                 if (typeof onResultFunction === 'function') {
                     onResultFunction({
@@ -216,7 +224,9 @@ export class GqlApi extends WebApi {
             }
         }
 
-        defer(onDefer, delay);
+        defer(() => {
+            onDefer(true);
+        }, delay);
 
         return {
             result,
@@ -230,7 +240,16 @@ export class GqlApi extends WebApi {
         };
     }
 
-    #useMutaionMock({ mockFunction, delay = 0, errors = [], pickFn, copyData, defaultData, _called = ref(false) }) {
+    #useMutaionMock({
+        mockFunction,
+        mockFunctionWithOrigArgs,
+        delay = 0,
+        errors = [],
+        pickFn,
+        copyData,
+        defaultData,
+        _called = ref(false),
+    }) {
         let result;
         const called = ref(_called.value);
         const loading = ref(true);
@@ -238,7 +257,7 @@ export class GqlApi extends WebApi {
         let onDoneFunction = null;
         let onErrorFunction = null;
 
-        const onDefer = (...args) => {
+        const onDefer = (origArgs, ...args) => {
             loading.value = false;
 
             if (errors.length > 0) {
@@ -248,7 +267,11 @@ export class GqlApi extends WebApi {
                     onErrorFunction({ errors });
                 }
             } else {
-                result = mockFunction(...args);
+                if (origArgs) {
+                    result = mockFunctionWithOrigArgs();
+                } else {
+                    result = mockFunction(...args);
+                }
 
                 if (typeof onDoneFunction === 'function') {
                     onDoneFunction(this._useResult({ value: result?.data || result }, defaultData, pickFn, copyData));
@@ -269,11 +292,13 @@ export class GqlApi extends WebApi {
             called.value = true;
 
             defer(() => {
-                onDefer(...args);
+                onDefer(false, ...args);
             }, delay);
         }
 
-        // defer(onDefer, delay);
+        defer(() => {
+            onDefer(true);
+        }, delay);
 
         return {
             mutate,

@@ -193,6 +193,45 @@ describe('GqlApi', () => {
 
             api.restoreDataFake('fooMock');
         });
+
+        it('should pass the same arguments to the mock function as the original function', async () => {
+            const mockFn = vi.fn();
+            function fooMock(...args) {
+                return gqlApi.queryMock({
+                    mockFunction: mockFn,
+                    fnName: 'fooMock',
+                    args: [...args],
+                });
+            }
+            api.registerQueryMock(fooMock, 'fooMock');
+
+            api.query.fooMock({ arg: 'foo' });
+            await delay();
+
+            expect(mockFn).toBeCalledWith({ arg: 'foo' });
+
+            api.restoreDataFake('fooMock');
+        });
+
+        it('should pass the same arguments to the fake data function as the original function', async () => {
+            function fooMock(...args) {
+                return gqlApi.queryMock({
+                    mockFunction: () => {},
+                    fnName: 'fooMock',
+                    args: [...args],
+                });
+            }
+            api.registerQueryMock(fooMock, 'fooMock');
+            const fakeDataFn = vi.fn();
+            api.fakeData('fooMock', fakeDataFn);
+
+            api.query.fooMock({ arg: 'foo' });
+            await delay();
+
+            expect(fakeDataFn).toBeCalledWith({ arg: 'foo' });
+
+            api.restoreDataFake('fooMock');
+        });
     });
 
     describe('mutationMock()', () => {
@@ -298,6 +337,45 @@ describe('GqlApi', () => {
             await delay();
 
             expect(result).toBe('data fake');
+
+            api.restoreDataFake('fooMock');
+        });
+
+        it('should pass the same arguments to the mock function as the original function', async () => {
+            const mockFn = vi.fn();
+            function fooMock(...args) {
+                return gqlApi.mutationMock({
+                    mockFunction: mockFn,
+                    fnName: 'fooMock',
+                    args: [...args],
+                });
+            }
+            api.registerMutationMock(fooMock, 'fooMock');
+
+            api.mutation.fooMock({ arg: 'foo' });
+            await delay();
+
+            expect(mockFn).toBeCalledWith({ arg: 'foo' });
+
+            api.restoreDataFake('fooMock');
+        });
+
+        it('should pass the same arguments to the fake data function as the original function', async () => {
+            function fooMock(...args) {
+                return gqlApi.mutationMock({
+                    mockFunction: () => {},
+                    fnName: 'fooMock',
+                    args: [...args],
+                });
+            }
+            api.registerMutationMock(fooMock, 'fooMock');
+            const fakeDataFn = vi.fn();
+            api.fakeData('fooMock', fakeDataFn);
+
+            api.query.fooMock({ arg: 'foo' });
+            await delay();
+
+            expect(fakeDataFn).toBeCalledWith({ arg: 'foo' });
 
             api.restoreDataFake('fooMock');
         });
