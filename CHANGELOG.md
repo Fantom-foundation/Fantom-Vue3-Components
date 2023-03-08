@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.5...v0.32.6) (2023-03-08)
+
+
+### Features
+
+* **FCombobox:** remove `data-testid` attr ([bf06dc5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/bf06dc519fe46a824cbc3c8b89e998369615f329))
+
 ### [0.32.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.4...v0.32.5) (2023-03-08)
 
 
