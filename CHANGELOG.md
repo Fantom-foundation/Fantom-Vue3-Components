@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.4...v0.32.5) (2023-03-08)
+
+
+### Features
+
+* add `dataTestid` prop to components with `inheritAttrs: false` ([294aa2e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/294aa2e053eedb433322be8b1679e42458df56ed))
+
 ### [0.32.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.3...v0.32.4) (2023-02-16)
 
 
