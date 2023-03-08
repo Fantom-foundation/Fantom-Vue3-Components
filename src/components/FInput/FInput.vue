@@ -1,5 +1,5 @@
 <template>
-    <span :id="id" class="finput" :class="[clas, classes]" @click="onClick">
+    <span :id="id" class="finput" :class="[clas, classes]" @click="onClick" :data-testid="dataTestid">
         <slot name="top" v-bind="slotProps">
             <FLabel v-if="!noLabel" native :id="labeledById" :required="required">
                 <slot name="label">{{ label }}</slot>
@@ -189,6 +189,10 @@ export default {
         showCharsCounter: {
             type: Boolean,
             default: false,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 

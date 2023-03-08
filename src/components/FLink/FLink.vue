@@ -45,6 +45,10 @@ const props = defineProps({
         type: Boolean,
         default: defaults.useEllipsis,
     },
+    dataTestid: {
+        type: String,
+        default: null,
+    },
 });
 
 const attrs = useAttrs();
@@ -73,6 +77,7 @@ const cHref = computed(() => {
         :target="target || null"
         :title="title || null"
         :class="clas || null"
+        :data-testid="dataTestid"
     >
         <slot v-bind="{ ...$props, ...$attrs }">
             <FEllipsis v-if="useEllipsis" :text="text" overflow="middle" />

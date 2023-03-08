@@ -18,7 +18,7 @@ export const Default = () => ({
                 <legend>Default form</legend>
                 <div>
                     <div class="mab-5">
-                        <FFormInput type="text" label="text" name="text" />
+                        <FFormInput type="text" label="text" name="text" data-testid="mytext" />
                         <FFormInput type="email" label="email" name="email" />
                         <FFormInput type="number" label="number" name="number" />
                         <FFormInput type="date" label="date" name="date" />
@@ -34,7 +34,7 @@ export const Default = () => ({
                         <FFormInput type="datetime" label="datetime" name="datetime" />
                     </div>
                     <div class="mab-5">
-                        <FFormInput type="combobox" select-mode label="combobox" name="combobox" :data="[
+                        <FFormInput type="combobox" select-mode label="combobox" name="combobox" data-testid="mycombo" :data="[
                             { label: '---', value: '' },
                             { label: 'Option 1', value: '10' },
                             { label: 'Option 2', value: '20' },

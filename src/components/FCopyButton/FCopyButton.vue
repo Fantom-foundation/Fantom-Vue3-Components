@@ -6,6 +6,7 @@
         v-bind="$attrs"
         @click="onClick"
         @window-hide="$emit('window-hide', $event)"
+        :data-testid="dataTestid"
     >
         <template #button-content>
             <FSvgIcon :size="iconSize"><IconCopy /></FSvgIcon>
@@ -71,6 +72,10 @@ export default {
         showPopover: {
             type: Boolean,
             default: true,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 

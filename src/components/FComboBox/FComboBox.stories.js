@@ -222,7 +222,7 @@ export const Default = () => ({
     components: { FComboBox },
     template: `
         <div>
-            <FComboBox :data="data" @update:value="value = $event" label="label" />
+            <FComboBox :data="data" @update:value="value = $event" label="label" data-testid="mycombobox" />
             value: {{ value }}
         </div>
     `,

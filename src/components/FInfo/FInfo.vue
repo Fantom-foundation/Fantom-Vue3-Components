@@ -1,5 +1,5 @@
 <template>
-    <span class="finfo" @click="onClick">
+    <span class="finfo" @click="onClick" :data-testid="dataTestid">
         <!-- @slot Default to `FButton` -->
         <slot name="button">
             <FButton :tertiary="tertiary" :round="round" v-bind="$attrs" :id="dButtonId" :title="cButtonTitle">
@@ -118,6 +118,10 @@ export default {
         round: {
             type: Boolean,
             default: true,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 

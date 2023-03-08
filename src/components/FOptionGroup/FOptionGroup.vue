@@ -1,5 +1,5 @@
 <template>
-    <span class="foptiongroup" :class="[classes, $attrs.class]">
+    <span class="foptiongroup" :class="[classes, $attrs.class]" :data-testid="dataTestid">
         <slot name="top" v-bind="slotProps">
             <FLabel v-if="label" :id="labeledById" :label="label" :required="required" class="foptiongroup_label" />
         </slot>
@@ -115,6 +115,10 @@ export default {
         hideLabels: {
             type: Boolean,
             default: false,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 

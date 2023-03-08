@@ -1,5 +1,5 @@
 <template>
-    <span class="fdatetimefield">
+    <span class="fdatetimefield" :data-testid="dataTestid">
         <slot name="top" v-bind="slotProps">
             <FLabel v-if="label" native :id="labeledById" :label="label" :required="required" />
         </slot>
@@ -100,6 +100,10 @@ export default {
         invalid: {
             type: Boolean,
             default: false,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 

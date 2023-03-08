@@ -8,6 +8,7 @@
         :aria-owns="listboxId"
         :aria-expanded="popoverVisible ? 'true' : 'false'"
         :aria-invalid="validationState.invalid"
+        :data-testid="dataTestid"
     >
         <component
             :is="inputComponent"
@@ -255,6 +256,10 @@ export default {
         showButton: {
             type: Boolean,
             default: true,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 

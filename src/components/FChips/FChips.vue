@@ -9,6 +9,7 @@
         :class="classes"
         orientation="horizontal"
         @item-remove="onItemRemove"
+        :data-testid="dataTestid"
     >
         <!-- copy slots -->
         <template v-for="(index, name) in $slots" v-slot:[name]="data">
@@ -54,6 +55,10 @@ export default {
         removable: {
             type: Boolean,
             default: false,
+        },
+        dataTestid: {
+            type: String,
+            default: null,
         },
     },
 
