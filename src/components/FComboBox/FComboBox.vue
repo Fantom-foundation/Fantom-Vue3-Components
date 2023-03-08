@@ -8,7 +8,6 @@
         :aria-owns="listboxId"
         :aria-expanded="popoverVisible ? 'true' : 'false'"
         :aria-invalid="validationState.invalid"
-        :data-testid="dataTestid"
     >
         <component
             :is="inputComponent"
