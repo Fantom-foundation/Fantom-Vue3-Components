@@ -61,10 +61,6 @@ export class Locale {
             this.#translations.setLocale(localeTag);
         }
 
-        if (this.#i18n) {
-            await this.#i18n.setLanguage(localeTag, reloadPage);
-        }
-
         if (this.#formatters) {
             this.#formatters.setLocale(localeTag);
         }
@@ -72,6 +68,10 @@ export class Locale {
         this.#setDirAttribute(localeTag);
 
         this.#tag.value = localeTag;
+
+        if (this.#i18n) {
+            await this.#i18n.setLanguage(localeTag, reloadPage);
+        }
     }
 
     /**
@@ -83,7 +83,7 @@ export class Locale {
         if (dir === 'rtl') {
             document.documentElement.dir = 'rtl';
         } else {
-            document.documentElement.dir = '';
+            document.documentElement.removeAttribute('dir');
         }
 
         this.#rtlDirection.value = dir === 'rtl';
