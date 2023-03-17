@@ -2,6 +2,9 @@
  * Class for handling repeated function calls.
  */
 export class Interval {
+    /**
+     * @param {number} interval
+     */
     constructor({ interval = 3000 } = {}) {
         // Keys are codes, values are objects { id: number, paused: boolean }
         this._intervals = {};
@@ -19,10 +22,15 @@ export class Interval {
      * @param {string} code
      * @param {function} callback
      * @param {number} [interval] In milliseconds
+     * @param {boolean} [immediate] Call function immediately
      */
-    start(code, callback, interval = this._interval) {
+    start(code, callback, interval = this._interval, immediate = false) {
         if (typeof callback === 'function') {
             this.stop(code);
+
+            if (immediate) {
+                callback();
+            }
 
             const id = setInterval(() => {
                 const interval = this._getIntervalByCode(code);

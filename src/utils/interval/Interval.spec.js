@@ -54,6 +54,15 @@ describe('Interval', () => {
         expect(fn).toBeCalledTimes(2);
     });
 
+    it('should call given function immediately if `immediate` arg is true', () => {
+        destroyInterval();
+        interval = new Interval();
+
+        interval.start('code', fn, 100, true);
+
+        expect(fn).toBeCalledTimes(1);
+    });
+
     it('should be able to stop calling function by given code', () => {
         interval.start('code', fn, 100);
 
