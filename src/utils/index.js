@@ -157,7 +157,7 @@ export function isArray(_obj) {
  * @return {boolean}
  */
 export function isPromise(_obj) {
-    return typeof _obj === 'object' && typeof _obj.then === 'function';
+    return _obj && typeof _obj === 'object' && typeof _obj.then === 'function';
 }
 
 /**
