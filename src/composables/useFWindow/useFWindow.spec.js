@@ -4,6 +4,7 @@ import { useFWindow } from './useFWindow.js';
 import { FWindow } from '@/components/index.js';
 import { nextTick, ref } from 'vue';
 import { mount } from '@vue/test-utils';
+import { delay } from '@/utils/index.js';
 
 let wrapper = null;
 const WINDOW_ID = 'window-id';
@@ -78,5 +79,29 @@ describe('useFWindow', () => {
         await nextTick();
 
         expect(window.text()).toContain('backButtonComponentId');
+    });
+
+    it('should expose function for showing the window', async () => {
+        wrapper = createWrapper();
+        await wrapper.showWindow();
+        const window = wrapper.findComponent(FWindow);
+
+        const { show } = useFWindow(WINDOW_ID);
+        show();
+        await nextTick();
+
+        expect(window.vm.isWindowVisible()).toBe(true);
+    });
+
+    it('should expose function for hiding the window', async () => {
+        wrapper = createWrapper();
+        await wrapper.showWindow();
+        const window = wrapper.findComponent(FWindow);
+
+        const { hide } = useFWindow(WINDOW_ID);
+        hide();
+        await delay(0);
+
+        expect(window.vm.isWindowVisible()).toBe(false);
     });
 });

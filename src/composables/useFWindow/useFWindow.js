@@ -20,6 +20,14 @@ function registerFWindowMethodsAndRefs(id = '', windowRef = null) {
         backButtonComponentId.value = props;
     }
 
+    function show() {
+        windowRef.value.show();
+    }
+
+    function hide() {
+        windowRef.value.hide();
+    }
+
     function exposeFWindowMethods() {
         return exposeMethods(windowRef, ['show', 'hide', 'toggle', 'isWindowVisible']);
     }
@@ -29,7 +37,7 @@ function registerFWindowMethodsAndRefs(id = '', windowRef = null) {
     if (id) {
         const { registerMethods } = useMethods(id, true);
 
-        registerMethods({ setTitle, setBackButtonComponentId });
+        registerMethods({ setTitle, setBackButtonComponentId, show, hide });
 
         ret.title = title;
         ret.backButtonComponentId = backButtonComponentId;
@@ -47,12 +55,12 @@ function registerFWindowMethodsAndRefs(id = '', windowRef = null) {
  */
 export function useFWindow(id = '', windowRef = null) {
     let ret = {};
-    const { setTitle, setBackButtonComponentId } = useMethods(id).getMethods();
+    const { setTitle, setBackButtonComponentId, show, hide } = useMethods(id).getMethods();
 
     if (windowRef) {
         ret = registerFWindowMethodsAndRefs(id, windowRef);
     } else {
-        ret = { setTitle, setBackButtonComponentId };
+        ret = { setTitle, setBackButtonComponentId, show, hide };
     }
 
     return ret;
