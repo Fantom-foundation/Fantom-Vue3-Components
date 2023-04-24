@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.10](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.9...v0.32.10) (2023-04-24)
+
+
+### Features
+
+* **useFWindow:** expose `show` and `hide` functions ([857b42d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/857b42dbc7619a5f6437bde61698a52ae3e00b99))
+
 ### [0.32.9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.8...v0.32.9) (2023-03-20)
 
 
