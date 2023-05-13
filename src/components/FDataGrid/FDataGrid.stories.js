@@ -1173,8 +1173,8 @@ export const DataFormatting = () => ({
             };
 
             cols[2].label = 'Full Name';
-            cols[2].formatter = function (value, item) {
-                return `${item.first_name} ${value}`;
+            cols[2].formatter = function (value, item, rowIndex) {
+                return `${item.first_name} ${value} (${rowIndex + 1})`;
             };
 
             return cols;

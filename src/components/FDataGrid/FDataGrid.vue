@@ -76,12 +76,12 @@
                         </td>
                     </template>
 
-                    <template v-for="(item, index) in dItems" :key="item._id">
+                    <template v-for="(item, rowIndex) in dItems" :key="item._id">
                         <tr
                             :data-fdg-id="item._id"
                             :style="item.css"
                             :class="item.cssClass"
-                            :aria-rowindex="getAriaRowIndex(index)"
+                            :aria-rowindex="getAriaRowIndex(rowIndex)"
                             data-testcode="fdatagrid-row"
                         >
                             <td
@@ -109,7 +109,7 @@
                                     <slot
                                         v-else-if="isCellEditorOn(item, col)"
                                         :name="`editor-${col.name}`"
-                                        :value="getItemPropValue(item, col)"
+                                        :value="getItemPropValue(item, col, rowIndex)"
                                         :item="item"
                                         :column="col"
                                     />
@@ -117,11 +117,11 @@
                                     <slot
                                         v-else
                                         :name="`column-${col.name}`"
-                                        :value="getItemPropValue(item, col)"
+                                        :value="getItemPropValue(item, col, rowIndex)"
                                         :item="item"
                                         :column="col"
                                     >
-                                        {{ getItemPropValue(item, col) }}
+                                        {{ getItemPropValue(item, col, rowIndex) }}
                                     </slot>
                                 </div>
                             </td>
@@ -131,7 +131,7 @@
                             :item="item"
                             :columns="columns"
                             :visibleColumnsNum="visibleColumnsNum"
-                            :ariaRowindex="getAriaRowIndex(index)"
+                            :ariaRowindex="getAriaRowIndex(rowIndex)"
                         ></slot>
                     </template>
                 </FInfiniteScroll>
@@ -146,7 +146,7 @@
                     </tr>
                 </tbody>
                 <tfoot v-if="!infiniteScroll && footerItems.length > 0">
-                    <tr v-for="(item, index) in footerItems" :key="`${dTableId}_ft_${index}`" :style="item.css">
+                    <tr v-for="(item, rowIndex) in footerItems" :key="`${dTableId}_ft_${rowIndex}`" :style="item.css">
                         <td
                             v-for="(col, index) in cColumns"
                             :key="col.name"
@@ -158,11 +158,11 @@
                                 <!-- @slot Dynamic slot for cells -->
                                 <slot
                                     :name="`footercolumn-${col.name}`"
-                                    :value="getItemPropValue(item, col)"
+                                    :value="getItemPropValue(item, col, rowIndex)"
                                     :item="item"
                                     :column="col"
                                 >
-                                    {{ getItemPropValue(item, col) }}
+                                    {{ getItemPropValue(item, col, rowIndex) }}
                                 </slot>
                             </div>
                         </td>
@@ -981,9 +981,10 @@ export default {
          *
          * @param {object} _item
          * @param {object} _col
+         * @param {number} _rowIndex
          * @return {*}
          */
-        getItemPropValue(_item, _col) {
+        getItemPropValue(_item, _col, _rowIndex) {
             let value;
 
             if (_col.itemProp) {
@@ -995,7 +996,7 @@ export default {
             }
 
             if (_col.formatter && !_col.hidden) {
-                value = _col.formatter(value, _item);
+                value = _col.formatter(value, _item, _rowIndex);
             }
 
             return value;
