@@ -207,7 +207,9 @@
 
                     &::before {
                         //flex: 1;
-                        min-width: 35%;
+                        min-width: var(--fdatagrid-mw-row-label-width);
+                        max-width: var(--fdatagrid-mw-row-label-width);
+                        line-height: 1.1;
                         content: attr(data-label);
                         font-size: var(--fdatagrid-mw-row-label-font-size);
                         font-weight: var(--fdatagrid-mw-row-label-font-weight);
