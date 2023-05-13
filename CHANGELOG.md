@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.12](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.11...v0.32.12) (2023-05-13)
+
+
+### Features
+
+* **FDataGrid:** add row index to data formatter args ([8c86879](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/8c86879864ae07ca67e89d7eb42d4e584bec570a))
+
 ### [0.32.11](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.10...v0.32.11) (2023-05-13)
 
 ### [0.32.10](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.9...v0.32.10) (2023-04-24)
