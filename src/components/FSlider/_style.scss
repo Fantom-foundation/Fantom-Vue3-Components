@@ -12,6 +12,7 @@
     cursor: pointer;
     box-shadow: var(--fslider-thumb-box-shadow);
     transition: all var(--f-transition-length, 220ms) var(--f-transition-func, ease);
+    opacity: var(--fslider-thumb-opacity);
 }
 
 @mixin fslider-thumb-hover() {
