@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.15](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.14...v0.32.15) (2023-06-02)
+
+
+### Bug Fixes
+
+* **FTabs:** fix tab activation bug ([59c7261](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/59c72615655a4c3c30d902d4a1b9f922edf20113))
+
 ### [0.32.14](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.13...v0.32.14) (2023-06-02)
 
 
