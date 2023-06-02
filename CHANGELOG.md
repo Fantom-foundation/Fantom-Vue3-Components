@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.14](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.13...v0.32.14) (2023-06-02)
+
+
+### Features
+
+* **FDetails:** add 'flat' style ([a276270](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a2762706bee63ab110e020007a11744808677897))
+
 ### [0.32.13](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.12...v0.32.13) (2023-05-31)
 
 ### [0.32.12](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.11...v0.32.12) (2023-05-13)
