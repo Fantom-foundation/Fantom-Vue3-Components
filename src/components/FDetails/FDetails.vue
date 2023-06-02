@@ -77,6 +77,11 @@ export default {
                 return ['render', 'create', 'create-destroy'].indexOf(_value) !== -1;
             },
         },
+        /** Use 'flat' style */
+        flat: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -94,6 +99,7 @@ export default {
                 'fdetails-open': this.opened,
                 'fdetails-disabled': this.disabled,
                 'fdetails-animate': this.animate,
+                'fdetails-flat': this.flat,
             };
         },
     },

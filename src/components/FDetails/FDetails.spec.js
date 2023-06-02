@@ -154,6 +154,12 @@ describe('FDetails', () => {
         // expect(eContent.exists()).toBeFalsy();
     });
 
+    it('should add class to the container if `flat` prop is true', () => {
+        wrapper = createWrapper({ propsData: { flat: true } });
+
+        expect(wrapper.classes('fdetails-flat')).toBe(true);
+    });
+
     // test.skip('should add `tabindex="0"` when component is in open state and `tabindex="-1"` when it is closed', () => {});
 });
 

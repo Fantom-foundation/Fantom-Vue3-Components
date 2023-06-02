@@ -114,3 +114,16 @@ export const Slots = () => ({
         </div>
     `,
 });
+
+export const Flat = () => ({
+    components: { FDetails },
+    //language=HTML
+    template: `
+        <div style="max-width: 400px">
+            <FDetails flat animate label="Label">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci amet animi, at consequatur culpa,
+                ea eius ipsam magni molestias nisi officia, optio porro quam qui ratione reiciendis soluta ut!
+            </FDetails>
+        </div>
+    `,
+});

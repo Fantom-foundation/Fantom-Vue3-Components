@@ -61,6 +61,18 @@
         }
     }
 
+    &-flat {
+        --fdetails-border: none;
+
+        summary {
+            padding: 0 0 var(--f-spacer-3) 0;
+        }
+
+        .fdetails_content {
+            padding: 0;
+        }
+    }
+
     .fheighttransition {
         &-enter-active,
         &-leave-active {

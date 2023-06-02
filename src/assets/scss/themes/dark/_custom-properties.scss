@@ -214,6 +214,10 @@
 
     .fdetails {
         --fdetails-border: 1px solid var(--theme-dark-color-5);
+
+        &-flat {
+            --fdetails-border: none;
+        }
     }
 
     .fform {
