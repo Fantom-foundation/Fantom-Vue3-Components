@@ -109,17 +109,17 @@ export default {
             await this.tabAction('setData', tabsData);
 
             if (!activePanelExists) {
-                this.setActiveTabByIndex(0);
+                await this.setActiveTabByIndex(0);
             }
         },
 
         /**
          * Deactivate currently active panel.
          */
-        deactivateActivePanel() {
+        async deactivateActivePanel() {
             const { dTabPanels } = this;
 
-            this.tabAction('deactivate');
+            await this.tabAction('deactivate');
 
             for (let i = 0, len1 = dTabPanels.length; i < len1; i++) {
                 if (dTabPanels[i].active) {
@@ -132,14 +132,14 @@ export default {
         /**
          * @param {int} _index
          */
-        setActiveTabByIndex(_index) {
+        async setActiveTabByIndex(_index) {
             const tabPanel = this.dTabPanels[_index];
 
             if (tabPanel && !tabPanel.disabled) {
-                this.deactivateActivePanel();
+                await this.deactivateActivePanel();
 
                 tabPanel.active = true;
-                this.tabAction('activate', tabPanel.id);
+                await this.tabAction('activate', tabPanel.id);
 
                 this.$emit('tab-set', { tabId: tabPanel.id });
             }
