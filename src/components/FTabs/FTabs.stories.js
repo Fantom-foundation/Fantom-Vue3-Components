@@ -124,3 +124,38 @@ export const ALotOfTabs = () => ({
         </div>
     `,
 });
+
+export const Strategy = () => ({
+    components: { FTabs, FTab },
+    template: `
+        <div>
+            <h3><code>render</code></h3>
+            <FTabs aria-label="Render strategy">
+                <FTab title="Tab 1">
+                    Tab 1 content
+                </FTab>
+                <FTab title="Tab 2">
+                    Tab 2 content
+                </FTab>
+            </FTabs>
+            <h3><code>create</code></h3>
+            <FTabs aria-label="Render strategy">
+                <FTab title="Tab 1">
+                    Tab 1 content
+                </FTab>
+                <FTab strategy="create" title="Tab 2">
+                    Tab 2 content
+                </FTab>
+            </FTabs>
+            <h3><code>create-destroy</code></h3>
+            <FTabs aria-label="Render strategy">
+                <FTab title="Tab 1">
+                    Tab 1 content
+                </FTab>
+                <FTab strategy="create-destroy" title="Tab 2">
+                    Tab 2 content
+                </FTab>
+            </FTabs>
+        </div>
+    `,
+});

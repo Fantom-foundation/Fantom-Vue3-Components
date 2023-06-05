@@ -1,6 +1,8 @@
 <template>
     <div :id="id" class="ftab" role="tabpanel" tabindex="0" :aria-labelledby="labelledBy" :hidden="!dActive">
-        <slot></slot>
+        <div v-if="create">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
@@ -30,6 +32,18 @@ export default {
             type: String,
             default() {
                 return getUniqueId();
+            },
+        },
+        /**
+         * 'render' - render content inside component, event if component is in 'closed' state (v-show)
+         * 'create' - if initial state is 'closed', render content when component is opened for the first time (v-if, v-show)
+         * 'create-destroy' - render content when component is opened, destroy content when component is closed (v-if)
+         */
+        strategy: {
+            type: String,
+            default: 'render',
+            validator: function (_value) {
+                return ['render', 'create', 'create-destroy'].indexOf(_value) !== -1;
             },
         },
         /** Title of tab panel shown in tab list */
@@ -67,6 +81,7 @@ export default {
             dActive: this.active,
             /** Is tab panel active? */
             dDisabled: this.disabled,
+            create: this.strategy === 'render',
         };
     },
 
@@ -76,14 +91,24 @@ export default {
         },
 
         ['tabs.activate'](activate) {
+            const { strategy } = this;
+
             if (activate && this.id === activate) {
                 this.dActive = true;
+
+                if (strategy === 'create-destroy' || (strategy === 'create' && !this.create)) {
+                    this.create = true;
+                }
             }
         },
 
         ['tabs.deactivate'](deactivate) {
             if (deactivate) {
                 this.dActive = false;
+
+                if (this.strategy === 'create-destroy') {
+                    this.create = false;
+                }
             }
         },
 
