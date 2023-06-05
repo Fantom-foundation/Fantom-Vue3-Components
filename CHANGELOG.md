@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.16](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.15...v0.32.16) (2023-06-05)
+
+
+### Features
+
+* **FTab:** add `strategy` prop ([a3731bb](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a3731bb5b5b1ebcadf1cd3d053c966bbebd8d375))
+
 ### [0.32.15](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.14...v0.32.15) (2023-06-02)
 
 
