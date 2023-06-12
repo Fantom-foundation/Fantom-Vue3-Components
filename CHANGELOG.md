@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.17](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.16...v0.32.17) (2023-06-12)
+
+
+### Features
+
+* **FCountdown:** create slots for labels ([67f8a27](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/67f8a27f4d9fa3141a6ce23ba25a16815ef556c3))
+
 ### [0.32.16](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.15...v0.32.16) (2023-06-05)
 
 
