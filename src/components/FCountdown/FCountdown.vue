@@ -3,25 +3,25 @@
         <div v-if="show.indexOf('d') > -1">
             <div class="fcountdown_amount" data-testid="days">{{ days }}</div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="days_label">
-                {{ translate('fcountdown.days') }}
+                <slot name="days">{{ translate('fcountdown.days') }}</slot>
             </div>
         </div>
         <div v-if="show.indexOf('h') > -1">
             <div class="fcountdown_amount" data-testid="hours">{{ hours }}</div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="hours_label">
-                {{ translate('fcountdown.hours') }}
+                <slot name="hours">{{ translate('fcountdown.hours') }}</slot>
             </div>
         </div>
         <div v-if="show.indexOf('m') > -1">
             <div class="fcountdown_amount" data-testid="minutes">{{ minutes }}</div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="minutes_label">
-                {{ translate('fcountdown.minutes') }}
+                <slot name="minutes">{{ translate('fcountdown.minutes') }}</slot>
             </div>
         </div>
         <div v-if="show.indexOf('s') > -1">
             <div class="fcountdown_amount" data-testid="seconds">{{ seconds }}</div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="seconds_label">
-                {{ translate('fcountdown.seconds') }}
+                <slot name="seconds">{{ translate('fcountdown.seconds') }}</slot>
             </div>
         </div>
     </div>

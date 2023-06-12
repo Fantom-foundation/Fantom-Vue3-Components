@@ -156,6 +156,26 @@ describe('FCountdown', () => {
         expect(wrapper.findByTestId('seconds_label').text()).toBe('Seconds');
     });
 
+    it('should has slots for labels', () => {
+        wrapper = createWrapper({
+            propsData: {
+                withLabels: true,
+                date: NOW + HOUR,
+            },
+            slots: {
+                days: 'D',
+                hours: 'H',
+                minutes: 'M',
+                seconds: 'S',
+            },
+        });
+
+        expect(wrapper.findByTestId('days_label').text()).toBe('D');
+        expect(wrapper.findByTestId('hours_label').text()).toBe('H');
+        expect(wrapper.findByTestId('minutes_label').text()).toBe('M');
+        expect(wrapper.findByTestId('seconds_label').text()).toBe('S');
+    });
+
     it('should display numbers with two digits when `useTwoDigitNumbers` prop is set', async () => {
         wrapper = createWrapper({
             propsData: {
