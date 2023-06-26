@@ -76,7 +76,7 @@ import FToggleButton from '../FToggleButton/FToggleButton.vue';
 import FComboBox from '../FComboBox/FComboBox.vue';
 import FDatetimeField from '../FDatetimeField/FDatetimeField.vue';
 
-const fInputTypes = ['text', 'textarea', 'number', 'email', 'date', 'datetime-local', 'time', 'search'];
+const fInputTypes = ['text', 'textarea', 'number', 'email', 'date', 'datetime-local', 'time', 'search', 'url', 'tel'];
 /*
 const types = [
     ...fInputTypes,
