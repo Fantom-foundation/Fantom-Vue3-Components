@@ -1,6 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import { destroyWrapper } from '@/test/utils.js';
 import { mount } from '@vue/test-utils';
+import { vi } from 'vitest';
 
 const Playground = {
     template: `
@@ -45,5 +46,20 @@ describe('setFormElements vue test plugin', () => {
         await expect(async () => {
             await wrapper.setFormElements({ wrongInputName: 'foo' });
         }).rejects.toBeInstanceOf(Error);
+    });
+
+    it('should not set form element value if value is `null` and `notNullValue` arg is true', async () => {
+        wrapper = createWrapper();
+        const findSpy = vi.spyOn(wrapper, 'setFormElement');
+
+        await wrapper.setFormElements(
+            {
+                textInput1: null,
+                textInput2: 'foo2',
+            },
+            true
+        );
+
+        expect(findSpy).toHaveBeenNthCalledWith(1, 'textInput2', 'foo2');
     });
 });

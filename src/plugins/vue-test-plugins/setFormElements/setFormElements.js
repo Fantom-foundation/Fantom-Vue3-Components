@@ -8,11 +8,23 @@ export function setFormElementsPlugin(wrapper) {
     /**
      * @param {Object} elements Keys are elment names, values are element values
      */
-    async function setFormElements(elements) {
+    async function setFormElements(elements, notNullValue = false) {
         const promises = [];
+        let elems = elements;
 
-        Object.keys(elements).forEach((name) => {
-            promises.push(wrapper.setFormElement(name, elements[name]));
+        if (notNullValue) {
+            elems = {};
+            Object.keys(elements).forEach((name) => {
+                const value = elements[name];
+
+                if (value !== null) {
+                    elems[name] = value;
+                }
+            });
+        }
+
+        Object.keys(elems).forEach((name) => {
+            promises.push(wrapper.setFormElement(name, elems[name]));
         });
 
         return await Promise.all(promises);
