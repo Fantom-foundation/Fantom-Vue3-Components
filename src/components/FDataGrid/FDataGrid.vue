@@ -703,8 +703,18 @@ export default {
 
             if (strategy === 'local' && this.usePagination) {
                 this.$nextTick(() => {
-                    const { itemsIndices } = this.getPaginationState();
-                    this.dItems = itemsIndices && items ? items.slice(itemsIndices.from, itemsIndices.to + 1) : [];
+                    const { itemsIndices, currPage, prevPage } = this.getPaginationState();
+                    const sItems = itemsIndices && items ? items.slice(itemsIndices.from, itemsIndices.to + 1) : [];
+
+                    if (!this.infiniteScroll) {
+                        this.dItems = sItems;
+                    } else {
+                        if (currPage < prevPage) {
+                            this.dItems = sItems.concat(this.dItems);
+                        } else {
+                            this.dItems = this.dItems.concat(sItems);
+                        }
+                    }
                 });
             } else if (items) {
                 const pState = this.getPaginationState();

@@ -1761,6 +1761,41 @@ export const InfiniteScroll = () => ({
     },
 });
 
+export const InfiniteScrollLocal = () => ({
+    components: { FDataGrid, FFilters, FFormInput },
+    template: `
+        <div>
+            <FDataGrid
+                infinite-scroll
+                :columns="columns"
+                :items="items"
+                :total-items="items.length"
+                :per-page="perPage"
+                infinite-scroll-root-margin="200px 0px"
+                sticky-head
+                no-header
+            />
+        </div>
+    `,
+    data() {
+        return {
+            items: clone(rows),
+            perPage: 25,
+        };
+    },
+    computed: {
+        columns() {
+            const cols = clone(columns);
+
+            cols[1].sortable = true;
+            cols[2].sortable = true;
+            cols[3].sortable = true;
+
+            return cols;
+        },
+    },
+});
+
 export const DataKey = () => ({
     components: { FDataGrid, FFilters, FFormInput },
     template: `
