@@ -1,5 +1,5 @@
-@use "custom-properties";
-@use "../../assets/scss/tools/visibility";
+@use 'custom-properties';
+@use '../../assets/scss/tools/visibility';
 
 .fdatagrid {
     position: relative;
@@ -297,16 +297,20 @@
         --fdatagrid-cell-hover-background-color: #f7f8fc;
     }
 
-    td.fdatagrid_firstcell,
-    th.fdatagrid_firstcell {
-        //padding-inline-start: 0;
-        /*border-radius: 8px 0 0 8px;*/
+    td.fdatagrid_firstcell {
+        border-radius: var(--fdatagrid-row-border-radius) 0 0 var(--fdatagrid-row-border-radius);
     }
 
-    td.fdatagrid_lastcell,
+    th.fdatagrid_firstcell {
+        border-radius: var(--fdatagrid-head-row-border-radius) 0 0 var(--fdatagrid-head-row-border-radius);
+    }
+
+    td.fdatagrid_lastcell {
+        border-radius: 0 var(--fdatagrid-row-border-radius) var(--fdatagrid-row-border-radius) 0;
+    }
+
     th.fdatagrid_lastcell {
-        //padding-inline-end: 0;
-        /*border-radius: 0 8px 8px 0;*/
+        border-radius: 0 var(--fdatagrid-head-row-border-radius) var(--fdatagrid-head-row-border-radius) 0;
     }
 }
 

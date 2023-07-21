@@ -3,6 +3,9 @@
     //--fdatagrid-border-spacing: 0 8px;
     --fdatagrid-border-spacing: 0;
     --fdatagrid-cell-padding: var(--f-spacer-3) var(--f-spacer-3);
+    --fdatagrid-row-border-radius: 0;
+    --fdatagrid-head-row-border-radius: 0;
+
     /* header */
     --fdatagrid-header-height: 60px;
     --fdatagrid-thead-sticky-top: calc(var(--curr-sticky-top, 0px) + var(--fdatagrid-header-height));
