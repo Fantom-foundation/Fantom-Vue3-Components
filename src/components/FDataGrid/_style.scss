@@ -298,19 +298,23 @@
     }
 
     td.fdatagrid_firstcell {
-        border-radius: var(--fdatagrid-row-border-radius) 0 0 var(--fdatagrid-row-border-radius);
+        border-top-left-radius: var(--fdatagrid-row-border-radius);
+        border-bottom-left-radius: var(--fdatagrid-row-border-radius);
     }
 
     th.fdatagrid_firstcell {
-        border-radius: var(--fdatagrid-head-row-border-radius) 0 0 var(--fdatagrid-head-row-border-radius);
+        border-top-left-radius: var(--fdatagrid-head-row-border-radius);
+        border-bottom-left-radius: var(--fdatagrid-head-row-border-radius);
     }
 
     td.fdatagrid_lastcell {
-        border-radius: 0 var(--fdatagrid-row-border-radius) var(--fdatagrid-row-border-radius) 0;
+        border-top-right-radius: var(--fdatagrid-row-border-radius);
+        border-bottom-right-radius: var(--fdatagrid-row-border-radius);
     }
 
     th.fdatagrid_lastcell {
-        border-radius: 0 var(--fdatagrid-head-row-border-radius) var(--fdatagrid-head-row-border-radius) 0;
+        border-top-right-radius: var(--fdatagrid-head-row-border-radius);
+        border-bottom-right-radius: var(--fdatagrid-head-row-border-radius);
     }
 }
 
