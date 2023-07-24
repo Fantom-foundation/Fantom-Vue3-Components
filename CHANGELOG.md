@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.23](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.22...v0.32.23) (2023-07-24)
+
+
+### Features
+
+* **FAddress:** add copy button ([e48a8d7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/e48a8d757c18360e1c9ca8dc99539b5964c4a2fb))
+
 ### [0.32.22](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.21...v0.32.22) (2023-07-21)
 
 ### [0.32.21](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.20...v0.32.21) (2023-07-18)
