@@ -2,6 +2,7 @@
 import { FEllipsis, FImage } from '../index.js';
 import { getJazzicon } from '../../plugins/index.js';
 import { onMounted, ref } from 'vue';
+import FCopyButton from '../FCopyButton/FCopyButton.vue';
 
 const props = defineProps({
     address: {
@@ -14,6 +15,10 @@ const props = defineProps({
         default: '',
     },
     useJazzicon: {
+        type: Boolean,
+        default: false,
+    },
+    useCopyButton: {
         type: Boolean,
         default: false,
     },
@@ -55,6 +60,7 @@ onMounted(() => {
             </template>
         </template>
         <template #suffix>
+            <FCopyButton v-if="useCopyButton" :text="address" data-testcode="copy_button" />
             <slot name="suffix"></slot>
         </template>
     </FEllipsis>

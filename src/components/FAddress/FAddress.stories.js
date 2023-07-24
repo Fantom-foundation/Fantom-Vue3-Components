@@ -35,6 +35,16 @@ export const UseJazzicon = () => ({
     `,
 });
 
+export const UseCopyButton = () => ({
+    components: { FAddress },
+    //language=HTML
+    template: `
+        <div>
+            <FAddress use-copy-button address="0xeb57521b52E1102eE6B1422BA3A6F53D0C9E18cb" />
+        </div>
+    `,
+});
+
 export const ImageSize = () => ({
     components: { FAddress },
     //language=HTML

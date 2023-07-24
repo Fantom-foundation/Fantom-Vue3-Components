@@ -2,6 +2,8 @@ import { describe, it, afterEach, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
 import { destroyWrapper } from '@/test/utils.js';
 import FAddress from './FAddress.vue';
+import { vi } from 'vitest';
+import '../../test/mocks/clipboard.js';
 
 const ADDRESS = '0xeb57521b52E1102eE6B1422BA3A6F53D0C9E18cb';
 let wrapper = null;
@@ -58,5 +60,22 @@ describe('FAddress', () => {
 
         expect(eJazzicon.style.width).toBe('20px');
         expect(eJazzicon.style.height).toBe('20px');
+    });
+
+    it('should copy account address to clipboard', async () => {
+        wrapper = createWrapper({
+            props: {
+                address: ADDRESS,
+                useCopyButton: true,
+            },
+        });
+        const copyButton = wrapper.findByTestCode('copy_button')[0];
+        const spy = vi.spyOn(navigator.clipboard, 'writeText');
+
+        await copyButton.trigger('click');
+
+        expect(navigator.clipboard.writeText).toHaveBeenCalledWith(ADDRESS);
+
+        spy.mockRestore();
     });
 });
