@@ -6,6 +6,7 @@ const Playground = {
     template: `
         <form method="post" @submit="onSubmit">
             <input type="text" name="textInput" />
+            <textarea type="text" name="textarea" />
         </form>
     `,
     methods: {
@@ -32,6 +33,14 @@ describe('setFormElement vue test plugin', () => {
         await wrapper.setFormElement('textInput', 'foo');
 
         expect(wrapper.find('input[name=textInput]').element.value).toBe('foo');
+    });
+
+    it('should set textarea value by its name', async () => {
+        wrapper = createWrapper();
+
+        await wrapper.setFormElement('textarea', 'foo');
+
+        expect(wrapper.find('textarea[name=textarea]').element.value).toBe('foo');
     });
 
     it('should throw an error if form element is not found', async () => {
