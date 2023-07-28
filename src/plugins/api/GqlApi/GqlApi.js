@@ -8,6 +8,8 @@ import { defer } from '../../../utils/index.js';
 export class GqlApi extends WebApi {
     #useQuery = null;
     #useMutation = null;
+    #queriesMockDelay = 0;
+    #mutationsMockDelay = 0;
 
     constructor(onError) {
         super(onError);
@@ -16,11 +18,15 @@ export class GqlApi extends WebApi {
     /**
      * @param {function} useQuery Function from package @vue/apollo-composable
      * @param {function} useMutation Function from package @vue/apollo-composable
+     * @param {number} [queriesMockDelay] Global query mock delay
+     * @param {number} [mutationsMockDelay] Global mutation mock delay
      * @param {function} onError
      */
-    setup({ useQuery = null, useMutation = null, onError = null }) {
+    setup({ useQuery = null, useMutation = null, onError = null, queriesMockDelay = 0, mutationsMockDelay = 0 }) {
         this.#useQuery = useQuery;
         this.#useMutation = useMutation;
+        this.#queriesMockDelay = queriesMockDelay;
+        this.#mutationsMockDelay = mutationsMockDelay;
 
         if (onError !== null) {
             this.registerOnErrorFunction(onError);
@@ -110,6 +116,7 @@ export class GqlApi extends WebApi {
         disabled = false,
         fnName = '',
         args = [],
+        delay = this.#queriesMockDelay,
     }) {
         const enabled = ref(!disabled);
         const { result, loading, error, refetch, fetchMore, onResult, onError } = this.#useQueryMock({
@@ -117,6 +124,7 @@ export class GqlApi extends WebApi {
             mockFunctionWithOrigArgs: () => this._getFunctionMock(mockFunction, fnName)(...args),
             errors,
             enabled,
+            delay,
         });
 
         const data = computed(() => this._useResult(result, defaultData, pickFn, copyData));
@@ -146,6 +154,7 @@ export class GqlApi extends WebApi {
         errors = [],
         fnName = '',
         args = [],
+        delay = this.#mutationsMockDelay,
     }) {
         const _called = ref(false);
         const { mutate, loading, error, called, onDone, onError } = this.#useMutaionMock({
@@ -156,6 +165,7 @@ export class GqlApi extends WebApi {
             copyData,
             defaultData,
             _called,
+            delay,
         });
 
         this._onError(onError, silentErrors);

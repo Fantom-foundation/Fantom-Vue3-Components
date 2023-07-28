@@ -24,6 +24,7 @@ beforeEach(() => {
 
 afterEach(() => {
     gqlApi = null;
+    vi.restoreAllMocks();
 });
 
 describe('GqlApi', () => {
@@ -232,6 +233,56 @@ describe('GqlApi', () => {
 
             api.restoreDataFake('fooMock');
         });
+
+        it('should delay the query', async () => {
+            function fooMock() {
+                return gqlApi.queryMock({
+                    delay: 50,
+                    mockFunction: () => {},
+                    fnName: 'fooMock',
+                });
+            }
+            api.registerQueryMock(fooMock, 'fooMock');
+            const fakeDataFn = vi.fn();
+            api.fakeData('fooMock', fakeDataFn);
+
+            api.query.fooMock();
+            await delay();
+
+            expect(fakeDataFn).not.toBeCalled();
+
+            await delay(51);
+
+            expect(fakeDataFn).toBeCalled();
+
+            api.restoreDataFake('fooMock');
+        });
+
+        it('should delay all queries', async () => {
+            gqlApi = new GqlApi();
+            gqlApi.setup({ useQuery, useMutation, queriesMockDelay: 50 });
+
+            function fooMock() {
+                return gqlApi.queryMock({
+                    mockFunction: () => {},
+                    fnName: 'fooMock',
+                });
+            }
+            api.registerQueryMock(fooMock, 'fooMock');
+            const fakeDataFn = vi.fn();
+            api.fakeData('fooMock', fakeDataFn);
+
+            api.query.fooMock();
+            await delay();
+
+            expect(fakeDataFn).not.toBeCalled();
+
+            await delay(51);
+
+            expect(fakeDataFn).toBeCalled();
+
+            api.restoreDataFake('fooMock');
+        });
     });
 
     describe('mutationMock()', () => {
@@ -372,10 +423,60 @@ describe('GqlApi', () => {
             const fakeDataFn = vi.fn();
             api.fakeData('fooMock', fakeDataFn);
 
-            api.query.fooMock({ arg: 'foo' });
+            api.mutation.fooMock({ arg: 'foo' });
             await delay();
 
             expect(fakeDataFn).toBeCalledWith({ arg: 'foo' });
+
+            api.restoreDataFake('fooMock');
+        });
+
+        it('should delay the mutation', async () => {
+            function fooMock() {
+                return gqlApi.mutationMock({
+                    delay: 50,
+                    mockFunction: () => {},
+                    fnName: 'fooMock',
+                });
+            }
+            api.registerMutationMock(fooMock, 'fooMock');
+            const fakeDataFn = vi.fn();
+            api.fakeData('fooMock', fakeDataFn);
+
+            api.mutation.fooMock();
+            await delay();
+
+            expect(fakeDataFn).not.toBeCalled();
+
+            await delay(51);
+
+            expect(fakeDataFn).toBeCalled();
+
+            api.restoreDataFake('fooMock');
+        });
+
+        it('should delay all mutations', async () => {
+            gqlApi = new GqlApi();
+            gqlApi.setup({ useQuery, useMutation, mutationsMockDelay: 50 });
+
+            function fooMock() {
+                return gqlApi.mutationMock({
+                    mockFunction: () => {},
+                    fnName: 'fooMock',
+                });
+            }
+            api.registerMutationMock(fooMock, 'fooMock');
+            const fakeDataFn = vi.fn();
+            api.fakeData('fooMock', fakeDataFn);
+
+            api.mutation.fooMock();
+            await delay();
+
+            expect(fakeDataFn).not.toBeCalled();
+
+            await delay(51);
+
+            expect(fakeDataFn).toBeCalled();
 
             api.restoreDataFake('fooMock');
         });
