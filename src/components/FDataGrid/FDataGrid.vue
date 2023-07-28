@@ -3,13 +3,14 @@
         <div v-if="!noHeader" class="fdatagrid_header">
             <slot name="header"></slot>
             <FPagination
-                v-if="usePagination && !infiniteScroll && totalItems > 0"
+                v-if="usePagination && !useFooterPagination && !infiniteScroll && totalItems > 0"
                 v-show="totalItems > dItems.length && totalItems > perPage"
                 ref="pagination"
                 :type="paginationType"
                 :total-items="totalItems"
                 :per-page="perPage"
                 :curr-page="currPage"
+                v-bind="paginationProps"
                 :disabled="totalItems === 0"
                 @page-change="onPageChange"
             />
@@ -169,6 +170,23 @@
                     </tr>
                 </tfoot>
             </table>
+
+            <div
+                v-if="useFooterPagination && usePagination && !infiniteScroll && totalItems > 0"
+                class="fdatagrid_footerpagination"
+            >
+                <FPagination
+                    v-show="totalItems > dItems.length && totalItems > perPage"
+                    ref="pagination"
+                    :type="paginationType"
+                    :total-items="totalItems"
+                    :per-page="perPage"
+                    :curr-page="currPage"
+                    v-bind="paginationProps"
+                    :disabled="totalItems === 0"
+                    @page-change="onPageChange"
+                />
+            </div>
 
             <slot name="loader" :loading="cLoading">
                 <div v-if="!infiniteScroll && cLoading" class="fdatagrid_loader_wrap">
@@ -425,6 +443,16 @@ export default {
         currPage: { ...FPagination.props.currPage },
         /** Type of pagination (FPagination prop) */
         paginationType: { ...FPagination.props.type },
+        paginationProps: {
+            type: Object,
+            default() {
+                return {};
+            },
+        },
+        useFooterPagination: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {

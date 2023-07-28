@@ -839,6 +839,28 @@ export const FooterItems = () => ({
     },
 });
 
+export const FooterPagination = () => ({
+    components: { FDataGrid },
+    template: `
+        <div>
+            <FDataGrid
+                use-footer-pagination
+                :pagination-props="{ type: 'sibling-boundary', siblingCount: 2, boundaryCount: 1, hideFirstLast: true }"
+                :columns="columns"
+                :items="items"
+                :total-items="items.length"
+                :per-page="5"
+            />
+        </div>
+    `,
+    data() {
+        return {
+            columns: clone(columns),
+            items: clone(rows),
+        };
+    },
+});
+
 export const MobileViewBreakpoint = () => ({
     components: { FDataGrid },
     template: `
@@ -925,6 +947,27 @@ export const MaxHeight = () => ({
 });
 
 export const StickyHead = () => ({
+    components: { FDataGrid },
+    template: `
+        <div>
+            <FDataGrid
+                sticky-head
+                :columns="columns"
+                :items="items"
+                :total-items="items.length"
+                :per-page="40"
+            />
+        </div>
+    `,
+    data() {
+        return {
+            columns: clone(columns),
+            items: clone(rows),
+        };
+    },
+});
+
+export const TMPPagination = () => ({
     components: { FDataGrid },
     template: `
         <div>

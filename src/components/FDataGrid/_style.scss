@@ -181,6 +181,11 @@
         text-align: center;
     }
 
+    &_footerpagination {
+        text-align: center;
+        margin-top: var(--f-spacer-3);
+    }
+
     &-mobileview {
         table {
             //display: block;
