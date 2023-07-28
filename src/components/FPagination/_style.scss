@@ -20,6 +20,10 @@
         > * {
             //font-size: 20px;
         }
+
+        .btn {
+            --f-btn-font-size: 24px;
+        }
     }
 
     &_pages {
@@ -34,16 +38,14 @@
         unicode-bidi: bidi-override;
     }
 
+    &_currpage {
+    }
+
     &-disabled {
         .fpagination {
             &_pages {
                 opacity: var(--fpagination-disabled-opacity);
             }
         }
-    }
-
-    .btn {
-        --f-btn-font-size: 24px;
-        //--f-btn-line-height: 0.;
     }
 }
