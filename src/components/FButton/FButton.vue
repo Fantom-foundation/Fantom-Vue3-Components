@@ -56,6 +56,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        hovered: {
+            type: Boolean,
+            default: false,
+        },
         /** Show loading indicator (spinner) */
         loading: {
             type: Boolean,
@@ -101,6 +105,7 @@ export default {
                 'btn-xs': size === 'mini',
                 'btn-round': this.round,
                 'btn-samesize': this.sameSize || this.round,
+                'btn-hovered': this.hovered,
                 'fbutton-loading': this.isLoading,
                 'fbutton-customspinner': this.useCustomSpinner,
                 'fbutton-nolabel': this.noLabelWhileLoading,

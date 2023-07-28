@@ -119,6 +119,12 @@
     border-color: var(--f-btn-hover-border-color);
 }
 
+@include tools.button('', '.btn-hovered') {
+    color: var(--f-btn-hover-color);
+    background: var(--f-btn-hover-background);
+    border-color: var(--f-btn-hover-border-color);
+}
+
 @include tools.button('focus') {
     color: var(--f-btn-focus-color);
     background: var(--f-btn-focus-background);

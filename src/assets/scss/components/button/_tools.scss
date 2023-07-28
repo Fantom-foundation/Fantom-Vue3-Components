@@ -2,7 +2,7 @@
 
 $button: componentsSettings.$button;
 
-@mixin button($_type: '') {
+@mixin button($_type: '', $_suffix: '') {
     .#{$button} {
         @if $_type == 'disabled' {
             &[disabled], &-disabled {
@@ -14,6 +14,10 @@ $button: componentsSettings.$button;
                 &:#{$_type} {
                     @content;
                 }
+            }
+        } @else if $_suffix != '' {
+            &#{$_suffix} {
+                @content;
             }
         } @else {
             @content;

@@ -79,6 +79,33 @@ export const Disabled = () => ({
     `,
 });
 
+export const Hovered = () => ({
+    components: { FButton, FSvgIcon, IconTimes },
+    template: `
+        <div>
+            <h3>Primary (default)</h3>
+            <FButton hovered size="large" label="Large" />
+            <FButton hovered label="Default" />
+            <FButton hovered size="small" label="Small" />
+            <FButton hovered size="mini" label="Mini" />
+            <h3>Secondary</h3>
+            <FButton hovered secondary size="large" label="Large" />
+            <FButton hovered secondary label="Default" />
+            <FButton hovered secondary size="small" label="Small" />
+            <FButton hovered secondary size="mini" label="Mini" />
+            <h3>Tertiary</h3>
+            <FButton hovered tertiary size="large" label="Large" />
+            <FButton hovered tertiary label="Default" />
+            <FButton hovered tertiary size="small" label="Small" />
+            <FButton hovered tertiary size="mini" label="Mini" />
+            <h3>Round</h3>
+            <FButton hovered round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton hovered round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton hovered round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+        </div>
+    `,
+});
+
 export const Loading = () => ({
     components: { FButton, FSvgIcon, IconTimes },
     template: `
