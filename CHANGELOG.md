@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.0...v0.33.1) (2023-07-28)
+
+
+### Features
+
+* **GqlApi:** add support for delaying query and mutation mocks ([574f0b6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/574f0b6b55c78e836f454d63dc508795a1adc5c4))
+
 ## [0.33.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.24...v0.33.0) (2023-07-28)
 
 
