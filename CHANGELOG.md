@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.33.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.24...v0.33.0) (2023-07-28)
+
+
+### Features
+
+* **FButton:** add support for `hovered` state ([1f55c0b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/1f55c0bf5d3d4d851bd4e7edd764ce90ea35d7cf))
+* **FDataGrid:** add footer pagination ([31be2ac](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/31be2acf7f150efe24c88400016dfcd9bd47499e))
+* **FPagination:** add `'sibling-boundary'` type ([1ca3357](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/1ca3357d5271d6536079d3c7882471a8eaf1ae91))
+
 ### [0.32.24](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.23...v0.32.24) (2023-07-25)
 
 ### [0.32.23](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.32.22...v0.32.23) (2023-07-24)
