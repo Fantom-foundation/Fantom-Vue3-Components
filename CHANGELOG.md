@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.1...v0.33.2) (2023-08-01)
+
+
+### Features
+
+* **FInfo:** show popover on mouseover ([83f8b84](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/83f8b849efa86f4cdcdf3e3d47037c07fc916854))
+
 ### [0.33.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.0...v0.33.1) (2023-07-28)
 
 
