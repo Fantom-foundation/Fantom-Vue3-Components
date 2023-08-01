@@ -23,6 +23,12 @@ async function clickButton(wrapper) {
     return eButton.trigger('click');
 }
 
+async function hoverButton(wrapper) {
+    const eButton = wrapper.find('button');
+
+    return eButton.trigger('mouseenter');
+}
+
 afterEach(() => {
     destroyWrapper(wrapper);
 });
@@ -173,5 +179,32 @@ describe('FInfo', () => {
 
         expect(fWindow.exists()).toBeTruthy();
         expect(fWindow.props('attachPosition')).toBe('bottom');
+    });
+
+    it('should show popover on button hover', async () => {
+        wrapper = createWrapper({
+            propsData: {
+                showPopoverOnHover: true,
+            },
+        });
+
+        await hoverButton(wrapper);
+
+        const fWindow = wrapper.findComponent(FPopover);
+
+        expect(fWindow.exists()).toBe(true);
+    });
+
+    it('should hide title if `showPopoverOnHover` is true', async () => {
+        wrapper = createWrapper({
+            propsData: {
+                showPopoverOnHover: true,
+            },
+        });
+
+        await hoverButton(wrapper);
+
+        const fButton = wrapper.findComponent(FButton);
+        expect(fButton.attributes('title')).toBe('');
     });
 });

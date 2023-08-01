@@ -2,7 +2,16 @@
     <span class="finfo" @click="onClick" :data-testid="dataTestid">
         <!-- @slot Default to `FButton` -->
         <slot name="button">
-            <FButton :tertiary="tertiary" :round="round" v-bind="$attrs" :id="dButtonId" :title="cButtonTitle">
+            <FButton
+                :tertiary="tertiary"
+                :round="round"
+                v-bind="$attrs"
+                :id="dButtonId"
+                :title="cButtonTitle"
+                @keyup.esc="hideWindow"
+                @mouseenter="onMouseenter"
+                @mouseleave="onMouseleave"
+            >
                 <!-- @slot Default to info icon -->
                 <slot name="button-content">
                     <FSvgIcon :size="iconSize"><IconInfoCircle /></FSvgIcon>
@@ -94,9 +103,9 @@ export default {
             default: '16px',
         },
         /**  */
-        showPopover: {
+        showPopoverOnHover: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         /** Unique id */
         buttonId: {
@@ -129,16 +138,21 @@ export default {
         return {
             windowCreated: false,
             dButtonId: this.buttonId || getUniqueId(),
+            hideTitle: false,
         };
     },
 
     computed: {
         cButtonTitle() {
-            return this.buttonTitle || this.translate('finfo.moreInfo');
+            return this.hideTitle ? '' : this.buttonTitle || this.translate('finfo.moreInfo');
         },
     },
 
     methods: {
+        hideWindow() {
+            this.$refs.window.hide();
+        },
+
         async onClick(event) {
             const payload = { preventDefault: false };
 
@@ -154,6 +168,20 @@ export default {
                 } else {
                     this.$refs.window.show();
                 }
+            }
+        },
+
+        onMouseenter(event) {
+            if (this.showPopoverOnHover) {
+                this.hideTitle = true;
+                this.onClick(event);
+            }
+        },
+
+        onMouseleave() {
+            if (this.showPopoverOnHover) {
+                this.hideTitle = false;
+                this.hideWindow();
             }
         },
     },

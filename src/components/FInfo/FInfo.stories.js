@@ -29,6 +29,18 @@ export const UsePopup = () => ({
     `,
 });
 
+export const ShowPopoverOnHover = () => ({
+    components: { FInfo },
+    template: `
+        <div class="pat-5">
+            Lorem ipsum
+            <FInfo show-popover-on-hover with-arrow>
+                dolor sit amet, consectetur adipisicing elit. Aperiam ex fuga fugit inventore libero perspiciatis, suscipit veritatis voluptatum?
+            </FInfo>
+        </div>
+    `,
+});
+
 export const ButtonTitle = () => ({
     components: { FInfo },
     template: `
