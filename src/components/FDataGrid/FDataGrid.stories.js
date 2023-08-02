@@ -4,6 +4,7 @@ import FFormInput from '../FFormInput/FFormInput.vue';
 import FInput from '../FInput/FInput.vue';
 import FComboBox from '../FComboBox/FComboBox.vue';
 import FOption from '../FOption/FOption.vue';
+import FButton from '../FButton/FButton.vue';
 import { clone } from '../../utils';
 import { compareLocalizedStringProperty } from '../../utils/array-sorting.js';
 
@@ -1351,6 +1352,40 @@ export const HiddenColumns = () => ({
         return {
             items: clone(rows),
         };
+    },
+});
+
+export const ShowHideColumns = () => ({
+    components: { FDataGrid, FButton },
+    template: `
+        <div>
+            <div style="padding-bottom: 30px;">
+                <FButton label="Hide ID and IP columns" @click="onHideBtnClick" />
+                <FButton label="Show ID and IP columns" @click="onShowBtnClick" />
+            </div>
+            <FDataGrid
+                ref="grid"
+                :columns="columns"
+                :items="items"
+                :total-items="items.length"
+                :per-page="40"
+                sticky-head
+            />
+        </div>
+    `,
+    data() {
+        return {
+            columns: clone(columns),
+            items: clone(rows),
+        };
+    },
+    methods: {
+        onShowBtnClick() {
+            this.$refs.grid.showColumns(['id', 'ip_address']);
+        },
+        onHideBtnClick() {
+            this.$refs.grid.hideColumns(['id', 'ip_address']);
+        },
     },
 });
 

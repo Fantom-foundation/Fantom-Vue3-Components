@@ -1008,6 +1008,16 @@ export default {
         },
 
         /**
+         * Get columns by names
+         *
+         * @param {array} names
+         * @return {FDataGridColumn[]}
+         */
+        getColumnsByNames(names) {
+            return this.columns.filter((column) => names.includes(column.name));
+        },
+
+        /**
          * @param {Event} event
          * @param {string} [selector]
          * @return {{column: FDataGridColumn|null, elem: HTMLElement|null}}
@@ -1222,6 +1232,28 @@ export default {
 
         reload() {
             this.emitChangeEvent('reload');
+        },
+
+        /**
+         * @param {array} columnNames
+         */
+        showColumns(columnNames) {
+            const columns = this.getColumnsByNames(columnNames);
+
+            columns.forEach((column) => {
+                column.hidden = false;
+            });
+        },
+
+        /**
+         * @param {array} columnNames
+         */
+        hideColumns(columnNames) {
+            const columns = this.getColumnsByNames(columnNames);
+
+            columns.forEach((column) => {
+                column.hidden = true;
+            });
         },
 
         getEmptyRowValues() {
