@@ -288,6 +288,12 @@
         }
     }
 
+    &-widthset {
+        .fdatagrid_table {
+            overflow: auto;
+        }
+    }
+
     &-loading:not(.fdatagrid-infinitescrollon) {
         //overflow: hidden;
 

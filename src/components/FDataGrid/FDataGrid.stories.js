@@ -903,6 +903,28 @@ export const Height = () => ({
     },
 });
 
+export const MinWidth = () => ({
+    components: { FDataGrid },
+    template: `
+        <div>
+            <FDataGrid
+                min-width="1400px"
+                sticky-head
+                :columns="columns"
+                :items="items"
+                :total-items="items.length"
+                :per-page="40"
+            />
+        </div>
+    `,
+    data() {
+        return {
+            columns: clone(columns),
+            items: clone(rows),
+        };
+    },
+});
+
 export const MinHeight = () => ({
     components: { FDataGrid },
     template: `
@@ -947,27 +969,6 @@ export const MaxHeight = () => ({
 });
 
 export const StickyHead = () => ({
-    components: { FDataGrid },
-    template: `
-        <div>
-            <FDataGrid
-                sticky-head
-                :columns="columns"
-                :items="items"
-                :total-items="items.length"
-                :per-page="40"
-            />
-        </div>
-    `,
-    data() {
-        return {
-            columns: clone(columns),
-            items: clone(rows),
-        };
-    },
-});
-
-export const TMPPagination = () => ({
     components: { FDataGrid },
     template: `
         <div>

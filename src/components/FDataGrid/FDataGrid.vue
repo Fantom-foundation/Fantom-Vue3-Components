@@ -29,6 +29,7 @@
                 @keydown="onTableKeydown"
                 @focus="onTableFocus"
                 @focusout="onTableFocusout"
+                :style="tableStyle"
             >
                 <caption v-if="caption" :class="{ 'fdatagrid_caption-hidden': captionHidden }">
                     {{
@@ -171,6 +172,14 @@
                 </tfoot>
             </table>
 
+            <slot name="loader" :loading="cLoading">
+                <div v-if="!infiniteScroll && cLoading" class="fdatagrid_loader_wrap">
+                    <div class="fdatagrid_loader">Loading...</div>
+                </div>
+            </slot>
+        </div>
+
+        <div class="fdatagrid_footer">
             <div
                 v-if="useFooterPagination && usePagination && !infiniteScroll && totalItems > 0"
                 class="fdatagrid_footerpagination"
@@ -187,15 +196,7 @@
                     @page-change="onPageChange"
                 />
             </div>
-
-            <slot name="loader" :loading="cLoading">
-                <div v-if="!infiniteScroll && cLoading" class="fdatagrid_loader_wrap">
-                    <div class="fdatagrid_loader">Loading...</div>
-                </div>
-            </slot>
         </div>
-
-        <div class="fdatagrid_footer"></div>
 
         <FHeadStyle :css="columnsCSS"></FHeadStyle>
     </div>
@@ -337,6 +338,11 @@ export default {
         },
         /** Height of data table */
         height: {
+            type: String,
+            default: 'auto',
+        },
+        /** Minimal width of data table */
+        minWidth: {
             type: String,
             default: 'auto',
         },
@@ -541,6 +547,7 @@ export default {
                 'fdatagrid-infinitescrollon': this.infiniteScroll,
                 'fdatagrid-rowedit': this.editMode === 'row-edit',
                 'fdatagrid-noheader': this.noHeader,
+                'fdatagrid-widthset': !!this.tableStyle.minWidth,
             };
         },
 
@@ -549,6 +556,12 @@ export default {
                 height: this.height !== 'auto' ? this.height : undefined,
                 maxHeight: this.maxHeight !== 'auto' ? this.maxHeight : undefined,
                 minHeight: this.minHeight !== 'auto' ? this.minHeight : undefined,
+            };
+        },
+
+        tableStyle() {
+            return {
+                minWidth: this.minWidth !== 'auto' && !this.mobileView ? this.minWidth : undefined,
             };
         },
 
