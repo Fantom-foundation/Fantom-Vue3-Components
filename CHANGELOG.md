@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.2...v0.33.3) (2023-08-02)
+
+
+### Features
+
+* **FDataGrid:** add support for show/hide columns by name ([5d45ad9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5d45ad9fa9de4360ec383bc0d718a141b84c8080))
+* **FDataGrid:** create `minWidth` option ([dc32022](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/dc320229992599b312b7259a21ae1b333ba4e446))
+
 ### [0.33.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.1...v0.33.2) (2023-08-01)
 
 
