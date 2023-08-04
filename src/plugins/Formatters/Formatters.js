@@ -135,12 +135,13 @@ export class Formatters {
 
     /**
      * @param {number} value
-     * @param {string} [numberFormatKey] Key from #formats.number object
      * @param {number} [maximumFractionDigits]
+     * @param {string} [numberFormatKey] Key from #formats.number object
+     * @param {string} [unit]
      * @return {string}
      */
-    number(value, maximumFractionDigits = 20, numberFormatKey = 'default') {
-        return this.#getNumberFomatter(numberFormatKey, maximumFractionDigits).format(value);
+    number(value, maximumFractionDigits = 20, numberFormatKey = 'default', unit = '') {
+        return this.#getNumberFomatter(numberFormatKey, maximumFractionDigits, unit).format(value);
     }
 
     /**
@@ -194,14 +195,20 @@ export class Formatters {
     /**
      * @param {string} numberFormatKey Key from #formats.number object
      * @param {number} [maximumFractionDigits]
+     * @param {string} [unit]
      * @return {Intl.NumberFormat}
      */
-    #getNumberFomatter(numberFormatKey = '', maximumFractionDigits = 20) {
+    #getNumberFomatter(numberFormatKey = '', maximumFractionDigits = 20, unit = '') {
         const numberFormat = this.#formats?.number[numberFormatKey];
         const format = {
             maximumFractionDigits,
             ...numberFormat,
         };
+
+        if (unit) {
+            format.style = 'unit';
+            format.unit = unit;
+        }
 
         if (!numberFormat) {
             throw new Error(`Can't find number format '${numberFormatKey}'`);

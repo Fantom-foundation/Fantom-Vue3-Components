@@ -25,6 +25,10 @@ function createFormatters() {
                 maximumFractionDigits: 2,
                 signDisplay: 'exceptZero',
             },
+            myNumberWithUnit: {
+                notation: 'compact',
+                unitDisplay: 'narrow',
+            },
         },
         currencyFormats: {
             myCurrency: {
@@ -155,6 +159,10 @@ describe('Formatters', () => {
 
         it('should format number according to given number format key', () => {
             expect(formatters.number(123456.789, null, 'myNumber')).toBe('+123,456.79');
+        });
+
+        it('should format number with unit', () => {
+            expect(formatters.number(123456.789, null, 'myNumberWithUnit', 'byte')).toBe('123KB');
         });
 
         it('should format number according to given number format key and selected locale', () => {
