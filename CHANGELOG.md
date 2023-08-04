@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.3...v0.33.4) (2023-08-04)
+
+
+### Features
+
+* **Formatters:** add units to numbers ([51139a1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/51139a15826a68a42518aa7d76bcc40b43c196ab))
+
 ### [0.33.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.2...v0.33.3) (2023-08-02)
 
 
