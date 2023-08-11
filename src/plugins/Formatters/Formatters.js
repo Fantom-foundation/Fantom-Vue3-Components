@@ -135,13 +135,37 @@ export class Formatters {
 
     /**
      * @param {number} value
-     * @param {number} [maximumFractionDigits]
+     * @param {number, Object} [maximumFractionDigitsOrOptions]
      * @param {string} [numberFormatKey] Key from #formats.number object
      * @param {string} [unit]
      * @return {string}
      */
-    number(value, maximumFractionDigits = 20, numberFormatKey = 'default', unit = '') {
-        return this.#getNumberFomatter(numberFormatKey, maximumFractionDigits, unit).format(value);
+    number(value, maximumFractionDigitsOrOptions = 20, numberFormatKey = 'default', unit = '') {
+        if (maximumFractionDigitsOrOptions && typeof maximumFractionDigitsOrOptions === 'object') {
+            if (!('numberFormatKey' in maximumFractionDigitsOrOptions)) {
+                maximumFractionDigitsOrOptions.numberFormatKey = numberFormatKey;
+            }
+
+            if (!('maximumFractionDigits' in maximumFractionDigitsOrOptions)) {
+                maximumFractionDigitsOrOptions.maximumFractionDigits = 20;
+            }
+
+            if (unit && !('unit' in maximumFractionDigitsOrOptions)) {
+                maximumFractionDigitsOrOptions.unit = unit;
+            }
+
+            const formatter = this.#getNumberFomatter(maximumFractionDigitsOrOptions);
+
+            return maximumFractionDigitsOrOptions.formatToParts
+                ? formatter.formatToParts(value)
+                : formatter.format(value);
+        }
+
+        return this.#getNumberFomatter({
+            numberFormatKey,
+            maximumFractionDigits: maximumFractionDigitsOrOptions,
+            unit,
+        }).format(value);
     }
 
     /**
@@ -193,25 +217,28 @@ export class Formatters {
     }
 
     /**
-     * @param {string} numberFormatKey Key from #formats.number object
-     * @param {number} [maximumFractionDigits]
-     * @param {string} [unit]
+     * @param {Object} options
      * @return {Intl.NumberFormat}
      */
-    #getNumberFomatter(numberFormatKey = '', maximumFractionDigits = 20, unit = '') {
-        const numberFormat = this.#formats?.number[numberFormatKey];
+    #getNumberFomatter(options) {
+        const numberFormat = this.#formats?.number[options.numberFormatKey];
         const format = {
-            maximumFractionDigits,
             ...numberFormat,
+            ...options,
         };
 
-        if (unit) {
+        if (options.unit) {
             format.style = 'unit';
-            format.unit = unit;
+        } else {
+            delete format.unit;
+        }
+
+        if (format.maximumFractionDigits === null && 'maximumFractionDigits' in numberFormat) {
+            format.maximumFractionDigits = numberFormat.maximumFractionDigits;
         }
 
         if (!numberFormat) {
-            throw new Error(`Can't find number format '${numberFormatKey}'`);
+            throw new Error(`Can't find number format '${options.numberFormatKey}'`);
         }
 
         if (!('minimumFractionDigits' in format)) {
@@ -221,7 +248,7 @@ export class Formatters {
         return this.#getCachedFormatter({
             localeTag: this.#localeTag,
             format,
-            formatKey: numberFormatKey,
+            formatKey: options.numberFormatKey,
             type: 'number',
         });
     }

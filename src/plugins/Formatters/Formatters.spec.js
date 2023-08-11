@@ -161,6 +161,29 @@ describe('Formatters', () => {
             expect(formatters.number(123456.789, null, 'myNumber')).toBe('+123,456.79');
         });
 
+        it('should use second argument as options for formatter', () => {
+            expect(formatters.number(123456.789, { maximumFractionDigits: 1, numberFormatKey: 'myNumber' })).toBe(
+                '+123,456.8'
+            );
+        });
+
+        it('should format to parts', () => {
+            expect(
+                formatters.number(123456.789, {
+                    formatToParts: true,
+                    maximumFractionDigits: 1,
+                    numberFormatKey: 'myNumber',
+                })
+            ).toEqual([
+                { type: 'plusSign', value: '+' },
+                { type: 'integer', value: '123' },
+                { type: 'group', value: ',' },
+                { type: 'integer', value: '456' },
+                { type: 'decimal', value: '.' },
+                { type: 'fraction', value: '8' },
+            ]);
+        });
+
         it('should format number with unit', () => {
             expect(formatters.number(123456.789, null, 'myNumberWithUnit', 'byte')).toBe('123KB');
         });
