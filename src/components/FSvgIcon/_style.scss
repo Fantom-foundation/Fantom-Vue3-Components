@@ -19,8 +19,19 @@
     }
 
     &:not(&-original) {
-        svg, svg g, svg path {
-            fill: currentColor;
+        //svg, svg g, svg path {
+        //    fill: currentColor;
+        //}
+        &.fsvgicon-fill {
+            svg, svg g, svg path {
+                fill: currentColor;
+            }
+        }
+
+        &.fsvgicon-stroke {
+            svg, svg g, svg path {
+                stroke: currentColor;
+            }
         }
     }
 }

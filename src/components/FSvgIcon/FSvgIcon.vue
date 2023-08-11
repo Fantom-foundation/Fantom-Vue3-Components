@@ -22,6 +22,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Apply color to 'fill' and/or 'stroke' */
+        applyColor: {
+            type: String,
+            default: 'fill',
+        },
         /** Size of icon. Sets width and height by the same value */
         size: {
             type: [String, Number],
@@ -56,6 +61,8 @@ export default {
         classes() {
             return {
                 'fsvgicon-original': this.original,
+                'fsvgicon-fill': this.applyColor.indexOf('fill') > -1,
+                'fsvgicon-stroke': this.applyColor.indexOf('stroke') > -1,
             };
         },
 

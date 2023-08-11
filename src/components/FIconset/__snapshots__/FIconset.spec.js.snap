@@ -3,7 +3,7 @@
 exports[`FIconset > should render correctly 1`] = `
 <span
   aria-hidden="true"
-  class="fsvgicon"
+  class="fsvgicon fsvgicon-fill"
 >
   <span
     class="fsvgicon-icon"

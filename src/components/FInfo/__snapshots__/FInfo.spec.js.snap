@@ -20,7 +20,7 @@ exports[`FInfo > should render correctly 1`] = `
       
       <span
         aria-hidden="true"
-        class="fsvgicon"
+        class="fsvgicon fsvgicon-fill"
         style="width: 16px; height: 16px;"
       >
         <span
