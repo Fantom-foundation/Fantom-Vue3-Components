@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.4...v0.33.5) (2023-08-11)
+
+
+### Features
+
+* **Formatters:** add support for formatting to parts ([0b44749](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0b4474938e8561468c8528bb910e214199e3835a))
+* **FSvgIcon:** add `applyColor` option ([20c66ce](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/20c66ce3e0b4078f425d0df07ccfc6a03baaeee3))
+
 ### [0.33.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.3...v0.33.4) (2023-08-04)
 
 
