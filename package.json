@@ -63,7 +63,7 @@
         "storybook-builder-vite": "^0.1.15",
         "storybook-rtl-addon": "^0.3.3",
         "vite": "^2.7.13",
-        "vitest": "^0.2.5",
+        "vitest": "^0.34.1",
         "vue-loader": "^16.8.3"
     },
     "lint-staged": {

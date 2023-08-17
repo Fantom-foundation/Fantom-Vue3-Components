@@ -5,7 +5,7 @@
 const defaultEventInitDict = {
     bubbles: true,
     cancelable: true,
-    view: window,
+    // view: window,
 };
 
 export function dispatchMouseEvent(elem, eventName, options = defaultEventInitDict) {
