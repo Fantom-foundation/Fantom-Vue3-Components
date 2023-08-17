@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.34.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.5...v0.34.0) (2023-08-17)
+
+
+### Features
+
+* **DebouncedObserver:** create utility class ([b28e63c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/b28e63cbceb208fe17a5a6d9b692a48589f26a59))
+* **FFitTextToRow:** create component ([ed9a0a1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/ed9a0a1ae1f0abf01744fb15200f865ff0872766))
+* **Implements:** create mixin ([7abd3be](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/7abd3beba6149d7f132d756e68c0c1288f1d3c38))
+
 ### [0.33.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.4...v0.33.5) (2023-08-11)
 
 
