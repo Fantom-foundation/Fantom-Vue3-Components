@@ -34,6 +34,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Don't observe intersection after first successful intersection */
+        once: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     created() {
@@ -43,27 +48,39 @@ export default {
     },
 
     mounted() {
-        this._intersectionObserver = new window.IntersectionObserver(
-            (_entry) => {
-                this.onIntersection(_entry);
-            },
-            {
-                root: this.root ? document.querySelector(this.root) : null,
-                rootMargin: this.rootMargin || undefined,
-            }
-        );
-
-        this._intersectionObserver.observe(this.$el);
+        this.createIntersectionObserver();
     },
 
     beforeUnmount() {
-        if (this._intersectionObserver) {
-            this._intersectionObserver.unobserve(this.$el);
-            this._intersectionObserver = null;
-        }
+        this.destroyIntersectionObserver();
     },
 
     methods: {
+        createIntersectionObserver() {
+            this.destroyIntersectionObserver();
+
+            if (window.IntersectionObserver) {
+                this._intersectionObserver = new window.IntersectionObserver(
+                    (_entry) => {
+                        this.onIntersection(_entry);
+                    },
+                    {
+                        root: this.root ? document.querySelector(this.root) : null,
+                        rootMargin: this.rootMargin || undefined,
+                    }
+                );
+
+                this._intersectionObserver.observe(this.$el);
+            }
+        },
+
+        destroyIntersectionObserver() {
+            if (this._intersectionObserver) {
+                this._intersectionObserver.unobserve(this.$el);
+                this._intersectionObserver = null;
+            }
+        },
+
         /**
          * @param {IntersectionObserverEntry[]} _entries
          */
@@ -74,6 +91,10 @@ export default {
             }
 
             this.$emit('entry', _entries[0]);
+
+            if (this.once && _entries[0].isIntersecting) {
+                this.destroyIntersectionObserver();
+            }
         },
     },
 };
