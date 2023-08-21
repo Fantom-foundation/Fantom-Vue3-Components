@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.35.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.34.0...v0.35.0) (2023-08-21)
+
+
+### Features
+
+* **FIntersectionObserver:** create `once` option ([9146767](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/9146767b184f6cf27953a6e0ab5c988577d99924))
+* **FLazyComponent:** create component ([d0db226](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d0db22626301b58192b8c7bc6be398ab77812a9f))
+
 ## [0.34.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.33.5...v0.34.0) (2023-08-17)
 
 
