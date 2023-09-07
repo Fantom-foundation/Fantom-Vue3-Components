@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.1...v0.35.2) (2023-09-07)
+
+
+### Features
+
+* create `roundDownTo` date helper function ([d1e4f0a](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d1e4f0a5d41059bb92213ec9f074766b9d53b033))
+
 ### [0.35.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.0...v0.35.1) (2023-08-21)
 
 ## [0.35.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.34.0...v0.35.0) (2023-08-21)
