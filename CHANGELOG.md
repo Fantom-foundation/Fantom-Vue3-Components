@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.2...v0.35.3) (2023-09-07)
+
+
+### Bug Fixes
+
+* **DocumentMeta:** update `description` meta properly ([adaace7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/adaace7f9db9e0a9487a1489be9012c60dad4303))
+
 ### [0.35.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.1...v0.35.2) (2023-09-07)
 
 
