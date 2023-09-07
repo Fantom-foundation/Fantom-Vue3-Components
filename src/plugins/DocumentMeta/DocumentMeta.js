@@ -32,6 +32,7 @@ export class DocumentMeta {
      */
     setDescription(description) {
         if (description !== undefined) {
+            DocumentMeta.#setMetaContentAttribute('', description, 'description');
             DocumentMeta.#setMetaContentAttribute('og:description', description);
             DocumentMeta.#setMetaContentAttribute('twitter:description', description);
         }
@@ -55,12 +56,19 @@ export class DocumentMeta {
      * @param {string} property
      * @param {string} value
      */
-    static #setMetaContentAttribute(property, value = '') {
+    static #setMetaContentAttribute(property, value = '', name = '') {
+        let elem = null;
+
         if (property) {
-            const elem = document.querySelector(`meta[property="${property}"]`);
-            if (elem) {
-                elem.setAttribute('content', value);
-            }
+            elem = document.querySelector(`meta[property="${property}"]`);
+        }
+
+        if (name) {
+            elem = document.querySelector(`meta[name="${name}"]`);
+        }
+
+        if (elem) {
+            elem.setAttribute('content', value);
         }
     }
 }

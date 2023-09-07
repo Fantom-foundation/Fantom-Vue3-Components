@@ -5,7 +5,7 @@ let dm = null;
 const TEST_TITLE = 'Test title';
 const TEST_DESCRIPTION = 'Test description';
 
-function createMetaElement(property = '', content = '') {
+function createMetaElement(property = '', content = '', name = '') {
     const elem = document.createElement('meta');
 
     if (property) {
@@ -14,6 +14,10 @@ function createMetaElement(property = '', content = '') {
 
     if (content) {
         elem.setAttribute('content', content);
+    }
+
+    if (name) {
+        elem.setAttribute('name', name);
     }
 
     return elem;
@@ -32,6 +36,18 @@ describe('DocumentMeta', () => {
         dm.setTitle(TEST_TITLE);
 
         expect(document.title).toEqual(TEST_TITLE);
+    });
+
+    it('should set html meta description', () => {
+        const metaDescription = createMetaElement('', '', 'description');
+
+        document.head.appendChild(metaDescription);
+
+        dm.setDescription(TEST_DESCRIPTION);
+
+        expect(metaDescription.getAttribute('content')).toEqual(TEST_DESCRIPTION);
+
+        metaDescription.remove();
     });
 
     it('should set og and twitter meta title', () => {
