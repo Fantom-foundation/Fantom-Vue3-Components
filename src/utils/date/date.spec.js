@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { getDatesDiff, timestampToSeconds, timestampToMilliseconds } from '@/utils/date/date.js';
+import {
+    getDatesDiff,
+    timestampToSeconds,
+    timestampToMilliseconds,
+    roundDownTo,
+    SECOND,
+    MINUTE,
+} from '@/utils/date/date.js';
 
 describe('date utils', () => {
     describe('getDatesDiff()', () => {
@@ -42,6 +49,13 @@ describe('date utils', () => {
 
         it('should convert given timestamp to milliseconds if it is in microseconds', () => {
             expect(timestampToMilliseconds(1653488111000000)).toBe(1653488111000);
+        });
+    });
+
+    describe('#roundDownTo', () => {
+        it('should round given timestamp down to given time in milliseconds', () => {
+            expect(roundDownTo(1653488111222, SECOND)).toBe(1653488111000);
+            expect(roundDownTo(1653488111000, MINUTE)).toBe(1653488100000);
         });
     });
 });

@@ -54,3 +54,15 @@ export function timestampToMilliseconds(timestamp) {
 
     return ts;
 }
+
+/**
+ * @param {number} timestamp
+ * @return {number} Timestamp in milliseconds
+ */
+export function roundDownTo(timestamp, intervalMs = SECOND) {
+    const date = new Date(Math.floor(timestamp / intervalMs) * intervalMs);
+
+    // date.setSeconds(0);
+
+    return date.valueOf();
+}
