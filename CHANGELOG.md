@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.4...v0.35.5) (2023-09-08)
+
+
+### Features
+
+* **Tree:** add support for using a different property name for "id" ([d8d4bac](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d8d4bacd856e63655e96676fe41a7d80044299ef))
+
 ### [0.35.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.3...v0.35.4) (2023-09-08)
 
 
