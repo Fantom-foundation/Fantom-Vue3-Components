@@ -93,6 +93,12 @@ describe('Tree', () => {
         expect(tree.getParent('Component111')).toEqual(TREE()[0]._c[0]);
     });
 
+    it('should specify name of "id" property', () => {
+        tree = new Tree([{ name: 'foo' }], { idPropertyName: 'name' });
+
+        expect(tree.getNode('foo')).toEqual({ name: 'foo' });
+    });
+
     describe('getSiblings()', () => {
         it('should return expected outcome if node is not found', () => {
             expect(tree.getSiblings('foo')).toEqual({

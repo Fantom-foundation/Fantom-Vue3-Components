@@ -2,11 +2,14 @@ import { findNodeBy, getNestedProp } from '../index.js';
 
 export class Tree {
     _tree = [];
+    _idPropertyName = 'id';
 
     /**
      * @param {TreeNode[]} [tree]
      */
-    constructor(tree = []) {
+    constructor(tree = [], { idPropertyName = 'id' } = {}) {
+        this._idPropertyName = idPropertyName;
+
         this.setTree(tree);
     }
 
@@ -41,7 +44,7 @@ export class Tree {
      * @param {string} key
      * @return {TreeNode|null}
      */
-    getParentByValue(value, parentValue, key = 'id') {
+    getParentByValue(value, parentValue, key = this._idPropertyName) {
         const node = this.#findNodeBy(value);
         let parentNode = null;
         let parents;
@@ -115,7 +118,7 @@ export class Tree {
      * @param {string} key
      * @return {TreeFullNode}
      */
-    #findNodeBy(value, key = 'id') {
+    #findNodeBy(value, key = this._idPropertyName) {
         return findNodeBy(this._tree, value, key);
     }
 }

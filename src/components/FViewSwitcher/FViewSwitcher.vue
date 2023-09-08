@@ -59,7 +59,7 @@ const props = defineProps({
 const component = shallowRef(null);
 const viewTransition = ref(null);
 const key = ref(getUniqueId());
-const appStructure = new Tree(props.appStructure);
+const appStructure = new Tree(props.appStructure, { idPropertyName: props.appStructureIdName });
 let prevAppStructureNodeId = '';
 
 switchTo(getDefaultComponentName());
@@ -82,13 +82,13 @@ function goBack(appStructureNodeId, useSiblings) {
     let node = null;
 
     if (useSiblings) {
-        const siblings = appStructure.getSiblings(appStructureNodeId, props.appStructureIdName);
+        const siblings = appStructure.getSiblings(appStructureNodeId);
 
         if (siblings.previousSibling) {
             node = siblings.previousSibling;
         }
     } else {
-        node = appStructure.getParent(appStructureNodeId, props.appStructureIdName);
+        node = appStructure.getParent(appStructureNodeId);
     }
 
     if (node) {
@@ -102,8 +102,8 @@ function reload() {
 
 function runTransition(prevAppStructureNodeId, appStructureNodeId) {
     if (props.enableTransitions && props.appStructure.length > 0 && viewTransition.value) {
-        const node1 = appStructure.getFullNode(prevAppStructureNodeId, props.appStructureIdName);
-        const node2 = appStructure.getFullNode(appStructureNodeId, props.appStructureIdName);
+        const node1 = appStructure.getFullNode(prevAppStructureNodeId);
+        const node2 = appStructure.getFullNode(appStructureNodeId);
         let forward = false;
 
         if (node1.node && node2.node) {
