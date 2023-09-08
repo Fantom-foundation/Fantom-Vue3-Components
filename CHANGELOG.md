@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.3...v0.35.4) (2023-09-08)
+
+
+### Features
+
+* **FViewSwitcher:** add `appStructureIdName` prop ([b7d7e63](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/b7d7e631cdee75fe1aaa6c24c1e6e313e1e8dbb1))
+
 ### [0.35.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.2...v0.35.3) (2023-09-07)
 
 
