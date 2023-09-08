@@ -23,6 +23,10 @@ const props = defineProps({
             return [];
         },
     },
+    appStructureIdName: {
+        type: String,
+        default: 'id',
+    },
     components: {
         type: Object,
         default() {
@@ -78,17 +82,17 @@ function goBack(appStructureNodeId, useSiblings) {
     let node = null;
 
     if (useSiblings) {
-        const siblings = appStructure.getSiblings(appStructureNodeId);
+        const siblings = appStructure.getSiblings(appStructureNodeId, props.appStructureIdName);
 
         if (siblings.previousSibling) {
             node = siblings.previousSibling;
         }
     } else {
-        node = appStructure.getParent(appStructureNodeId);
+        node = appStructure.getParent(appStructureNodeId, props.appStructureIdName);
     }
 
     if (node) {
-        switchTo(node.id);
+        switchTo(node[props.appStructureIdName]);
     }
 }
 
@@ -98,8 +102,8 @@ function reload() {
 
 function runTransition(prevAppStructureNodeId, appStructureNodeId) {
     if (props.enableTransitions && props.appStructure.length > 0 && viewTransition.value) {
-        const node1 = appStructure.getFullNode(prevAppStructureNodeId);
-        const node2 = appStructure.getFullNode(appStructureNodeId);
+        const node1 = appStructure.getFullNode(prevAppStructureNodeId, props.appStructureIdName);
+        const node2 = appStructure.getFullNode(appStructureNodeId, props.appStructureIdName);
         let forward = false;
 
         if (node1.node && node2.node) {

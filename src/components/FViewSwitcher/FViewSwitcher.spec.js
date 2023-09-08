@@ -39,17 +39,14 @@ function APP_STRUCTURE() {
     return [
         {
             id: 'Component1',
-            type: 'component',
             _c: [
                 {
                     id: 'Component3',
-                    type: 'component',
                 },
             ],
         },
         {
             id: 'Component2',
-            type: 'component',
         },
     ];
 }
