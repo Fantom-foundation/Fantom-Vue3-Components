@@ -97,6 +97,10 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
+            mutateP: (...args) => {
+                mutate(...args);
+                return this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, copyData });
+            },
             getPromise: () => this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, copyData }),
             loading,
             error,
@@ -172,6 +176,17 @@ export class GqlApi extends WebApi {
 
         return {
             mutate,
+            mutateP: (...args) => {
+                mutate(...args);
+                return this._dataPromise({
+                    onResult: onDone,
+                    onError,
+                    defaultData,
+                    pickFn,
+                    copyData,
+                    useResult: false,
+                });
+            },
             getPromise: () =>
                 this._dataPromise({ onResult: onDone, onError, defaultData, pickFn, copyData, useResult: false }),
             loading,

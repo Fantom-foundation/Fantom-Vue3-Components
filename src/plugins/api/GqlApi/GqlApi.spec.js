@@ -299,6 +299,7 @@ describe('GqlApi', () => {
             expect(result.error.value).toBeNull();
             expect(typeof result.getPromise).toBe('function');
             expect(typeof result.mutate).toBe('function');
+            expect(typeof result.mutateP).toBe('function');
             expect(typeof result.onDone).toBe('function');
             expect(typeof result.onError).toBe('function');
             expect(Object.keys(result).sort()).toEqual(MUTATION_RETURN_KEYS.sort());
@@ -338,6 +339,15 @@ describe('GqlApi', () => {
             result.mutate();
 
             expect(await promise).toBe('foo');
+        });
+
+        it('mutateP() should work properly', async () => {
+            const result = gqlApi.mutationMock({
+                mockFunction: () => ({ result: 'foo' }),
+                pickFn: (data) => data?.result,
+            });
+
+            expect(await result.mutateP()).toBe('foo');
         });
 
         it('should call error function properly', async () => {
