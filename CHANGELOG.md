@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.5...v0.35.6) (2023-09-18)
+
+
+### Features
+
+* **GqlApi:** add `mutateP` helper function ([4e8894b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/4e8894b449831682628010e55235a81df437ff4b))
+
 ### [0.35.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.4...v0.35.5) (2023-09-08)
 
 
