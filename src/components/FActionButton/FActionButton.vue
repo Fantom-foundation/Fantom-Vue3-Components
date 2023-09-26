@@ -1,11 +1,15 @@
 <script setup>
 import FButton from '../FButton/FButton.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
     value: {
         type: [String, Number, Boolean, Object],
         default: null,
+    },
+    name: {
+        type: String,
+        default: '',
     },
     toggle: {
         type: Boolean,
@@ -19,13 +23,14 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 const toggleState = ref(props.toggle ? props.toggled : null);
+const cValue = computed(() => (props.value !== null ? props.value : props.name));
 
 function onButtonClick() {
     if (props.toggle) {
         toggleState.value = !toggleState.value;
     }
 
-    emit('update:value', props.value, props.toggle ? toggleState.value : undefined);
+    emit('update:value', cValue.value, props.toggle ? toggleState.value : undefined);
 }
 </script>
 
@@ -34,6 +39,8 @@ function onButtonClick() {
         class="factionbutton"
         :hovered="!!toggleState"
         :aria-pressed="toggleState"
+        :name="name"
+        :value="cValue"
         secondary
         @click="onButtonClick"
     >

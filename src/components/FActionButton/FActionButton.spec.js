@@ -54,4 +54,14 @@ describe('FActionButton', () => {
         expect(wrapper.attributes('aria-pressed')).toBe('true');
         expect(wrapper.findComponent({ name: 'FButton' }).props('hovered')).toBe(true);
     });
+
+    it('should return `name` as a value if `name` prop is set and `value` is not', () => {
+        wrapper = createWrapper({
+            props: {
+                name: 'foo',
+            },
+        });
+
+        expect(wrapper.attributes('value')).toBe('foo');
+    });
 });

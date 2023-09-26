@@ -68,3 +68,4 @@ export { default as FStyledNumber } from './FStyledNumber/FStyledNumber.vue';
 export { default as FLink } from './FLink/FLink.vue';
 export { default as FFitTextToRow } from './FFitTextToRow/FFitTextToRow.vue';
 export { default as FLazyComponent } from './FLazyComponent/FLazyComponent.vue';
+export { default as FActionButton } from './FActionButton/FActionButton.vue';
