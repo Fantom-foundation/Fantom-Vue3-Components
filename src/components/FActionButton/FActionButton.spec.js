@@ -23,7 +23,7 @@ describe('FActionButton', () => {
 
         await wrapper.trigger('click');
 
-        expect(wrapper.emitted('update:value')[0]).toEqual(['foo', undefined]);
+        expect(wrapper.emitted('update:value')[0]).toEqual(['foo']);
         expect(wrapper.attributes('aria-pressed')).toBe(undefined);
     });
 
@@ -31,23 +31,22 @@ describe('FActionButton', () => {
         wrapper = createWrapper({
             props: {
                 toggle: true,
-                value: 'foo',
             },
         });
 
         await wrapper.trigger('click');
 
-        expect(wrapper.emitted('update:value')[0]).toEqual(['foo', true]);
+        expect(wrapper.emitted('update:value')[0]).toEqual([true]);
         expect(wrapper.attributes('aria-pressed')).toBe('true');
         expect(wrapper.findComponent({ name: 'FButton' }).props('hovered')).toBe(true);
     });
 
-    it('should be in toggle state if `toggled` prop is set to true', () => {
+    it('should be in toggle state if `value` prop is set to true', () => {
         wrapper = createWrapper({
             props: {
-                toggled: true,
+                value: true,
                 toggle: true,
-                value: 'foo',
+                name: 'foo',
             },
         });
 

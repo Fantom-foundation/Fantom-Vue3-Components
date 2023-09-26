@@ -15,14 +15,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    toggled: {
-        type: Boolean,
-        default: false,
-    },
 });
 
 const emit = defineEmits(['update:value']);
-const toggleState = ref(props.toggle ? props.toggled : null);
+const toggleState = ref(props.toggle ? props.value || false : null);
 const cValue = computed(() => (props.value !== null ? props.value : props.name));
 
 function onButtonClick() {
@@ -30,7 +26,7 @@ function onButtonClick() {
         toggleState.value = !toggleState.value;
     }
 
-    emit('update:value', cValue.value, props.toggle ? toggleState.value : undefined);
+    emit('update:value', props.toggle ? toggleState.value : cValue.value);
 }
 </script>
 
