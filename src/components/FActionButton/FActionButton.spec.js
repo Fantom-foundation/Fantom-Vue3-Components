@@ -41,7 +41,7 @@ describe('FActionButton', () => {
         expect(wrapper.findComponent({ name: 'FButton' }).props('hovered')).toBe(true);
     });
 
-    it('should be in toggle state if `value` prop is set to true', () => {
+    it('should be in toggle state if `value` prop is set to true', async () => {
         wrapper = createWrapper({
             props: {
                 value: true,
@@ -52,6 +52,11 @@ describe('FActionButton', () => {
 
         expect(wrapper.attributes('aria-pressed')).toBe('true');
         expect(wrapper.findComponent({ name: 'FButton' }).props('hovered')).toBe(true);
+
+        await wrapper.setProps({ value: false });
+
+        expect(wrapper.attributes('aria-pressed')).toBe('false');
+        expect(wrapper.findComponent({ name: 'FButton' }).props('hovered')).toBe(false);
     });
 
     it('should return `name` as a value if `name` prop is set and `value` is not', () => {

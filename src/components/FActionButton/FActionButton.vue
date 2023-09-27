@@ -1,6 +1,6 @@
 <script setup>
 import FButton from '../FButton/FButton.vue';
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 
 const props = defineProps({
     value: {
@@ -19,7 +19,17 @@ const props = defineProps({
 
 const emit = defineEmits(['update:value']);
 const toggleState = ref(props.toggle ? props.value || false : null);
-const cValue = computed(() => (props.value !== null ? props.value : props.name));
+const cValue = computed(() => {
+    let value = props.name;
+
+    if (props.toggle) {
+        value = toggleState.value;
+    } else if (props.value !== null) {
+        value = props.value;
+    }
+
+    return value;
+});
 
 function onButtonClick() {
     if (props.toggle) {
@@ -28,6 +38,13 @@ function onButtonClick() {
 
     emit('update:value', props.toggle ? toggleState.value : cValue.value);
 }
+
+watch(
+    () => props.value,
+    (value) => {
+        toggleState.value = value;
+    }
+);
 </script>
 
 <template>
