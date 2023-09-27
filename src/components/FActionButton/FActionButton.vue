@@ -42,7 +42,9 @@ function onButtonClick() {
 watch(
     () => props.value,
     (value) => {
-        toggleState.value = value;
+        if (props.toggle && typeof value === 'boolean') {
+            toggleState.value = value;
+        }
     }
 );
 </script>
