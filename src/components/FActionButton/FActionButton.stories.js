@@ -43,30 +43,8 @@ export const Toggle = () => ({
         };
     },
     methods: {
-        onUpdate(value, toggled) {
-            this.value = `${value}, ${toggled}`;
-        },
-    },
-});
-
-export const Toggled = () => ({
-    components: { FActionButton },
-    template: `
-        <div>
-        <FActionButton toggled toggle value="foo" label="action button" @update:value="onUpdate" />
-        <p>
-            update:value <b>{{ value }}</b>
-        </p>
-        </div>
-    `,
-    data() {
-        return {
-            value: '',
-        };
-    },
-    methods: {
-        onUpdate(value, toggled) {
-            this.value = `${value}, ${toggled}`;
+        onUpdate(value) {
+            this.value = value;
         },
     },
 });

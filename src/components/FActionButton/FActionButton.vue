@@ -37,7 +37,6 @@ function onButtonClick() {
         :aria-pressed="toggleState"
         :name="name"
         :value="cValue"
-        secondary
         @click="onButtonClick"
     >
         <template v-for="(index, name) in $slots" v-slot:[name]="data">
