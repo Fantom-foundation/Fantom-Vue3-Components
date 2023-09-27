@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.36.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.36.1...v0.36.2) (2023-09-27)
+
+
+### Bug Fixes
+
+* **FActionButton:** fix updating of toggle state ([1eee5cd](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/1eee5cdf70b16a4d0ef94804d510641958f9e9b8))
+
 ### [0.36.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.36.0...v0.36.1) (2023-09-27)
 
 
