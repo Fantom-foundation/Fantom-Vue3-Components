@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.36.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.36.0...v0.36.1) (2023-09-27)
+
+
+### Features
+
+* **FActionButton:** add `name` prop ([6d3d939](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/6d3d939abca9c43efbf76c2be34eb561bfe892e0))
+* **FActionButton:** get rid of `toggled` prop ([f9b027c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/f9b027cc3a54008e38a799ac8d13330503d77064))
+* **FActionButton:** remove `secondary` prop ([6639256](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/6639256d5d83717b9e07db317d41b00bcbc18871))
+* **FButton:** add `btnType` prop ([a5c0c54](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a5c0c546ef8a95a0457a40ad7f459c2ef703fa58))
+
+
+### Bug Fixes
+
+* **FActionButton:** fix updating of toggle state ([5fe833b](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5fe833b5fe4d20224ceefc8874bc3c7635813569))
+
 ## [0.36.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.35.6...v0.36.0) (2023-09-26)
 
 
