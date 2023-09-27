@@ -36,6 +36,14 @@ export default {
             type: String,
             default: '',
         },
+        /** Button's style. Alternative to `secondary` and `tertiary` props */
+        btnType: {
+            type: String,
+            default: '',
+            validator: function (_value) {
+                return ['', 'primary', 'secondary', 'tertiary'].indexOf(_value) !== -1;
+            },
+        },
         /** Specifies that button is styled as a secondary button */
         secondary: {
             type: Boolean,
@@ -95,11 +103,13 @@ export default {
 
     computed: {
         classes() {
-            const { size } = this;
+            const { size, btnType } = this;
 
             return {
-                'btn-secondary': this.secondary,
-                'btn-tertiary': this.tertiary,
+                'btn-secondary':
+                    (this.secondary && btnType !== 'primary' && btnType !== 'tertiary') || btnType === 'secondary',
+                'btn-tertiary':
+                    (this.tertiary && btnType !== 'primary' && btnType !== 'secondary') || btnType === 'tertiary',
                 'btn-lg': size === 'large',
                 'btn-sm': size === 'small',
                 'btn-xs': size === 'mini',

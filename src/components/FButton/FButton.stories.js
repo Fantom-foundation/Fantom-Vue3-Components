@@ -16,17 +16,17 @@ export const Default = () => ({
             <h3>Primary (default)</h3>
             <FButton size="large" label="Large" />
             <FButton label="Default" />
-            <FButton size="small" label="Small" />
-            <FButton size="mini" label="Mini" />
+            <FButton size="small" label="Small" btn-type="primary" tertiary />
+            <FButton size="mini" label="Mini" btn-type="primary" secondary />
             <h3>Secondary</h3>
             <FButton secondary size="large" label="Large" />
             <FButton secondary label="Default" />
-            <FButton secondary size="small" label="Small" />
+            <FButton btn-type="secondary" size="small" label="Small" />
             <FButton secondary size="mini" label="Mini" />
             <h3>Tertiary</h3>
             <FButton tertiary size="large" label="Large" />
             <FButton tertiary label="Default" />
-            <FButton tertiary size="small" label="Small" />
+            <FButton btn-type="tertiary" size="small" label="Small" />
             <FButton tertiary size="mini" label="Mini" />
             <h3>With an icon</h3>
             <FButton class="fbutton-withicon" aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
