@@ -1,3 +1,5 @@
+import { getAttr, setAttr } from './DOM.js';
+
 const RECEIVE_FOCUS_FROM_ATTR = 'data-receive-focus-from';
 
 const KEY_EVENTS = {
@@ -321,6 +323,51 @@ export function getLastElement(_eTarget, _selector) {
 
 /**
  *
+ * @param {KeyboardEvent} event
+ * @param {('horizontal' | 'vertical' | 'both')} [direction] Movement direction.
+ * @param {boolean} [useHomeAndEnd] `Home` and `End` keys are enabled.
+ * @return {string}
+ */
+function getMove({ event, direction = 'horizontal', useHomeAndEnd }) {
+    let move = '';
+
+    if (direction === 'horizontal' || direction === 'both') {
+        if (isKey('ArrowRight', event)) {
+            move = 'next';
+        } else if (isKey('ArrowLeft', event)) {
+            move = 'prev';
+        }
+    }
+
+    if (!move && (direction === 'vertical' || direction === 'both')) {
+        if (isKey('ArrowDown', event)) {
+            move = 'next';
+        } else if (isKey('ArrowUp', event)) {
+            move = 'prev';
+        }
+    }
+
+    if (!move) {
+        if (useHomeAndEnd) {
+            if (isKey('Home', event)) {
+                move = 'first';
+            } else if (isKey('End', event)) {
+                move = 'last';
+            }
+        }
+
+        if (isKey('PageUp', event)) {
+            move = 'first';
+        } else if (isKey('PageDown', event)) {
+            move = 'last';
+        }
+    }
+
+    return move;
+}
+
+/**
+ *
  * @param {KeyboardEvent} _event
  * @param {string} _selector Item selector.
  * @param {('horizontal' | 'vertical' | 'both')} [_direction] Movement direction.
@@ -350,37 +397,7 @@ export function keyboardNavigation({
     // console.log(_event.code);
 
     if (eTarget) {
-        if (_direction === 'horizontal' || _direction === 'both') {
-            if (isKey('ArrowRight', _event)) {
-                move = 'next';
-            } else if (isKey('ArrowLeft', _event)) {
-                move = 'prev';
-            }
-        }
-
-        if (!move && (_direction === 'vertical' || _direction === 'both')) {
-            if (isKey('ArrowDown', _event)) {
-                move = 'next';
-            } else if (isKey('ArrowUp', _event)) {
-                move = 'prev';
-            }
-        }
-
-        if (!move) {
-            if (_useHomeAndEnd) {
-                if (isKey('Home', _event)) {
-                    move = 'first';
-                } else if (isKey('End', _event)) {
-                    move = 'last';
-                }
-            }
-
-            if (isKey('PageUp', _event)) {
-                move = 'first';
-            } else if (isKey('PageDown', _event)) {
-                move = 'last';
-            }
-        }
+        move = getMove({ event: _event, direction: _direction, useHomeAndEnd: _useHomeAndEnd });
 
         if (move === 'next') {
             elem = eTarget.nextElementSibling;
@@ -409,6 +426,169 @@ export function keyboardNavigation({
 
     if (elem && _focusElem) {
         elem.focus();
+    }
+
+    return elem;
+}
+
+/**
+ * @param {NodeList} elemList List of elements to navigate through
+ * @param {string} skipElemsSelector Skip elements that matching this selector
+ * @param {number} startIdx Index into elemList
+ * @param {'next'|'prev'} [find] Direction
+ * @return {HTMLElement|null}
+ */
+export function findNextOrPrevElemByList({ elemList, skipElemsSelector, startIdx = -1, find = 'next' }) {
+    const elemListLen = elemList.length;
+
+    if (!skipElemsSelector || elemListLen === 0) {
+        return null;
+    }
+
+    let el = elemList[startIdx] || null;
+    let idx = startIdx;
+    const findNext = find === 'next';
+
+    while (el && el.matches(skipElemsSelector)) {
+        if (findNext) {
+            if (idx + 1 < elemListLen) {
+                el = elemList[idx + 1];
+                idx += 1;
+            } else {
+                el = null;
+            }
+        } else {
+            if (idx - 1 >= 0) {
+                el = elemList[idx - 1];
+                idx -= 1;
+            } else {
+                el = null;
+            }
+        }
+    }
+
+    return el;
+}
+
+/**
+ *
+ * @param {KeyboardEvent} event
+ * @param {NodeList} elemList List of elements to navigate through
+ * @param {('horizontal' | 'vertical' | 'both')} [direction] Movement direction.
+ * @param {string} [skipElemsSelector] Skip elements that matching this selector
+ * @param {boolean} [circular] Circular keyboard navigation
+ * @param {boolean} [focusElem] Focus found element.
+ * @param {boolean} [useHomeAndEnd] `Home` and `End` keys are enabled.
+ * @param {boolean} [addMissingTabIndex]
+ * @return {HTMLElement|null} Next or previous element or null.
+ */
+export function keyboardNavigationByList({
+    event,
+    elemList,
+    direction = 'horizontal',
+    skipElemsSelector = '',
+    circular = false,
+    focusElem = true,
+    useHomeAndEnd = true,
+    addMissingTabIndex = true,
+}) {
+    if (!event || !(event.type in KEY_EVENTS)) {
+        return null;
+    }
+
+    let elem = null;
+    let move = '';
+    let activeElem = null;
+    let activeElemIdx = -1;
+    const elemListLen = elemList.length;
+
+    if (elemListLen > 0) {
+        move = getMove({ event: event, direction: direction, useHomeAndEnd: useHomeAndEnd });
+
+        if (move) {
+            elemList.forEach((elem, idx) => {
+                let tabindex = getAttr(elem, 'tabindex');
+
+                if (addMissingTabIndex && !tabindex) {
+                    setAttr(elem, 'tabindex', '-1');
+                }
+
+                if (tabindex === '0') {
+                    activeElemIdx = idx;
+                    activeElem = elem;
+                }
+            });
+
+            if (activeElemIdx > -1) {
+                if (move === 'next') {
+                    if (activeElemIdx + 1 < elemListLen) {
+                        elem = elemList[activeElemIdx + 1];
+                    }
+
+                    elem = findNextOrPrevElemByList({
+                        elemList,
+                        skipElemsSelector,
+                        startIdx: activeElemIdx + 1,
+                        find: 'next',
+                    });
+
+                    if (circular && elem === null) {
+                        elem = findNextOrPrevElemByList({
+                            elemList,
+                            skipElemsSelector,
+                            startIdx: 0,
+                            find: 'next',
+                        });
+                    }
+                } else if (move === 'prev') {
+                    if (activeElemIdx - 1 >= 0) {
+                        elem = elemList[activeElemIdx - 1];
+                    }
+
+                    elem = findNextOrPrevElemByList({
+                        elemList,
+                        skipElemsSelector,
+                        startIdx: activeElemIdx - 1,
+                        find: 'prev',
+                    });
+
+                    if (circular && elem === null) {
+                        elem = findNextOrPrevElemByList({
+                            elemList,
+                            skipElemsSelector,
+                            startIdx: elemListLen - 1,
+                            find: 'prev',
+                        });
+                    }
+                } else if (move === 'first') {
+                    elem = findNextOrPrevElemByList({
+                        elemList,
+                        skipElemsSelector,
+                        startIdx: 0,
+                        find: 'next',
+                    });
+                } else if (move === 'last') {
+                    elem = findNextOrPrevElemByList({
+                        elemList,
+                        skipElemsSelector,
+                        startIdx: elemListLen - 1,
+                        find: 'prev',
+                    });
+                }
+            } else {
+                activeElemIdx = 0;
+                activeElem = elemList[0];
+            }
+
+            if (elem && activeElem) {
+                setAttr(activeElem, 'tabindex', '-1');
+                setAttr(elem, 'tabindex', '0');
+
+                if (focusElem) {
+                    elem.focus();
+                }
+            }
+        }
     }
 
     return elem;
