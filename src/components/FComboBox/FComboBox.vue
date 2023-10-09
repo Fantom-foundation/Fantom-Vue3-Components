@@ -1,7 +1,7 @@
 <template>
     <div
         class="fcombobox"
-        :class="classes"
+        :class="[clas, classes]"
         @[clickEvent]="onClick"
         role="combobox"
         aria-haspopup="listbox"
@@ -222,6 +222,11 @@ export default {
         },
         /** `data-code` attribute for `FPopover` */
         code: {
+            type: String,
+            default: '',
+        },
+        /** Css class to be added to the root element */
+        clas: {
             type: String,
             default: '',
         },
