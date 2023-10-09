@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.37.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.36.2...v0.37.0) (2023-10-09)
+
+
+### Features
+
+* **aria:** create `findNextOrPrevElemByList` and `keyboardNavigationByList` functions ([f69ebf2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/f69ebf22fd446afaa35cdb9e32ce2b597ba85659))
+* **FComboBox:** add `clas` prop ([98adbd8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/98adbd84290be2670c3459848dbb84ed60710f4f))
+* **FToolbar:** create component ([9503aa6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/9503aa64df8df4ce3ad5fdec2c498c589f36f3e0))
+
 ### [0.36.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.36.1...v0.36.2) (2023-09-27)
 
 
