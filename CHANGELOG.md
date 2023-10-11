@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.1...v0.37.2) (2023-10-11)
+
+
+### Features
+
+* **FCopyButton:** stop event propagation if button is inside a link ([69dad31](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/69dad31e3f9854ced69116b5ca482982cf9956e3))
+
 ### [0.37.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.0...v0.37.1) (2023-10-11)
 
 
