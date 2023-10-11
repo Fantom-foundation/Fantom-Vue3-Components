@@ -93,6 +93,11 @@ export default {
         async onClick(event, payload) {
             payload.preventDefault = !this.showPopover;
 
+            if (event.target?.closest('a')) {
+                event.stopPropagation();
+                event.preventDefault();
+            }
+
             await navigator.clipboard.writeText(this.text);
 
             /**

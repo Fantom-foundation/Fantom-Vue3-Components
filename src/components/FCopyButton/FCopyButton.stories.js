@@ -10,6 +10,8 @@ export const Default = () => ({
     template: `
         <div>
             <FCopyButton text="copied!" />
+            <br />
+            <a href="#">Link <FCopyButton text="inside a link!" /></a>
         </div>
     `,
 });
