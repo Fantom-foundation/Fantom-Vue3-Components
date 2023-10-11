@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.0...v0.37.1) (2023-10-11)
+
+
+### Features
+
+* **FDataGrid:** emit `'cell-click'` event ([ac5580d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/ac5580d322477df86d0e6422ecc346e12cc99933))
+
 ## [0.37.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.36.2...v0.37.0) (2023-10-09)
 
 
