@@ -241,7 +241,7 @@ export default {
 
     components: { FDotsLoader, FInfiniteScroll, IconTrash, FSvgIcon, FButton, FHeadStyle, FPagination },
 
-    emits: ['item-change', 'row-click', 'change', 'update:items', 'page-change'],
+    emits: ['item-change', 'row-click', 'cell-click', 'change', 'update:items', 'page-change'],
 
     mixins: [translationsMixin, breakpointsMixin],
 
@@ -1680,7 +1680,13 @@ export default {
             }
         },
 
-        onCellClick(cell) {
+        onCellClick(cell, item, event) {
+            this.$emit('cell-click', {
+                columnName: cell.column.name,
+                item: { ...item },
+                event,
+            });
+
             if (this.edModeRow) {
                 this.$nextTick(() => {
                     this.activateCell(cell.column, cell.elem);
