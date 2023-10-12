@@ -30,4 +30,14 @@ describe('FCard', () => {
 
         expect(wrapper.html()).toContain('<span>content</span>');
     });
+
+    it('should render given tag as a root element', () => {
+        createWrapper({
+            propsData: {
+                tag: 'section',
+            },
+        });
+
+        expect(wrapper.element.tagName.toLowerCase()).toBe('section');
+    });
 });

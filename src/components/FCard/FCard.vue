@@ -1,12 +1,20 @@
 <template>
-    <div class="fcard">
+    <Component :is="tag" class="fcard">
         <slot></slot>
-    </div>
+    </Component>
 </template>
 
 <script>
 export default {
     name: 'FCard',
+
+    props: {
+        /** Tag name of the root element */
+        tag: {
+            type: String,
+            default: 'div',
+        },
+    },
 };
 </script>
 
