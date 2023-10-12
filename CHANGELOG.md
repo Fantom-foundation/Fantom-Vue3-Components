@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.2...v0.37.3) (2023-10-12)
+
+
+### Features
+
+* **FCard:** add `tag` prop ([0fcf168](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0fcf168db0bc859cc50bfc71faddf4407ba8e284))
+
 ### [0.37.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.1...v0.37.2) (2023-10-11)
 
 
