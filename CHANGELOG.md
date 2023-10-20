@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.3...v0.37.4) (2023-10-20)
+
+
+### Features
+
+* **FToken:** add `name` and `showName` props ([97e85fc](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/97e85fc642f404e0f5a0acab688f5d397736d749))
+
 ### [0.37.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.2...v0.37.3) (2023-10-12)
 
 
