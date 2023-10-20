@@ -45,6 +45,18 @@ export const Symbol = () => ({
     `,
 });
 
+export const Name = () => ({
+    components: { FToken },
+    //language=HTML
+    template: `
+        <div>
+            <FToken name="Fantom" show-name logo="avatar.png" class="ftoken-novalue" />
+            <br />
+            <FToken name="Fantom" show-name symbol="FTM" logo="avatar.png" class="ftoken-novalue" />
+        </div>
+    `,
+});
+
 export const Value = () => ({
     components: { FToken },
     //language=HTML

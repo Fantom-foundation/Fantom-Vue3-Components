@@ -47,6 +47,40 @@ describe('FToken', () => {
         });
     });
 
+    describe('name', () => {
+        it('should display token name', () => {
+            wrapper = createWrapper({
+                props: {
+                    showName: true,
+                    name: 'Fantom',
+                },
+            });
+
+            expect(wrapper.text()).toContain('Fantom');
+        });
+
+        it('should display token name if `token` prop is given', () => {
+            wrapper = createWrapper({
+                props: {
+                    showName: true,
+                    token: { name: 'Fantom' },
+                },
+            });
+
+            expect(wrapper.text()).toContain('Fantom');
+        });
+
+        it('should not display token name if `showName` prop is `false`', () => {
+            wrapper = createWrapper({
+                props: {
+                    name: 'Fantom',
+                },
+            });
+
+            expect(wrapper.text()).not.toContain('Fantom');
+        });
+    });
+
     describe('logo', () => {
         it('should display token logo', () => {
             wrapper = createWrapper({

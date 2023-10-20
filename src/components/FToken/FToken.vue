@@ -15,6 +15,10 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    name: {
+        type: String,
+        default: '',
+    },
     logo: {
         type: String,
         default: '',
@@ -32,6 +36,10 @@ const props = defineProps({
         default: false,
     },
     noLogo: {
+        type: Boolean,
+        default: false,
+    },
+    showName: {
         type: Boolean,
         default: false,
     },
@@ -55,6 +63,7 @@ const props = defineProps({
 const { formatters } = useFormatters();
 
 const cSymbol = computed(() => (!props.noSymbol ? props.symbol || props.token.symbol : ''));
+const cName = computed(() => (props.showName ? props.name || props.token.name : ''));
 const cLogo = computed(() => (!props.noLogo ? props.logo || props.token.logo || props.token.logoURL : ''));
 const cValue = computed(() =>
     props.value !== ''
@@ -85,8 +94,14 @@ const cTitle = computed(() => (props.value ? `${props.value} ${cSymbol.value}` :
                 <span v-if="cValue" class="ftoken_value">
                     <slot name="value" :value="cValue">{{ cValue }}</slot>
                 </span>
+                <span v-if="cName" class="ftoken_name">
+                    <slot name="name" :tokenName="cName">{{ cName }}</slot>
+                </span>
                 <span v-if="cSymbol" class="ftoken_symbol">
-                    <slot name="symbol" :symbol="cSymbol">{{ cSymbol }}</slot>
+                    <slot name="symbol" :symbol="cSymbol">
+                        <template v-if="cName">({{ cSymbol }})</template>
+                        <template v-else>{{ cSymbol }}</template>
+                    </slot>
                 </span>
             </FPlaceholder>
         </span>
@@ -96,6 +111,7 @@ const cTitle = computed(() => (props.value ? `${props.value} ${cSymbol.value}` :
 <style lang="scss">
 .ftoken {
     --ftoken-symbol-size: 0.75em;
+    --ftoken-name-size: 1em;
     --ftoken-logo-gap: var(--f-spacer-3, 12px);
     --ftoken-value-gap: var(--f-spacer-2, 6px);
 
@@ -112,6 +128,11 @@ const cTitle = computed(() => (props.value ? `${props.value} ${cSymbol.value}` :
 
     &_symbol {
         font-size: var(--ftoken-symbol-size);
+    }
+
+    &_name {
+        font-size: var(--ftoken-name-size);
+        padding-inline-end: var(--f-spacer-2);
     }
 
     &-novalue {
