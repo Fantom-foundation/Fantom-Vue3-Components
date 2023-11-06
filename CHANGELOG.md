@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.4...v0.37.5) (2023-11-06)
+
+
+### Features
+
+* **FInput:** add `bottom2` slot ([2938fe1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/2938fe19731a6591397b5da1a9a05e0658d37650))
+
 ### [0.37.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.3...v0.37.4) (2023-10-20)
 
 
