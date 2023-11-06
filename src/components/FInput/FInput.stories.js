@@ -244,6 +244,7 @@ export const Slots = () => ({
             <FInput aria-label="Large" field-size="large">
                 <template #top><span>top</span></template>
                 <template #bottom><span>bottom</span></template>
+                <template #bottom2><span>bottom2</span></template>
                 <template #prefix><span>prefix</span></template>
                 <template #suffix><span>suffix</span></template>
             </FInput>

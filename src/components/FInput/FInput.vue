@@ -99,6 +99,7 @@
                 <FInfoText :text="infoText" :info-text-id="infoTextId" />
             </div>
         </slot>
+        <slot name="bottom2"></slot>
     </span>
 </template>
 
