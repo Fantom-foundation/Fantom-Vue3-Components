@@ -5,27 +5,42 @@
     --f-btn-main-color-hover: var(--f-color-grey-3, #dedede);
     --f-btn-color: var(--f-color-grey-8, #333333);
     --f-btn-hover-color: var(--f-color-grey-9, #212121);
+    --f-btn-light-background-color-hsl: var(--f-color-grey-h), var(--f-color-grey-l), var(--f-color-grey-s);
+    --f-btn-light-background-color-a: 0.3;
+    --f-btn-hover-light-background-color-a: 0.5;
 }
 
 @include tools.button() {
     &-red {
         --f-btn-main-color: var(--f-color-red-5, #ca1616);
         --f-btn-main-color-hover: var(--f-color-red-6, #971111);
+        --f-btn-light-background-color-hsl: var(--f-color-red-h), var(--f-color-red-l), var(--f-color-red-s);
+        --f-btn-light-background-color-a: 0.3;
+        --f-btn-hover-light-background-color-a: 0.5;
     }
 
     &-green {
         --f-btn-main-color: var(--f-color-green-7, #1e6629);
         --f-btn-main-color-hover: var(--f-color-green-8, #164b1e);
+        --f-btn-light-background-color-hsl: var(--f-color-green-h), var(--f-color-green-l), var(--f-color-green-s);
+        --f-btn-light-background-color-a: 0.2;
+        --f-btn-hover-light-background-color-a: 0.4;
     }
 
     &-orange {
         --f-btn-main-color: var(--f-color-orange-7, #935f06);
         --f-btn-main-color-hover: var(--f-color-orange-8, #624004);
+        --f-btn-light-background-color-hsl: var(--f-color-orange-h), var(--f-color-orange-l), var(--f-color-orange-s);
+        --f-btn-light-background-color-a: 0.6;
+        --f-btn-hover-light-background-color-a: 1;
     }
 
     &-grey {
         --f-btn-main-color: var(--f-color-grey-6, #666666);
         --f-btn-main-color-hover: var(--f-color-grey-7, #4d4d4d);
+        --f-btn-light-background-color-hsl: var(--f-color-grey-h), var(--f-color-grey-l), var(--f-color-grey-s);
+        --f-btn-light-background-color-a: 0.05;
+        --f-btn-hover-light-background-color-a: 0.1;
     }
 
     &-light {

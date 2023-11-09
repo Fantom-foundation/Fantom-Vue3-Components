@@ -73,6 +73,15 @@
         background: var(--f-btn-tertiary-background);
     }
 
+    &-quaternary {
+        --f-btn-hover-background: hsla(var(--f-btn-light-background-color-hsl), var(--f-btn-hover-light-background-color-a));
+        --f-btn-hover-color: var(--f-btn-quaternary-color);
+
+        color: var(--f-btn-quaternary-color);
+        border-color: var(--f-btn-quaternary-border-color);
+        background: var(--f-btn-quaternary-background);
+    }
+
     &-samesize {
         padding: 0;
         display: inline-flex;

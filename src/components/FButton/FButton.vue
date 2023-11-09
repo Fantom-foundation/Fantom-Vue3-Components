@@ -41,7 +41,7 @@ export default {
             type: String,
             default: '',
             validator: function (_value) {
-                return ['', 'primary', 'secondary', 'tertiary'].indexOf(_value) !== -1;
+                return ['', 'primary', 'secondary', 'tertiary', 'quaternary'].indexOf(_value) !== -1;
             },
         },
         /** Specifies that button is styled as a secondary button */
@@ -49,8 +49,13 @@ export default {
             type: Boolean,
             default: false,
         },
-        /** Specifies that button is styled as a secondary button */
+        /** Specifies that button is styled as a tertiary button */
         tertiary: {
+            type: Boolean,
+            default: false,
+        },
+        /** Specifies that button is styled as a quaternary button */
+        quaternary: {
             type: Boolean,
             default: false,
         },
@@ -107,9 +112,14 @@ export default {
 
             return {
                 'btn-secondary':
-                    (this.secondary && btnType !== 'primary' && btnType !== 'tertiary') || btnType === 'secondary',
+                    (this.secondary && btnType !== 'primary' && btnType !== 'tertiary' && btnType !== 'quaternary') ||
+                    btnType === 'secondary',
                 'btn-tertiary':
-                    (this.tertiary && btnType !== 'primary' && btnType !== 'secondary') || btnType === 'tertiary',
+                    (this.tertiary && btnType !== 'primary' && btnType !== 'secondary' && btnType !== 'quaternary') ||
+                    btnType === 'tertiary',
+                'btn-quaternary':
+                    (this.quaternary && btnType !== 'primary' && btnType !== 'secondary' && btnType !== 'tertiary') ||
+                    btnType === 'quaternary',
                 'btn-lg': size === 'large',
                 'btn-sm': size === 'small',
                 'btn-xs': size === 'mini',

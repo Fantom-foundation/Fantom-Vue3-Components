@@ -28,6 +28,11 @@ export const Default = () => ({
             <FButton tertiary label="Default" />
             <FButton btn-type="tertiary" size="small" label="Small" />
             <FButton tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton quaternary size="large" label="Large" />
+            <FButton quaternary label="Default" />
+            <FButton btn-type="quaternary" size="small" label="Small" />
+            <FButton quaternary size="mini" label="Mini" />
             <h3>With an icon</h3>
             <FButton class="fbutton-withicon" aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
             <FButton class="fbutton-withicon" aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
@@ -44,10 +49,16 @@ export const Default = () => ({
             <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
             <FButton class="fbutton-withicon" tertiary aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
             <br />
+            <FButton class="fbutton-withicon" quaternary aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" quaternary aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" quaternary aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <FButton class="fbutton-withicon" quaternary aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <br />
             <h3>Round</h3>
             <FButton round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
             <FButton round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
             <FButton round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton round quaternary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
         </div>
     `,
 });
@@ -71,6 +82,11 @@ export const Disabled = () => ({
             <FButton disabled tertiary label="Default" />
             <FButton disabled tertiary size="small" label="Small" />
             <FButton disabled tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton disabled quaternary size="large" label="Large" />
+            <FButton disabled quaternary label="Default" />
+            <FButton disabled quaternary size="small" label="Small" />
+            <FButton disabled quaternary size="mini" label="Mini" />
             <h3>Round</h3>
             <FButton disabled round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
             <FButton disabled round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
@@ -98,10 +114,16 @@ export const Hovered = () => ({
             <FButton hovered tertiary label="Default" />
             <FButton hovered tertiary size="small" label="Small" />
             <FButton hovered tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton hovered quaternary size="large" label="Large" />
+            <FButton hovered quaternary label="Default" />
+            <FButton hovered quaternary size="small" label="Small" />
+            <FButton hovered quaternary size="mini" label="Mini" />
             <h3>Round</h3>
             <FButton hovered round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
             <FButton hovered round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
             <FButton hovered round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton hovered round quaternary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
         </div>
     `,
 });
@@ -125,11 +147,11 @@ export const Loading = () => ({
             <FButton loading tertiary label="Default" />
             <FButton loading tertiary size="small" label="Small" />
             <FButton loading tertiary size="mini" label="Mini" />
-            <h3>With icon</h3>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="large"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="small"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
-            <FButton loading class="fbutton-withicon" tertiary aria-label="with-icon" size="mini"><FSvgIcon><IconTimes /></FSvgIcon> With icon</FButton>
+            <h3>Quaternary</h3>
+            <FButton loading quaternary size="large" label="Large" />
+            <FButton loading quaternary label="Default" />
+            <FButton loading quaternary size="small" label="Small" />
+            <FButton loading quaternary size="mini" label="Mini" />
         </div>
     `,
 });
@@ -153,6 +175,11 @@ export const customSpinner = () => ({
             <FButton use-custom-spinner :style="style" loading tertiary label="Default" />
             <FButton use-custom-spinner :style="style" loading tertiary size="small" label="Small" />
             <FButton use-custom-spinner :style="style" loading tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton use-custom-spinner :style="style" loading quaternary size="large" label="Large" />
+            <FButton use-custom-spinner :style="style" loading quaternary label="Default" />
+            <FButton use-custom-spinner :style="style" loading quaternary size="small" label="Small" />
+            <FButton use-custom-spinner :style="style" loading quaternary size="mini" label="Mini" />
         </div>
     `,
     data() {
@@ -196,6 +223,16 @@ export const notDisableWhileLoading = () => ({
             <FButton not-disable-while-loading use-custom-spinner :style="style" loading tertiary label="Default" />
             <FButton not-disable-while-loading use-custom-spinner :style="style" loading tertiary size="small" label="Small" />
             <FButton not-disable-while-loading use-custom-spinner :style="style" loading tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton not-disable-while-loading loading quaternary size="large" label="Large" />
+            <FButton not-disable-while-loading loading quaternary label="Default" />
+            <FButton not-disable-while-loading loading quaternary size="small" label="Small" />
+            <FButton not-disable-while-loading loading quaternary size="mini" label="Mini" />
+            <br /><br />
+            <FButton not-disable-while-loading use-custom-spinner :style="style" loading quaternary size="large" label="Large" />
+            <FButton not-disable-while-loading use-custom-spinner :style="style" loading quaternary label="Default" />
+            <FButton not-disable-while-loading use-custom-spinner :style="style" loading quaternary size="small" label="Small" />
+            <FButton not-disable-while-loading use-custom-spinner :style="style" loading quaternary size="mini" label="Mini" />
         </div>
     `,
     data() {
@@ -239,6 +276,16 @@ export const noLabelWhileLoading = () => ({
             <FButton no-label-while-loading use-custom-spinner :style="style" loading tertiary label="Default" />
             <FButton no-label-while-loading use-custom-spinner :style="style" loading tertiary size="small" label="Small" />
             <FButton no-label-while-loading use-custom-spinner :style="style" loading tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton no-label-while-loading loading quaternary size="large" label="Large" />
+            <FButton no-label-while-loading loading quaternary label="Default" />
+            <FButton no-label-while-loading loading quaternary size="small" label="Small" />
+            <FButton no-label-while-loading loading quaternary size="mini" label="Mini" />
+            <br /><br />
+            <FButton no-label-while-loading use-custom-spinner :style="style" loading quaternary size="large" label="Large" />
+            <FButton no-label-while-loading use-custom-spinner :style="style" loading quaternary label="Default" />
+            <FButton no-label-while-loading use-custom-spinner :style="style" loading quaternary size="small" label="Small" />
+            <FButton no-label-while-loading use-custom-spinner :style="style" loading quaternary size="mini" label="Mini" />
         </div>
     `,
     data() {
@@ -256,63 +303,78 @@ export const Variants = () => ({
             <FButton label="Default" class="btn-red" />
             <FButton secondary label="Default" class="btn-red" />
             <FButton tertiary label="Default" class="btn-red" />
+            <FButton quaternary label="Default" class="btn-red" />
             <br />
             <FButton disabled label="Default" class="btn-red" />
             <FButton disabled secondary label="Default" class="btn-red" />
             <FButton disabled tertiary label="Default" class="btn-red" />
+            <FButton disabled quaternary label="Default" class="btn-red" />
             <br />
             <FButton loading label="Default" class="btn-red" />
             <FButton loading secondary label="Default" class="btn-red" />
             <FButton loading tertiary label="Default" class="btn-red" />
+            <FButton loading quaternary label="Default" class="btn-red" />
             <h3><code>.btn-green</code></h3>
             <FButton label="Default" class="btn-green" />
             <FButton secondary label="Default" class="btn-green" />
             <FButton tertiary label="Default" class="btn-green" />
+            <FButton quaternary label="Default" class="btn-green" />
             <br />
             <FButton disabled label="Default" class="btn-green" />
             <FButton disabled secondary label="Default" class="btn-green" />
             <FButton disabled tertiary label="Default" class="btn-green" />
+            <FButton disabled quaternary label="Default" class="btn-green" />
             <br />
             <FButton loading label="Default" class="btn-green" />
             <FButton loading secondary label="Default" class="btn-green" />
             <FButton loading tertiary label="Default" class="btn-green" />
+            <FButton loading quaternary label="Default" class="btn-green" />
             <h3><code>.btn-orange</code></h3>
             <FButton label="Default" class="btn-orange" />
             <FButton secondary label="Default" class="btn-orange" />
             <FButton tertiary label="Default" class="btn-orange" />
+            <FButton quaternary label="Default" class="btn-orange" />
             <br />
             <FButton disabled label="Default" class="btn-orange" />
             <FButton disabled secondary label="Default" class="btn-orange" />
             <FButton disabled tertiary label="Default" class="btn-orange" />
+            <FButton disabled quaternary label="Default" class="btn-orange" />
             <br />
             <FButton loading label="Default" class="btn-orange" />
             <FButton loading secondary label="Default" class="btn-orange" />
             <FButton loading tertiary label="Default" class="btn-orange" />
+            <FButton loading quaternary label="Default" class="btn-orange" />
             <h3><code>.btn-grey</code></h3>
             <FButton label="Default" class="btn-grey" />
             <FButton secondary label="Default" class="btn-grey" />
             <FButton tertiary label="Default" class="btn-grey" />
+            <FButton quaternary label="Default" class="btn-grey" />
             <br />
             <FButton disabled label="Default" class="btn-grey" />
             <FButton disabled secondary label="Default" class="btn-grey" />
             <FButton disabled tertiary label="Default" class="btn-grey" />
+            <FButton disabled quaternary label="Default" class="btn-grey" />
             <br />
             <FButton loading label="Default" class="btn-grey" />
             <FButton loading secondary label="Default" class="btn-grey" />
             <FButton loading tertiary label="Default" class="btn-grey" />
+            <FButton loading quaternary label="Default" class="btn-grey" />
             <h3><code>.btn-light, .darktheme -> fbutton</code></h3>
             <div class="bac-grey-8 pa-5 darktheme">
                 <FButton label="Default" />
                 <FButton secondary label="Default" class="btn-light" />
                 <FButton tertiary label="Default" class="btn-light" />
+                <FButton quaternary label="Default" class="btn-light" />
                 <br />
                 <FButton disabled label="Default" />
                 <FButton disabled secondary label="Default" class="btn-light" />
                 <FButton disabled tertiary label="Default" class="btn-light" />
+                <FButton disabled quaternary label="Default" class="btn-light" />
                 <br />
                 <FButton loading label="Default" />
                 <FButton loading secondary label="Default" class="btn-light" />
                 <FButton loading tertiary label="Default" class="btn-light" />
+                <FButton loading quaternary label="Default" class="btn-light" />
             </div>
         </div>
     `,
@@ -325,6 +387,7 @@ export const Slot = () => ({
             <FButton><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Primary</i></FButton>
             <FButton secondary><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Secondary</i></FButton>
             <FButton tertiary><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Tertiary</i></FButton>
+            <FButton quaternary><FSvgIcon size="16px"><IconTimes /></FSvgIcon> <i>Quaternary</i></FButton>
         </div>
     `,
 });

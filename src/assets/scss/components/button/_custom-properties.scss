@@ -1,4 +1,4 @@
-@use "tools";
+@use 'tools';
 
 .#{tools.$button} {
     --f-btn-main-color: var(--f-color-primary-5, #1a6aff);
@@ -28,15 +28,18 @@
     --f-btn-transition-length: var(--f-transition-length, 250ms);
     --f-btn-transition-func: var(--f-transition-func, ease);
     --f-btn-transition: color var(--f-btn-transition-length) var(--f-btn-transition-func),
-    background-color var(--f-btn-transition-length) var(--f-btn-transition-func),
-    border-color var(--f-btn-transition-length) var(--f-btn-transition-func);
+        background-color var(--f-btn-transition-length) var(--f-btn-transition-func),
+        border-color var(--f-btn-transition-length) var(--f-btn-transition-func);
 
     --f-btn-color: #fff;
     --f-btn-background: var(--f-btn-main-color);
+    --f-btn-light-background-color-hsl: var(--f-color-blue-h), var(--f-color-blue-l), var(--f-color-blue-s);
+    --f-btn-light-background-color-a: 0.4;
 
     --f-btn-hover-color: var(--f-btn-color);
     --f-btn-hover-background: var(--f-btn-main-color-hover);
     --f-btn-hover-border-color: transparent;
+    --f-btn-hover-light-background-color-a: 0.6;
 
     --f-btn-focus-color: var(--f-btn-hover-color);
     --f-btn-focus-background: var(--f-btn-hover-background);
@@ -85,4 +88,8 @@
     --f-btn-tertiary-color: var(--f-btn-main-color);
     --f-btn-tertiary-border-color: transparent;
     --f-btn-tertiary-background: transparent;
+
+    --f-btn-quaternary-color: var(--f-btn-main-color);
+    --f-btn-quaternary-border-color: transparent;
+    --f-btn-quaternary-background: hsla(var(--f-btn-light-background-color-hsl), var(--f-btn-light-background-color-a));
 }

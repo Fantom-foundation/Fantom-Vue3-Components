@@ -67,6 +67,11 @@
         &-tertiary.fbutton-loading:disabled {
             --fbutton-spinner-color: var(--fbutton-tertiary-spinner-color);
         }
+
+        &-quaternary.fbutton-loading:not(:hover),
+        &-quaternary.fbutton-loading:disabled {
+            --fbutton-spinner-color: var(--fbutton-quaternary-spinner-color);
+        }
     }
 }
 
