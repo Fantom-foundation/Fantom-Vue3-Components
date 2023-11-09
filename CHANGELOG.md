@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.5...v0.37.6) (2023-11-09)
+
+
+### Features
+
+* **FButton:** add `quaternary` button style ([604db9d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/604db9d4b2d8baa8f404c52accbc18b15a51e0fd))
+
 ### [0.37.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.4...v0.37.5) (2023-11-06)
 
 
