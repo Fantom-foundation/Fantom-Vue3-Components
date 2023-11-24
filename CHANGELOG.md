@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.6...v0.37.7) (2023-11-24)
+
+
+### Features
+
+* **FCountdown:** add slots ([93e6a7a](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/93e6a7ad8b6a0ea2fbd3e0cb6aa4fd810f0a5bd0))
+
 ### [0.37.6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.5...v0.37.6) (2023-11-09)
 
 
