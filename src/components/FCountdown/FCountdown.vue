@@ -1,25 +1,33 @@
 <template>
     <div class="fcountdown" :class="classes">
         <div v-if="show.indexOf('d') > -1">
-            <div class="fcountdown_amount" data-testid="days">{{ days }}</div>
+            <div class="fcountdown_amount" data-testid="days">
+                <slot name="days-amount" v-bind="{ days }">{{ days }}</slot>
+            </div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="days_label">
                 <slot name="days">{{ translate('fcountdown.days') }}</slot>
             </div>
         </div>
         <div v-if="show.indexOf('h') > -1">
-            <div class="fcountdown_amount" data-testid="hours">{{ hours }}</div>
+            <div class="fcountdown_amount" data-testid="hours">
+                <slot name="hours-amount" v-bind="{ hours }">{{ hours }}</slot>
+            </div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="hours_label">
                 <slot name="hours">{{ translate('fcountdown.hours') }}</slot>
             </div>
         </div>
         <div v-if="show.indexOf('m') > -1">
-            <div class="fcountdown_amount" data-testid="minutes">{{ minutes }}</div>
+            <div class="fcountdown_amount" data-testid="minutes">
+                <slot name="minutes-amount" v-bind="{ minutes }">{{ minutes }}</slot>
+            </div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="minutes_label">
                 <slot name="minutes">{{ translate('fcountdown.minutes') }}</slot>
             </div>
         </div>
         <div v-if="show.indexOf('s') > -1">
-            <div class="fcountdown_amount" data-testid="seconds">{{ seconds }}</div>
+            <div class="fcountdown_amount" data-testid="seconds">
+                <slot name="seconds-amount" v-bind="{ seconds }">{{ seconds }}</slot>
+            </div>
             <div v-if="withLabels" class="fcountdown_label" data-testid="seconds_label">
                 <slot name="seconds">{{ translate('fcountdown.seconds') }}</slot>
             </div>

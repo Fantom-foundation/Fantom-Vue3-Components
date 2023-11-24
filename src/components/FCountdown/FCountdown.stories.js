@@ -118,3 +118,22 @@ export const TimeOutEvent = () => ({
         },
     },
 });
+
+export const Slots = () => ({
+    components: { FCountdown },
+    //language=HTML
+    template: `
+        <div style="max-width: 400px">
+            <FCountdown :date="date" use-two-digit-numbers style="--fcountdown-gap: 0">
+                <template #days-amount="{ days }">{{ days }}:</template>
+                <template #hours-amount="{ hours }">{{ hours }}:</template>
+                <template #minutes-amount="{ minutes }">{{ minutes }}:</template>
+            </FCountdown>
+        </div>
+    `,
+    data() {
+        return {
+            date: Date.now() + 2 * DAY + 3 * HOUR + 30 * MINUTE + 5 * SECOND,
+        };
+    },
+});
