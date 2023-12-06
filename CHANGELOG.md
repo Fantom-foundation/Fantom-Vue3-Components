@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.7...v0.37.8) (2023-12-06)
+
+
+### Features
+
+* **test utils:** add `confirmExistence` and `confirmNonExistence` test helpers ([d68df99](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/d68df9919408c665c161bc00e33c92f5facc8405))
+
 ### [0.37.7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.6...v0.37.7) (2023-11-24)
 
 
