@@ -97,3 +97,11 @@ export function destroyWrapper(wrapper) {
         wrapper = null;
     }
 }
+
+export function confirmExistence(testId, wrapper) {
+    expect(wrapper.findByTestId(testId).exists()).toBe(true);
+}
+
+export function confirmNonExistence(testId, wrapper) {
+    expect(wrapper.findByTestId(testId).exists()).toBe(false);
+}
