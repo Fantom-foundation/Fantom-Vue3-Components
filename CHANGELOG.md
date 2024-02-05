@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.8...v0.37.9) (2024-02-05)
+
+
+### Bug Fixes
+
+* **interface:** use correct class name in error message if class instance is given ([5e47d19](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5e47d1999ed645348639cd6c048981d26956cfb8))
+
 ### [0.37.8](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.7...v0.37.8) (2023-12-06)
 
 
