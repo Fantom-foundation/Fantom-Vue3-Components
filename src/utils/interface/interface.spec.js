@@ -37,6 +37,6 @@ describe('#implementsInterface', () => {
             const interf = ['method1', 'method2', 'prop2:property'];
 
             implementsInterface(tc, interf);
-        }).toThrowError();
+        }).toThrowError('Class TestClass must implement methods: prop2');
     });
 });

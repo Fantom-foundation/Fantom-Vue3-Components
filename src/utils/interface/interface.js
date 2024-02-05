@@ -6,6 +6,7 @@
 export function implementsInterface(classOrInstance, interf = []) {
     const notFound = [];
     const isClass = !!classOrInstance.prototype;
+    const className = isClass ? classOrInstance.name : classOrInstance.constructor.name;
 
     interf.forEach((item) => {
         const isProperty = item.includes(':property');
@@ -33,7 +34,7 @@ export function implementsInterface(classOrInstance, interf = []) {
     });
 
     if (notFound.length > 0) {
-        throw new Error(`Class ${classOrInstance.name} must implement methods: ${notFound.join(', ')}`);
+        throw new Error(`Class ${className} must implement methods: ${notFound.join(', ')}`);
     }
 
     return true;
