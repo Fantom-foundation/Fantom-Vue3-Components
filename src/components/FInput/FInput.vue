@@ -19,6 +19,7 @@
                             :class="{ 'inp-nostyle-preservefocus': preserveFocus }"
                             v-bind="inputProps"
                             :id="labeledById"
+                            :disabled="disabled || semiDisabled"
                             :aria-invalid="validationState.invalid || invalid"
                             :aria-describedby="ariaDescribedByIds"
                             :aria-controls="controlsId || null"
@@ -42,6 +43,7 @@
                         :class="{ 'inp-nostyle-preservefocus': preserveFocus }"
                         v-bind="inputProps"
                         :id="labeledById"
+                        :disabled="disabled || semiDisabled"
                         :aria-invalid="validationState.invalid || invalid"
                         :aria-describedby="ariaDescribedByIds"
                         :aria-controls="controlsId || null"
@@ -64,6 +66,7 @@
                     :class="{ 'inp-nostyle-preservefocus': preserveFocus }"
                     v-bind="inputProps"
                     :id="labeledById"
+                    :disabled="disabled || semiDisabled"
                     :aria-invalid="validationState.invalid || invalid"
                     :aria-describedby="ariaDescribedByIds"
                     :aria-controls="controlsId || null"
@@ -225,6 +228,7 @@ export default {
                 'inp-xs': this.fieldSize === 'mini',
                 'inp-readonly': this.readonly,
                 'inp-disabled': this.disabled,
+                'inp-semi-disabled': this.semiDisabled,
                 inp: !this.noStyle,
                 // 'inp-cont': !this.noStyle,
                 'inp-cont': !this.autoResizableTextarea,

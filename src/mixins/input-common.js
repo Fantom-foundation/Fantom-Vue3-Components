@@ -29,6 +29,11 @@ export const inputCommonMixin = {
             type: Boolean,
             default: false,
         },
+        /** Disabled but with style of normal input */
+        semiDisabled: {
+            type: Boolean,
+            default: false,
+        },
         required: {
             type: Boolean,
             default: false,

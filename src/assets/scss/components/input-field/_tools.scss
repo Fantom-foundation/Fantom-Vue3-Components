@@ -6,7 +6,7 @@ $btn: componentsSettings.$button;
 @mixin inp($_type: '') {
     .#{$inp} {
         @if $_type == 'disabled' {
-            &[disabled], &-disabled {
+            &[disabled]:not(.inp-semi-disabled), &-disabled:not(.inp-semi-disabled) {
                 @content;
             }
         } @else if $_type == 'readonly' {

@@ -17,7 +17,7 @@
         "test:watch": "vitest --environment jsdom",
         "test:report": "vitest run --environment jsdom --reporter json --outputFile test_results.json",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-        "storybook": "start-storybook -p 6006 --no-manager-cache",
+        "storybook": "export NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006 --no-manager-cache",
         "build-storybook": "build-storybook",
         "deploy-storybook": "storybook-to-ghpages",
         "release": "standard-version",

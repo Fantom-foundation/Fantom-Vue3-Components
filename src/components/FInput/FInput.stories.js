@@ -79,6 +79,29 @@ export const Disabled = () => ({
     `,
 });
 
+export const SemiDisabled = () => ({
+    components: { FInput },
+    template: `
+        <div>
+            <h3>Input</h3>
+            <FInput semi-disabled field-size="large" label="Large" />
+            <FInput semi-disabled label="Default" placeholder="placeholder" />
+            <FInput semi-disabled field-size="small" label="Small" value="value" />
+            <FInput semi-disabled field-size="mini" label="Mini" value="value" />
+            <h3>Textarea</h3>
+            <FInput semi-disabled is-textarea cols="20" rows="5" field-size="large" label="Large" />
+            <FInput semi-disabled is-textarea cols="20" rows="5" label="Default" placeholder="placeholder" />
+            <FInput semi-disabled is-textarea cols="20" rows="5" field-size="small" label="Small" value="value" />
+            <FInput semi-disabled is-textarea cols="20" rows="5" field-size="mini" label="Mini" value="value" />
+            <h3>Textarea - auto resizable</h3>
+            <FInput semi-disabled is-textarea auto-resizable-textarea cols="20" rows="5" field-size="large" label="Large" />
+            <FInput semi-disabled is-textarea auto-resizable-textarea cols="20" rows="5" label="Default" placeholder="placeholder" />
+            <FInput semi-disabled is-textarea auto-resizable-textarea cols="20" rows="5" field-size="small" label="Small" value="value" />
+            <FInput semi-disabled is-textarea auto-resizable-textarea cols="20" rows="5" field-size="mini" label="Mini" value="value" />
+        </div>
+    `,
+});
+
 export const Invalid = () => ({
     components: { FInput },
     template: `

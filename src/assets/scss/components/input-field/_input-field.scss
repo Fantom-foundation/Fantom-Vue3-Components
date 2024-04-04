@@ -143,7 +143,7 @@ input::-webkit-search-results-decoration {
     }
 }
 
-@include tools.inp('hover') {
+@include tools.inp('hover:not(.inp-semi-disabled)') {
     color: var(--f-input-hover-color);
     background: var(--f-input-hover-background);
     border: var(--f-input-hover-border);
