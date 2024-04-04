@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.10](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.9...v0.37.10) (2024-04-04)
+
+
+### Features
+
+* **FButton:** create "semi-disabled" style ([8457952](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/845795234d10765d82eb4e3df46896c4c42f8d4e))
+* **FInput:** create "semi-disabled" style ([0633932](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/063393294dcbd812c4bac8000197d41ad0e0a25f))
+
 ### [0.37.9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.8...v0.37.9) (2024-02-05)
 
 
