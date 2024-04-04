@@ -95,6 +95,70 @@ export const Disabled = () => ({
     `,
 });
 
+export const SemiDisabled = () => ({
+    components: { FButton, FSvgIcon, IconTimes },
+    template: `
+        <div>
+            <h3>Primary (default)</h3>
+            <FButton semi-disabled size="large" label="Large" />
+            <FButton semi-disabled label="Default" />
+            <FButton semi-disabled size="small" label="Small" />
+            <FButton semi-disabled size="mini" label="Mini" />
+            <h3>Secondary</h3>
+            <FButton semi-disabled secondary size="large" label="Large" />
+            <FButton semi-disabled secondary label="Default" />
+            <FButton semi-disabled secondary size="small" label="Small" />
+            <FButton semi-disabled secondary size="mini" label="Mini" />
+            <h3>Tertiary</h3>
+            <FButton semi-disabled tertiary size="large" label="Large" />
+            <FButton semi-disabled tertiary label="Default" />
+            <FButton semi-disabled tertiary size="small" label="Small" />
+            <FButton semi-disabled tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton semi-disabled quaternary size="large" label="Large" />
+            <FButton semi-disabled quaternary label="Default" />
+            <FButton semi-disabled quaternary size="small" label="Small" />
+            <FButton semi-disabled quaternary size="mini" label="Mini" />
+            <h3>Round</h3>
+            <FButton semi-disabled round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton semi-disabled round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton semi-disabled round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+        </div>
+    `,
+});
+
+export const LikeDisabled = () => ({
+    components: { FButton, FSvgIcon, IconTimes },
+    template: `
+        <div>
+            <h3>Primary (default)</h3>
+            <FButton like-disabled size="large" label="Large" />
+            <FButton like-disabled label="Default" />
+            <FButton like-disabled size="small" label="Small" />
+            <FButton like-disabled size="mini" label="Mini" />
+            <h3>Secondary</h3>
+            <FButton like-disabled secondary size="large" label="Large" />
+            <FButton like-disabled secondary label="Default" />
+            <FButton like-disabled secondary size="small" label="Small" />
+            <FButton like-disabled secondary size="mini" label="Mini" />
+            <h3>Tertiary</h3>
+            <FButton like-disabled tertiary size="large" label="Large" />
+            <FButton like-disabled tertiary label="Default" />
+            <FButton like-disabled tertiary size="small" label="Small" />
+            <FButton like-disabled tertiary size="mini" label="Mini" />
+            <h3>Quaternary</h3>
+            <FButton like-disabled quaternary size="large" label="Large" />
+            <FButton like-disabled quaternary label="Default" />
+            <FButton like-disabled quaternary size="small" label="Small" />
+            <FButton like-disabled quaternary size="mini" label="Mini" />
+            <h3>Round</h3>
+            <FButton like-disabled round aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton like-disabled round secondary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+            <FButton like-disabled round tertiary aria-label="round"><FSvgIcon><IconTimes /></FSvgIcon></FButton>
+        </div>
+    `,
+});
+
 export const Hovered = () => ({
     components: { FButton, FSvgIcon, IconTimes },
     template: `

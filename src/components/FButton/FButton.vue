@@ -73,6 +73,16 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Disabled but with style of normal button */
+        semiDisabled: {
+            type: Boolean,
+            default: false,
+        },
+        /** Not disabled but with style of disabled button */
+        likeDisabled: {
+            type: Boolean,
+            default: false,
+        },
         /** Show loading indicator (spinner) */
         loading: {
             type: Boolean,
@@ -126,6 +136,8 @@ export default {
                 'btn-round': this.round,
                 'btn-samesize': this.sameSize || this.round,
                 'btn-hovered': this.hovered,
+                'btn-semi-disabled': this.semiDisabled,
+                'btn-like-disabled': this.likeDisabled,
                 'fbutton-loading': this.isLoading,
                 'fbutton-customspinner': this.useCustomSpinner,
                 'fbutton-nolabel': this.noLabelWhileLoading,
@@ -133,7 +145,7 @@ export default {
         },
 
         cDisabled() {
-            return this.disabled || (this.loading && !this.notDisableWhileLoading);
+            return this.disabled || this.semiDisabled || (this.loading && !this.notDisableWhileLoading);
         },
     },
 

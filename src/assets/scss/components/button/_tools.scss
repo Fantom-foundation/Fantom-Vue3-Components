@@ -5,12 +5,12 @@ $button: componentsSettings.$button;
 @mixin button($_type: '', $_suffix: '') {
     .#{$button} {
         @if $_type == 'disabled' {
-            &[disabled], &-disabled {
+            &[disabled]:not(.btn-semi-disabled), &-disabled:not(.btn-semi-disabled) {
                 @content;
             }
         }
         @else if $_type != '' {  // pseudoclasses
-            &:not([disabled]):not(.#{$button}-disabled):not(.#{$button}-nohover) {
+            &:not([disabled]):not(.#{$button}-disabled):not(.#{$button}-nohover):not(.btn-like-disabled) {
                 &:#{$_type} {
                     @content;
                 }

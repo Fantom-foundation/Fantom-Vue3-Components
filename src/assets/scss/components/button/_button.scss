@@ -153,3 +153,13 @@
     //border-color: var(--f-btn-disabled-border-color);
     opacity: var(--f-btn-disabled-opacity);
 }
+
+@include tools.button('', '.btn-like-disabled') {
+    cursor: default;
+    opacity: var(--f-btn-disabled-opacity);
+}
+
+@include tools.button('', '.btn-semi-disabled') {
+    cursor: default;
+}
+
