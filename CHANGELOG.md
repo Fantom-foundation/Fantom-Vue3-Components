@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.11](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.10...v0.37.11) (2024-04-08)
+
+
+### Features
+
+* **FWindow:** unmount child components after the 'hide' animation is complete ([a56ab62](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a56ab62ba0412cc3e184f428d1dcdacdf6054056))
+
 ### [0.37.10](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.9...v0.37.10) (2024-04-04)
 
 
