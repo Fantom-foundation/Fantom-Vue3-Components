@@ -4,10 +4,12 @@
         :leave-active-class="dAnimationOut"
         @after-enter="onAfterEnterAnim"
         @after-leave="onAfterLeaveAnim"
+        :css="animated"
     >
         <div
             ref="window"
-            v-if="isVisible"
+            v-if="isMounted"
+            v-show="isVisible"
             :id="id"
             class="fwindow"
             :class="cssClass"
@@ -96,6 +98,7 @@ import IconTimes from '../icons/IconTimes.vue';
 import IconPopoverArrow from '../icons/IconPopoverArrow.vue';
 import { translationsMixin } from '../../mixins/translations.js';
 import { findParentByName } from '../../utils/vue-helpers.js';
+import { nextTick } from 'vue';
 // import './directives.js';
 
 /**
@@ -310,6 +313,8 @@ export default {
         return {
             id: getUniqueId(),
             isVisible: false,
+            isMounted: false,
+            animated: true,
             dPosition: this.popover ? 'absolute' : this.position,
             dAnimationIn: this.animationIn,
             dAnimationOut: this.animationOut,
@@ -342,6 +347,9 @@ export default {
 
     watch: {
         visible(_value) {
+            if (_value) {
+                this.isMounted = true;
+            }
             this.isVisible = _value;
         },
         withArrow(_value) {
@@ -493,6 +501,7 @@ export default {
                 this._firstLastFocusables.last = null;
 
                 this.$nextTick(() => {
+                    this.isMounted = true;
                     this.isVisible = true;
                     this._showAnimInProgress = true;
 
@@ -995,7 +1004,17 @@ export default {
         },
 
         onAfterLeaveAnim() {
+            if (!this._hideAnimInProgress) {
+                return;
+            }
+
             this._hideAnimInProgress = false;
+            this.animated = false;
+            this.isMounted = false;
+
+            nextTick(() => {
+                this.animated = true;
+            });
         },
     },
 };
