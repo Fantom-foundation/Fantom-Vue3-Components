@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.13](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.12...v0.37.13) (2024-07-10)
+
+
+### Features
+
+* **FTabs:** add `disabled` prop ([fed33a9](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/fed33a97adf13fa8e7a2b349c01c1103a9cf045a))
+
 ### [0.37.12](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.11...v0.37.12) (2024-07-10)
 
 ### [0.37.11](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.10...v0.37.11) (2024-04-08)
