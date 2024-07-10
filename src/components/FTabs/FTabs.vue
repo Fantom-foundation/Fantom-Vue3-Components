@@ -8,7 +8,7 @@
                 :tabindex="tabPanel.active ? 0 : -1"
                 :aria-controls="tabPanel.id"
                 :aria-selected="tabPanel.active"
-                :aria-disabled="tabPanel.disabled"
+                :aria-disabled="tabPanel.disabled || disabled"
                 role="tab"
                 :data-index="idx"
                 :class="tabPanel.titleClass"
@@ -39,6 +39,10 @@ export default {
     props: {
         /** No tablist style */
         noStyle: {
+            type: Boolean,
+            default: false,
+        },
+        disabled: {
             type: Boolean,
             default: false,
         },
@@ -135,7 +139,7 @@ export default {
         async setActiveTabByIndex(_index) {
             const tabPanel = this.dTabPanels[_index];
 
-            if (tabPanel && !tabPanel.disabled) {
+            if (tabPanel && !tabPanel.disabled && !this.disabled) {
                 await this.deactivateActivePanel();
 
                 tabPanel.active = true;

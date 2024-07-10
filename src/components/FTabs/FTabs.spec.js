@@ -12,7 +12,7 @@ let wrapper = null;
 const Playground = {
     components: { FTabs, FTab },
     template: `
-        <FTabs :strategy="strategy" aria-label="Default tabs">
+        <FTabs :strategy="strategy" :disabled="disabled" aria-label="Default tabs">
             <FTab :strategy="tabStrategy1" title="Tab 1" data-testid="tab1">
                 <span id="tab1_content">Tab 1</span>
             </FTab>
@@ -33,6 +33,10 @@ const Playground = {
         tabStrategy2: {
             type: String,
             default: undefined,
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
         },
     },
 };
@@ -97,6 +101,15 @@ describe('FTabs', () => {
 
         await activateTabByIndex(0);
 
+        expect(getContentElement('tab2_content').exists()).toBe(false);
+    });
+
+    it('should disable all tabs', async () => {
+        wrapper = await createWrapper({ propsData: { disabled: true, tabStrategy2: 'create-destroy' } });
+
+        await activateTabByIndex(1);
+
+        expect(getContentElement('tab1_content').exists()).toBe(true);
         expect(getContentElement('tab2_content').exists()).toBe(false);
     });
 });

@@ -46,6 +46,25 @@ export const ActiveTab = () => ({
     `,
 });
 
+export const Disabled = () => ({
+    components: { FTabs, FTab },
+    template: `
+        <div>
+            <FTabs aria-label="Default tabs" disabled>
+                <FTab title="Tab 1">
+                    Tab 1 content
+                </FTab>
+                <FTab title="Tab 2" active>
+                    Tab 2 content
+                </FTab>
+                <FTab title="Tab 3">
+                    Tab 3 content
+                </FTab>
+            </FTabs>
+        </div>
+    `,
+});
+
 export const DisabledTab = () => ({
     components: { FTabs, FTab },
     template: `
