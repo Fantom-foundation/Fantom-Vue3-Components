@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.12](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.11...v0.37.12) (2024-07-10)
+
 ### [0.37.11](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.10...v0.37.11) (2024-04-08)
 
 
