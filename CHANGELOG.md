@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.14](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.13...v0.37.14) (2024-08-07)
+
+
+### Features
+
+* **FDataGrid:** add `dontCloneItems` prop ([58f1b81](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/58f1b81e7bc6e3ecf14c416fad29cddef0f9b175))
+
 ### [0.37.13](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.12...v0.37.13) (2024-07-10)
 
 
