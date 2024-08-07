@@ -281,7 +281,7 @@ export default {
          * `cssClass` {string|Array|Object} - the class name (or array of class names or object with class names as the keys) that will be applied to the row element
          */
         items: {
-            type: [Array, Promise],
+            type: [Array, Promise, Object],
             default() {
                 return [];
             },
