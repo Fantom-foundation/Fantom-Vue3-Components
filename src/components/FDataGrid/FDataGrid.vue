@@ -441,6 +441,11 @@ export default {
             type: Boolean,
             default: true,
         },
+        /** Don't clone items on first setup */
+        dontCloneItems: {
+            type: Boolean,
+            default: false,
+        },
         /** Total amount of items (FPagination prop) */
         totalItems: { ...FPagination.props.totalItems },
         /** Number of items per page (FPagination prop) */
@@ -717,7 +722,11 @@ export default {
                 }, this.loaderDelay);
 
                 try {
-                    items = clone(await _items);
+                    if (!this.dontCloneItems) {
+                        items = clone(await _items);
+                    } else {
+                        items = await _items;
+                    }
                     this.dLoading = false;
                     pending = false;
                 } catch (_error) {
@@ -726,7 +735,11 @@ export default {
                     throw _error;
                 }
             } else {
-                items = clone(_items || []);
+                if (!this.dontCloneItems) {
+                    items = clone(_items || []);
+                } else {
+                    items = _items || [];
+                }
                 this.dLoading = false;
             }
 
