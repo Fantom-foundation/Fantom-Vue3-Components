@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.15](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.14...v0.37.15) (2024-08-07)
+
+
+### Features
+
+* **FDataGrid:** add type "Object" (ref) to "items" prop ([607075e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/607075eee4fb9ec494d863a2bad916ec08680a74))
+
 ### [0.37.14](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.13...v0.37.14) (2024-08-07)
 
 
