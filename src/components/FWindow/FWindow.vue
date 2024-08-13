@@ -307,6 +307,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        resizeThrottleInterval: {
+            type: Number,
+            default: 300,
+        },
     },
 
     data() {
@@ -776,7 +780,7 @@ export default {
 
             if (!this._resizeObserver && window.ResizeObserver) {
                 this._resizeObserver = new window.ResizeObserver(
-                    throttle((_entries) => this.onResize(_entries), 300, true)
+                    throttle((_entries) => this.onResize(_entries), this.resizeThrottleInterval, true)
                 );
                 this._resizeObserver.observe(this.$el);
             }
