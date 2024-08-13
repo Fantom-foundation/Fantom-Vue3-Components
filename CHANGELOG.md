@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.16](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.15...v0.37.16) (2024-08-13)
+
+
+### Features
+
+* **FWindow:** create `resizeThrottleInterval` prop ([a1b53ab](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a1b53ab3165a60bbba15811e2db0da982ee745b8))
+
 ### [0.37.15](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.14...v0.37.15) (2024-08-07)
 
 
