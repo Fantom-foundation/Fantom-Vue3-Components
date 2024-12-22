@@ -51,7 +51,9 @@
                                 :role="col.sortable ? 'button' : undefined"
                                 :tabindex="sortableColumnsNum > 0 && col.sortable ? 0 : undefined"
                             >
-                                {{ col.label }}
+                                <slot :name="`headercell-${col.name}`" :label="label" :column="col">
+                                    {{ col.label }}
+                                </slot>
                             </div>
                         </th>
                     </tr>

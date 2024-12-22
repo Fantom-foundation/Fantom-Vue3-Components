@@ -1263,6 +1263,34 @@ export const DataFormattingWithColumnSlots = () => ({
     },
 });
 
+export const HeaderCellsFormattingWithSlots = () => ({
+    components: { FDataGrid },
+    template: `
+        <div>
+            <FDataGrid
+                :columns="columns"
+                :items="items"
+                :total-items="items.length"
+                :per-page="40"
+                sticky-head
+            >
+                <template #headercell-first_name="{ column }">
+                    <i>{{ column.label }}</i>
+                </template>
+                <template #headercell-email="{ column }">
+                    <i>{{ column.label }}</i> &#x2709
+                </template>
+            </FDataGrid>
+        </div>
+    `,
+    data() {
+        return {
+            columns: clone(columns),
+            items: clone(rows),
+        };
+    },
+});
+
 export const RowStyle = () => ({
     components: { FDataGrid },
     template: `
