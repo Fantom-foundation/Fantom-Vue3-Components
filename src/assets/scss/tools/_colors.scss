@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:list";
 @use "../settings/colors" as colorsSettings;
 @use "sizes" as sizesTools;
 
@@ -10,9 +11,9 @@
         $lightness: map.get($color, "lightness");
         $cpName: --f-color-#{$name};
 
-        #{$cpName}-h: #{nth($hsl, 1)};
-        #{$cpName}-s: #{nth($hsl, 2)};
-        #{$cpName}-l: #{nth($hsl, 3)};
+        #{$cpName}-h: #{list.nth($hsl, 1)};
+        #{$cpName}-s: #{list.nth($hsl, 2)};
+        #{$cpName}-l: #{list.nth($hsl, 3)};
 
         @include sizesTools.sizes() using($size) {
             $suffix: map.get($size, "suffix");
@@ -20,11 +21,11 @@
             $l: 0%;
 
             @if $index < 5 {
-                $l: nth($lightness, $index);
+                $l: list.nth($lightness, $index);
             } @else if ($index == 5) {
-                $l: nth($hsl, 3);
+                $l: list.nth($hsl, 3);
             } @else {
-                $l: nth($lightness, $index - 1);
+                $l: list.nth($lightness, $index - 1);
             }
 
             #{$cpName}#{$suffix}: hsl(var(#{$cpName}-h), var(#{$cpName}-s), $l);
