@@ -1,22 +1,24 @@
 <template>
     <details class="fdetails" :open="dOpened || undefined" :class="classes">
         <summary @click.prevent="onSummaryClick">
-            <span class="fdetails_summary">
-                <span class="fdetails_label">
-                    <!-- @slot Default to `label` prop -->
-                    <slot name="label">
-                        {{ label }}
-                    </slot>
+            <slot name="summary">
+                <span class="fdetails_summary">
+                    <span class="fdetails_label">
+                        <!-- @slot Default to `label` prop -->
+                        <slot name="label">
+                            {{ label }}
+                        </slot>
+                    </span>
+                    <span class="fdetails_icon">
+                        <!-- @slot Default to `icon-angle-left` icon -->
+                        <slot name="icon">
+                            <FSvgIcon size="16px" rotate="180deg" class="fsvgicon-rtl-mirror">
+                                <IconAngleLeft />
+                            </FSvgIcon>
+                        </slot>
+                    </span>
                 </span>
-                <span class="fdetails_icon">
-                    <!-- @slot Default to `icon-angle-left` icon -->
-                    <slot name="icon">
-                        <FSvgIcon size="16px" rotate="180deg" class="fsvgicon-rtl-mirror">
-                            <IconAngleLeft />
-                        </FSvgIcon>
-                    </slot>
-                </span>
-            </span>
+            </slot>
         </summary>
 
         <FHeightTransition @transition-end="onTransitionEnd" :disabled="!animate">

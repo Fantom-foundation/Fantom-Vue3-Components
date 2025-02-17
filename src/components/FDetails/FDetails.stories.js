@@ -104,9 +104,16 @@ export const Slots = () => ({
     //language=HTML
     template: `
         <div style="max-width: 400px">
-            <FDetails label="Label" animate>
+            <FDetails label="label and icon" animate>
                 <template #label><b>Label</b></template>
                 <template #icon><b>:</b></template>
+
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci amet animi, at consequatur culpa,
+                ea eius ipsam magni molestias nisi officia, optio porro quam qui ratione reiciendis soluta ut!
+            </FDetails>
+            <br />
+            <FDetails animate>
+                <template #summary><b>Custom summary</b></template>
 
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci amet animi, at consequatur culpa,
                 ea eius ipsam magni molestias nisi officia, optio porro quam qui ratione reiciendis soluta ut!
