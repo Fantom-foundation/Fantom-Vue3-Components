@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.20](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.19...v0.37.20) (2025-02-17)
+
+
+### Features
+
+* **FDetails:** add `summary` slot ([99f5476](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/99f54763f83155690d6f2a67b0210f0df2b8bc3f))
+
 ### [0.37.19](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.18...v0.37.19) (2025-02-17)
 
 ### [0.37.18](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.17...v0.37.18) (2025-01-10)
