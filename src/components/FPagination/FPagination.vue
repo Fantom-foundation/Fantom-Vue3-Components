@@ -21,6 +21,7 @@
                     <FButton
                         tertiary
                         round
+                        v-bind="buttonProps"
                         :label="firstLabel"
                         :disabled="disablePrevBtns || disabled"
                         :title="translate('fpagination.firstPage')"
@@ -40,6 +41,7 @@
                     <FButton
                         tertiary
                         round
+                        v-bind="buttonProps"
                         :label="prevLabel"
                         :disabled="disablePrevBtns || disabled"
                         :title="translate('fpagination.prevPage')"
@@ -70,6 +72,7 @@
                                     <FButton
                                         tertiary
                                         round
+                                        v-bind="buttonProps"
                                         :label="page.label.toString()"
                                         :data-page="page.label"
                                         :hovered="dCurrPage === parseInt(page.label)"
@@ -108,6 +111,7 @@
                     <FButton
                         tertiary
                         round
+                        v-bind="buttonProps"
                         :label="nextLabel"
                         :disabled="disableNextBtns || disabled"
                         :title="translate('fpagination.nextPage')"
@@ -127,6 +131,7 @@
                     <FButton
                         tertiary
                         round
+                        v-bind="buttonProps"
                         :disabled="disableNextBtns || disabled"
                         :title="translate('fpagination.lastPage')"
                         ><slot name="btn-last">{{ lastLabel }}</slot></FButton
@@ -240,6 +245,12 @@ export default {
         boundaryCount: {
             type: Number,
             default: 0,
+        },
+        buttonProps: {
+            type: Object,
+            default() {
+                return {};
+            },
         },
     },
 
