@@ -28,7 +28,7 @@ export default {
 
     mixins: [checkboxMixin],
 
-    emits: ['update:modelValue'],
+    emits: ['update:modelValue', 'update:checked'],
 
     props: {
         modelValue: {
