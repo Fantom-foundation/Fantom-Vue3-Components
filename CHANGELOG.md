@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.23](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.22...v0.37.23) (2025-02-25)
+
+
+### Bug Fixes
+
+* **FFormInput:** use correct initial value for toggle button ([9aa8be4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/9aa8be404d10f28ca0d956ab94dbdfc10a7fea2b))
+
 ### [0.37.22](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.21...v0.37.22) (2025-02-18)
 
 
