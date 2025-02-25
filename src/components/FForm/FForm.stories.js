@@ -440,6 +440,9 @@ export const Model = () => ({
                         />
                     </div>
                     <div class="mab-5">
+                        <FFormInput type="toggle" label="toggle" name="toggle" />
+                    </div>
+                    <div class="mab-5">
                         <FFormInput type="radio" label="radio" value="10" name="radio" />
                         <FFormInput type="radio" label="Radio 2" value="20" name="radio" />
                         <br />
