@@ -51,7 +51,8 @@
             :disabled="dDisabled"
             v-bind="{ ...$attrs, ...inputProps }"
             :name="name"
-            v-model="inputValue"
+            v-model:value="inputValue"
+            v-model:checked="inputValue"
             @validation-state="onValidationState"
         >
             <template v-for="(index, name) in $slots" v-slot:[name]="data">
