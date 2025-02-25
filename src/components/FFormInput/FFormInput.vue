@@ -314,6 +314,7 @@ export default {
             switch (this.type) {
                 case 'checkbox':
                 case 'radio':
+                case 'toggle':
                     return false;
                 case 'checkboxgroup':
                 case 'radiogroup':
