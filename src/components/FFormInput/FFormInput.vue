@@ -252,6 +252,7 @@ export default {
     beforeUnmount() {
         if (this.name) {
             delete this.elements.elements[this.name];
+            delete this.elementStates[this.name];
             // this.$delete(this.elements.elements, this.name);
         }
     },
