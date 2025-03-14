@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.28](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.27...v0.37.28) (2025-03-14)
+
+
+### Features
+
+* **form-input mixin:** add field name as a second argument of validator function ([fdadb9d](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/fdadb9dcee6152218a1dea21b4644aea27080c4a))
+
 ### [0.37.27](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.26...v0.37.27) (2025-03-06)
 
 
