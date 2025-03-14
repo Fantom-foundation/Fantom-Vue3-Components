@@ -242,7 +242,7 @@ export const formInputMixin = {
                     return this._pendingValidation;
                 }
 
-                result = validator(this.inputValue);
+                result = validator(this.inputValue, this.name);
 
                 if (result instanceof Promise) {
                     this._pendingValidation = result;
