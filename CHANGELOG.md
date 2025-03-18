@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.29](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.28...v0.37.29) (2025-03-18)
+
+
+### Features
+
+* **FOption:** handle click on label with shift key down ([75a9064](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/75a906404d1ff914d3b189372f38070f60c166e3))
+
 ### [0.37.28](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.27...v0.37.28) (2025-03-14)
 
 
