@@ -157,6 +157,19 @@ export const HideLabel = () => ({
     `,
 });
 
+export const HandleShiftClick = () => ({
+    components: { FOption },
+    template: `
+        <div>
+            <h3>Checkbox</h3>
+            <FOption handle-shift-click type="checkbox" option-size="large" label="Large" name="checkbox1_lg" />
+            <FOption handle-shift-click type="checkbox" label="default" name="checkbox1" />
+            <FOption handle-shift-click type="checkbox" option-size="small" label="Small" name="checkbox1_sm" />
+            <FOption handle-shift-click type="checkbox" option-size="mini" label="Mini" name="checkbox1_xs" />
+        </div>
+    `,
+});
+
 export const Colors = () => ({
     components: { FOption },
     template: `

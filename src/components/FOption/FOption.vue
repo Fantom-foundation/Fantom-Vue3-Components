@@ -1,5 +1,5 @@
 <template>
-    <label class="foption cr" :class="classes">
+    <label class="foption cr" :class="classes" v-on="{ click: handleShiftClick && onLabelClick }">
         <input
             v-bind="checkboxProps"
             :type="type"
@@ -75,6 +75,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        handleShiftClick: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -136,6 +140,17 @@ export default {
                     this.$emit('update:modelValue', value);
                 } else {
                     this.$emit('update:modelValue', checked ? this.trueValue : this.falseValue);
+                }
+            }
+        },
+
+        onLabelClick(_event) {
+            if (_event.shiftKey) {
+                const checkbox = _event.target.closest('label').querySelector('input');
+
+                if (checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             }
         },
