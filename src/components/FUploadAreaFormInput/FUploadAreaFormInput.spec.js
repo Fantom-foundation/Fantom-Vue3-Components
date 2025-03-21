@@ -32,6 +32,33 @@ describe('FUploadAreaFormInput', () => {
         expect(wrapper.text()).toContain('File 1File 2');
     });
 
+    it('should display label', () => {
+        wrapper = createWrapper({
+            props: {
+                label: 'Lorem ipsum',
+                noLabel: false,
+                id: 'myid',
+            },
+        });
+
+        const fileInput = wrapper.find('input[type="file"]');
+        expect(wrapper.text()).toContain('Lorem ipsum');
+        expect(fileInput.attributes('id')).toBe('myid');
+    });
+
+    it('should not display label in FUploadArea component', () => {
+        wrapper = createWrapper({
+            props: {
+                label: 'Lorem ipsum',
+                noLabel: false,
+                id: 'myid',
+            },
+        });
+
+        const fUploadArea = wrapper.findComponent({ name: 'FUploadArea' });
+        expect(fUploadArea.find('label').exists()).toBe(false);
+    });
+
     it('should show info text', () => {
         wrapper = createWrapper({
             props: {

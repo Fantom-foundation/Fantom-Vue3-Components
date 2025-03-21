@@ -1,12 +1,26 @@
 <script setup>
 import { FUploadArea, FErrorMessages, FInfoText } from '../index.js';
 import { formInputProps, useFormInput } from '../../composables/useFormInput/useFormInput.js';
-import { ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
+import FLabel from '../FLabel/FLabel.vue';
+import { getUniqueId } from '../../utils/index';
 
 const emit = defineEmits(['validation-state', 'update:value']);
 
 const props = defineProps({
     ...formInputProps(),
+    id: {
+        type: String,
+        default: '',
+    },
+    label: {
+        type: String,
+        default: '',
+    },
+    noLabel: {
+        type: Boolean,
+        default: true,
+    },
 });
 
 const {
@@ -21,6 +35,7 @@ const {
     validate,
 } = useFormInput(props, emit);
 const isInvalid = ref(false);
+const labeledById = computed(() => props.id || getUniqueId());
 
 inputValue.value = [];
 
@@ -51,10 +66,17 @@ defineExpose({ validate });
 </script>
 
 <template>
+    <slot name="top" v-bind="slotProps">
+        <FLabel v-if="!noLabel" native :id="labeledById" :required="required">
+            <slot name="label">{{ label }}</slot>
+        </FLabel>
+    </slot>
     <FUploadArea
         v-bind="$attrs"
         :files-validator="validator"
         :invalid="isInvalid"
+        :id="labeledById"
+        :no-label="!noLabel"
         @change="onChange"
         @invalid="onInvalid"
         class="fuploadareaforminput"

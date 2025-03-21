@@ -24,6 +24,15 @@ export const InfoText = () => ({
     `,
 });
 
+export const Label = () => ({
+    components: { FUploadAreaFormInput },
+    template: `
+        <div>
+            <FUploadAreaFormInput label="Label" :no-label="false" />
+        </div>
+    `,
+});
+
 export const Validation = () => ({
     components: { FUploadAreaFormInput, FForm, FFormInput, FButton },
     template: `
@@ -36,6 +45,8 @@ export const Validation = () => ({
                     info-text="Max file size is 200kB"
                     accept="image/*"
                     :max-file-size="200000"
+                    label="Label"
+                    :no-label="false"
                     @change="onChange"
                     style="max-width: 480px"
                 >
