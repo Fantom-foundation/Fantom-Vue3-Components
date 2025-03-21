@@ -109,6 +109,7 @@ export default {
                 this.$emit('update:modelValue', value);
             } else {
                 this.$emit('update:checked', checked ? this.trueValue : this.falseValue);
+                this.$emit('update:modelValue', checked ? this.trueValue : this.falseValue);
             }
         },
     },
