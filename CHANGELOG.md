@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.32](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.31...v0.37.32) (2025-03-21)
+
+
+### Bug Fixes
+
+* **FToggleButton:** fix model update ([637a8ef](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/637a8efb907f736c1b1a96d27e805730a49e94da))
+
 ### [0.37.31](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.30...v0.37.31) (2025-03-21)
 
 
