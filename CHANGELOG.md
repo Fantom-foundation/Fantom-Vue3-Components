@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.31](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.30...v0.37.31) (2025-03-21)
+
+
+### Features
+
+* **FUploadAreaFormInput:** display label ([3cd1374](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3cd137401955f53167a68788723e65f7c3635fde))
+* **FUploadArea:** use `div` instead of `label` if `noLabel` is true ([0cadb95](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/0cadb9573263d8d41ff9646f3f7d6950dc9c3560))
+
 ### [0.37.30](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.29...v0.37.30) (2025-03-18)
 
 ### [0.37.29](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.28...v0.37.29) (2025-03-18)
