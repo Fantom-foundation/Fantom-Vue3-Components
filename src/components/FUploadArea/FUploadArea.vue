@@ -34,6 +34,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    noLabel: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const emit = defineEmits(['change', 'invalid']);
@@ -46,6 +50,7 @@ const classes = computed(() => ({
     'fuploadarea-dragover': dragOver.value,
     'fuploadarea-invalid': isInvalid.value,
 }));
+const labelTag = computed(() => (props.noLabel ? 'div' : 'label'));
 
 /**
  * @param {FileList} files
@@ -174,7 +179,7 @@ watch(
             @drop="onDragLeave"
             :id="id"
         />
-        <label :for="id" class="fuploadarea_text">
+        <Component :is="labelTag" :for="id" class="fuploadarea_text">
             <template v-if="fileNames.length > 0">
                 <slot name="files">
                     <span
@@ -189,7 +194,7 @@ watch(
             <span v-else class="fuploadarea_defaulttext">
                 <slot></slot>
             </span>
-        </label>
+        </Component>
     </div>
 </template>
 
@@ -200,6 +205,8 @@ watch(
     --fuploadarea-invalid-color: var(--f-color-red-5, #ca1616);
     --fuploadarea-invalid-border-color: var(--fuploadarea-invalid-color);
     --fuploadarea-invalid-background-color: var(--f-color-red-2, #fdeded);
+    --fuploadarea-hover-border-color: var(--f-color-grey-4);
+    --fuploadarea-focus-drag-background: var(--f-color-grey-1);
 
     position: relative;
     width: 100%;
@@ -211,12 +218,13 @@ watch(
     justify-content: center;
 
     &:not(.fuploadarea-invalid):hover {
-        border-color: var(--f-color-grey-4);
+        border-color: var(--fuploadarea-hover-border-color);
     }
 
     &:focus-within,
     &-dragover {
-        border-color: var(--f-color-primary-5);
+        border-color: var(--fuploadarea-hover-border-color);
+        background: var(--fuploadarea-focus-drag-background);
     }
 
     input[type='file'] {

@@ -137,5 +137,19 @@ describe('FUploadArea', () => {
         expect(fileInput.attributes('aria-invalid')).toBe('true');
     });
 
+    it('should not use "label" tag if "noLabel" prop is true', async () => {
+        wrapper = createWrapper({
+            props: {
+                noLabel: true,
+            },
+            slots: {
+                default: 'Lorem ipsum',
+            },
+        });
+
+        expect(wrapper.find('label').exists()).toBe(false);
+        expect(wrapper.text()).toContain('Lorem ipsum');
+    });
+
     // it.todo('should be able to clear picked files by clicking on `remove` button', () => {});
 });
