@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.33](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.32...v0.37.33) (2025-03-22)
+
+
+### Bug Fixes
+
+* **FUploadArea:** add `disabled` prop ([95e9feb](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/95e9febb68f8c05d5220d99bea290ad3c83e272e))
+
 ### [0.37.32](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.31...v0.37.32) (2025-03-21)
 
 
