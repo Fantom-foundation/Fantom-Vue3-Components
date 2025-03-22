@@ -36,6 +36,17 @@ export const Invalid = () => ({
     `,
 });
 
+export const Disabled = () => ({
+    components: { FUploadArea },
+    template: `
+        <div>
+            <FUploadArea disabled name="upl">
+                Disabled
+            </FUploadArea>
+        </div>
+    `,
+});
+
 export const OnChange = () => ({
     components: { FUploadArea },
     template: `

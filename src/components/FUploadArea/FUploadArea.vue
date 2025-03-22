@@ -34,6 +34,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
     noLabel: {
         type: Boolean,
         default: false,
@@ -49,6 +53,7 @@ const isInvalid = ref(props.invalid);
 const classes = computed(() => ({
     'fuploadarea-dragover': dragOver.value,
     'fuploadarea-invalid': isInvalid.value,
+    'fuploadarea-disabled': props.disabled,
 }));
 const labelTag = computed(() => (props.noLabel ? 'div' : 'label'));
 
@@ -172,6 +177,7 @@ watch(
             :name="name"
             :accept="accept"
             :multiple="multiple"
+            :disabled="disabled"
             :aria-invalid="isInvalid"
             @change.stop.prevent="onChange"
             @dragenter="onDragEnter"
@@ -207,6 +213,7 @@ watch(
     --fuploadarea-invalid-background-color: var(--f-color-red-2, #fdeded);
     --fuploadarea-hover-border-color: var(--f-color-grey-4);
     --fuploadarea-focus-drag-background: var(--f-color-grey-1);
+    --fuploadarea-disabled-opacity: 0.5;
 
     position: relative;
     width: 100%;
@@ -217,7 +224,7 @@ watch(
     align-items: center;
     justify-content: center;
 
-    &:not(.fuploadarea-invalid):hover {
+    &:not(.fuploadarea-invalid):not(.fuploadarea-disabled):hover {
         border-color: var(--fuploadarea-hover-border-color);
     }
 
@@ -231,10 +238,13 @@ watch(
         position: absolute;
         width: 100%;
         height: 100%;
-        cursor: pointer;
         top: 0;
         right: 0;
         opacity: 0;
+
+        &:not(:disabled) {
+            cursor: pointer;
+        }
     }
 
     &_text {
@@ -262,6 +272,10 @@ watch(
         .fuploadarea_defaulttext {
             color: var(--fuploadarea-invalid-color);
         }
+    }
+
+    &-disabled {
+        opacity: var(--fuploadarea-disabled-opacity);
     }
 }
 </style>

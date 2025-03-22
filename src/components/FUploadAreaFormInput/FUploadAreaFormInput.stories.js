@@ -33,6 +33,15 @@ export const Label = () => ({
     `,
 });
 
+export const Disabled = () => ({
+    components: { FUploadAreaFormInput },
+    template: `
+        <div>
+            <FUploadAreaFormInput disabled>Disabled</FUploadAreaFormInput>
+        </div>
+    `,
+});
+
 export const Validation = () => ({
     components: { FUploadAreaFormInput, FForm, FFormInput, FButton },
     template: `

@@ -137,6 +137,18 @@ describe('FUploadArea', () => {
         expect(fileInput.attributes('aria-invalid')).toBe('true');
     });
 
+    it('should add `disabled` attr to the input if component is disabled', async () => {
+        wrapper = createWrapper({
+            props: {
+                disabled: true,
+                accept: 'image/*',
+            },
+        });
+        const fileInput = wrapper.find('input[type="file"]');
+
+        expect(fileInput.element.disabled).toBe(true);
+    });
+
     it('should not use "label" tag if "noLabel" prop is true', async () => {
         wrapper = createWrapper({
             props: {
