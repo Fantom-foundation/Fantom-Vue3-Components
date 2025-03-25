@@ -16,7 +16,7 @@
             />
         </div>
 
-        <div class="fdatagrid_table" :style="style">
+        <div ref="datagridTable" class="fdatagrid_table" :style="style">
             <table
                 :id="dTableId"
                 role="grid"
@@ -465,6 +465,11 @@ export default {
         useFooterPagination: {
             type: Boolean,
             default: false,
+        },
+        /** Scroll to the top of the grid when page is changed */
+        scrollTop: {
+            type: Boolean,
+            default: true,
         },
     },
 
@@ -1800,6 +1805,16 @@ export default {
 
             if (this.strategy === 'local') {
                 this.setItems();
+
+                if (!this.infiniteScroll && this.scrollTop) {
+                    if (this.$refs.datagridTable) {
+                        this.$refs.datagridTable.scrollTop = 0;
+                    }
+
+                    if (this.$el) {
+                        this.$el.scrollIntoView();
+                    }
+                }
             }
 
             if (!initialChange || this.infiniteScroll) {

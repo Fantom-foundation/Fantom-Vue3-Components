@@ -850,7 +850,7 @@ export const FooterPagination = () => ({
                 :columns="columns"
                 :items="items"
                 :total-items="items.length"
-                :per-page="5"
+                :per-page="10"
             />
         </div>
     `,
