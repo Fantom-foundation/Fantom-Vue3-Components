@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.34](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.33...v0.37.34) (2025-03-25)
+
+
+### Features
+
+* **FDataGrid:** create `scrollTop` prop ([ab89b7c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/ab89b7c8debfe05a9c10917090f7df6809434ccf))
+
 ### [0.37.33](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.32...v0.37.33) (2025-03-22)
 
 
