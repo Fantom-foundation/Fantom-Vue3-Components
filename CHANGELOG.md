@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.35](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.34...v0.37.35) (2025-03-25)
+
+
+### Bug Fixes
+
+* **FDataGrid:** fix scrolling to the top on init ([54f0bd3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/54f0bd3c2e3f871fccea2298fe4eeb80b8eb37aa))
+
 ### [0.37.34](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.33...v0.37.34) (2025-03-25)
 
 
