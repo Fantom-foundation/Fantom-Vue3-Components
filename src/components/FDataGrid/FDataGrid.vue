@@ -1806,7 +1806,7 @@ export default {
             if (this.strategy === 'local') {
                 this.setItems();
 
-                if (!this.infiniteScroll && this.scrollTop) {
+                if (!this.infiniteScroll && this.scrollTop && _state.currPage !== _state.prevPage) {
                     if (this.$refs.datagridTable) {
                         this.$refs.datagridTable.scrollTop = 0;
                     }
