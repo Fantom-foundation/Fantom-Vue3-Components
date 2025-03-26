@@ -216,8 +216,8 @@ describe('FToolbar', () => {
             },
         });
 
-        wrapper.vm.setValueByName('bold', 'new value');
-        wrapper.vm.setValueByName('combobox', 'opt2');
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.setValueByName('bold', 'new value');
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.setValueByName('combobox', 'opt2');
         await nextTick();
 
         expect(wrapper.find('[name="bold"]').attributes('value')).toBe('new value');

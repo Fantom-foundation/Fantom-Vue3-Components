@@ -55,7 +55,7 @@ describe('FUploadAreaFormInput', () => {
             },
         });
 
-        const fUploadArea = wrapper.findComponent({ name: 'FUploadArea' });
+        const fUploadArea = wrapper.findComponent(FUploadArea);
         expect(fUploadArea.find('label').exists()).toBe(false);
     });
 

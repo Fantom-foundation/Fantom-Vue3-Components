@@ -114,7 +114,7 @@ describe('FViewSwitcher', () => {
                 },
             });
 
-            wrapper.vm.switchTo('Component2');
+            wrapper.vm.$parent.$refs.VTU_COMPONENT.switchTo('Component2');
 
             await nextTick();
 
@@ -230,13 +230,13 @@ describe('FViewSwitcher', () => {
             });
             const transitions = wrapper.findComponent(FViewTransition);
 
-            wrapper.vm.switchTo('Component2');
+            wrapper.vm.$parent.$refs.VTU_COMPONENT.switchTo('Component2');
 
             await nextTick();
 
             expect(transitions.attributes('data-test-transition-name')).toBe('slide-left');
 
-            wrapper.vm.switchTo('Component1');
+            wrapper.vm.$parent.$refs.VTU_COMPONENT.switchTo('Component1');
 
             await nextTick();
 
@@ -261,13 +261,13 @@ describe('FViewSwitcher', () => {
             });
             const transitions = wrapper.findComponent(FViewTransition);
 
-            wrapper.vm.switchTo('Component1');
+            wrapper.vm.$parent.$refs.VTU_COMPONENT.switchTo('Component1');
 
             await nextTick();
 
             expect(transitions.attributes('data-test-transition-name')).toBe('slide-right');
 
-            wrapper.vm.switchTo('Component3');
+            wrapper.vm.$parent.$refs.VTU_COMPONENT.switchTo('Component3');
 
             await nextTick();
 

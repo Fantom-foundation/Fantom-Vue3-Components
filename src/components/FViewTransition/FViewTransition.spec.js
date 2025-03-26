@@ -35,7 +35,7 @@ describe('FViewTransition', () => {
             },
         });
 
-        wrapper.vm.forward();
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.forward();
         await nextTick();
 
         expect(wrapper.attributes('data-test-transition-name')).toBe('forward-transition');
@@ -48,7 +48,7 @@ describe('FViewTransition', () => {
             },
         });
 
-        wrapper.vm.backward();
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.backward();
         await nextTick();
 
         expect(wrapper.attributes('data-test-transition-name')).toBe('backward-transition');
@@ -63,12 +63,12 @@ describe('FViewTransition', () => {
             },
         });
 
-        wrapper.vm.forward();
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.forward();
         await nextTick();
 
         expect(wrapper.attributes('data-test-transition-name')).toBe('');
 
-        wrapper.vm.backward();
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.backward();
         await nextTick();
 
         expect(wrapper.attributes('data-test-transition-name')).toBe('');
@@ -81,7 +81,7 @@ describe('FViewTransition', () => {
             },
         });
 
-        wrapper.vm.forward();
+        wrapper.vm.$parent.$refs.VTU_COMPONENT.forward();
         await wrapper.setProps({ disabled: true });
 
         expect(wrapper.attributes('data-test-transition-name')).toBe('');
