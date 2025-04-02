@@ -352,6 +352,9 @@ export default {
             },
             immediate: true,
         },
+        totalItems() {
+            this.processSBPages();
+        },
     },
 
     methods: {
