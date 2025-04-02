@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.37](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.36...v0.37.37) (2025-04-02)
+
+
+### Bug Fixes
+
+* **FPagination:** update pages if `totalItems` changes ([5c6f883](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/5c6f88348d1de9aa39a59190757370e46c114830))
+
 ### [0.37.36](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.35...v0.37.36) (2025-03-26)
 
 ### [0.37.35](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.34...v0.37.35) (2025-03-25)
