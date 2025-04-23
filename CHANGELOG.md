@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.39](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.38...v0.37.39) (2025-04-23)
+
+
+### Bug Fixes
+
+* **FDropdownListbox:** hide error message in `FListbox` component ([e8b4d58](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/e8b4d58b1767818075eb0fc6ac5cb7df9d89fca2))
+
 ### [0.37.38](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.37...v0.37.38) (2025-04-23)
 
 
