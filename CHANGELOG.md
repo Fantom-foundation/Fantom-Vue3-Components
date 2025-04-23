@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.38](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.37...v0.37.38) (2025-04-23)
+
+
+### Bug Fixes
+
+* **FDropdownListbox:** emit 'change' event only once ([9f9f08c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/9f9f08c319197a00e9b52bb4f97eec18bd749045))
+
 ### [0.37.37](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.36...v0.37.37) (2025-04-02)
 
 
