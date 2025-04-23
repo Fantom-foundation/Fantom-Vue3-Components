@@ -254,7 +254,9 @@ export default {
             this.selectedItem = _item;
 
             if (this.selectOnMainAction || _selectionAction !== 'enterKey') {
-                this.emitChangeEvent(_item, _selectionAction);
+                if (this.inputValue !== _item.value) {
+                    this.emitChangeEvent(_item, _selectionAction);
+                }
             }
 
             if (this.selectOnMainAction || _selectionAction === 'click' || _selectionAction === 'enterKey') {
