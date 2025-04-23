@@ -44,6 +44,7 @@
                 v-bind="$props"
                 label=""
                 info-text=""
+                :validator="null"
                 :value="inputValue"
                 :select-immediately="!selectOnMainAction"
                 :focus-item-on-focus="true"
