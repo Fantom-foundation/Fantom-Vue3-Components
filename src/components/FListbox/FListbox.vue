@@ -4,17 +4,21 @@
             <FLabel v-if="label" :id="labeledById" :label="label" :required="required" />
         </slot>
 
-        <component
-            v-if="searchable"
-            :is="inputComponent"
-            v-bind="$attrs"
-            no-label
-            :aria-label="searchFieldLabel"
-            :aria-activedescendant="activeDescendant"
-            :controls-id="listboxId || id"
-            @update:value="onSearch"
-            class="flistbox_searchfield"
-        />
+        <div v-if="searchable" class="flistbox_searchfield">
+            <component
+                :is="inputComponent"
+                v-bind="$attrs"
+                no-label
+                :aria-label="searchFieldLabel"
+                :aria-activedescendant="activeDescendant"
+                :controls-id="listboxId || id"
+                @update:value="onSearch"
+            >
+                <template #icon>
+                    <slot name="icon"></slot>
+                </template>
+            </component>
+        </div>
 
         <FInfiniteScroll
             ref="iScroll"
