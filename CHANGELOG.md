@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.40](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.39...v0.37.40) (2025-04-24)
+
+
+### Features
+
+* **FDropdownListbox:** add `searchable` prop ([573cd86](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/573cd866f0dda859c646be97984bb237d6f6834a))
+* **FDropdownListbox:** create `listboxClass` prop ([05076cd](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/05076cdd395fa9de53d9448cdab8e2cd9300fdaf))
+* **FListbox:** expose 'icon' slot, adjust style of search field ([b8f0524](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/b8f052426920c7ab4da508c3e9017a6f806237fc))
+
 ### [0.37.39](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.38...v0.37.39) (2025-04-23)
 
 
