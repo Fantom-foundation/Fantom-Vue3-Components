@@ -49,6 +49,7 @@
                 :select-immediately="!selectOnMainAction"
                 :focus-item-on-focus="true"
                 class="fdropdownlistbox_flistbox"
+                :class="listboxClass"
                 @component-change="onListboxItemSelected"
             >
                 <template v-slot="{ item }">
@@ -115,6 +116,11 @@ export default {
         },
         /** CSS class(es) for button */
         buttonClass: {
+            type: String,
+            default: '',
+        },
+        /** CSS class(es) for listbox */
+        listboxClass: {
             type: String,
             default: '',
         },
