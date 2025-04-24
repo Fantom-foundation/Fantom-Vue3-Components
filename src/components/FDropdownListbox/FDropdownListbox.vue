@@ -57,6 +57,7 @@
                         {{ item.label }}
                     </slot>
                 </template>
+                <template #icon><slot name="icon"></slot></template>
             </FListbox>
         </FPopover>
         <slot name="bottom" v-bind="slotProps">
@@ -146,6 +147,11 @@ export default {
         },
         /** If `true`, the width of the component will not be automatically adjusted according to the longest item */
         variableWidth: {
+            type: Boolean,
+            default: false,
+        },
+        /** Shows a search field */
+        searchable: {
             type: Boolean,
             default: false,
         },

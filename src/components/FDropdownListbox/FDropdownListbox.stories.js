@@ -1,6 +1,8 @@
 import FDropdownListbox from './FDropdownListbox.vue';
 import FButton from '../FButton/FButton.vue';
 import FAriaAlert from '../FAriaAlert/FAriaAlert.vue';
+import FSvgIcon from '../FSvgIcon/FSvgIcon.vue';
+import IconAngleLeft from '../icons/IconAngleLeft.vue';
 import { clone } from '../../utils';
 
 const data = [
@@ -103,6 +105,26 @@ export const LotOfItems = () => ({
         <div>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
             <FDropdownListbox :data="data" labeled-by="fllbl1" />
+        </div>
+    `,
+    data() {
+        return {
+            data: [...data2],
+        };
+    },
+    methods: {},
+});
+
+export const Searchable = () => ({
+    components: { FDropdownListbox, FSvgIcon, IconAngleLeft },
+    template: `
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            <FDropdownListbox searchable :data="data" labeled-by="fllbl1">
+                <template #icon>
+                    <FSvgIcon size="1.2em" rotate="180deg"><IconAngleLeft /></FSvgIcon>
+                </template>
+            </FDropdownListbox>
         </div>
     `,
     data() {
