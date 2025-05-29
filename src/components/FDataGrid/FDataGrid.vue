@@ -1160,6 +1160,10 @@ export default {
                         items = strategy === 'local' ? this.items : this.dItems;
                         // eslint-disable-next-line vue/no-mutating-props
                         items.sort(_column.sortFunc(_column.itemProp || _column.name, _column.sortDir));
+
+                        if (pagination && strategy === 'local') {
+                            pagination.goToPage(1);
+                        }
                     }
                 }
                 // }
