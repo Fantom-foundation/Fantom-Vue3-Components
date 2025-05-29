@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.41](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.40...v0.37.41) (2025-05-29)
+
+
+### Bug Fixes
+
+* **FDataGrid:** reset to first page on local sort with pagination ([85b509c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/85b509c24139b2f903698bbbeaae20aeef644bf0))
+
 ### [0.37.40](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.39...v0.37.40) (2025-04-24)
 
 
