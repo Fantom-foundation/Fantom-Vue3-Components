@@ -1,6 +1,12 @@
 @mixin not-visible() {
+    /*
     position: fixed !important;
     top: -9999px !important;
     left: -9999px !important;
     opacity: 0 !important;
+
+    */
+    height: 0 !important;
+    width: 0 !important;
+    overflow: clip !important;
 }

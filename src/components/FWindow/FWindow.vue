@@ -180,6 +180,10 @@ export default {
             type: Boolean,
             default: true,
         },
+        disableResizeObserver: {
+            type: Boolean,
+            default: false,
+        },
         /** Css class for the overlay */
         overlayClass: {
             type: String,
@@ -778,7 +782,7 @@ export default {
         createResizeObserver() {
             this.destroyResizeObserver();
 
-            if (!this._resizeObserver && window.ResizeObserver) {
+            if (!this.disableResizeObserver && !this._resizeObserver && window.ResizeObserver) {
                 this._resizeObserver = new window.ResizeObserver(
                     throttle((_entries) => this.onResize(_entries), this.resizeThrottleInterval, true)
                 );
@@ -970,6 +974,7 @@ export default {
          * Called by ResizeObserver when FWindow is resized.
          */
         onResize() {
+            console.log(this.disableResizeObserver);
             if (this.isVisible && !(this._showAnimInProgress || this._hideAnimInProgress)) {
                 this.correctPositionAndSize();
             }

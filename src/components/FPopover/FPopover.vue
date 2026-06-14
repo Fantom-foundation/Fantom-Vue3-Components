@@ -8,6 +8,7 @@
         :with-header="withHeader"
         :stay-in-viewport="stayInViewport"
         :prevent-focus="preventFocus"
+        disable-resize-observer
         animation-in="scale-center-enter-active"
         animation-out="scale-center-leave-active"
         v-bind="{ ...$attrs, ...$props }"
