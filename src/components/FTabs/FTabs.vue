@@ -158,7 +158,13 @@ export default {
          * @param {int} _index
          */
         async setActiveTabByIndex(_index) {
-            const tabPanel = this.dTabPanels[_index];
+            let indexToActivate = _index;
+
+            while (indexToActivate < this.dTabPanels.length && this.dTabPanels[indexToActivate].disabled) {
+                indexToActivate++;
+            }
+
+            const tabPanel = this.dTabPanels[indexToActivate];
 
             if (tabPanel && !tabPanel.disabled && !this.disabled) {
                 await this.deactivateActivePanel();

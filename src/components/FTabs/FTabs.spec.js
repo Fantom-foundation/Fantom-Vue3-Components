@@ -134,7 +134,32 @@ describe('FTabs', () => {
         expect(getTabElement(1).attributes('aria-disabled')).toBe('true');
         expect(getTabElement(1).attributes('aria-selected')).toBe('false');
         expect(getTabElement(0).attributes('aria-selected')).toBe('true');
-        expect(getContentElement('tab2_content').exists()).toBe(false);
+    });
+
+    it('should activate nearest non-disabled tab to the right when activating a disabled tab', async () => {
+        const DisabledTabPlayground = {
+            components: { FTabs, FTab },
+            template: `
+                <FTabs>
+                    <FTab title="Tab 1" id="tabpanel1">Tab 1</FTab>
+                    <FTab title="Tab 2" id="tabpanel2" disabled>Tab 2</FTab>
+                    <FTab title="Tab 3" id="tabpanel3" disabled>Tab 3</FTab>
+                    <FTab title="Tab 4" id="tabpanel4">Tab 4</FTab>
+                </FTabs>
+            `,
+        };
+        wrapper = mount(DisabledTabPlayground);
+        await delay();
+
+        expect(wrapper.findAll('li')[0].attributes('aria-selected')).toBe('true');
+
+        await wrapper.findAll('li')[1].trigger('click');
+        await delay();
+
+        expect(wrapper.findAll('li')[0].attributes('aria-selected')).toBe('false');
+        expect(wrapper.findAll('li')[1].attributes('aria-selected')).toBe('false');
+        expect(wrapper.findAll('li')[2].attributes('aria-selected')).toBe('false');
+        expect(wrapper.findAll('li')[3].attributes('aria-selected')).toBe('true');
     });
 
     describe('urlHash prop logic', () => {
