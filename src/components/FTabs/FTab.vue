@@ -71,6 +71,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** URL hash value associated with the tab */
+        urlHash: {
+            type: String,
+            default: '',
+        },
     },
 
     data() {
@@ -135,6 +140,7 @@ export default {
                 title: this.title,
                 titleSlot: this.titleSlot,
                 titleClass: this.titleClass,
+                urlHash: this.urlHash,
             };
         },
     },

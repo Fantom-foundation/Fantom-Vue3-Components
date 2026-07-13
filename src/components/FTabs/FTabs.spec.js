@@ -70,6 +70,7 @@ async function activateTabByIndex(index = 0) {
 
 afterEach(() => {
     destroyWrapper(wrapper);
+    window.location.hash = '';
 });
 
 describe('FTabs', () => {
@@ -134,6 +135,64 @@ describe('FTabs', () => {
         expect(getTabElement(1).attributes('aria-selected')).toBe('false');
         expect(getTabElement(0).attributes('aria-selected')).toBe('true');
         expect(getContentElement('tab2_content').exists()).toBe(false);
+    });
+
+    describe('urlHash prop logic', () => {
+        const HashPlayground = {
+            components: { FTabs, FTab },
+            template: `
+                <FTabs aria-label="Hash tabs">
+                    <FTab title="Tab 1" id="tabpanel1" url-hash="hash1">
+                        <span id="tab1_content">Tab 1</span>
+                    </FTab>
+                    <FTab title="Tab 2" id="tabpanel2" url-hash="hash2">
+                        <span id="tab2_content">Tab 2</span>
+                    </FTab>
+                    <FTab title="Tab 3" id="tabpanel3">
+                        <span id="tab3_content">Tab 3</span>
+                    </FTab>
+                </FTabs>
+            `,
+        };
+
+        async function createHashWrapper() {
+            wrapper = mount(HashPlayground);
+            await delay();
+            return wrapper;
+        }
+
+        it('should activate the tab corresponding to the URL hash on mount', async () => {
+            window.location.hash = 'hash2';
+            wrapper = await createHashWrapper();
+
+            const tab1 = wrapper.findAll('li')[0];
+            const tab2 = wrapper.findAll('li')[1];
+
+            expect(tab2.attributes('aria-selected')).toBe('true');
+            expect(tab1.attributes('aria-selected')).toBe('false');
+        });
+
+        it('should update the browser URL hash when a tab with urlHash is activated', async () => {
+            wrapper = await createHashWrapper();
+
+            expect(window.location.hash).toBe('#hash1');
+
+            await wrapper.findAll('li')[1].trigger('click');
+            await delay();
+
+            expect(window.location.hash).toBe('#hash2');
+        });
+
+        it('should not update the browser URL hash when a tab without urlHash is activated', async () => {
+            wrapper = await createHashWrapper();
+
+            expect(window.location.hash).toBe('#hash1');
+
+            await wrapper.findAll('li')[2].trigger('click');
+            await delay();
+
+            expect(window.location.hash).toBe('#hash1');
+        });
     });
 });
 
