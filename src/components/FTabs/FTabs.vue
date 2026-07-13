@@ -149,6 +149,25 @@ export default {
             }
         },
 
+        async disableTabs(tabIds = [], enableOthers = false) {
+            const { dTabPanels } = this;
+            const tabIdsSet = new Set(tabIds);
+
+            for (let i = 0, len1 = dTabPanels.length; i < len1; i++) {
+                const tabPanel = dTabPanels[i];
+                if (tabIdsSet.has(tabPanel.id)) {
+                    tabPanel.disabled = true;
+                    tabPanel.active = false;
+                } else if (enableOthers) {
+                    tabPanel.disabled = false;
+                }
+            }
+
+            if (!this.tabs.activate) {
+                await this.setActiveTabByIndex(0);
+            }
+        },
+
         /**
          * @param {HTMLElement} _elem
          * @return {int}

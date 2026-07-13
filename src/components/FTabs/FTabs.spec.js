@@ -13,10 +13,10 @@ const Playground = {
     components: { FTabs, FTab },
     template: `
         <FTabs :strategy="strategy" :disabled="disabled" aria-label="Default tabs">
-            <FTab :strategy="tabStrategy1" title="Tab 1" data-testid="tab1">
+            <FTab :strategy="tabStrategy1" title="Tab 1" data-testid="tab1" id="tabpanel1">
                 <span id="tab1_content">Tab 1</span>
             </FTab>
-            <FTab :strategy="tabStrategy2" title="Tab 2" data-testid="tab2">
+            <FTab :strategy="tabStrategy2" title="Tab 2" data-testid="tab2" id="tabpanel2">
                 <span id="tab2_content">Tab 2</span>
             </FTab>
         </FTabs>
@@ -53,6 +53,14 @@ async function createWrapper({ propsData = {} } = {}) {
 
 function getContentElement(id) {
     return wrapper.find(`#${id}`);
+}
+
+function getTabElement(index) {
+    return wrapper.findAll('li')[index];
+}
+
+function getFTabs(wrapper) {
+    return wrapper.findComponent(FTabs);
 }
 
 async function activateTabByIndex(index = 0) {
@@ -109,7 +117,22 @@ describe('FTabs', () => {
 
         await activateTabByIndex(1);
 
+        expect(getTabElement(0).attributes('aria-disabled')).toBe('true');
+        expect(getTabElement(1).attributes('aria-disabled')).toBe('true');
         expect(getContentElement('tab1_content').exists()).toBe(true);
+        expect(getContentElement('tab2_content').exists()).toBe(false);
+    });
+
+    it('should disable tabs given by ids', async () => {
+        wrapper = await createWrapper({ propsData: { tabStrategy2: 'create-destroy' } });
+
+        await activateTabByIndex(1);
+
+        await getFTabs(wrapper).vm.disableTabs(['tabpanel2']);
+
+        expect(getTabElement(1).attributes('aria-disabled')).toBe('true');
+        expect(getTabElement(1).attributes('aria-selected')).toBe('false');
+        expect(getTabElement(0).attributes('aria-selected')).toBe('true');
         expect(getContentElement('tab2_content').exists()).toBe(false);
     });
 });
