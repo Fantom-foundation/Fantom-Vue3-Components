@@ -75,14 +75,16 @@ const cTitle = computed(() => (props.value ? `${props.value} ${cSymbol.value}` :
 
 <template>
     <span class="ftoken" :title="cTitle">
-        <FImage
-            v-if="!noLogo"
-            :src="cLogo"
-            :size="`${logoSize}px`"
-            :alt="cSymbol"
-            class="ftoken_logo"
-            data-testid="logo"
-        />
+        <slot name="logo">
+            <FImage
+                v-if="!noLogo"
+                :src="cLogo"
+                :size="`${logoSize}px`"
+                :alt="cSymbol"
+                class="ftoken_logo"
+                data-testid="logo"
+            />
+        </slot>
         <span>
             <FPlaceholder
                 animation="fplaceholder-pulsebganim"
