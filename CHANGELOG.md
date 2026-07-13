@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.38.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.42...v0.38.0) (2026-07-13)
+
+
+### Features
+
+* **FTabs:** activate nearest non-disabled tab when a disabled tab is clicked ([3ae83ae](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3ae83ae6ba6aef99d6a6a7361bd4e8565333bb15))
+* **FTabs:** add `disableTabs` method to programmatically disable tabs by IDs ([a0aa89c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a0aa89cfd1f9614fb444053d5e55b669e396c7ac))
+* **FTabs:** add `urlHash` prop to sync tab state with URL hash ([069a60e](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/069a60ed95dc87bb14084a19deb1834f8507ebc2))
+* **FToken:** add support for `logo` slot to allow customization ([a2c2830](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/a2c2830f1af51de8b1ee1818315df3a2a1fe79e8))
+
 ### [0.37.42](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.41...v0.37.42) (2026-06-14)
 
 
