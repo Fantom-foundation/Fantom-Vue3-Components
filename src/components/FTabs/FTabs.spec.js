@@ -208,7 +208,7 @@ describe('FTabs', () => {
             expect(window.location.hash).toBe('#hash2');
         });
 
-        it('should not update the browser URL hash when a tab without urlHash is activated', async () => {
+        it('should clear the browser URL hash when a tab without urlHash is activated, if another tab has urlHash', async () => {
             wrapper = await createHashWrapper();
 
             expect(window.location.hash).toBe('#hash1');
@@ -216,7 +216,27 @@ describe('FTabs', () => {
             await wrapper.findAll('li')[2].trigger('click');
             await delay();
 
-            expect(window.location.hash).toBe('#hash1');
+            expect(window.location.hash).toBe('');
+        });
+
+        it('should not clear or modify the browser URL hash when a tab is activated, if no tabs have urlHash prop set', async () => {
+            const NoHashPlayground = {
+                components: { FTabs, FTab },
+                template: `
+                    <FTabs>
+                        <FTab title="Tab 1" id="tabpanel1">Tab 1</FTab>
+                        <FTab title="Tab 2" id="tabpanel2">Tab 2</FTab>
+                    </FTabs>
+                `,
+            };
+            window.location.hash = 'some-random-hash';
+            wrapper = mount(NoHashPlayground);
+            await delay();
+
+            await wrapper.findAll('li')[1].trigger('click');
+            await delay();
+
+            expect(window.location.hash).toBe('#some-random-hash');
         });
     });
 });

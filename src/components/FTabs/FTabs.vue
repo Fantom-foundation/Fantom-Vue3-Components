@@ -84,6 +84,30 @@ export default {
             return actionHandler(this.tabs, action, value);
         },
 
+        updateUrlHash(tabPanel) {
+            const hasAnyUrlHash = this.dTabPanels.some((panel) => !!panel.urlHash);
+
+            if (hasAnyUrlHash) {
+                if (tabPanel.urlHash) {
+                    const cleanHash = tabPanel.urlHash.replace(/^#/, '');
+
+                    if (window.location.hash.replace(/^#/, '') !== cleanHash) {
+                        window.location.hash = cleanHash;
+                    }
+                } else if (window.location.hash) {
+                    if (window.history && window.history.replaceState) {
+                        window.history.replaceState(
+                            null,
+                            document.title,
+                            window.location.pathname + window.location.search
+                        );
+                    } else {
+                        window.location.hash = '';
+                    }
+                }
+            }
+        },
+
         async prepareTabs() {
             let tabPanels = [];
             const ids = [];
@@ -127,13 +151,7 @@ export default {
             } else {
                 const activeIndex = tabPanels.findIndex((panel) => panel.active);
                 if (activeIndex > -1) {
-                    const activePanel = tabPanels[activeIndex];
-                    if (activePanel.urlHash) {
-                        const cleanHash = activePanel.urlHash.replace(/^#/, '');
-                        if (window.location.hash.replace(/^#/, '') !== cleanHash) {
-                            window.location.hash = cleanHash;
-                        }
-                    }
+                    this.updateUrlHash(tabPanels[activeIndex]);
                 }
             }
         },
@@ -174,12 +192,7 @@ export default {
 
                 this.$emit('tab-set', { tabId: tabPanel.id });
 
-                if (tabPanel.urlHash) {
-                    const cleanHash = tabPanel.urlHash.replace(/^#/, '');
-                    if (window.location.hash.replace(/^#/, '') !== cleanHash) {
-                        window.location.hash = cleanHash;
-                    }
-                }
+                this.updateUrlHash(tabPanel);
             }
         },
 
@@ -189,6 +202,7 @@ export default {
 
             for (let i = 0, len1 = dTabPanels.length; i < len1; i++) {
                 const tabPanel = dTabPanels[i];
+
                 if (tabIdsSet.has(tabPanel.id)) {
                     tabPanel.disabled = true;
                     tabPanel.active = false;
