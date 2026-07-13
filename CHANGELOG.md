@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.0...v0.38.1) (2026-07-13)
+
+
+### Features
+
+* **FTabs:** enhance URL hash handling for tabs without `urlHash` prop ([bd6380f](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/bd6380f24e250ffc4f1706899e03859e9bef278d))
+
 ## [0.38.0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.37.42...v0.38.0) (2026-07-13)
 
 
