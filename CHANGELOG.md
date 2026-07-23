@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.2...v0.38.3) (2026-07-23)
+
+
+### Features
+
+* **FActionButton:** add `hoverOnToggle` prop and add slots for toggled states ([ad13342](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/ad13342f39ff9b25a2936f0ae4029e509b637b7a))
+
 ### [0.38.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.1...v0.38.2) (2026-07-23)
 
 
