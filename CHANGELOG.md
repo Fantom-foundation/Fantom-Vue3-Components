@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.2](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.1...v0.38.2) (2026-07-23)
+
+
+### Features
+
+* **FTabs:** add support for dynamically hiding and showing tabs ([8de9fd5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/8de9fd5f00fd6dfdfafade1002e8f6a0abc19335))
+
 ### [0.38.1](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.0...v0.38.1) (2026-07-13)
 
 
