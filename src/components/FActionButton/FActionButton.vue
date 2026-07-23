@@ -15,6 +15,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    hoverOnToggle: {
+        type: Boolean,
+        default: true,
+    },
 });
 
 const emit = defineEmits(['update:value']);
@@ -52,14 +56,16 @@ watch(
 <template>
     <FButton
         class="factionbutton"
-        :hovered="!!toggleState"
+        :hovered="hoverOnToggle ? !!toggleState : false"
         :aria-pressed="toggleState"
         :name="name"
         :value="cValue"
         @click="onButtonClick"
     >
-        <template v-for="(index, name) in $slots" v-slot:[name]="data">
-            <slot :name="name" v-bind="data"></slot>
+        <template #default="data">
+            <slot v-if="toggle && toggleState && $slots.on" name="on" v-bind="data"></slot>
+            <slot v-else-if="toggle && !toggleState && $slots.off" name="off" v-bind="data"></slot>
+            <slot v-else v-bind="data"></slot>
         </template>
     </FButton>
 </template>

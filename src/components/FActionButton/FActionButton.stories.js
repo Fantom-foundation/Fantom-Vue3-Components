@@ -48,3 +48,28 @@ export const Toggle = () => ({
         },
     },
 });
+
+export const ToggleSlots = () => ({
+    components: { FActionButton },
+    template: `
+        <div>
+            <FActionButton toggle secondary :hover-on-toggle="false" @update:value="onUpdate">
+                <template #on><span style="color: green;">ON</span></template>
+                <template #off><span style="color: red;">OFF</span></template>
+            </FActionButton>
+            <p>
+                update:value <b>{{ value }}</b>
+            </p>
+        </div>
+    `,
+    data() {
+        return {
+            value: '',
+        };
+    },
+    methods: {
+        onUpdate(value) {
+            this.value = value;
+        },
+    },
+});

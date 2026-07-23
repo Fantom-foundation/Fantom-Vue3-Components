@@ -68,4 +68,38 @@ describe('FActionButton', () => {
 
         expect(wrapper.attributes('value')).toBe('foo');
     });
+
+    it('should not display button as hovered when toggled if `hoverOnToggle` prop is set to false', () => {
+        wrapper = createWrapper({
+            props: {
+                value: true,
+                toggle: true,
+                hoverOnToggle: false,
+            },
+        });
+
+        expect(wrapper.attributes('aria-pressed')).toBe('true');
+        expect(wrapper.findComponent({ name: 'FButton' }).props('hovered')).toBe(false);
+    });
+
+    it('should render "on" and "off" slots depending on toggle state when `toggle` prop is true', async () => {
+        wrapper = createWrapper({
+            props: {
+                toggle: true,
+                value: false,
+            },
+            slots: {
+                on: '<span class="on-slot">Toggled ON</span>',
+                off: '<span class="off-slot">Toggled OFF</span>',
+            },
+        });
+
+        expect(wrapper.find('.off-slot').exists()).toBe(true);
+        expect(wrapper.find('.on-slot').exists()).toBe(false);
+
+        await wrapper.trigger('click');
+
+        expect(wrapper.find('.on-slot').exists()).toBe(true);
+        expect(wrapper.find('.off-slot').exists()).toBe(false);
+    });
 });
