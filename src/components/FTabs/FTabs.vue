@@ -136,13 +136,7 @@ export default {
 
             await this.tabAction('setData', tabsData);
 
-            const currentHash = window.location.hash.replace(/^#/, '');
-            let matchingHashIndex = -1;
-            if (currentHash) {
-                matchingHashIndex = tabPanels.findIndex((panel) => {
-                    return panel.urlHash && panel.urlHash.replace(/^#/, '') === currentHash;
-                });
-            }
+            const matchingHashIndex = this.getMatchingHashIndex();
 
             if (matchingHashIndex > -1) {
                 await this.setActiveTabByIndex(matchingHashIndex);
@@ -211,9 +205,24 @@ export default {
                 }
             }
 
-            if (!this.tabs.activate) {
+            if (!this.tabs.activate && this.getMatchingHashIndex() === -1) {
                 await this.setActiveTabByIndex(0);
             }
+        },
+
+        getMatchingHashIndex() {
+            const currentHash = window.location.hash.replace(/^#/, '');
+            let matchingHashIndex = -1;
+
+            if (currentHash) {
+                const tabPanels = clone(this.tabs.states);
+
+                matchingHashIndex = tabPanels.findIndex((panel) => {
+                    return panel.urlHash && panel.urlHash.replace(/^#/, '') === currentHash;
+                });
+            }
+
+            return matchingHashIndex;
         },
 
         /**
