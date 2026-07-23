@@ -3,12 +3,14 @@
         <ul role="tablist" @click="onTabListClick" @keydown="onTabListKeydown">
             <li
                 v-for="(tabPanel, idx) in dTabPanels"
+                v-show="!tabPanel.hidden"
                 :id="ids[idx]"
                 :key="`${ids[idx]}`"
                 :tabindex="tabPanel.active ? 0 : -1"
                 :aria-controls="tabPanel.id"
                 :aria-selected="tabPanel.active"
                 :aria-disabled="tabPanel.disabled || disabled"
+                :hidden="tabPanel.hidden || undefined"
                 role="tab"
                 :data-index="idx"
                 :class="tabPanel.titleClass"
@@ -124,7 +126,7 @@ export default {
 
                 // tabPanel.labelledBy = id;
                 tabsData[tabPanel.id] = { labelledBy: id };
-                if (tabPanel.active) {
+                if (tabPanel.active && !tabPanel.hidden) {
                     activePanelExists = true;
                 }
 
@@ -172,13 +174,16 @@ export default {
         async setActiveTabByIndex(_index) {
             let indexToActivate = _index;
 
-            while (indexToActivate < this.dTabPanels.length && this.dTabPanels[indexToActivate].disabled) {
+            while (
+                indexToActivate < this.dTabPanels.length &&
+                (this.dTabPanels[indexToActivate].disabled || this.dTabPanels[indexToActivate].hidden)
+            ) {
                 indexToActivate++;
             }
 
             const tabPanel = this.dTabPanels[indexToActivate];
 
-            if (tabPanel && !tabPanel.disabled && !this.disabled) {
+            if (tabPanel && !tabPanel.disabled && !tabPanel.hidden && !this.disabled) {
                 await this.deactivateActivePanel();
 
                 tabPanel.active = true;
@@ -191,8 +196,9 @@ export default {
         },
 
         async disableTabs(tabIds = [], enableOthers = false) {
+            const tabIdsArr = Array.isArray(tabIds) ? tabIds : [tabIds];
             const { dTabPanels } = this;
-            const tabIdsSet = new Set(tabIds);
+            const tabIdsSet = new Set(tabIdsArr);
 
             for (let i = 0, len1 = dTabPanels.length; i < len1; i++) {
                 const tabPanel = dTabPanels[i];
@@ -205,9 +211,90 @@ export default {
                 }
             }
 
-            if (!this.tabs.activate && this.getMatchingHashIndex() === -1) {
+            const activePanel = dTabPanels.find((panel) => panel.active && !panel.hidden && !panel.disabled);
+            if (!activePanel && !this.tabs.activate && this.getMatchingHashIndex() === -1) {
                 await this.setActiveTabByIndex(0);
             }
+        },
+
+        /**
+         * Hide tabs by ids.
+         * @param {string[]|string} tabIds
+         * @param {boolean} showOthers
+         */
+        async hideTabs(tabIds = [], showOthers = false) {
+            const tabIdsArr = Array.isArray(tabIds) ? tabIds : [tabIds];
+            const { dTabPanels } = this;
+            const tabIdsSet = new Set(tabIdsArr);
+            const tabsData = {};
+
+            for (let i = 0, len1 = dTabPanels.length; i < len1; i++) {
+                const tabPanel = dTabPanels[i];
+
+                if (tabIdsSet.has(tabPanel.id)) {
+                    tabPanel.hidden = true;
+                    tabPanel.active = false;
+                } else if (showOthers) {
+                    tabPanel.hidden = false;
+                }
+
+                tabsData[tabPanel.id] = { hidden: tabPanel.hidden };
+            }
+
+            await this.tabAction('setData', tabsData);
+
+            const activePanel = dTabPanels.find((panel) => panel.active && !panel.hidden && !panel.disabled);
+            if (!activePanel) {
+                await this.setActiveTabByIndex(0);
+            }
+        },
+
+        /**
+         * Show tabs by ids.
+         * @param {string[]|string} tabIds
+         * @param {boolean} hideOthers
+         */
+        async showTabs(tabIds = [], hideOthers = false) {
+            const tabIdsArr = Array.isArray(tabIds) ? tabIds : [tabIds];
+            const { dTabPanels } = this;
+            const tabIdsSet = new Set(tabIdsArr);
+            const tabsData = {};
+
+            for (let i = 0, len1 = dTabPanels.length; i < len1; i++) {
+                const tabPanel = dTabPanels[i];
+
+                if (tabIdsSet.has(tabPanel.id)) {
+                    tabPanel.hidden = false;
+                } else if (hideOthers) {
+                    tabPanel.hidden = true;
+                    tabPanel.active = false;
+                }
+
+                tabsData[tabPanel.id] = { hidden: tabPanel.hidden };
+            }
+
+            await this.tabAction('setData', tabsData);
+
+            const activePanel = dTabPanels.find((panel) => panel.active && !panel.hidden && !panel.disabled);
+            if (!activePanel) {
+                await this.setActiveTabByIndex(0);
+            }
+        },
+
+        /**
+         * Hide a single tab by id.
+         * @param {string} tabId
+         */
+        async hideTab(tabId) {
+            return this.hideTabs([tabId]);
+        },
+
+        /**
+         * Show a single tab by id.
+         * @param {string} tabId
+         */
+        async showTab(tabId) {
+            return this.showTabs([tabId]);
         },
 
         getMatchingHashIndex() {
@@ -218,7 +305,7 @@ export default {
                 const tabPanels = clone(this.tabs.states);
 
                 matchingHashIndex = tabPanels.findIndex((panel) => {
-                    return panel.urlHash && panel.urlHash.replace(/^#/, '') === currentHash;
+                    return panel.urlHash && !panel.hidden && panel.urlHash.replace(/^#/, '') === currentHash;
                 });
             }
 
@@ -252,7 +339,7 @@ export default {
         onTabListKeydown(_event) {
             const elem = keyboardNavigation({
                 _event,
-                _selector: '[role="tab"]:not([aria-disabled="true"])',
+                _selector: '[role="tab"]:not([aria-disabled="true"]):not([hidden])',
                 _direction: 'horizontal',
                 _circular: true,
             });

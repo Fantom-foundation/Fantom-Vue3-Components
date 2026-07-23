@@ -55,8 +55,12 @@ function getContentElement(id) {
     return wrapper.find(`#${id}`);
 }
 
+function getTabElements() {
+    return wrapper.findAll('li');
+}
+
 function getTabElement(index) {
-    return wrapper.findAll('li')[index];
+    return getTabElements()[index];
 }
 
 function getFTabs(wrapper) {
@@ -64,7 +68,7 @@ function getFTabs(wrapper) {
 }
 
 async function activateTabByIndex(index = 0) {
-    await wrapper.findAll('li')[index].trigger('click');
+    await getTabElement(index).trigger('click');
     await delay();
 }
 
@@ -118,8 +122,9 @@ describe('FTabs', () => {
 
         await activateTabByIndex(1);
 
-        expect(getTabElement(0).attributes('aria-disabled')).toBe('true');
-        expect(getTabElement(1).attributes('aria-disabled')).toBe('true');
+        const tabElems = getTabElements();
+        expect(tabElems[0].attributes('aria-disabled')).toBe('true');
+        expect(tabElems[1].attributes('aria-disabled')).toBe('true');
         expect(getContentElement('tab1_content').exists()).toBe(true);
         expect(getContentElement('tab2_content').exists()).toBe(false);
     });
@@ -131,9 +136,10 @@ describe('FTabs', () => {
 
         await getFTabs(wrapper).vm.disableTabs(['tabpanel2']);
 
-        expect(getTabElement(1).attributes('aria-disabled')).toBe('true');
-        expect(getTabElement(1).attributes('aria-selected')).toBe('false');
-        expect(getTabElement(0).attributes('aria-selected')).toBe('true');
+        const tabElems = getTabElements();
+        expect(tabElems[1].attributes('aria-disabled')).toBe('true');
+        expect(tabElems[1].attributes('aria-selected')).toBe('false');
+        expect(tabElems[0].attributes('aria-selected')).toBe('true');
     });
 
     it('should activate nearest non-disabled tab to the right when activating a disabled tab', async () => {
@@ -151,15 +157,17 @@ describe('FTabs', () => {
         wrapper = mount(DisabledTabPlayground);
         await delay();
 
-        expect(wrapper.findAll('li')[0].attributes('aria-selected')).toBe('true');
+        let tabElems = getTabElements();
+        expect(tabElems[0].attributes('aria-selected')).toBe('true');
 
-        await wrapper.findAll('li')[1].trigger('click');
+        await tabElems[1].trigger('click');
         await delay();
 
-        expect(wrapper.findAll('li')[0].attributes('aria-selected')).toBe('false');
-        expect(wrapper.findAll('li')[1].attributes('aria-selected')).toBe('false');
-        expect(wrapper.findAll('li')[2].attributes('aria-selected')).toBe('false');
-        expect(wrapper.findAll('li')[3].attributes('aria-selected')).toBe('true');
+        tabElems = getTabElements();
+        expect(tabElems[0].attributes('aria-selected')).toBe('false');
+        expect(tabElems[1].attributes('aria-selected')).toBe('false');
+        expect(tabElems[2].attributes('aria-selected')).toBe('false');
+        expect(tabElems[3].attributes('aria-selected')).toBe('true');
     });
 
     describe('urlHash prop logic', () => {
@@ -190,11 +198,9 @@ describe('FTabs', () => {
             window.location.hash = 'hash2';
             wrapper = await createHashWrapper();
 
-            const tab1 = wrapper.findAll('li')[0];
-            const tab2 = wrapper.findAll('li')[1];
-
-            expect(tab2.attributes('aria-selected')).toBe('true');
-            expect(tab1.attributes('aria-selected')).toBe('false');
+            const tabElems = getTabElements();
+            expect(tabElems[1].attributes('aria-selected')).toBe('true');
+            expect(tabElems[0].attributes('aria-selected')).toBe('false');
         });
 
         it('should update the browser URL hash when a tab with urlHash is activated', async () => {
@@ -202,7 +208,8 @@ describe('FTabs', () => {
 
             expect(window.location.hash).toBe('#hash1');
 
-            await wrapper.findAll('li')[1].trigger('click');
+            const tabElems = getTabElements();
+            await tabElems[1].trigger('click');
             await delay();
 
             expect(window.location.hash).toBe('#hash2');
@@ -213,7 +220,8 @@ describe('FTabs', () => {
 
             expect(window.location.hash).toBe('#hash1');
 
-            await wrapper.findAll('li')[2].trigger('click');
+            const tabElems = getTabElements();
+            await tabElems[2].trigger('click');
             await delay();
 
             expect(window.location.hash).toBe('');
@@ -233,10 +241,100 @@ describe('FTabs', () => {
             wrapper = mount(NoHashPlayground);
             await delay();
 
-            await wrapper.findAll('li')[1].trigger('click');
+            const tabElems = getTabElements();
+            await tabElems[1].trigger('click');
             await delay();
 
             expect(window.location.hash).toBe('#some-random-hash');
+        });
+    });
+
+    describe('hiding and showing tabs dynamically', () => {
+        const HideShowPlayground = {
+            components: { FTabs, FTab },
+            template: `
+                <FTabs>
+                    <FTab title="Tab 1" id="tabpanel1">Tab 1</FTab>
+                    <FTab title="Tab 2" id="tabpanel2">Tab 2</FTab>
+                    <FTab title="Tab 3" id="tabpanel3">Tab 3</FTab>
+                </FTabs>
+            `,
+        };
+
+        async function createHideShowWrapper() {
+            wrapper = mount(HideShowPlayground);
+            await delay();
+            return wrapper;
+        }
+
+        it('should hide tabs using hideTabs or hideTab method and switch active tab if active tab is hidden', async () => {
+            wrapper = await createHideShowWrapper();
+
+            let tabElems = getTabElements();
+            expect(tabElems[0].attributes('aria-selected')).toBe('true');
+
+            await getFTabs(wrapper).vm.hideTabs(['tabpanel1']);
+            await delay();
+
+            tabElems = getTabElements();
+            expect(tabElems[0].element.style.display).toBe('none');
+            expect(tabElems[1].attributes('aria-selected')).toBe('true');
+        });
+
+        it('should show tabs using showTabs or showTab method', async () => {
+            wrapper = await createHideShowWrapper();
+
+            await getFTabs(wrapper).vm.hideTab('tabpanel2');
+            await delay();
+
+            let tabElems = getTabElements();
+            expect(tabElems[1].element.style.display).toBe('none');
+
+            await getFTabs(wrapper).vm.showTab('tabpanel2');
+            await delay();
+
+            tabElems = getTabElements();
+            expect(tabElems[1].element.style.display).not.toBe('none');
+        });
+
+        it('should support showOthers in hideTabs and hideOthers in showTabs', async () => {
+            wrapper = await createHideShowWrapper();
+
+            await getFTabs(wrapper).vm.showTabs(['tabpanel3'], true);
+            await delay();
+
+            let tabElems = getTabElements();
+            expect(tabElems[0].element.style.display).toBe('none');
+            expect(tabElems[1].element.style.display).toBe('none');
+            expect(tabElems[2].element.style.display).not.toBe('none');
+            expect(tabElems[2].attributes('aria-selected')).toBe('true');
+
+            await getFTabs(wrapper).vm.hideTabs(['tabpanel3'], true);
+            await delay();
+
+            tabElems = getTabElements();
+            expect(tabElems[0].element.style.display).not.toBe('none');
+            expect(tabElems[1].element.style.display).not.toBe('none');
+            expect(tabElems[2].element.style.display).toBe('none');
+            expect(tabElems[0].attributes('aria-selected')).toBe('true');
+        });
+
+        it('should support hiding tab initially on mount via hidden prop', async () => {
+            const HiddenPropPlayground = {
+                components: { FTabs, FTab },
+                template: `
+                    <FTabs>
+                        <FTab title="Tab 1" id="tabpanel1" active hidden>Tab 1</FTab>
+                        <FTab title="Tab 2" id="tabpanel2">Tab 2</FTab>
+                    </FTabs>
+                `,
+            };
+            wrapper = mount(HiddenPropPlayground);
+            await delay();
+
+            const tabElems = getTabElements();
+            expect(tabElems[0].element.style.display).toBe('none');
+            expect(tabElems[1].attributes('aria-selected')).toBe('true');
         });
     });
 });

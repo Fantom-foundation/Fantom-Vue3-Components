@@ -2,6 +2,7 @@
 // import { linkTo } from '@storybook/addon-links';
 import FTabs from './FTabs.vue';
 import FTab from './FTab.vue';
+import FButton from '../FButton/FButton.vue';
 
 export default {
     title: 'FTabs',
@@ -177,4 +178,52 @@ export const Strategy = () => ({
             </FTabs>
         </div>
     `,
+});
+
+export const HideShow = () => ({
+    components: { FTabs, FTab, FButton },
+    template: `
+        <div>
+            <div style="margin-bottom: 16px; display: flex; gap: 8px;">
+                <FButton secondary size="small" label="Hide Tab 2" @click="onHideTab2" />
+                <FButton secondary size="small" label="Show Tab 2" @click="onShowTab2" />
+                <FButton secondary size="small" label="Toggle Tab 3" @click="onToggleTab3" />
+            </div>
+            <FTabs ref="tabs" aria-label="Hide and show tabs">
+                <FTab id="tab1" title="Tab 1">
+                    Tab 1 content
+                </FTab>
+                <FTab id="tab2" title="Tab 2">
+                    Tab 2 content
+                </FTab>
+                <FTab id="tab3" title="Tab 3">
+                    Tab 3 content
+                </FTab>
+                <FTab id="tab4" title="Tab 4">
+                    Tab 4 content
+                </FTab>
+            </FTabs>
+        </div>
+    `,
+    data() {
+        return {
+            tab3Hidden: false,
+        };
+    },
+    methods: {
+        onHideTab2() {
+            this.$refs.tabs.hideTab('tab2');
+        },
+        onShowTab2() {
+            this.$refs.tabs.showTab('tab2');
+        },
+        onToggleTab3() {
+            this.tab3Hidden = !this.tab3Hidden;
+            if (this.tab3Hidden) {
+                this.$refs.tabs.hideTabs(['tab3']);
+            } else {
+                this.$refs.tabs.showTabs(['tab3']);
+            }
+        },
+    },
 });

@@ -1,5 +1,5 @@
 <template>
-    <div :id="id" class="ftab" role="tabpanel" tabindex="0" :aria-labelledby="labelledBy" :hidden="!dActive">
+    <div :id="id" class="ftab" role="tabpanel" tabindex="0" :aria-labelledby="labelledBy" :hidden="!dActive || dHidden">
         <div v-if="create">
             <slot></slot>
         </div>
@@ -71,6 +71,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Is tab panel hidden? */
+        hidden: {
+            type: Boolean,
+            default: false,
+        },
         /** URL hash value associated with the tab */
         urlHash: {
             type: String,
@@ -86,6 +91,8 @@ export default {
             dActive: this.active,
             /** Is tab panel active? */
             dDisabled: this.disabled,
+            /** Is tab panel hidden? */
+            dHidden: this.hidden,
             create: this.strategy === 'render',
         };
     },
@@ -93,6 +100,10 @@ export default {
     watch: {
         disabled(_value) {
             this.dDisabled = _value;
+        },
+
+        hidden(_value) {
+            this.dHidden = _value;
         },
 
         ['tabs.activate'](activate) {
@@ -125,8 +136,13 @@ export default {
 
         ['tabs.setData'](data) {
             const { id } = this;
-            if (id in data && data[id]?.labelledBy) {
-                this.labelledBy = data[id].labelledBy;
+            if (id in data) {
+                if (data[id]?.labelledBy) {
+                    this.labelledBy = data[id].labelledBy;
+                }
+                if (typeof data[id]?.hidden === 'boolean') {
+                    this.dHidden = data[id].hidden;
+                }
             }
         },
     },
@@ -136,6 +152,7 @@ export default {
             return {
                 id: this.id,
                 disabled: this.dDisabled,
+                hidden: this.dHidden,
                 active: this.dActive,
                 title: this.title,
                 titleSlot: this.titleSlot,
