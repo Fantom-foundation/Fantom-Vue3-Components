@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.3...v0.38.4) (2026-08-20)
+
+
+### Features
+
+* **FTabs:** enhance nested tab activation ([781b885](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/781b885f24eded846821d1aca16c6179b00cd291))
+
 ### [0.38.3](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.2...v0.38.3) (2026-07-23)
 
 
