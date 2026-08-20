@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.4...v0.38.5) (2026-08-20)
+
+
+### Features
+
+* **FTabs:** add hierarchical URL hash support with anchor linking ([3bd0bf6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/3bd0bf64c18afbf1a91eb6b51cb89d7c1a786609))
+
 ### [0.38.4](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.3...v0.38.4) (2026-08-20)
 
 
