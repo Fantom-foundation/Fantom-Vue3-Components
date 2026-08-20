@@ -38,6 +38,12 @@ export default {
 
     emits: ['tab-set'],
 
+    inject: {
+        parentFTabs: {
+            default: null,
+        },
+    },
+
     props: {
         /** No tablist style */
         noStyle: {
@@ -66,9 +72,16 @@ export default {
         };
     },
 
+    computed: {
+        level() {
+            return this.parentFTabs ? this.parentFTabs.level + 1 : 0;
+        },
+    },
+
     provide() {
         return {
             tabs: this.tabs,
+            parentFTabs: this,
         };
     },
 
@@ -86,35 +99,88 @@ export default {
             return actionHandler(this.tabs, action, value);
         },
 
+        parseUrlHash() {
+            const rawHash =
+                typeof window !== 'undefined' && window.location.hash ? window.location.hash.replace(/^#/, '') : '';
+
+            if (!rawHash) {
+                return { tabPath: '', segments: [], anchor: '' };
+            }
+
+            const [tabPath, anchor] = rawHash.split(':');
+            const segments = tabPath ? tabPath.split('/') : [];
+
+            return {
+                tabPath: tabPath || '',
+                segments,
+                anchor: anchor || '',
+            };
+        },
+
+        scrollToAnchor() {
+            if (typeof window === 'undefined' || typeof document === 'undefined') {
+                return;
+            }
+
+            const { anchor } = this.parseUrlHash();
+
+            if (anchor) {
+                this.$nextTick(() => {
+                    const el = document.getElementById(anchor);
+
+                    if (el && typeof el.scrollIntoView === 'function') {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            }
+        },
+
         updateUrlHash(tabPanel) {
+            if (typeof window === 'undefined') {
+                return;
+            }
+
             const hasAnyUrlHash = this.dTabPanels.some((panel) => !!panel.urlHash);
 
             if (hasAnyUrlHash) {
-                const currentHash = window.location.hash.replace(/^#/, '');
-
-                if (currentHash && this.$el) {
-                    const panelEl = this.$el.querySelector(`#${tabPanel.id}`);
-                    if (panelEl?.querySelector(`[data-url-hash="${currentHash}"]`)) {
-                        return;
-                    }
-                }
+                let { segments, anchor } = this.parseUrlHash();
 
                 if (tabPanel.urlHash) {
                     const cleanHash = tabPanel.urlHash.replace(/^#/, '');
 
-                    if (currentHash !== cleanHash) {
+                    if (segments[this.level] !== cleanHash) {
+                        segments[this.level] = cleanHash;
+                        segments.length = this.level + 1;
+                        anchor = '';
+                    }
+                } else {
+                    segments.splice(this.level);
+                    anchor = '';
+                }
+
+                const newTabPath = segments.filter(Boolean).join('/');
+                let newHash = '';
+
+                if (newTabPath) {
+                    newHash = anchor ? `${newTabPath}:${anchor}` : newTabPath;
+                }
+
+                const currentFullHash = window.location.hash.replace(/^#/, '');
+
+                if (newHash !== currentFullHash) {
+                    if (newHash) {
                         window.history.replaceState(
                             null,
                             document.title,
-                            window.location.pathname + window.location.search + `#${cleanHash}`
+                            window.location.pathname + window.location.search + `#${newHash}`
+                        );
+                    } else if (window.location.hash) {
+                        window.history.replaceState(
+                            null,
+                            document.title,
+                            window.location.pathname + window.location.search
                         );
                     }
-                } else if (window.location.hash) {
-                    window.history.replaceState(
-                        null,
-                        document.title,
-                        window.location.pathname + window.location.search
-                    );
                 }
             }
         },
@@ -159,6 +225,8 @@ export default {
                     this.updateUrlHash(tabPanels[activeIndex]);
                 }
             }
+
+            this.scrollToAnchor();
         },
 
         /**
@@ -201,6 +269,7 @@ export default {
                 this.$emit('tab-set', { tabId: tabPanel.id });
 
                 this.updateUrlHash(tabPanel);
+                this.scrollToAnchor();
             }
         },
 
@@ -307,25 +376,16 @@ export default {
         },
 
         getMatchingHashIndex() {
-            const currentHash = window.location.hash.replace(/^#/, '');
+            const { segments } = this.parseUrlHash();
+            const targetSegment = segments[this.level];
             let matchingHashIndex = -1;
 
-            if (currentHash) {
+            if (targetSegment) {
                 const tabPanels = clone(this.tabs.states);
 
                 matchingHashIndex = tabPanels.findIndex((panel) => {
-                    return panel.urlHash && !panel.hidden && panel.urlHash.replace(/^#/, '') === currentHash;
+                    return panel.urlHash && !panel.hidden && panel.urlHash.replace(/^#/, '') === targetSegment;
                 });
-
-                if (matchingHashIndex === -1 && this.$el) {
-                    matchingHashIndex = tabPanels.findIndex((panel) => {
-                        if (panel.hidden) {
-                            return false;
-                        }
-                        const panelEl = this.$el.querySelector(`#${panel.id}`);
-                        return panelEl?.querySelector(`[data-url-hash="${currentHash}"]`) !== null;
-                    });
-                }
             }
 
             return matchingHashIndex;

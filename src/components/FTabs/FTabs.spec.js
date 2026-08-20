@@ -248,7 +248,77 @@ describe('FTabs', () => {
             expect(window.location.hash).toBe('#some-random-hash');
         });
 
-        it('should activate outer tab and nested tab when URL hash matches a nested tab', async () => {
+        it('should activate outer tab and nested tab when URL hash uses hierarchical path, even with strategy="create"', async () => {
+            const NestedHashPlayground = {
+                components: { FTabs, FTab },
+                template: `
+                    <FTabs aria-label="Outer tabs">
+                        <FTab title="Tab 1" id="outer1" url-hash="tab1">
+                            Outer Tab 1
+                        </FTab>
+                        <FTab title="Tab 2" id="outer2" url-hash="tab" strategy="create">
+                            <FTabs aria-label="Inner tabs">
+                                <FTab title="Nested 1" id="nested1" url-hash="tab_nested">
+                                    Nested 1
+                                </FTab>
+                                <FTab title="Nested 2" id="nested2" url-hash="tab_nested2">
+                                    Nested 2
+                                </FTab>
+                            </FTabs>
+                        </FTab>
+                    </FTabs>
+                `,
+            };
+            window.location.hash = 'tab/tab_nested2';
+            wrapper = mount(NestedHashPlayground);
+            await delay();
+
+            const tablists = wrapper.findAll('ul[role="tablist"]');
+            const outerTabs = tablists[0].findAll('li');
+            const innerTabs = tablists[1].findAll('li');
+
+            expect(outerTabs[0].attributes('aria-selected')).toBe('false');
+            expect(outerTabs[1].attributes('aria-selected')).toBe('true');
+            expect(innerTabs[0].attributes('aria-selected')).toBe('false');
+            expect(innerTabs[1].attributes('aria-selected')).toBe('true');
+            expect(window.location.hash).toBe('#tab/tab_nested2');
+        });
+
+        it('should support anchor permalink in hierarchical URL hash', async () => {
+            const AnchorPlayground = {
+                components: { FTabs, FTab },
+                template: `
+                    <FTabs aria-label="Outer tabs">
+                        <FTab title="Tab 1" id="outer1" url-hash="tab1">
+                            Outer Tab 1
+                        </FTab>
+                        <FTab title="Tab 2" id="outer2" url-hash="tab" strategy="create">
+                            <FTabs aria-label="Inner tabs">
+                                <FTab title="Nested 1" id="nested1" url-hash="tab_nested">
+                                    Nested 1
+                                </FTab>
+                                <FTab title="Nested 2" id="nested2" url-hash="tab_nested2">
+                                    <div id="target-heading">Target Heading</div>
+                                </FTab>
+                            </FTabs>
+                        </FTab>
+                    </FTabs>
+                `,
+            };
+            window.location.hash = 'tab/tab_nested2:target-heading';
+            wrapper = mount(AnchorPlayground, { attachTo: document.body });
+            await delay();
+
+            const tablists = wrapper.findAll('ul[role="tablist"]');
+            const outerTabs = tablists[0].findAll('li');
+            const innerTabs = tablists[1].findAll('li');
+
+            expect(outerTabs[1].attributes('aria-selected')).toBe('true');
+            expect(innerTabs[1].attributes('aria-selected')).toBe('true');
+            expect(window.location.hash).toBe('#tab/tab_nested2:target-heading');
+        });
+
+        it('should update hierarchical URL hash when nested tab is clicked', async () => {
             const NestedHashPlayground = {
                 components: { FTabs, FTab },
                 template: `
@@ -269,19 +339,17 @@ describe('FTabs', () => {
                     </FTabs>
                 `,
             };
-            window.location.hash = 'tab_nested2';
+            window.location.hash = 'tab/tab_nested';
             wrapper = mount(NestedHashPlayground);
             await delay();
 
             const tablists = wrapper.findAll('ul[role="tablist"]');
-            const outerTabs = tablists[0].findAll('li');
             const innerTabs = tablists[1].findAll('li');
 
-            expect(outerTabs[0].attributes('aria-selected')).toBe('false');
-            expect(outerTabs[1].attributes('aria-selected')).toBe('true');
-            expect(innerTabs[0].attributes('aria-selected')).toBe('false');
-            expect(innerTabs[1].attributes('aria-selected')).toBe('true');
-            expect(window.location.hash).toBe('#tab_nested2');
+            await innerTabs[1].trigger('click');
+            await delay();
+
+            expect(window.location.hash).toBe('#tab/tab_nested2');
         });
     });
 
