@@ -90,22 +90,31 @@ export default {
             const hasAnyUrlHash = this.dTabPanels.some((panel) => !!panel.urlHash);
 
             if (hasAnyUrlHash) {
+                const currentHash = window.location.hash.replace(/^#/, '');
+
+                if (currentHash && this.$el) {
+                    const panelEl = this.$el.querySelector(`#${tabPanel.id}`);
+                    if (panelEl?.querySelector(`[data-url-hash="${currentHash}"]`)) {
+                        return;
+                    }
+                }
+
                 if (tabPanel.urlHash) {
                     const cleanHash = tabPanel.urlHash.replace(/^#/, '');
 
-                    if (window.location.hash.replace(/^#/, '') !== cleanHash) {
-                        window.location.hash = cleanHash;
-                    }
-                } else if (window.location.hash) {
-                    if (window.history && window.history.replaceState) {
+                    if (currentHash !== cleanHash) {
                         window.history.replaceState(
                             null,
                             document.title,
-                            window.location.pathname + window.location.search
+                            window.location.pathname + window.location.search + `#${cleanHash}`
                         );
-                    } else {
-                        window.location.hash = '';
                     }
+                } else if (window.location.hash) {
+                    window.history.replaceState(
+                        null,
+                        document.title,
+                        window.location.pathname + window.location.search
+                    );
                 }
             }
         },
@@ -307,6 +316,16 @@ export default {
                 matchingHashIndex = tabPanels.findIndex((panel) => {
                     return panel.urlHash && !panel.hidden && panel.urlHash.replace(/^#/, '') === currentHash;
                 });
+
+                if (matchingHashIndex === -1 && this.$el) {
+                    matchingHashIndex = tabPanels.findIndex((panel) => {
+                        if (panel.hidden) {
+                            return false;
+                        }
+                        const panelEl = this.$el.querySelector(`#${panel.id}`);
+                        return panelEl?.querySelector(`[data-url-hash="${currentHash}"]`) !== null;
+                    });
+                }
             }
 
             return matchingHashIndex;

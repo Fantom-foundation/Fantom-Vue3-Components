@@ -1,5 +1,13 @@
 <template>
-    <div :id="id" class="ftab" role="tabpanel" tabindex="0" :aria-labelledby="labelledBy" :hidden="!dActive || dHidden">
+    <div
+        :id="id"
+        class="ftab"
+        role="tabpanel"
+        :data-url-hash="urlHash ? urlHash.replace(/^#/, '') : undefined"
+        tabindex="0"
+        :aria-labelledby="labelledBy"
+        :hidden="!dActive || dHidden"
+    >
         <div v-if="create">
             <slot></slot>
         </div>
