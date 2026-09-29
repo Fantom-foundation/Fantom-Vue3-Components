@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.5...v0.38.6) (2026-09-29)
+
+
+### Features
+
+* **FWindow:** add `keepMounted` prop to preserve content during hide/show cycles ([19d1873](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/19d18736b7e5a9905484ccbb2ba64ff111b01c5c))
+
 ### [0.38.5](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.4...v0.38.5) (2026-08-20)
 
 
