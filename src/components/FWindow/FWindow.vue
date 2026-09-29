@@ -311,6 +311,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        /** Don't destroy window content when the window hides */
+        keepMounted: {
+            type: Boolean,
+            default: false,
+        },
         resizeThrottleInterval: {
             type: Number,
             default: 300,
@@ -364,6 +369,11 @@ export default {
             if (!_value) {
                 this.dAttachMargin = [...this.attachMargin];
                 this._arrowSizeAdded = false;
+            }
+        },
+        keepMounted(_value) {
+            if (!_value && !this.isVisible) {
+                this.isMounted = false;
             }
         },
     },
@@ -1018,12 +1028,15 @@ export default {
             }
 
             this._hideAnimInProgress = false;
-            this.animated = false;
-            this.isMounted = false;
 
-            nextTick(() => {
-                this.animated = true;
-            });
+            if (!this.keepMounted) {
+                this.animated = false;
+                this.isMounted = false;
+
+                nextTick(() => {
+                    this.animated = true;
+                });
+            }
         },
     },
 };

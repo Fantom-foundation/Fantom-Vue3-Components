@@ -526,3 +526,27 @@ export const OverlayClass = () => ({
         </div>
     `,
 });
+
+export const KeepMounted = () => ({
+    components: { FWindow, FButton, FInput },
+    template: `
+        <div>
+            <FWindow
+                keep-mounted
+                modal
+                title="Keep mounted window"
+                style="max-width: 500px;"
+                ref="win"
+            >
+                <div>
+                    <p>Form inputs will preserve their values when the window is closed and reopened:</p>
+                    <FInput name="text" label="Enter text" />
+                </div>
+            </FWindow>
+
+            <div>
+                <FButton @click.native="$refs.win.show()">Show</FButton>
+            </div>
+        </div>
+    `,
+});
