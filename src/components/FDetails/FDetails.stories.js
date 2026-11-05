@@ -14,6 +14,11 @@ export const Default = () => ({
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci amet animi, at consequatur culpa,
                 ea eius ipsam magni molestias nisi officia, optio porro quam qui ratione reiciendis soluta ut!
             </FDetails>
+            <br />
+            <FDetails label="Long label: Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci amet animi, at consequatur culpa">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci amet animi, at consequatur culpa,
+                ea eius ipsam magni molestias nisi officia, optio porro quam qui ratione reiciendis soluta ut!
+            </FDetails>
         </div>
     `,
 });
