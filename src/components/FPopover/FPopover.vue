@@ -8,6 +8,7 @@
         :with-header="withHeader"
         :stay-in-viewport="stayInViewport"
         :prevent-focus="preventFocus"
+        :with-overlay="withOverlay"
         disable-resize-observer
         animation-in="scale-center-enter-active"
         animation-out="scale-center-leave-active"
@@ -59,6 +60,7 @@ export default {
             withHeader: false,
             stayInViewport: 'horizontal',
             preventFocus: true,
+            withOverlay: false,
             attachMargin: function () {
                 return [4, 4, 4, 4];
             },

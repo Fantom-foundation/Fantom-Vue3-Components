@@ -420,3 +420,20 @@ export const FitHeightToViewport = () => ({
         </div>
     `,
 });
+
+export const WithOverlay = () => ({
+    components: { FPopover, FButton },
+    template: `
+        <div style="max-width: 400px; margin: 0 auto; padding-top: 50px;">
+            <FButton id="btn-overlay" @click.native="$refs.popover.toggle()">Toggle Popover with Overlay</FButton>
+            <FPopover
+                with-overlay
+                attach-to="#btn-overlay"
+                attach-position="bottom"
+                ref="popover"
+            >
+                Popover with overlay
+            </FPopover>
+        </div>
+    `,
+});

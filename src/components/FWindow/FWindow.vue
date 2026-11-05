@@ -332,7 +332,7 @@ export default {
             dAnimationIn: this.animationIn,
             dAnimationOut: this.animationOut,
             dZIndex: this.zIndex,
-            dWithOverlay: this.popover ? false : this.withOverlay,
+            dWithOverlay: this._getWithOverlay(),
             dAttachMargin: [...this.attachMargin],
             style: {
                 zIndex: this.zIndex,
@@ -375,6 +375,9 @@ export default {
             if (!_value && !this.isVisible) {
                 this.isMounted = false;
             }
+        },
+        withOverlay(_value) {
+            this.dWithOverlay = _value;
         },
     },
 
@@ -879,6 +882,16 @@ export default {
 
                 this._arrowSizeAdded = true;
             }
+        },
+
+        _getWithOverlay() {
+            const vnodeProps = this.$.vnode?.props;
+
+            if (vnodeProps && ('withOverlay' in vnodeProps || 'with-overlay' in vnodeProps)) {
+                return this.withOverlay;
+            }
+
+            return this.popover ? false : this.withOverlay;
         },
 
         _updateStyle(_css) {
