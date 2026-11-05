@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.38.7](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.6...v0.38.7) (2026-11-05)
+
+
+### Features
+
+* **FPopover:** add `withOverlay` prop ([6f297d0](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/6f297d05d841c2563aaec746d9284f65917fba41))
+
+
+### Bug Fixes
+
+* **FDetails:** improve icon alignment with long labels ([f89719c](https://github.com/Fantom-foundation/Fantom-Vue3-Components/commit/f89719cfeba6d8020ae7d475a19cced4370c1632))
+
 ### [0.38.6](https://github.com/Fantom-foundation/Fantom-Vue3-Components/compare/v0.38.5...v0.38.6) (2026-09-29)
 
 
